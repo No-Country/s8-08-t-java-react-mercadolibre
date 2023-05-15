@@ -1,7 +1,16 @@
+import { Route, Routes} from 'react-router-dom'
+import Home from './pages/Home' 
+import ProductDetail from './pages/ProductDetail' 
+import Payment from './pages/Payment';
+
 function App() {
   return (
     <>
-      <h1>MercadoLibre</h1>
+    <Routes>
+      <Route path='/' element={<Home/>}  />
+      <Route path='/product-detail/:id' element={<ProductDetail/>}  />
+      <Route path='/payment' element={<Payment/>}  />
+    </Routes>
     </>
   );
 }
