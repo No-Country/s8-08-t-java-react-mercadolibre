@@ -1,9 +1,6 @@
-
 // garantia
 const Warranty = () => {
-  return (
-    <div>Warranty</div>
-  )
-}
+  return <div>Warranty</div>;
+};
 
-export default Warranty
+export default Warranty;

@@ -15,13 +15,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product-detail/:id" element={<ProductDetail />} />
-        <Route path="/warranty" element={<Warranty/>} />
-        <Route path="/delivery-type" element={<DeliveryType/>} />
-        <Route path="/home-delivery" element={<HomeDelivery/>} />
-        <Route path="/point-delivery" element={<DeliveryPoint/>} />
-        <Route path="/pay-method" element={<PayMethod/>} />
+        <Route path="/warranty" element={<Warranty />} />
+        <Route path="/delivery-type" element={<DeliveryType />} />
+        <Route path="/home-delivery" element={<HomeDelivery />} />
+        <Route path="/point-delivery" element={<DeliveryPoint />} />
+        <Route path="/pay-method" element={<PayMethod />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/pay-confirmed" element={<PayConfirmed/>} />
+        <Route path="/pay-confirmed" element={<PayConfirmed />} />
       </Routes>
     </>
   );
