@@ -8,10 +8,12 @@ import DeliveryPoint from "./pages/payments/DeliveryPoint";
 import PayMethod from "./pages/payments/PayMethod";
 import PayConfirmed from "./pages/payments/PayConfirmed";
 import Payment from "./pages/payments/Payment";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product-detail/:id" element={<ProductDetail />} />
