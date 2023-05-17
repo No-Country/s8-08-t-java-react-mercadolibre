@@ -3,12 +3,12 @@ import useMediaQuery from "../../hooks/useMediaQuery.js";
 
 const NavbarPayment = ({ title }) => {
 
-  const isMobile = useMediaQuery('(max-width: 630px)');
+  const isMobile = useMediaQuery('(max-width: 640px)');
 
   return (
     <>
       <div className="bg-secondary h-[103px] flex items-center">
-        <nav className="flex w-full sm:mx-24">
+        <nav className="flex w-full mx-6 sm:mx-24">
           {
             isMobile
               ? <div className="text-center w-full">
