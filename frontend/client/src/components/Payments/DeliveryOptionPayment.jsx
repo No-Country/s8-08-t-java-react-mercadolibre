@@ -15,7 +15,7 @@ const DeliveryOptionPayment = () => {
 
   return (
     <section className="bg-[#eeeeee] flex grow">
-      <div className="ml-24 font-medium text-[#504A4A] w-full max-w-[825px]">
+      <div className="mx-24 lg:ml-24 lg:mr-0 font-medium text-[#504A4A] w-full max-w-[825px]">
         <h2 className="mt-12 mb-4 text-xl">¿Cómo querés recibir o retirar tu compra?</h2>
 
         <div>
