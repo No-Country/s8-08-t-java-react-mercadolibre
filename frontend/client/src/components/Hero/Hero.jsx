@@ -4,8 +4,10 @@ import HeroCategory from "./HeroCategory/HeroCategory";
 const Hero = () => {
   return (
     <>
-      <HeroBenefit />
-      <HeroCategory />
+      <div className="bg-[#EDEDED]">
+        <HeroBenefit />
+        <HeroCategory />
+      </div>
     </>
   );
 };
