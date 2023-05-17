@@ -1,7 +1,7 @@
 import logo from "../../assets/img/logo-payment.png";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 
-const NavbarPayment = () => {
+const NavbarPayment = ({ title }) => {
 
   const isMobile = useMediaQuery('(max-width: 630px)');
 
@@ -12,7 +12,7 @@ const NavbarPayment = () => {
           {
             isMobile
               ? <div className="text-center w-full">
-                <p className="text-2xl font-light">¿Cómo quéres recibir o retirar<br />tu compra?</p>
+                <p className="text-2xl font-light p-10">{title}</p>
               </div>
 
               : <div className="flex items-center justify-between w-full">

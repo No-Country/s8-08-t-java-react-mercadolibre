@@ -6,7 +6,7 @@ const DeliveryType = () => {
   return (
     <>
       <section className="bg-[#eeeeee]">
-        <NavbarPayment />
+        <NavbarPayment title={"¿Cómo querés recibir o retirar tu compra?"} />
 
         <div className="flex justify-around gap-7 flex-wrap">
           <DeliveryOptionPayment />
