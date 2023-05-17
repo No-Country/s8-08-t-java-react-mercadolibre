@@ -32,7 +32,7 @@ const DeliveryOptionPayment = () => {
                 className="text-[#3483FA] border rounded-full border-none bg-white p-[0.3rem] hidden sm:block"
                 fontSize={28}
               />
-              <span className="text-xs">Llega mañana a tu domicilio</span>
+              <span className="text-xs">Vicente López, Buenos Aires</span>
             </div>
 
             <div className="mr-12 ml-5 sm:ml-0">
@@ -101,7 +101,7 @@ const DeliveryOptionPayment = () => {
           <span className="font-normal text-xs">Beneficios Mercado Puntos</span>
         </div>
 
-        <div className="flex justify-center sm:justify-end mt-7">
+        <div className="flex justify-center sm:justify-end mt-7 lg:mb-12">
           <button className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue">
             Continuar
           </button>
