@@ -1,15 +1,16 @@
 import { AiOutlineCheck } from "react-icons/ai";
 import NavbarPayment from "../../components/Payments/NavbarPayment";
+import FooterWarranty from "../../components/Payments/FooterWarranty";
 // garantia
 const Warranty = () => {
   return (
-    <>
-    <NavbarPayment/>
-    <div className="text-[#504A4A] px-3 bg-grey flex flex-col gap-1 min-h-screen">
-      <h2 className=" text-[18px] font-[500] text-[#504A4A] text-center my-5">
+    <div className="min-h-screen">
+    <NavbarPayment title={"Añadir una protección"}/>
+    <div className="text-[#504A4A] px-3 bg-grey flex flex-col gap-1 ">
+      <h2 className=" text-[18px] font-[500] text-[#504A4A] text-center my-5  hidden sm:block">
         Añadir una protección
       </h2>
-      <div className="flex flex-col gap-2 md:gap-4 items-center lg:flex-row lg:justify-center  lg:h-[600px]">
+      <div className="flex flex-col mt-4  mb-4 gap-2 md:gap-4 items-center lg:flex-row lg:justify-center  lg:h-[600px]">
         <article className=" border border-ligthblue flex flex-col text-[#504A4A] max-w-[360px]  bg-white rounded-lg md:w-[460px] lg:h-[300px]">
           <div className=" flex justify-end">
             <h4 className=" bg-ligthblue text-white w-fit px-5 rounded-bl-lg rounded-tr-lg">
@@ -89,7 +90,8 @@ const Warranty = () => {
         </article>
       </div>
     </div>
-    </>
+    <FooterWarranty/>
+    </div>
   );
 };
 
