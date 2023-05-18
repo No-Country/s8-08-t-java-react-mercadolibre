@@ -9,8 +9,10 @@ import thunder from "../../../assets/icons/thunder.svg";
 const HeroBenefit = () => {
   return (
     <div className="h-1/4 ">
-      <h2 className="text-center text-3xl font-bold py-4">DISFRUTÁ DE LOS MEJORES BENEFICIOS</h2>
-      <div className="flex flex-wrap  justify-evenly mt-4 f">
+      <h2 className=" text-center text-base font-medium pt-6 tracking-[1.6px]">
+        DISFRUTÁ DE LOS MEJORES BENEFICIOS
+      </h2>
+      <div className="flex flex-wrap  justify-center mt-4 gap-10">
         <article className="mb-8 flex flex-col justify-center items-center">
           <div className="bg-white rounded-full border-[10px] border-white">
             <img className="rounded-full" src={fire} alt="fire" />

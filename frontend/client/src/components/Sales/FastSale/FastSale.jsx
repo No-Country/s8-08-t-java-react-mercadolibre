@@ -56,7 +56,7 @@ const FastSale = () => {
         return (
           <article
             key={icon.id}
-            className="mb-8 flex flex-col justify-start items-start cursor-pointer"
+            className=" flex flex-col justify-start items-start cursor-pointer"
           >
             <div className="bg-white rounded-full border-[10px] border-white">
               <img className="rounded-2xl" src={icon.icon} alt={icon.name} />
