@@ -4,7 +4,7 @@ import useMediaQuery from "../../hooks/useMediaQuery.js";
 
 const DeliveryOptionPayment = () => {
   const [selectedOption, setSelectedOption] = useState("");
-  const isMobile = useMediaQuery('(max-width: 640px)');
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   const handleFirstChoice = () => {
     setSelectedOption("home delivery");
@@ -17,9 +17,9 @@ const DeliveryOptionPayment = () => {
   return (
     <section className="bg-[#eeeeee] flex grow">
       <div className="mx-10 sm:mx-24 lg:ml-24 lg:mr-0 font-medium text-[#504A4A] w-full max-w-[825px]">
-        {
-          !isMobile && <h2 className="mt-12 mb-4 text-xl">¿Cómo querés recibir o retirar tu compra?</h2>
-        }
+        {!isMobile && (
+          <h2 className="mt-12 mb-4 text-xl">¿Cómo querés recibir o retirar tu compra?</h2>
+        )}
 
         <div>
           <div className="mb-6 mt-8 sm:mt-0">
