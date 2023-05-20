@@ -6,7 +6,7 @@ const ProductDetailPayment = () => {
   return (
     <>
       {!isMobile ? (
-        <aside className="bg-[#F5F5F5] font-light text-[#333333] w-full max-w-[400px] divide-y divide-slate-200 flex flex-col items-center mx-24 lg:mr-24 lg:ml-0 sm:mb-8 sm:pb-12 lg:mb-0 lg:pb-0">
+        <aside className="bg-[#F5F5F5] font-light text-[#333333] w-full max-w-[400px] divide-y divide-slate-200 flex flex-col items-center mx-24 lg:mr-14 lg:ml-0 sm:mb-8 sm:pb-12 lg:mb-0 lg:pb-0">
           <div className="flex justify-center items-center flex-col mt-12 w-[330px]">
             <img
               src="https://www.cetrogar.com.ar/media/catalog/product/s/m/sm-a546_galaxy-a54-5g_awesome-graphite_front.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:"

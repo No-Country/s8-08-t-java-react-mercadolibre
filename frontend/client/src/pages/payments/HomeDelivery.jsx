@@ -5,7 +5,7 @@ import FormNewAdress from "../../components/Payments/FormNewAdress";
 const HomeDelivery = () => {
   return (
     <>
-      <section className="bg-[#eeeeee]">
+      <section className="bg-white sm:bg-[#eeeeee]">
         <NavbarPayment title={"Agregá un domicilio"} />
 
         <div className="flex justify-around gap-7 flex-wrap">
