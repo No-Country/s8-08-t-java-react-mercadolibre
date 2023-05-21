@@ -1,4 +1,3 @@
-
 import { IoSearchOutline } from "react-icons/io5";
 import ProductDetailPayment from "../../components/Payments/ProductDetailPayment";
 import NavbarPayment from "../../components/Payments/NavbarPayment";
@@ -24,12 +23,12 @@ const DeliveryPoint = () => {
   console.log(coord);
   return (
     <div>
-      <NavbarPayment />
-      <div className=" bg-[#EEEEEE] flex justify-around  flex-col min-h-[calc(100vh-183px)] xl:flex-row">
-        <div className=" ">
-          <h2 className=" text-[24px] font-[500 my-5">Elegí un punto de retiro</h2>
-          <div className="flex bg-white xl:w-[700px] ">
-            <div className=" w-1/2">
+      <NavbarPayment title={"Elegí un punto de retiro"} />
+      <div className=" bg-[#EEEEEE] flex flex-col gap-2 md:items-center xl:flex-row xl:justify-around xl:items-stretch">
+        <div className=" w-full lg:w-full xl:w-auto md:px-4 xl:px-0 xl:md:min-h-[calc(100vh-183px)]">
+          <h2 className=" hidden sm:block text-[24px] font-[500 pt-5 pb-3">Elegí un punto de retiro</h2>
+          <div className="flex flex-col items-center md:items-start bg-white md:flex-row xl:max-w-[800px] ">
+            <div className=" h-full md:w-1/2">
               <div className="bg-[#f4f4f4] pt-3">
                 <form className="flex items-center gap-2 border mx-3 h-14 bg-white ">
                   <IoSearchOutline className="text-[25px] text-[#c4c3c3] mx-3" />
@@ -48,7 +47,7 @@ const DeliveryPoint = () => {
                   <p className=" text-ligthblue">Más filtros</p>
                 </div>
               </div>
-              <div className="py-5 px-3 border-l-4 border-ligthblue">
+              <div className="mx-2 py-5 px-3 border-l-4 border-ligthblue">
                 <h5 className=" font-[500] text-[18px] mb-1">Punto Pickut - Supermercado</h5>
                 <p className="text-[#c4c3c3]">Av. San Martin Sur 2575 | Godoy Cruz - a 1,1 kms.</p>
                 <div className="flex justify-between">
@@ -59,7 +58,7 @@ const DeliveryPoint = () => {
                   <button className=" bg-ligthblue py-1 px-8 text-white rounded-lg">Elegir</button>
                 </div>
               </div>
-              <div className="py-5 px-3 border-l-4 border-white">
+              <div className="mx-2 py-5 px-3 border-l-4 border-white">
                 <h5 className=" font-[500] text-[18px] mb-1">
                   Punto Pickut - Herramientas y contrucción
                 </h5>
@@ -73,7 +72,7 @@ const DeliveryPoint = () => {
                 </div>
               </div>
             </div>
-            <div className=" w-1/2">
+            <div className=" h-[500px] w-[350px] sm:w-[500px] md:w-1/2 xl:w-[450px] xl:h-[573px]">
               {coord ? (
                 <MapContainer center={coord} zoom={13} style={{ height: "100%" }}>
                   <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -85,6 +84,7 @@ const DeliveryPoint = () => {
             </div>
           </div>
         </div>
+
         <ProductDetailPayment />
       </div>
     </div>
