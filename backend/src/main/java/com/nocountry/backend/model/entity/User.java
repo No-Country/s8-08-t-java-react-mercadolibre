@@ -1,11 +1,13 @@
-package com.nocountry.backend.entity;
+package com.nocountry.backend.model.entity;
 
+import com.nocountry.backend.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,12 +18,12 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "USERS")
-public class User implements UserDetails {
+public class User implements UserDetails, Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "USER_ID")
     private Integer id;
 
     @Column(name = "EMAIL")
@@ -38,8 +40,11 @@ public class User implements UserDetails {
     private String password;
 
     @Column(length = 32, columnDefinition = "varchar(32) default 'USER'")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    List<Address> addresses;
 
 
     @Override
@@ -76,4 +81,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
