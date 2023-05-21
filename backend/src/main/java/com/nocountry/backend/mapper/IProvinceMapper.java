@@ -1,22 +1,22 @@
 package com.nocountry.backend.mapper;
 
-import com.nocountry.backend.dto.user.UserDto;
-import com.nocountry.backend.dto.user.UserRegisterDto;
-import com.nocountry.backend.model.entity.User;
+import com.nocountry.backend.dto.province.ProvinceDto;
+import com.nocountry.backend.model.entity.Province;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface IUserMapper {
+public interface IProvinceMapper {
 
 
-    UserDto toUserDto(User user);
+    ProvinceDto toProvinceDto(Province province);
+
 
     @InheritInverseConfiguration
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "role", ignore = true)
     @Mapping(target = "addresses", ignore = true)
-    User toUser(UserRegisterDto userRegisterDto);
+    Province toProvince(ProvinceDto provinceDto);
+
+
 }
