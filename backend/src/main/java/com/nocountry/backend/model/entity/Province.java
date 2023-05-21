@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "PROVINCES")
 public class Province {
     @Id
-    @Column(name = "PROVINCE_ID")
+    @Column(name = "PROVINCE_ID",columnDefinition = "varchar(5)")
     private String id;
 
     @Column(name = "_NAME")
