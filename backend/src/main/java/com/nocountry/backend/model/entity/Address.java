@@ -22,6 +22,7 @@ public class Address {
     private String zipCode;
     private String locality;
     private String street;
+    @Column(name = "_NUMBER")
     private String number;
     private String floorApartment;
     private String numStreetInit;
@@ -32,7 +33,7 @@ public class Address {
     private Boolean residential;
 
 
-    @Column(name = "PROVINCE_FK")
+    @Column(name = "PROVINCE_FK",columnDefinition = "varchar(5)")
     private String provinceFk;
 
     @Column(name = "USER_FK")

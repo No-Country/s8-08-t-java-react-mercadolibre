@@ -17,7 +17,7 @@ import java.util.List;
 public class Location {
 
     @Id
-    @Column(name = "LOCATION_ID")
+    @Column(name = "LOCATION_ID",columnDefinition = "varchar(32)")
     private String id;
 
     @Column(name = "_NAME")
