@@ -4,20 +4,17 @@ import com.nocountry.backend.config.jwt.JwtService;
 import com.nocountry.backend.dto.token.TokenDto;
 import com.nocountry.backend.dto.user.UserLoginDto;
 import com.nocountry.backend.dto.user.UserRegisterDto;
-import com.nocountry.backend.entity.Role;
-import com.nocountry.backend.entity.User;
+import com.nocountry.backend.model.enums.Role;
+import com.nocountry.backend.model.entity.User;
 import com.nocountry.backend.mapper.IUserMapper;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
 import com.nocountry.backend.service.IAuthService;
-import com.nocountry.backend.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
