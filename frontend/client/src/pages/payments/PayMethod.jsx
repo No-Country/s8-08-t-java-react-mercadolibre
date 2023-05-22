@@ -24,10 +24,10 @@ const PayMethod = () => {
           <CardItem>
             <input type="radio" />
             <RiVisaFill className=" text-4xl" />
-            <p>Nueva tarjeta de crédito <span>Mismo precio en gasta 6 cuotas</span></p>
+            <p>
+              Nueva tarjeta de crédito <span>Mismo precio en gasta 6 cuotas</span>
+            </p>
           </CardItem>
-
-
         </div>
         <ProductDetailPayment />
       </div>

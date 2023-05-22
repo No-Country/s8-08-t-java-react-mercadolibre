@@ -20,17 +20,20 @@ const ProductDetailPayment = ({ coupon, notification }) => {
               <span className="text-sm">Cantidad: 1</span>
             </div>
 
-            <div className={`flex justify-between items-center w-[330px] mt-8 gap-48 relative ${coupon && "pb-7"}`}>
+            <div
+              className={`flex justify-between items-center w-[330px] mt-8 gap-48 relative ${
+                coupon && "pb-7"
+              }`}
+            >
               <div>
                 <p className="mt-4 font-normal">Producto</p>
                 <p className="mt-4 font-normal">Envío</p>
                 {/* Render cupón de descuento */}
-                {
-                  coupon &&
+                {coupon && (
                   <div className="absolute top-20 p-1">
                     <p className="text-base text-ligthblue">Ingresar código de cupón</p>
                   </div>
-                }
+                )}
               </div>
               <div>
                 <p className="mt-4 font-normal">$ 184.999</p>
@@ -45,15 +48,25 @@ const ProductDetailPayment = ({ coupon, notification }) => {
           </div>
 
           {/* Render de notificaciones y avisos legales */}
-          {
-            notification &&
+          {notification && (
             <div className="flex flex-col items-center justify-center mt-10 gap-8">
               <div className="flex items-center gap-2">
-                <input type="checkbox" name="notification" id="notification" className="cursor-pointer" />
-                <label htmlFor="notification" className="text-xs leading-5">Mantenete al día recibiendo notificaciones por<br />WhatsApp y SMS.</label>
+                <input
+                  type="checkbox"
+                  name="notification"
+                  id="notification"
+                  className="cursor-pointer"
+                />
+                <label htmlFor="notification" className="text-xs leading-5">
+                  Mantenete al día recibiendo notificaciones por
+                  <br />
+                  WhatsApp y SMS.
+                </label>
               </div>
               <div>
-                <p className="text-xs text-[#737373]">Conocé nuestros <span className="text-ligthblue">avisos legales</span></p>
+                <p className="text-xs text-[#737373]">
+                  Conocé nuestros <span className="text-ligthblue">avisos legales</span>
+                </p>
               </div>
               <div>
                 <button className="w-[316px] h-[48px] text-white rounded-md bg-ligthblue font-medium">
@@ -61,12 +74,13 @@ const ProductDetailPayment = ({ coupon, notification }) => {
                 </button>
               </div>
             </div>
-          }
+          )}
         </aside>
       ) : (
         <div
           className="flex justify-between items-center w-full font-normal text-lg p-5 bg-[#f7f7f7] shadow-inner shadow-black"
-          style={{ boxShadow: "0px -6px 6px -2px rgba(0, 0, 0, 0.1)" }}>
+          style={{ boxShadow: "0px -6px 6px -2px rgba(0, 0, 0, 0.1)" }}
+        >
           <p className="mt-4 text-[#666666]">Pagás</p>
           <p className="mt-4 text-[#333333]">$ 184.999</p>
         </div>
