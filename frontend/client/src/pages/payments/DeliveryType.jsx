@@ -2,7 +2,6 @@ import NavbarPayment from "../../components/Payments/NavbarPayment";
 import DeliveryOptionPayment from "../../components/Payments/DeliveryOptionPayment";
 import ProductDetailPayment from "../../components/Payments/ProductDetailPayment";
 
-// retiro
 const DeliveryType = () => {
   return (
     <>
