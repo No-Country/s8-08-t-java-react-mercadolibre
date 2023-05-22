@@ -23,7 +23,8 @@ const Carousel = ({images}) => {
                 {
                     images.map((elem)=>{
                         if (images.indexOf(elem)<=6)
-                        {return(
+                        {
+                            return(
                             <div className="w-auto flex justify-center items-center" key={images.indexOf(elem)}>
                                 <img
                                     src={elem}

@@ -24,7 +24,7 @@ const DescriptionAside =({name,characteristics,price,off})=>{
                 <ul>
                     {characteristics.map((elem)=>{
                         return(
-                            <li className="list-disc py-1 text-gray-500 text-sm">{elem}</li>
+                            <li key={characteristics.indexOf(elem)} className="list-disc py-1 text-gray-500 text-sm">{elem}</li>
                         )
                     })}
                 </ul>

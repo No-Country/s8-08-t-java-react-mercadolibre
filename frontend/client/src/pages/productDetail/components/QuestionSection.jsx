@@ -40,7 +40,7 @@ const QuestionSection=()=>{
             <div className="">
                 {question.map(elem=>{
                     return(
-                        <div className="p-2">
+                        <div key={question.indexOf(elem)} className="p-2">
                             <p className="text-black text-lg">{elem.pregunta}</p>
                             <p className="text-gray-500 mx-8 text-lg">¬ {elem.respuesta}</p>
                         </div>

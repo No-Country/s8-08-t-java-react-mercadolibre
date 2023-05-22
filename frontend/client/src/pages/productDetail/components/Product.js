@@ -6,7 +6,7 @@ export const Product = {
       "https://http2.mlstatic.com/D_NQ_NP_673617-MLA54614434255_032023-O.webp",
       "https://http2.mlstatic.com/D_NQ_NP_704347-MLA54617291492_032023-O.webp",
       "https://http2.mlstatic.com/D_NQ_NP_617389-MLA54617424542_032023-O.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_987793-MLA54614253497_032023-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_683383-MLA54617606314_032023-O.webp",
       "https://http2.mlstatic.com/D_NQ_NP_716903-MLA54617361036_032023-O.webp"
     ],
     characteristics:[
