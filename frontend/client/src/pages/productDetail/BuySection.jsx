@@ -43,23 +43,33 @@ function BuySection() {
             Comprar ahora
           </button>
         </div>
-       <div className="flex flex-col gap-4">
-        <div className="flex">
-          <BsArrowReturnLeft size={25} className="mr-4" />
-          
-          <p className="text-[13px]">  <span className="text-blue-500 whitespace-nowrap">Devolución gratis.</span> Tenés 30 días desde que lo recibís.</p>
-        </div>
-        
-        <div className="flex">
-          <BiCheckShield size={25} className="mr-4" />
-          
-          <p className="text-[13px]" > <span className="text-blue-500 break-normal whitespace-nowrap">Compra Protegida,</span> recibí el producto que esperabas o te devolvemos tu dinero</p>
-        </div>
-       
-        <div className="flex">
-          <IoMdRibbon size={25} className="mr-4" />
-          <p className="text-[13px]">12 meses de garantia</p>
-        </div>
+        <div className="flex flex-col gap-4">
+          <div className="flex">
+            <BsArrowReturnLeft size={25} className="mr-4" />
+
+            <p className="text-[13px]">
+              {" "}
+              <span className="text-blue-500 whitespace-nowrap">Devolución gratis.</span> Tenés 30
+              días desde que lo recibís.
+            </p>
+          </div>
+
+          <div className="flex">
+            <BiCheckShield size={25} className="mr-4" />
+
+            <p className="text-[13px]">
+              {" "}
+              <span className="text-blue-500 break-normal whitespace-nowrap">
+                Compra Protegida,
+              </span>{" "}
+              recibí el producto que esperabas o te devolvemos tu dinero
+            </p>
+          </div>
+
+          <div className="flex">
+            <IoMdRibbon size={25} className="mr-4" />
+            <p className="text-[13px]">12 meses de garantia</p>
+          </div>
         </div>
       </div>
     </div>

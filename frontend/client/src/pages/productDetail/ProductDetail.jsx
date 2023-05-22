@@ -3,13 +3,15 @@ import Carousel from "./components/Carousel";
 import DescriptionAside from "./components/DescriptionAside";
 import DescriptionBottom from "./components/DescriptionBottom";
 import QuestionSection from "./components/QuestionSection";
+import BuySection from "./BuySection";
+import StoreDetail from "./StoreDetail";
 import { useParams } from "react-router-dom";
 import { Product } from "./components/Product";
 
 const ProductDetail = () => {
-  const {Id} = useParams()
+  const { Id } = useParams();
 
-  return(
+  return (
     <div className="bg-grey flex justify-center content-center px-24 py-14 w-100">
       <div className="bg-white flex flex-col w-100">
         <div className="flex w-100 mx-16">
@@ -25,19 +27,21 @@ const ProductDetail = () => {
             />
           </div>
         </div>
-        <hr className="flex mx-16 my-8"/>
+        <hr className="flex mx-16 my-8" />
         <div className="w-100 mx-16">
-          <DescriptionBottom description={Product.description}/>
+          <DescriptionBottom description={Product.description} />
         </div>
-        <hr className="flex mx-16 my-8"/>
+        <hr className="flex mx-16 my-8" />
         <div className="mx-16">
-          <QuestionSection/>
+          <QuestionSection />
         </div>
       </div>
-      <div className="bg-ligthblue w-6/12">Comprar</div>
+      <div className="bg-white w-4/12 flex flex-col pt-6 pr-6 gap-4">
+        <BuySection />
+        <StoreDetail />
+      </div>
     </div>
-  )
-
-}
+  );
+};
 
 export default ProductDetail;
