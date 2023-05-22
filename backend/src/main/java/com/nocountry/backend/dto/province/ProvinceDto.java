@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProvinceDto {
-    private String id;
+    private Integer id;
     @SerializedName("nombre")
     private String name;
 }

@@ -10,9 +10,9 @@ import java.util.Optional;
 public interface IAddressRepository extends JpaRepository<Address, Integer> {
 
 
-    List<Address> findAllByUserFk(Integer userFk);
+    List<Address> findAllByUserFk(Long userFk);
 
-    Optional<Address> findByUserFkAndStatusTrue(Integer userFk);
+    Optional<Address> findByUserFkAndStatusTrue(Long userFk);
 
 
 }

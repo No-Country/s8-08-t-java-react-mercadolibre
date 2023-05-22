@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface IAddressService {
 
-    List<AddressListGetDto> findAllByUserId(Integer userId);
+    List<AddressListGetDto> findAllByUserId(Long userId);
 
     AddressDetailPostDto findById(Integer addressId);
 
-    AddressListGetDto findByUserIdAndStatusTrue(Integer userId);
+    AddressListGetDto findByUserIdAndStatusTrue(Long userId);
 
     AddressPostDto save(AddressPostDto addressPostDto);
 
@@ -21,7 +21,7 @@ public interface IAddressService {
     AddressDetailPostDto update(Integer addressId, AddressUpdatePostDto addressUpdatePostDto);
 
 
-    void updateStatus(Integer userId, Integer addressId);
+    void updateStatus(Long userId, Integer addressId);
 
     void deleteById(Integer idAddress);
 

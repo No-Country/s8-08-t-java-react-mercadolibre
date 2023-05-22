@@ -21,7 +21,7 @@ public class AddressController {
     private final IAddressService addressService;
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<AddressListGetDto>> findAllByUserId(@PathVariable Integer userId) {
+    public ResponseEntity<List<AddressListGetDto>> findAllByUserId(@PathVariable Long userId) {
         return new ResponseEntity<>(addressService.findAllByUserId(userId), HttpStatus.OK);
     }
 
@@ -32,12 +32,12 @@ public class AddressController {
     }
 
     @GetMapping("/user/active/{userId}")
-    public ResponseEntity<AddressListGetDto> findByUserIdAndStatusTrue(@PathVariable Integer userId) {
+    public ResponseEntity<AddressListGetDto> findByUserIdAndStatusTrue(@PathVariable Long userId) {
         return new ResponseEntity<>(addressService.findByUserIdAndStatusTrue(userId), HttpStatus.OK);
     }
 
     @GetMapping("/{addressId}/user/{userId}")
-    public ResponseEntity<AddressListGetDto> changeStatus(@PathVariable Integer userId, @PathVariable Integer addressId) {
+    public ResponseEntity<AddressListGetDto> changeStatus(@PathVariable Long userId, @PathVariable Integer addressId) {
         addressService.updateStatus(userId, addressId);
         return ResponseEntity.noContent().build();
     }
