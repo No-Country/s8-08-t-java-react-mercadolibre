@@ -11,7 +11,7 @@ public class AddressUpdatePostDto {
     @JsonProperty("zip_code")
     private String zipCode;
     @JsonProperty("province_id")
-    private String provinceId;
+    private Integer provinceId;
     private String locality;
     private String street;
     private String number;

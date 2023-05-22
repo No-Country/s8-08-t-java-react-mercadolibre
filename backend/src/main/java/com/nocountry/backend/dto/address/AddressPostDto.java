@@ -12,12 +12,12 @@ import lombok.ToString;
 public class AddressPostDto {
 
     @JsonProperty("user_id")
-    private Integer userId;
+    private Long userId;
     private String contact;
     @JsonProperty("zip_code")
     private String zipCode;
     @JsonProperty("province_id")
-    private String provinceId;
+    private Integer provinceId;
     private String locality;
     private String street;
     private String number;

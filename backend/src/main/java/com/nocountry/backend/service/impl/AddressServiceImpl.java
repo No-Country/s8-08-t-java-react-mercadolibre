@@ -22,7 +22,7 @@ public class AddressServiceImpl implements IAddressService {
 
 
     @Override
-    public List<AddressListGetDto> findAllByUserId(Integer userId) {
+    public List<AddressListGetDto> findAllByUserId(Long userId) {
         return this.addressMapper.toAddressListGetDtos(this.addressRepository.findAllByUserFk(userId));
     }
 
@@ -33,7 +33,7 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public AddressListGetDto findByUserIdAndStatusTrue(Integer userId) {
+    public AddressListGetDto findByUserIdAndStatusTrue(Long userId) {
         return this.addressRepository.findByUserFkAndStatusTrue(userId).map(this.addressMapper::toAddressListGetDto)
                 .orElseThrow(() -> new RuntimeException("No existe una direccion activa."));
     }
@@ -60,7 +60,7 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public void updateStatus(Integer userId, Integer addressId) {
+    public void updateStatus(Long userId, Integer addressId) {
         this.changeStatusFalse(userId);
         this.changeStatusTrue(addressId);
     }
@@ -72,7 +72,7 @@ public class AddressServiceImpl implements IAddressService {
         });
     }
 
-    private void changeStatusFalse(Integer userId) {
+    private void changeStatusFalse(Long userId) {
         this.addressRepository.findByUserFkAndStatusTrue(userId).map(address -> {
             address.setStatus(false);
             return address;
