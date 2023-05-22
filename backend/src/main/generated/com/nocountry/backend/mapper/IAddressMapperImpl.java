@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-22T00:55:23-0500",
+    date = "2023-05-22T10:03:35-0500",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.4.1 (Eclipse Adoptium)"
 )
 @Component
@@ -34,7 +34,6 @@ public class IAddressMapperImpl implements IAddressMapper {
         addressPostDto.setZipCode( address.getZipCode() );
         addressPostDto.setLocality( address.getLocality() );
         addressPostDto.setStreet( address.getStreet() );
-        addressPostDto.setNumber( address.getNumber() );
         addressPostDto.setFloorApartment( address.getFloorApartment() );
         addressPostDto.setNumStreetInit( address.getNumStreetInit() );
         addressPostDto.setNumStreetEnd( address.getNumStreetEnd() );
@@ -59,7 +58,6 @@ public class IAddressMapperImpl implements IAddressMapper {
         addressDetailPostDto.setProvince( provinceToProvinceDto( address.getProvince() ) );
         addressDetailPostDto.setLocality( address.getLocality() );
         addressDetailPostDto.setStreet( address.getStreet() );
-        addressDetailPostDto.setNumber( address.getNumber() );
         addressDetailPostDto.setFloorApartment( address.getFloorApartment() );
         addressDetailPostDto.setNumStreetInit( address.getNumStreetInit() );
         addressDetailPostDto.setNumStreetEnd( address.getNumStreetEnd() );
@@ -96,7 +94,6 @@ public class IAddressMapperImpl implements IAddressMapper {
         addressListGetDto.setContact( address.getContact() );
         addressListGetDto.setProvince( provinceToProvinceDto( address.getProvince() ) );
         addressListGetDto.setStreet( address.getStreet() );
-        addressListGetDto.setNumber( address.getNumber() );
 
         return addressListGetDto;
     }
@@ -121,9 +118,6 @@ public class IAddressMapperImpl implements IAddressMapper {
         }
         if ( addressUpdatePostDto.getStreet() != null ) {
             address.setStreet( addressUpdatePostDto.getStreet() );
-        }
-        if ( addressUpdatePostDto.getNumber() != null ) {
-            address.setNumber( addressUpdatePostDto.getNumber() );
         }
         if ( addressUpdatePostDto.getFloorApartment() != null ) {
             address.setFloorApartment( addressUpdatePostDto.getFloorApartment() );
@@ -159,7 +153,6 @@ public class IAddressMapperImpl implements IAddressMapper {
         address.setZipCode( addressPostDto.getZipCode() );
         address.setLocality( addressPostDto.getLocality() );
         address.setStreet( addressPostDto.getStreet() );
-        address.setNumber( addressPostDto.getNumber() );
         address.setFloorApartment( addressPostDto.getFloorApartment() );
         address.setNumStreetInit( addressPostDto.getNumStreetInit() );
         address.setNumStreetEnd( addressPostDto.getNumStreetEnd() );
