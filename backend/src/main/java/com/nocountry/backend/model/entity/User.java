@@ -24,7 +24,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
-    private Integer id;
+    private Long id;
 
     @Column(name = "EMAIL")
     private String email;
@@ -36,7 +36,7 @@ public class User implements UserDetails {
 
     @Column(name = "NUMBER_PHONE")
     private String numberPhone;
-    @Column(name = "PASSWORD")
+    @Column(name = "USER_PASSWORD")
     private String password;
 
     @Column(length = 32, columnDefinition = "varchar(32) default 'USER'")
