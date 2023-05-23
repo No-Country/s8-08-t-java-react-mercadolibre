@@ -20,4 +20,11 @@ public class UserServiceImpl implements IUserService {
                 .map(userMapper::toUserDto)
                 .orElseThrow(() -> new RuntimeException("El usuario no existe."));
     }
+
+    @Override
+    public UserDto findById(Long userId) {
+        return this.userRepositoryJpa.findById(userId)
+                .map(this.userMapper::toUserDto)
+                .orElseThrow(()-> new RuntimeException("Id del usuario no existe."));
+    }
 }
