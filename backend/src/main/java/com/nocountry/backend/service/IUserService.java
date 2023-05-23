@@ -7,4 +7,5 @@ public interface IUserService {
 
     UserDto findByEmail(String email);
 
+    UserDto findById(Long userId);
 }

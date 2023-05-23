@@ -10,10 +10,10 @@ public interface IProvinceRepository extends JpaRepository<Province, String> {
 
     @Query(value = "select " +
             "provinces.province_id," +
-            "provinces._name " +
+            "provinces.province_name " +
             "from " +
             "provinces " +
-            "where lower(provinces._name) like %?1%", nativeQuery = true)
+            "where lower(provinces.province_name) like %?1%", nativeQuery = true)
     Optional<Province> findByNameContainingIgnoreCase(String name);
 
 }
