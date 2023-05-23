@@ -4,6 +4,7 @@ import com.nocountry.backend.config.jwt.JwtService;
 import com.nocountry.backend.dto.token.TokenDto;
 import com.nocountry.backend.dto.user.UserLoginDto;
 import com.nocountry.backend.dto.user.UserRegisterDto;
+import com.nocountry.backend.dto.user.UserTokenDto;
 import com.nocountry.backend.model.enums.Role;
 import com.nocountry.backend.model.entity.User;
 import com.nocountry.backend.mapper.IUserMapper;
@@ -36,7 +37,7 @@ public class AuthServiceImpl implements IAuthService {
     }
 
     @Override
-    public TokenDto login(UserLoginDto userLoginDto) {
+    public UserTokenDto login(UserLoginDto userLoginDto) {
         User user = this.userRepositoryJpa.findByEmail(userLoginDto.getEmail()).orElseThrow(() ->
                 new RuntimeException("El email no se encuentra registrado"));
         try {
@@ -46,9 +47,11 @@ public class AuthServiceImpl implements IAuthService {
         } catch (BadCredentialsException e) {
             throw new BadCredentialsException("Contrasenna incorrecta");
         }
+
         String token = jwtService.generateToken(user);
-        return TokenDto.builder().
-                token(token).
-                build();
+        UserTokenDto userTokenDto = this.userMapper.toUserTokenDto(user);
+        userTokenDto.setToken(token);
+
+        return userTokenDto;
     }
 }
