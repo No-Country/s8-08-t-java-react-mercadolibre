@@ -10,7 +10,6 @@ import java.util.Date;
 @Entity
 @Table(name = "ORDERS")
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter

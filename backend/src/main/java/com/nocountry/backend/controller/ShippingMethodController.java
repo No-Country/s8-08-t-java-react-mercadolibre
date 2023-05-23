@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/shippingMethods")
+@RequestMapping("/api/v1/shippingMethods")
 @CrossOrigin(origins="**")
 
 public class ShippingMethodController  {

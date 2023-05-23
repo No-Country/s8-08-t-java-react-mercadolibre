@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/orderStatuss")
+@RequestMapping("/api/v1/orderStatuss")
 @CrossOrigin(origins="**")
 
 public class OrderStatusController  {
