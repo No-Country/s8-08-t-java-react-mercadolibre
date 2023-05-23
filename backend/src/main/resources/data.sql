@@ -8,10 +8,10 @@ INSERT INTO provinces (PROVINCE_ID, PROVINCE_NAME) values
   (94, "Tierra del Fuego, Antartida e Islas del Atlantico Sur" ), (90, "Tucuman" );
 
   INSERT INTO users (EMAIL, FIRST_NAME, LAST_NAME, NUMBER_PHONE, USER_PASSWORD, ROLE) VALUES
-  ('maria@correo.com','maria','test','23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'ADMIN'), 
-  ('pedro@correo.com', 'pedro','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'USER'),
-   ('admin@movear.com', 'admin','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'USER'),
-    ('user@test.com', 'user','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'ADMIN');
+  ('maria@meli.com','maria','test','23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'ADMIN'),
+  ('pedro@meli.com', 'pedro','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'USER'),
+   ('admin@meli.com', 'admin','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'USER'),
+    ('user@meli.com', 'user','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'ADMIN');
 
 
 
