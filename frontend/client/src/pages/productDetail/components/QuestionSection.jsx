@@ -1,4 +1,6 @@
 import { AiOutlineSearch, AiOutlineQuestionCircle } from "react-icons/ai";
+import { RxCornerBottomLeft } from "react-icons/rx";
+import { useState } from "react";
 const QuestionSection = () => {
   const question = [
     {
@@ -14,28 +16,32 @@ const QuestionSection = () => {
       respuesta: "Queti"
     }
   ];
+  const [moreQ, setMoreQ] = useState(false);
+  const changeQ = () => {
+    moreQ ? setMoreQ(false) : setMoreQ(true);
+  };
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-6">
       <h3 className="text-3xl">Preguntas y respuestas</h3>
       <h4 className="text-xl font-bold py-2">¿Qué querés saber?</h4>
       <div className="w-100 py-5">
-        <button className="bg-blue-100 text-ligthblue text-lg p-2 mx-1 rounded-md">
+        <button className="bg-blue-100 text-ligthblue text-xl p-2 mx-1 rounded-md">
           Costo y tiempo de envío
         </button>
-        <button className="bg-blue-100 text-ligthblue text-lg p-2 mx-1 rounded-md">
+        <button className="bg-blue-100 text-ligthblue text-xl p-2 mx-1 rounded-md">
           Devoluciones gratis
         </button>
-        <button className="bg-blue-100 text-ligthblue text-lg p-2 mx-1 rounded-md">
+        <button className="bg-blue-100 text-ligthblue text-xl p-2 mx-1 rounded-md">
           Medios de pago y promociones
         </button>
-        <button className="bg-blue-100 text-ligthblue text-lg p-2 mx-1 rounded-md">Garantía</button>
+        <button className="bg-blue-100 text-ligthblue text-xl p-2 mx-1 rounded-md">Garantía</button>
       </div>
       <h4 className="text-xl font-bold py-2">Buscá lo que querés saber</h4>
       <div className="inline-flex w-9/12 my-2 border border-gray-400 rounded">
         <input
           type="text"
           placeholder="Escribí una pregunta o palabra clave..."
-          className="w-11/12 p-3 text-gray-500"
+          className="w-11/12 p-3 text-gray-500 rounded"
         />
         <div className="bg-ligthblue p-3 w-1/12 flex justify-center content-center items-center text-3xl cursor-pointer">
           <AiOutlineSearch className="text-white" />
@@ -43,19 +49,36 @@ const QuestionSection = () => {
       </div>
       <h4 className="text-xl font-bold py-2 my-2">Últimas realizadas</h4>
       <div className="">
-        {question.map(elem => {
-          return (
-            <div key={question.indexOf(elem)} className="p-2">
-              <p className="text-black text-lg">{elem.pregunta}</p>
-              <p className="text-gray-500 mx-8 text-lg">¬ {elem.respuesta}</p>
-            </div>
-          );
-        })}
-        <button className="text-ligthblue text-xl my-3">
-          Ver {question.length} resultados más V
+        <div key={0} className="p-2">
+          <p className="text-black text-lg">{question[0].pregunta}</p>
+          <p className="text-gray-500 mx-8 text-lg flex">
+            <RxCornerBottomLeft /> {question[0].respuesta}
+          </p>
+        </div>
+        {moreQ &&
+          question.map(elem => {
+            if (question.indexOf(elem) !== 0) {
+              return (
+                <div key={question.indexOf(elem)} className="p-2">
+                  <p className="text-black text-lg">{elem.pregunta}</p>
+                  <p className="text-gray-500 mx-8 text-lg flex">
+                    <RxCornerBottomLeft />
+                    {elem.respuesta}
+                  </p>
+                </div>
+              );
+            }
+          })}
+        <button
+          onClick={() => {
+            changeQ();
+          }}
+          className="text-ligthblue text-xl my-3"
+        >
+          <p>Ver {!moreQ ? question.length - 1 + " preguntas más" : "Menos"}</p>
         </button>
       </div>
-      <div className="bg-blue-100 text-ligthblue text-2xl w-5/12 my-3 flex justify-center items-center">
+      <div className="bg-blue-100 text-ligthblue text-2xl w-5/12 my-3 flex justify-center items-center rounded-md">
         <AiOutlineQuestionCircle />
         <button className="py-3 mx-1">¿Cómo pregunto al vendedor?</button>
       </div>

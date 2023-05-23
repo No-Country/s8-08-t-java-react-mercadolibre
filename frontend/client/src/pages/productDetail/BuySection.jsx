@@ -10,7 +10,7 @@ function BuySection() {
       <div className="flex">
         <BsTruck className="text-green text-2xl mr-3" />
         <div className="">
-          <div class="inline-flex items-center">
+          <div className="inline-flex items-center">
             <p className="text-green text-[15px] font-medium"> Envios gratis a todo el pais</p>
             <AiFillThunderbolt className="text-green text-xl ml-10" />
             <p className="text-green italic font-bold"> FULL</p>

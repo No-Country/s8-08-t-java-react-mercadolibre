@@ -1,5 +1,9 @@
 import { AiOutlineHeart } from "react-icons/ai";
-const DescriptionAside = ({ name, characteristics, price, off }) => {
+import { useState } from "react";
+const DescriptionAside = ({ name, characteristics, specification, price, off }) => {
+  const [color, setColor] = useState(specification.color[0]);
+  const [colorSelected, setColorSelected] = useState(color);
+  const active = "border-ligthblue border-2";
   return (
     <div className="flex flex-col p-2">
       <div className="flex justify-between p-1 text-gray-500 text-sm">
@@ -25,6 +29,34 @@ const DescriptionAside = ({ name, characteristics, price, off }) => {
         <p className="bg-ligthblue text-white text-sm inline p-1 rounded">
           <a href="">OFERTA DEL DIA</a>
         </p>
+      </div>
+      <div className="py-3">
+        <p className="text-black text-lg">
+          Color: <span>{color}</span>
+        </p>
+        <div className="flex py-2 flex-wrap">
+          {specification.color.map(elem => {
+            return (
+              <button
+                key={specification.color.indexOf(elem)}
+                onClick={() => {
+                  setColorSelected(elem);
+                }}
+                onMouseEnter={() => {
+                  setColor(elem);
+                }}
+                onMouseOut={() => {
+                  setColor(colorSelected);
+                }}
+                className={`hover:border-ligthblue ${
+                  elem == colorSelected && active
+                } mx-2 my-1 py-2 px-3 rounded-lg border hover:border-ligthblue`}
+              >
+                {elem}
+              </button>
+            );
+          })}
+        </div>
       </div>
       <div className="my-2 p-1">
         <ul>

@@ -20,7 +20,7 @@ export const Product = {
   specification: {
     marca: "Samsung",
     modelo: "Galaxy A54",
-    color: "Gris Oscuro",
+    color: ["Negro", "Gris Oscuro", "Blanco", "Rojo", "Verde", "Rosa", "Amarillo"],
     sistemaOperativo: "Android",
     pantallaSize: "6.4'",
     pantallaTipoResolucion: "Full HD+",
