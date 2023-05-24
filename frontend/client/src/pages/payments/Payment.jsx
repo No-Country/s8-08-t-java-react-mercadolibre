@@ -8,7 +8,7 @@ import facil from "../../assets/img/facil.png";
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-stretch min-h-screen">
       <NavbarPayment title=" ¿Como queres pagar?" />
@@ -46,7 +46,10 @@ const Payment = () => {
             </div>
           </CardItem>
           <div className="flex justify-end mt-4 md:mr-5 xl:mr-0">
-            <button onClick={()=> navigate('/pay-confirmed')} className="w-[150px] h-[30px]   md:w-[200px] md:h-[35px] xl:w-[316px] xl:h-[48px]  text-white rounded-md bg-ligthblue font-medium">
+            <button
+              onClick={() => navigate("/pay-confirmed")}
+              className="w-[150px] h-[30px]   md:w-[200px] md:h-[35px] xl:w-[316px] xl:h-[48px]  text-white rounded-md bg-ligthblue font-medium"
+            >
               Continuar
             </button>
           </div>

@@ -8,13 +8,11 @@ import ProductDetailPayment from "../../components/Payments/ProductDetailPayment
 import { useNavigate } from "react-router-dom";
 // metodo de pago
 const PayMethod = () => {
-
-const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   return (
     <>
-      <NavbarPayment title=" ¿Como queres pagar?"/>
+      <NavbarPayment title=" ¿Como queres pagar?" />
       <div className=" bg-[#EEEEEE] flex flex-col items-stretch lg:flex-row lg:justify-around min-h-[calc(100vh-136px)]  ">
         <div className="my-10">
           <div className="flex justify-between md:mx-5 lg:mx-5 xl:mx-0">
@@ -58,7 +56,10 @@ const navigate = useNavigate()
             <p>Efectivo en puntos de pago </p>
           </CardItem>
           <div className="flex justify-end mt-4">
-            <button onClick={()=> navigate('/payment')} className="w-[150px] h-[30px] md:mr-5 xl:mr-0 md:w-[200px] md:h-[35px] xl:w-[316px] xl:h-[48px] text-white rounded-md bg-ligthblue font-medium">
+            <button
+              onClick={() => navigate("/payment")}
+              className="w-[150px] h-[30px] md:mr-5 xl:mr-0 md:w-[200px] md:h-[35px] xl:w-[316px] xl:h-[48px] text-white rounded-md bg-ligthblue font-medium"
+            >
               Continuar
             </button>
           </div>
