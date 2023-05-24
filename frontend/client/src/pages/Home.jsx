@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "../components/Hero/Hero";
 import Sales from "../components/Sales/Sales";
+import SliderIcon from "../components/sliderIcon/SliderIcon";
 
 const Home = () => {
   return (
@@ -56,6 +57,9 @@ const Home = () => {
           garantizados. MercadoLibre S.R.L. CUIT 30-70308853-4, Caseros 3039, Piso 2º, CABA. Para
           más información consulta en www.mercadolibre.com.ar/hot-sale
         </p>
+      </section>
+      <section className="flex mx-auto w-[85%] h-[340px]">
+        <SliderIcon />
       </section>
     </div>
   );
