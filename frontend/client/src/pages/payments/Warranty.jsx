@@ -4,9 +4,9 @@ import FooterWarranty from "../../components/Payments/FooterWarranty";
 // garantia
 const Warranty = () => {
   return (
-    <div className="min-h-screen">
+    <div className="">
       <NavbarPayment title={"Añadir una protección"} />
-      <div className="text-[#504A4A] px-3 bg-grey flex flex-col gap-1 ">
+      <div className=" text-[#504A4A] px-3 bg-grey flex flex-col gap-1 ">
         <h2 className=" text-[18px] font-[500] text-[#504A4A] text-center my-5  hidden sm:block">
           Añadir una protección
         </h2>
