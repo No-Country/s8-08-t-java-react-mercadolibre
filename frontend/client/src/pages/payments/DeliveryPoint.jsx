@@ -26,7 +26,9 @@ const DeliveryPoint = () => {
       <NavbarPayment title={"Elegí un punto de retiro"} />
       <div className=" bg-[#EEEEEE] flex flex-col gap-2 md:items-center xl:flex-row xl:justify-around xl:items-stretch">
         <div className=" w-full lg:w-full xl:w-auto md:px-4 xl:px-0 xl:md:min-h-[calc(100vh-183px)]">
-          <h2 className=" hidden sm:block text-[24px] font-[500 pt-5 pb-3">Elegí un punto de retiro</h2>
+          <h2 className=" hidden sm:block text-[24px] font-[500 pt-5 pb-3">
+            Elegí un punto de retiro
+          </h2>
           <div className="flex flex-col items-center md:items-start bg-white md:flex-row xl:max-w-[800px] ">
             <div className=" h-full md:w-1/2">
               <div className="bg-[#f4f4f4] pt-3">

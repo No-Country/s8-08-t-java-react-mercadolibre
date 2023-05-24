@@ -26,7 +26,7 @@ function App() {
         <Route path="/pay-method" element={<PayMethod />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/pay-confirmed" element={<PayConfirmed />} />
-        <Route path="/purchases" element={<Purchases/>} />
+        <Route path="/purchases" element={<Purchases />} />
       </Routes>
       <Footer />
     </>
