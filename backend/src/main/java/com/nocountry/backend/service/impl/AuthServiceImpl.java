@@ -34,7 +34,7 @@ public class AuthServiceImpl implements IAuthService {
     public void register(UserRegisterDto userRegisterDto) {
         User user = this.userMapper.toUser(userRegisterDto);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.USER);
+        user.setRole(Role.VENDOR);
         this.userRepositoryJpa.save(user);
     }
 
