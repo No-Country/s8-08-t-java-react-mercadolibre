@@ -4,8 +4,10 @@ import { IoMdHome } from "react-icons/io";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const FormNewAdress = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -42,6 +44,7 @@ const FormNewAdress = () => {
     }),
     onSubmit: (values, { setErrors }) => {
       console.log(values);
+      navigate("/pay/pay-method");
     }
   });
 

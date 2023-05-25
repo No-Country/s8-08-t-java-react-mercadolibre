@@ -47,7 +47,7 @@ const Payment = () => {
           </CardItem>
           <div className="flex justify-end mt-4 md:mr-5 xl:mr-0">
             <button
-              onClick={() => navigate("/pay-confirmed")}
+              onClick={() => navigate("/pay/pay-confirmed")}
               className="w-[150px] h-[30px]   md:w-[200px] md:h-[35px] xl:w-[316px] xl:h-[48px]  text-white rounded-md bg-ligthblue font-medium"
             >
               Continuar
