@@ -11,7 +11,7 @@ import { Grid, Pagination } from "swiper";
 
 import { TiChevronRight } from "react-icons/ti";
 import { TiChevronLeft } from "react-icons/ti";
-import getCard from "../../../utils/card.json";
+import getCard from "../../utils/card.json";
 import PopularCategories from "../PopularCategorie/PopularCategories.jsx";
 
 const SliderIcon = () => {
