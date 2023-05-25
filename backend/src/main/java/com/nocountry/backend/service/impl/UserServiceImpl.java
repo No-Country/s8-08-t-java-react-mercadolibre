@@ -1,9 +1,9 @@
 package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.dto.user.UserDto;
-import com.nocountry.backend.entity.Role;
-import com.nocountry.backend.entity.User;
 import com.nocountry.backend.mapper.IUserMapper;
+import com.nocountry.backend.model.entity.User;
+import com.nocountry.backend.model.enums.Role;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
 import com.nocountry.backend.service.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class UserServiceImpl implements IUserService {
     public UserDto findById(Long userId) {
         return this.userRepositoryJpa.findById(userId)
                 .map(this.userMapper::toUserDto)
-                .orElseThrow(()-> new RuntimeException("Id del usuario no existe."));
+                .orElseThrow(() -> new RuntimeException("Id del usuario no existe."));
     }
 
     @Override
