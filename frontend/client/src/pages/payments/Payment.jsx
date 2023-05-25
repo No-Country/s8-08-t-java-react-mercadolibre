@@ -11,11 +11,11 @@ const Payment = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-stretch min-h-screen">
-      <NavbarPayment title=" ¿Como queres pagar?" />
+      <NavbarPayment title=" ¿Cómo queres pagar?" />
       <div className="bg-[#EEEEEE] flex flex-col lg:flex-row  lg:justify-around  ">
         <div className="py-16 lg:min-h-[calc(100vh-56px)]">
           <h2 className="hidden md:ml-5 md:block  lg:text-[20px] xl:text-[24px] font-[500] text-[#333333] mb-5">
-            ¿Como queres pagar?
+            ¿Cómo queres pagar?
           </h2>
           <CardItem bg="bg-[#F5F5F5]">
             <FaRegMoneyBillAlt className=" text-4xl text-ligthblue" />
