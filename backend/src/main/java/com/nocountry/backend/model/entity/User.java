@@ -1,5 +1,6 @@
 package com.nocountry.backend.model.entity;
 
+import com.nocountry.backend.entity.product.Product;
 import com.nocountry.backend.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -42,6 +43,14 @@ public class User implements UserDetails {
     @Column(length = 32, columnDefinition = "varchar(32) default 'USER'")
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public boolean isRoleTienda() {
+        return role == Role.VENDOR;
+    }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Product> products;
+
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     List<Address> addresses;
