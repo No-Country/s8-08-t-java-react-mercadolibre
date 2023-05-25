@@ -1,6 +1,12 @@
 package com.nocountry.backend.controller;
 
+import com.nocountry.backend.dto.product.CategoryDTO;
+import com.nocountry.backend.dto.product.ImageDTO;
+import com.nocountry.backend.dto.product.ProductDTO;
 import com.nocountry.backend.dto.user.UserDto;
+import com.nocountry.backend.model.entity.Image;
+import com.nocountry.backend.model.entity.Product;
+import com.nocountry.backend.model.entity.User;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
 import com.nocountry.backend.service.IUserService;
 import io.swagger.v3.oas.annotations.tags.Tag;

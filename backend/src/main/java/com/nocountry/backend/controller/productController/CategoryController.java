@@ -1,6 +1,6 @@
 package com.nocountry.backend.controller.productController;
 
-import com.nocountry.backend.entity.product.Category;
+import com.nocountry.backend.model.entity.Category;
 import com.nocountry.backend.repository.product_repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

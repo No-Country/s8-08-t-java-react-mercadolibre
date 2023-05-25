@@ -1,6 +1,5 @@
 package com.nocountry.backend.model.entity;
 
-import com.nocountry.backend.entity.product.Product;
 import com.nocountry.backend.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +7,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 

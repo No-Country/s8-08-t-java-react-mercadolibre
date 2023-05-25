@@ -1,4 +1,4 @@
-package com.nocountry.backend.entity.product;
+package com.nocountry.backend.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,18 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Image {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private String imageUrl;
+    private String name;
 
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
 }
-
