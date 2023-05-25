@@ -29,6 +29,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.1.0'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 
+    implementation group: 'com.paypal.sdk', name: 'rest-api-sdk', version: '1.4.1'
+    compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 
     compileOnly 'org.projectlombok:lombok'
 
