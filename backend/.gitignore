@@ -1,4 +1,5 @@
 HELP.md
+git-filter-repo.py
 ### Gradle ###
 .gradle/
 **/build/
@@ -19,6 +20,9 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+
+/src/main/generated/
+
 
 ### IntelliJ IDEA ###
 .idea
