@@ -1,6 +1,6 @@
-package com.nocountry.backend.entity.product;
+package com.nocountry.backend.model.entity;
 
-import com.nocountry.backend.entity.User;
+
 import jakarta.persistence.*;
 import lombok.*;
 

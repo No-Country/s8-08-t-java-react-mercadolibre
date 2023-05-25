@@ -2,7 +2,8 @@ package com.nocountry.backend.service;
 
 
 import com.nocountry.backend.dto.user.UserDto;
-import com.nocountry.backend.entity.User;
+import com.nocountry.backend.model.entity.User;
+
 
 public interface IUserService {
 
