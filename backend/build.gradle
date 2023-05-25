@@ -29,6 +29,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.1.0'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 
+    implementation 'com.paypal.sdk:rest-api-sdk:1.4.1'
+//    compileOnly 'javax.servlet:servlet-api:3.0-alpha-1'
+
 
     compileOnly 'org.projectlombok:lombok'
 
@@ -36,18 +39,18 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-	annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.1.0'
-	testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.1'
 
-	implementation 'com.cloudinary:cloudinary-core:1.33.0'
-	implementation 'com.cloudinary:cloudinary-http44:1.33.0'
+    implementation 'com.cloudinary:cloudinary-core:1.33.0'
+    implementation 'com.cloudinary:cloudinary-http44:1.33.0'
 }
 
 tasks.named('test') {
