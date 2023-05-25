@@ -1,10 +1,12 @@
 package com.nocountry.backend.controller;
 
+
+import com.nocountry.backend.dto.payment.PaymentDto;
+import com.nocountry.backend.util.paypal.URLLocation;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
-import com.nocountry.backend.dto.payment.PaymentDto;
-import com.nocountry.backend.util.paypal.URLLocation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +18,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/paypal")
+@RequestMapping("/api/v1/paypal")
+@RequiredArgsConstructor
 public class PaypalController {
-    @Autowired
-    private APIContext apiContext;
+    private final APIContext apiContext;
 
     @PostMapping("/pay")
     public String paypalPay(HttpServletRequest req, @RequestBody PaymentDto paymentDto) {
