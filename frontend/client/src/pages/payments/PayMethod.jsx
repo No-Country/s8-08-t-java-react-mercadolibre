@@ -64,7 +64,7 @@ const PayMethod = () => {
             </button>
           </div>
         </div>
-        <ProductDetailPayment />
+        <ProductDetailPayment coupon={true} />
       </div>
     </>
   );
