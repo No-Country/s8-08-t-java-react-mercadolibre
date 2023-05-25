@@ -3,10 +3,14 @@ import Hero from "../components/Hero/Hero";
 import Sales from "../components/Sales/Sales";
 import SliderIcon from "../components/sliderIcon/SliderIcon";
 import Collection from "../components/Collection/Collection";
+import SliderInitial from "../components/SliderInitial/SliderInitial";
 
 const Home = () => {
   return (
     <div className="bg-[#EDEDED] ">
+      <section className="mx-auto w-full">
+        <SliderInitial />
+      </section>
       <section className="mx-auto w-[85%]">
         <Hero />
       </section>
