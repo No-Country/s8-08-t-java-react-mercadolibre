@@ -6,11 +6,10 @@ import com.nocountry.backend.util.paypal.URLLocation;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class PaypalController {
     private final APIContext apiContext;
 
     @PostMapping("/pay")
-    public String paypalPay(HttpServletRequest req, @RequestBody PaymentDto paymentDto) {
+    public String paypalPay(jakarta.servlet.http.HttpServletRequest req, @RequestBody PaymentDto paymentDto) {
 
         // Payment amount - setCurrency - USD
         Amount amount = new Amount();
