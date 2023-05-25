@@ -17,7 +17,7 @@ const Payment = () => {
           <h2 className="hidden md:ml-5 md:block  lg:text-[20px] xl:text-[24px] font-[500] text-[#333333] mb-5">
             ¿Como queres pagar?
           </h2>
-          <CardItem>
+          <CardItem bg="bg-[#F5F5F5]">
             <FaRegMoneyBillAlt className=" text-4xl text-ligthblue" />
             <p>Efectivo en puntos de pago</p>
             <p className="text-ligthblue ml-auto">Modificar</p>
