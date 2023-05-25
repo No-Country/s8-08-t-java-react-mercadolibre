@@ -8,6 +8,7 @@ import PayMethod from "../pages/payments/PayMethod";
 import Payment from "../pages/payments/Payment";
 import PayConfirmed from "../pages/payments/PayConfirmed";
 import Purchases from "../pages/payments/Purchases";
+import Login from "../pages/Login";
 
 const PrivateRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const PrivateRoutes = () => {
       <Route path="/payment" element={<Payment />} />
       <Route path="/pay-confirmed" element={<PayConfirmed />} />
       <Route path="/purchases" element={<Purchases />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 };
