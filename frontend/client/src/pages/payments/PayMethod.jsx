@@ -57,7 +57,7 @@ const PayMethod = () => {
           </CardItem>
           <div className="flex justify-end mt-4">
             <button
-              onClick={() => navigate("/payment")}
+              onClick={() => navigate("/pay/payment")}
               className="w-[150px] h-[30px] md:mr-5 xl:mr-0 md:w-[200px] md:h-[35px] xl:w-[316px] xl:h-[48px] text-white rounded-md bg-ligthblue font-medium"
             >
               Continuar

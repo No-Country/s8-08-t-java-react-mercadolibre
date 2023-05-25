@@ -12,7 +12,7 @@ const FooterWarranty = () => {
       <div className="flex gap-4 items-center">
         <p className="text-[16px] text-ligthblue font-[400] cursor-pointer">No, gracias</p>
         <button
-          onClick={() => navigate("/delivery-type")}
+          onClick={() => navigate("/pay/delivery-type")}
           className="px-5 bg-ligthblue text-white text-[16px] rounded-md h-[30px] hover:bg-sky-700"
         >
           Agregar seguro
