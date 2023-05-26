@@ -6,11 +6,14 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "ORDERS")
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -56,6 +59,12 @@ public class Order {
     @NonNull
     @Builder.Default
     private OrderStatus orderStatus=new OrderStatus();
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ORDER_ID")
+    @Builder.Default
+    private Set<OrderItem> items = new HashSet<>();
 
 
 }

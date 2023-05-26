@@ -22,6 +22,9 @@ public class Product {
     private String name;
     private double price;
     private Integer stock;
+
+    @Column(name = "DESCRIPTION", columnDefinition="TEXT", nullable = false)
+    @Lob
     private String description;
 
     @ManyToOne

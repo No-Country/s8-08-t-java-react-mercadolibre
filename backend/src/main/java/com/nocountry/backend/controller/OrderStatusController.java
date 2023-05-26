@@ -4,6 +4,8 @@ import com.nocountry.backend.dto.orderStatus.OrderStatusDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.model.entity.OrderStatus;
 import com.nocountry.backend.service.IOrderStatusService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/orderStatuss")
-@CrossOrigin(origins="**")
+@RequestMapping("/api/v1/orderStatus")
+@RequiredArgsConstructor
+@Tag(name = "OrderStatus", description = "Status of Purchase Order")
 
 public class OrderStatusController  {
 

@@ -42,9 +42,6 @@ public class OrderServiceImpl implements IOrderService {
         return orderMapper.toOrderDto(savedOrder);
     }
 
-
-
-
     @Override
     public OrderDto patch(int id, Order order) throws ResourceNotFoundException {
         Order existingOrder = orderRepository.findById(id)
@@ -52,7 +49,12 @@ public class OrderServiceImpl implements IOrderService {
         if (order.getDate() != null) {
             existingOrder.setDate(order.getDate());
         }
-//////////agregar
+        existingOrder.setOrderStatus(order.getOrderStatus());
+        existingOrder.setOrderTotal(order.getOrderTotal());
+        existingOrder.setUser(order.getUser());
+        existingOrder.setShippingMethod(order.getShippingMethod());
+        //existingOrder.setShippingAddress(order.getShippingAddress());
+
         Order updatedOrder = orderRepository.save(existingOrder);
         return orderMapper.toOrderDto(updatedOrder);
     }

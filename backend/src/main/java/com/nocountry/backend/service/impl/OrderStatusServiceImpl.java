@@ -51,6 +51,7 @@ public class OrderStatusServiceImpl implements IOrderStatusService {
         if (orderStatus.getStatus() != null) {
             existingOrderStatus.setStatus(orderStatus.getStatus());
         }
+
         OrderStatus updatedOrderStatus = orderStatusRepository.save(existingOrderStatus);
         return orderStatusMapper.toOrderStatusDto(updatedOrderStatus);
     }

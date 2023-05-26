@@ -1,8 +1,10 @@
 package com.nocountry.backend.mapper;
 
+import com.nocountry.backend.dto.order.OrderDto;
 import com.nocountry.backend.dto.user.UserDto;
 import com.nocountry.backend.dto.user.UserRegisterDto;
 import com.nocountry.backend.dto.user.UserTokenDto;
+import com.nocountry.backend.model.entity.Order;
 import com.nocountry.backend.model.entity.User;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -24,4 +26,5 @@ public interface IUserMapper {
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "addresses", ignore = true)
     User toUser(UserRegisterDto userRegisterDto);
+
 }
