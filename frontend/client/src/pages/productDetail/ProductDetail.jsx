@@ -8,6 +8,7 @@ import StoreDetail from "./StoreDetail";
 import { useParams } from "react-router-dom";
 import { Product } from "./components/Product";
 import banner from "../../assets/img/banner.svg";
+import PaidSection from "./components/PaidSection";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -57,6 +58,7 @@ const ProductDetail = () => {
           <div className="bg-white w-4/12 flex flex-col pt-6 pr-6 gap-4">
             <BuySection />
             <StoreDetail />
+            <PaidSection/>
           </div>
         </div>
         <div>Sugerencias</div>
