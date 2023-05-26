@@ -2,7 +2,7 @@ import React from "react";
 import { BsChatSquare } from "react-icons/bs";
 import { TfiAlarmClock } from "react-icons/tfi";
 import { AiFillCheckCircle } from "react-icons/ai";
-import LogoTienda from "../../assets/img/mercadolibrelogo_solo.svg";
+import LogoTienda from "../../../assets/img/mercadolibrelogo_solo.svg";
 function StoreDetail() {
   return (
     <div className="border-solid border w-[25rem] p-4 rounded-xl">
