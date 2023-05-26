@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useFormik } from "formik";
 import LoginNavbar from "../components/Login/LoginNavbar";
+import LoginFooter from "../components/Login/LoginFooter";
 import ReportProblem from "../components/Login/ReportProblem";
 import account from "../assets/icons/account.png";
 
@@ -22,24 +23,20 @@ const Login = () => {
     <>
       <LoginNavbar />
 
-      <section className="h-[100vh] mx-44 mt-14">
-        <div className="flex justify-center gap-10">
+      <section className="lg:h-[100vh] mx-10 lg:mx-44 mt-14">
+        <div className="flex flex-col lg:flex-row justify-center gap-10">
           <div>
-            <h2 className="font-medium text-3xl">
+            <h2 className="font-medium text-3xl w-full">
               {isUser ? (
                 <>
-                  ¡Hola, Franco! Ingresá tu
-                  <br />
-                  contraseña de
-                  <br />
+                  ¡Hola, Franco! Ingresá tu <br className="hidden lg:block" />
+                  contraseña de <br className="hidden lg:block" />
                   Mercado Libre
                 </>
               ) : (
                 <>
-                  Ingresá tu e‑mail,
-                  <br />
-                  teléfono o usuario de
-                  <br />
+                  Ingresá tu e‑mail, <br className="hidden lg:block" />
+                  teléfono o usuario de <br className="hidden lg:block" />
                   Mercado Libre
                 </>
               )}
@@ -60,9 +57,9 @@ const Login = () => {
             <ReportProblem />
           </div>
 
-          <div>
+          <div className="pb-10">
             <form action="" onSubmit={formik.handleSubmit}>
-              <div className="w-full max-w-[489px] h-[248px] border border-solid border-slate-200 rounded-md">
+              <div className="w-full lg:max-w-[489px] h-[290px] lg:h-[248px] border border-solid border-slate-200 rounded-md">
                 <div className="p-10">
                   <div>
                     <label htmlFor={isUser ? "password" : "user"} className="text-sm">
@@ -74,30 +71,30 @@ const Login = () => {
                       id={isUser ? "password" : "user"}
                       value={isUser ? formik.values.password : formik.values.user}
                       onChange={formik.handleChange}
-                      className="w-[408px] h-[48px] p-5 rounded-md border focus:outline-none focus:border-2 border-[#bfbfbf] focus:border-ligthblue"
+                      className="w-full lg:w-[408px] h-[48px] p-5 rounded-md border focus:outline-none focus:border-2 border-[#bfbfbf] focus:border-ligthblue"
                     />
                   </div>
                   {isUser ? (
-                    <div className="flex items-center gap-2 mt-10">
+                    <div className="flex flex-col lg:flex-row items-center gap-2 mt-10">
                       <input
                         type="submit"
                         value="Iniciar sesión"
-                        className="w-[169px] h-[48px] text-white text-[15px] rounded-md bg-ligthblue font-medium cursor-pointer"
+                        className="w-full lg:w-[169px] h-[48px] text-white text-[15px] rounded-md bg-ligthblue font-medium cursor-pointer"
                         disabled={formik.values.password.length < 1 ? true : false}
                       />
-                      <button className="w-[230px] h-[48px] text-ligthblue text-[15px] rounded-md bg-[#4189E626] font-medium">
+                      <button className="w-full lg:w-[230px] h-[48px] text-ligthblue text-[15px] rounded-md bg-[#4189E626] font-medium">
                         ¿Olvidaste tu contraseña?
                       </button>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-2 mt-10">
+                    <div className="flex flex-col lg:flex-row items-center gap-2 mt-10">
                       <input
                         type="submit"
                         value="Continuar"
-                        className="w-[119px] h-[48px] text-white text-[15px] rounded-md bg-ligthblue font-medium cursor-pointer"
+                        className="w-full lg:w-[119px] h-[48px] text-white text-[15px] rounded-md bg-ligthblue font-medium cursor-pointer"
                         disabled={formik.values.user.length < 1 ? true : false}
                       />
-                      <button className="w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium">
+                      <button className="w-full lg:w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium">
                         Crear Cuenta
                       </button>
                     </div>
@@ -108,6 +105,8 @@ const Login = () => {
           </div>
         </div>
       </section>
+
+      <LoginFooter />
     </>
   );
 };
