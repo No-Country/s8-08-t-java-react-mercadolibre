@@ -1,4 +1,7 @@
 import NavbarPayment from "../components/Payments/NavbarPayment";
+import account from "../assets/icons/account.png";
+import account2 from "../assets/icons/account2.png";
+import cellphone from "../assets/icons/cellphone.png";
 
 const Login = () => {
   return (
@@ -15,8 +18,18 @@ const Login = () => {
               <br />
               Mercado Libre
             </h2>
+
+            <div className="flex items-center mt-5 border rounded-full w-[220px] p-2 gap-3">
+              <div>
+                <img src={account} alt="Icono de persona" />
+              </div>
+              <div className="flex flex-col text-[11px]">
+                <p>francobuceta95@gmail.com</p>
+                <p className="text-ligthblue">Cambiar cuenta</p>
+              </div>
+            </div>
           </div>
-          <div></div>
+
           <div>
             <form action="">
               <div className="w-full max-w-[489px] h-[248px] border border-solid border-slate-200 rounded-md">
