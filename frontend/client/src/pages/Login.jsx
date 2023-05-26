@@ -1,22 +1,26 @@
 import { useState } from "react";
-import NavbarPayment from "../components/Payments/NavbarPayment";
+import { useFormik } from "formik";
+import LoginNavbar from "../components/Login/LoginNavbar";
 import ReportProblem from "../components/Login/ReportProblem";
 import account from "../assets/icons/account.png";
 
 const Login = () => {
   const [isUser, setIsUser] = useState(false);
 
-  const getUser = () => {
-    setIsUser(true);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
+  const formik = useFormik({
+    initialValues: {
+      user: "",
+      password: ""
+    },
+    onSubmit: (values, { setErrors }) => {
+      console.log(values);
+      setIsUser(true);
+    }
+  });
 
   return (
     <>
-      <NavbarPayment />
+      <LoginNavbar />
 
       <section className="h-[100vh] mx-44 mt-14">
         <div className="flex justify-center gap-10">
@@ -57,7 +61,7 @@ const Login = () => {
           </div>
 
           <div>
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" onSubmit={formik.handleSubmit}>
               <div className="w-full max-w-[489px] h-[248px] border border-solid border-slate-200 rounded-md">
                 <div className="p-10">
                   <div>
@@ -68,7 +72,9 @@ const Login = () => {
                       type={isUser ? "password" : "text"}
                       name={isUser ? "password" : "user"}
                       id={isUser ? "password" : "user"}
-                      className="w-[408px] h-[48px] p-5 rounded-md border border-slate-400"
+                      value={isUser ? formik.values.password : formik.values.user}
+                      onChange={formik.handleChange}
+                      className="w-[408px] h-[48px] p-5 rounded-md border focus:outline-none focus:border-2 border-[#bfbfbf] focus:border-ligthblue"
                     />
                   </div>
                   {isUser ? (
@@ -77,6 +83,7 @@ const Login = () => {
                         type="submit"
                         value="Iniciar sesión"
                         className="w-[169px] h-[48px] text-white text-[15px] rounded-md bg-ligthblue font-medium cursor-pointer"
+                        disabled={formik.values.password.length < 1 ? true : false}
                       />
                       <button className="w-[230px] h-[48px] text-ligthblue text-[15px] rounded-md bg-[#4189E626] font-medium">
                         ¿Olvidaste tu contraseña?
@@ -88,7 +95,7 @@ const Login = () => {
                         type="submit"
                         value="Continuar"
                         className="w-[119px] h-[48px] text-white text-[15px] rounded-md bg-ligthblue font-medium cursor-pointer"
-                        onClick={getUser}
+                        disabled={formik.values.user.length < 1 ? true : false}
                       />
                       <button className="w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium">
                         Crear Cuenta
