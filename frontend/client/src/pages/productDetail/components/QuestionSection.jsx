@@ -1,19 +1,40 @@
 import { AiOutlineSearch, AiOutlineQuestionCircle } from "react-icons/ai";
 import { RxCornerBottomLeft } from "react-icons/rx";
+import { BsChevronCompactDown } from "react-icons/bs";
 import { useState } from "react";
 const QuestionSection = () => {
   const question = [
     {
-      pregunta: "¿cómo te llamas?",
-      respuesta: "Miguel"
+      pregunta: "Lo voy a volver hacer en un rato",
+      respuesta: "Hola. Entendemos lo que nos indicas, aguardamos tu compra. Saludos."
     },
     {
-      pregunta: "¿De dónde eres?",
-      respuesta: "Argentina"
+      pregunta: "No me toma el pago",
+      respuesta: "Fijate si pagaste tu tarjeta, Gracias!"
     },
     {
-      pregunta: "¿Qué comiste?",
-      respuesta: "Queti"
+      pregunta: "Sirve para encontrar mi primer empleo IT",
+      respuesta: "Claro!, siempre y cuando hagas las emulaciones de NoCountry, Gracias!"
+    },
+    {
+      pregunta: "Tienen stock??",
+      respuesta: "Para vos siempre <3, Gracias!"
+    },
+    {
+      pregunta: "Que colores tienen disponible?",
+      respuesta: "Hola, nos queda en Blanco, Negro, Rosa y Azul, Gracias!"
+    },
+    {
+      pregunta: "Hacen permuta por auto o terreno?",
+      respuesta: "Si!, con papeles al día y sin deudas!, Gracias!"
+    },
+    {
+      pregunta: "Puedo usarlo por un tiempo y pedir el reembolso gratis?",
+      respuesta: "Por supuesto, nosotros te cancelamos el reembolso con gusto para que puedas usarlo mas tiempo ;), Gracias!"
+    },
+    {
+      pregunta: "Cuanto sale?",
+      respuesta: "Para ti te lo dejo a precio dolar por MP, Gracias!"
     }
   ];
   const [moreQ, setMoreQ] = useState(false);
@@ -73,9 +94,10 @@ const QuestionSection = () => {
           onClick={() => {
             changeQ();
           }}
-          className="text-ligthblue text-xl my-3"
+          className="text-ligthblue text-xl my-3 flex items-center"
         >
           <p>Ver {!moreQ ? question.length - 1 + " preguntas más" : "Menos"}</p>
+          <BsChevronCompactDown className={`mx-2 ${moreQ && "rotate-180"}`}/>
         </button>
       </div>
       <div className="bg-blue-100 text-ligthblue text-2xl w-5/12 my-3 flex justify-center items-center rounded-md">

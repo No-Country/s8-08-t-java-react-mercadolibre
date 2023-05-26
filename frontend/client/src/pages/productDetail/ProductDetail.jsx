@@ -60,7 +60,7 @@ const ProductDetail = () => {
           </div>
         </div>
         <div>Sugerencias</div>
-        <div className="flex justify-center w-100">
+        <div className="flex justify-center w-100 my-14">
           <img src={banner} alt="banner" className="w-100" />
         </div>
       </div>
