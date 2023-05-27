@@ -79,7 +79,11 @@ const Login = () => {
                       <input
                         type="submit"
                         value="Iniciar sesión"
-                        className={`w-full lg:w-[169px] h-[48px] text-[15px] rounded-md font-medium ${formik.values.password.length < 1 ? "bg-[#E5E5E5] text-[#B3B9C3]" : "bg-ligthblue text-white cursor-pointer"}`}
+                        className={`w-full lg:w-[169px] h-[48px] text-[15px] rounded-md font-medium ${
+                          formik.values.password.length < 1
+                            ? "bg-[#E5E5E5] text-[#B3B9C3]"
+                            : "bg-ligthblue text-white cursor-pointer"
+                        }`}
                         disabled={formik.values.password.length < 1 ? true : false}
                       />
                       <button className="w-full lg:w-[230px] h-[48px] text-ligthblue text-[15px] rounded-md bg-[#4189E626] font-medium">
@@ -91,7 +95,11 @@ const Login = () => {
                       <input
                         type="submit"
                         value="Continuar"
-                        className={`w-full lg:w-[119px] h-[48px] text-[15px] rounded-md font-medium ${formik.values.user.length < 1 ? "bg-[#E5E5E5] text-[#B3B9C3]" : "bg-ligthblue text-white cursor-pointer"}`}
+                        className={`w-full lg:w-[119px] h-[48px] text-[15px] rounded-md font-medium ${
+                          formik.values.user.length < 1
+                            ? "bg-[#E5E5E5] text-[#B3B9C3]"
+                            : "bg-ligthblue text-white cursor-pointer"
+                        }`}
                         disabled={formik.values.user.length < 1 ? true : false}
                       />
                       <button className="w-full lg:w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium">
