@@ -4,7 +4,7 @@ import arrow from "../../assets/icons/arrow-right.png";
 
 const ReportProblem = () => {
   return (
-    <div className="mt-10 w-[224px]">
+    <div className="mt-10 w-full lg:w-[224px]">
       <p className="font-medium text-[11px] mb-4">Reportar un problema</p>
       <div className="flex items-center gap-2 text-[#0000008c] text-sm h-[40px] hover:bg-[#f5f5f5] cursor-pointer">
         <img src={cellphone} alt="Icono de celular" />
