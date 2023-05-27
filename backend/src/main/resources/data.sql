@@ -74,3 +74,6 @@ INSERT INTO `orders` (id,`date`, `order_total`, `order_status_id`, `shipping_add
 
 INSERT INTO `order_items` (`quantity`, `order_id`, `product_id`) VALUES ('2', '4', '1');
 INSERT INTO `order_items` (`quantity`, `order_id`, `product_id`) VALUES ('2', '4', '2');
+
+INSERT INTO users_reviews` (`comments`, `rating_value`, `order_items_id`)
+ VALUES ('Excelente!', '5', '1');

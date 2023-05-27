@@ -6,6 +6,9 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "ORDER_ITEMS")
@@ -37,5 +40,9 @@ public class OrderItem {
 
     @Column(name = "QUANTITY")
     private int quantity;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ORDER_ITEMS_ID")
+    @Builder.Default
+    private Set<UserReview> reviews = new HashSet<>();
 
 }
