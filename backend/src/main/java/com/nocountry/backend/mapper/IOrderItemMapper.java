@@ -16,7 +16,7 @@ import java.util.List;
 
         OrderItem toOrderItem(OrderItemDto DTO);
 
-        List<OrderItemDto> toOrderItemDTO(List<OrderItem> orderItems);
+        List<OrderItemDto> toOrderItemsDTO(List<OrderItem> orderItems);
 
         List<OrderItem> toOrderItems(List<OrderItemDto> orderItemsDTO);
 

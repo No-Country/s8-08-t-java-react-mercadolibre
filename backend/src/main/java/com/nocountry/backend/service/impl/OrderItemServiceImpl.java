@@ -23,7 +23,7 @@ public class OrderItemServiceImpl implements IOrderItemService {
 
     @Override
     public List<OrderItemDto> getAll() {
-        return orderItemMapper.toOrderItemDTO(orderItemRepository.findAll());
+        return orderItemMapper.toOrderItemsDTO(orderItemRepository.findAll());
     }
 
 
@@ -68,5 +68,17 @@ public class OrderItemServiceImpl implements IOrderItemService {
         return orderItemMapper.toOrderItemDto(orderItemToDelete);
     }
 
+    @Override
+    public List<OrderItemDto> getItemsByProduct(int id) {
+        return orderItemMapper.toOrderItemsDTO
+                (orderItemRepository.findByProduct_id(id));
+
+    }
+
+    @Override
+    public List<OrderItemDto> getItemsByOrder(int id) {
+         return orderItemMapper.toOrderItemsDTO
+                (orderItemRepository.findByOrder_id(id));
+    }
 
 }

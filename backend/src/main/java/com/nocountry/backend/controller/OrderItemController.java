@@ -58,6 +58,27 @@ public class OrderItemController  {
                 .body("OrderItem deleted");
     }
 
+    @GetMapping("/order/{id}")
+    public ResponseEntity<?> getItemsByOrder(@PathVariable int id) {
+
+        try {
+            List<OrderItemDto> response = orderItemService.getItemsByOrder(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<?> getItemsByProduct(@PathVariable int id) {
+        try {
+            List<OrderItemDto> response = orderItemService.getItemsByProduct(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
 
 }
 
