@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = { IUserMapper.class}, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", uses = { IUserMapper.class, ICategoryMapper.class, IImageMapper.class,IOrderItemMapper.class}, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface IProductMapper {
     IProductMapper INSTANCE = Mappers.getMapper(IProductMapper.class);
     ProductDTO toProductDto(Product product);

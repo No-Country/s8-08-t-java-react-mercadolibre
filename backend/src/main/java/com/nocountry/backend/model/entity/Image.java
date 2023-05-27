@@ -17,7 +17,7 @@ public class Image {
     private Integer id;
 
     @Column
-    private String imageUrl;
+    private String url;
 
 
     @ManyToOne

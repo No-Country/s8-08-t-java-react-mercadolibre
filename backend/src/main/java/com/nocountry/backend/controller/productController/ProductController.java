@@ -95,7 +95,7 @@ public class ProductController {
                 Image image = new Image();
                 try {
                     String imageUrl = cloudinaryService.upload(file);
-                    image.setImageUrl(imageUrl);
+                    image.setUrl(imageUrl);
                 } catch (IOException e) {
                     // Manejar la excepción
                     // Por ejemplo, puedes devolver una respuesta de error o registrar el error
@@ -128,7 +128,7 @@ public class ProductController {
         for (Image image : savedProduct.getImages()) {
             ImageDTO imageDTO = new ImageDTO();
             imageDTO.setId(image.getId());
-            imageDTO.setUrl(image.getImageUrl());
+            imageDTO.setUrl(image.getUrl());
 
             imageDTOList.add(imageDTO);
         }
@@ -176,13 +176,12 @@ public class ProductController {
                 for (Image image : images) {
                     ImageDTO imageDTO = new ImageDTO();
                     imageDTO.setId(image.getId());
-                    imageDTO.setUrl(image.getImageUrl());
+                    imageDTO.setUrl(image.getUrl());
                     // Asignar otros valores necesarios de ImageDTO según tus requerimientos
                     imageDTOList.add(imageDTO);
                 }
                 productDTO.setImages(imageDTOList);
             }
-
             // Devolver el producto encontrado
             return ResponseEntity.ok(productDTO);
         } else {
@@ -224,7 +223,7 @@ public class ProductController {
 
                 for (ImageDTO imageDTO : updatedProductDTO.getImages()) {
                     Image updatedImage = new Image();
-                    updatedImage.setImageUrl(imageDTO.getUrl());
+                    updatedImage.setUrl(imageDTO.getUrl());
                     updatedImage.setProduct(product);
                     updatedImages.add(updatedImage);
                 }

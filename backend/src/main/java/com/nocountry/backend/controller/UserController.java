@@ -72,7 +72,7 @@ public class UserController {
             // Iterar sobre las imágenes y crear los objetos ImageDTO
             for (Image image : images) {
                 ImageDTO imageDTO = ImageDTO.builder()
-                        .url(image.getImageUrl())
+                        .url(image.getUrl())
                         .build();
 
                 // Agregar el ImageDTO a la lista de imágenes del ProductDTO

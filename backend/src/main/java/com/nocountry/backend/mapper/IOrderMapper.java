@@ -6,12 +6,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
 
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
 
 
-@Mapper(componentModel = "spring", uses = {IUserMapper.class, IOrderStatusMapper.class, IOrderStatusMapper.class}, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", uses = {IUserMapper.class, IOrderStatusMapper.class,IShippingMethodMapper.class}, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface IOrderMapper {
     IOrderMapper INSTANCE = Mappers.getMapper(IOrderMapper.class);
     OrderDto toOrderDto(Order order);
