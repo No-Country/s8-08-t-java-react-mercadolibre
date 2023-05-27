@@ -30,5 +30,5 @@ public class OrderDto {
     private ShippingMethodDto shippingMethod;
     private OrderStatusDto orderStatus;
 
-//    private Set<OrderItemDto> items = new HashSet<>();
+    private Set<OrderItemDto> items;
 }

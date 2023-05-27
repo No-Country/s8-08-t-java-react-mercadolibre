@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -37,6 +39,11 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PRODUCT_ID")
+    @Builder.Default
+    private Set<OrderItem> items=new HashSet<>();
 
 }
 

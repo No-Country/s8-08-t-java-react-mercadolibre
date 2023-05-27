@@ -4,6 +4,7 @@ import com.nocountry.backend.dto.order.OrderDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.model.entity.Order;
 import com.nocountry.backend.service.IOrderService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,9 +60,15 @@ public class OrderController  {
     }
 
     @GetMapping("/user/{id}")
+    @Operation(summary = "Ordenes por usuario, se envia el ID del usuario.")
     public ResponseEntity<List<OrderDto>> getByUser(@PathVariable int id) {
-        List<OrderDto> orders = orderService.getByUser(id);
-        return ResponseEntity.ok(orders);
+        try {
+            List<OrderDto> response = orderService.getByUser(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
     }
 
 
