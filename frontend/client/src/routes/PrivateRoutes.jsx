@@ -21,7 +21,7 @@ const PrivateRoutes = () => {
       <Route path="/payment" element={<Payment />} />
       <Route path="/pay-confirmed" element={<PayConfirmed />} />
       <Route path="/purchases" element={<Purchases />} />
-      <Route path="/login" element={<Login />} />
+      {/* <Route path="/login" element={<Login />} /> */}
     </Routes>
   );
 };
