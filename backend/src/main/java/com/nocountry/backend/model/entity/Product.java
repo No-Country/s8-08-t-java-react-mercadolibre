@@ -29,7 +29,7 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Image> images = new ArrayList<>();
+    private List<Image> images;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

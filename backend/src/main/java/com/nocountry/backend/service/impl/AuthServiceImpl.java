@@ -2,6 +2,7 @@ package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.config.jwt.JwtService;
 import com.nocountry.backend.dto.token.TokenDto;
+import com.nocountry.backend.dto.user.UserDto;
 import com.nocountry.backend.dto.user.UserLoginDto;
 import com.nocountry.backend.dto.user.UserRegisterDto;
 import com.nocountry.backend.dto.user.UserTokenDto;
@@ -49,9 +50,10 @@ public class AuthServiceImpl implements IAuthService {
         }
 
         String token = jwtService.generateToken(user);
-        UserTokenDto userTokenDto = this.userMapper.toUserTokenDto(user);
-        userTokenDto.setToken(token);
-
-        return userTokenDto;
+        UserDto userDto = this.userMapper.toUserDto(user);
+        return UserTokenDto.builder()
+                .user(userDto)
+                .token(token)
+                .build();
     }
 }
