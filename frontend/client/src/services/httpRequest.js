@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const URL = "https://s8-08-t-java-react-mercadolibre-production.up.railway.app/api/v1";
 // @ts-ignore
 // const getToken = () => {
 //   const { token } = getLocalStorage("auth") || "";
@@ -26,6 +27,21 @@ import axios from "axios";
 //     }
 //   }
 // };
+
+//! ENDPOINT PARA EL LOGIN
+export const postRequestLogin = async (dataSend, endpoint) => {
+  try {
+    const { data } = await axios.post(URL + endpoint, dataSend);
+
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      return "An unexpected error occurred";
+    }
+  }
+};
 
 export const getRequest = async endpoint => {
   try {
