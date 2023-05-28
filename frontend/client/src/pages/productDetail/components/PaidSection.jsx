@@ -10,7 +10,7 @@ import MastercardDebito from "../../../assets/img/Mastercad-Debito.png";
 import Maestro from "../../../assets/img/png-transparent-mastercard-maestro-credit-card-debit-card-payment-mastercard-blue-text-logo.png";
 import CabalDebito from "../../../assets/img/debcabal.png";
 import Rapipago from "../../../assets/img/Rapipago.png";
-import PagoFacil from "../../../assets/img/PagoFacil.png"
+import PagoFacil from "../../../assets/img/PagoFacil.png";
 function PaidSection() {
   return (
     <div className="border-solid border w-[25rem] p-4 rounded-xl">
@@ -53,7 +53,7 @@ function PaidSection() {
           <h2 className="text-[15px] pt-7"> Efectivo</h2>
           <div className="flex gap-2">
             <img src={PagoFacil} alt="img-VS" width={"35px"} height={"35px"}></img>
-            <img src={Rapipago} alt="img-VS" width="90" height="15"  className=" object-fill"></img>
+            <img src={Rapipago} alt="img-VS" width="90" height="15" className=" object-fill"></img>
           </div>
         </div>
       </div>

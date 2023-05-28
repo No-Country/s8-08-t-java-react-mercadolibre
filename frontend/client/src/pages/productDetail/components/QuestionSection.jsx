@@ -30,7 +30,8 @@ const QuestionSection = () => {
     },
     {
       pregunta: "Puedo usarlo por un tiempo y pedir el reembolso gratis?",
-      respuesta: "Por supuesto, nosotros te cancelamos el reembolso con gusto para que puedas usarlo mas tiempo ;), Gracias!"
+      respuesta:
+        "Por supuesto, nosotros te cancelamos el reembolso con gusto para que puedas usarlo mas tiempo ;), Gracias!"
     },
     {
       pregunta: "Cuanto sale?",
@@ -97,7 +98,7 @@ const QuestionSection = () => {
           className="text-ligthblue text-xl my-3 flex items-center"
         >
           <p>Ver {!moreQ ? question.length - 1 + " preguntas más" : "Menos"}</p>
-          <BsChevronCompactDown className={`mx-2 ${moreQ && "rotate-180"}`}/>
+          <BsChevronCompactDown className={`mx-2 ${moreQ && "rotate-180"}`} />
         </button>
       </div>
       <div className="bg-blue-100 text-ligthblue text-2xl w-5/12 my-3 flex justify-center items-center rounded-md">
