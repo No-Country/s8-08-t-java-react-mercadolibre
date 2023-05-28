@@ -54,20 +54,19 @@ const Login = () => {
             navigate("/");
           })
           .catch(err => {
-            alert('Credenciales Invalidas')
-            console.log(err)
+            alert("Credenciales Invalidas");
+            console.log(err);
           });
       }
     }
   });
-
 
   return (
     <>
       <LoginNavbar />
 
       {TOKEN ? (
-          <Navigate to="/" />
+        <Navigate to="/" />
       ) : (
         <section className="lg:h-[100vh] mx-10 lg:mx-44 mt-14">
           <div className="flex flex-col lg:flex-row justify-center gap-10">
@@ -141,7 +140,8 @@ const Login = () => {
                               ? "bg-[#E5E5E5] text-[#B3B9C3]"
                               : "bg-ligthblue text-white cursor-pointer"
                           }`}
-                          disabled={formik.values.password.length < 1 ? true : false}>
+                          disabled={formik.values.password.length < 1 ? true : false}
+                        >
                           {isLoading ? (
                             <div className="flex items-center justify-center">
                               <div className="border-2 border-white border-t-ligthblue rounded-full w-5 h-5 animate-spin"></div>

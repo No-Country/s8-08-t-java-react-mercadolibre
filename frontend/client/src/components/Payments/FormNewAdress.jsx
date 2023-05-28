@@ -6,7 +6,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-
 const FormNewAdress = () => {
   const navigate = useNavigate();
   const formik = useFormik({

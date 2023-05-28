@@ -26,7 +26,7 @@ const NavbarMenues = () => {
     if (isRegister) {
       listMenu = [
         {
-          name: JSON.parse(localStorage.getItem('user'))?.name ?? "Usuario",
+          name: JSON.parse(localStorage.getItem("user"))?.name ?? "Usuario",
           icon: () => <BiUserCircle size={25} className="opacity-60 cursor-pointer" />
         },
         { name: "Mis compras", icon: () => null },
@@ -55,7 +55,7 @@ const NavbarMenues = () => {
           <FiMapPin size={28} className="opacity-60 cursor-pointer" />
           <div className="flex flex-col">
             <p className="opacity-60 hover:opacity-90 cursor-pointer text-[0.8rem]">
-              Enviar a {JSON.parse(localStorage.getItem('user'))?.name ?? ''}
+              Enviar a {JSON.parse(localStorage.getItem("user"))?.name ?? ""}
             </p>
 
             <p className="font-medium whitespace-nowrap">Capital Federal</p>
