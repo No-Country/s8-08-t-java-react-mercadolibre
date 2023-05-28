@@ -11,7 +11,7 @@ public interface IOrderItemService {
     List<OrderItemDto> getAll();
     OrderItemDto getById(int id) throws ResourceNotFoundException;
 
-    OrderItemDto post(OrderItem orderItem);
+    OrderItemDto post(OrderItem orderItem) throws ResourceNotFoundException;
 
     OrderItemDto patch(int id,OrderItem orderItem) throws ResourceNotFoundException;
 

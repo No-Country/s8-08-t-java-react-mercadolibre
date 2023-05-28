@@ -4,8 +4,11 @@ import com.nocountry.backend.dto.orderItem.OrderItemDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.mapper.IOrderItemMapper;
 import com.nocountry.backend.model.entity.OrderItem;
+import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.repository.IOrderItemRepository;
+import com.nocountry.backend.repository.product_repository.ProductRepository;
 import com.nocountry.backend.service.IOrderItemService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,9 @@ public class OrderItemServiceImpl implements IOrderItemService {
 
     @Autowired
     private IOrderItemMapper orderItemMapper;
+
+    @Autowired
+    private ProductRepository productRepository;
 
 
     @Override
@@ -36,12 +42,17 @@ public class OrderItemServiceImpl implements IOrderItemService {
 
 
     @Override
-    public OrderItemDto post(OrderItem orderItem) {
+    @Transactional
+    public OrderItemDto post(OrderItem orderItem) throws ResourceNotFoundException {
         OrderItem savedOrderItem = orderItemRepository.save(orderItem);
+        // descontar stock
+        Product existingProduct =productRepository.findById(savedOrderItem.getProduct().getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+        existingProduct.setStock(existingProduct.getStock() - savedOrderItem.getQuantity());
+        productRepository.save(existingProduct);
+
         return orderItemMapper.toOrderItemDto(savedOrderItem);
     }
-
-
 
 
     @Override
@@ -54,11 +65,12 @@ public class OrderItemServiceImpl implements IOrderItemService {
         if (orderItem.getProduct() != null) {
             existingOrderItem.setProduct(orderItem.getProduct());
         }
-
         existingOrderItem.setQuantity(orderItem.getQuantity());
         OrderItem updatedOrderItem = orderItemRepository.save(existingOrderItem);
+
         return orderItemMapper.toOrderItemDto(updatedOrderItem);
     }
+
 
     @Override
     public OrderItemDto delete(int id) throws ResourceNotFoundException {
