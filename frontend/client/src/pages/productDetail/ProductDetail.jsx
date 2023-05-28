@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { Product } from "./components/Product";
 import banner from "../../assets/img/banner.svg";
 import PaidSection from "./components/PaidSection";
+import ProductCard from "../../components/Products/ProductCard/ProductCard";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -61,7 +62,13 @@ const ProductDetail = () => {
             <PaidSection/>
           </div>
         </div>
-        <div>Sugerencias</div>
+        <div className="flex gap-4 w-100 h-100 justify-evenly py-14">
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+          <ProductCard/>
+        </div>
         <div className="flex justify-center w-100 my-14">
           <img src={banner} alt="banner" className="w-100" />
         </div>
