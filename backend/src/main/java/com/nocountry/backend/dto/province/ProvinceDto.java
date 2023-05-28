@@ -10,4 +10,5 @@ public class ProvinceDto {
     private Integer id;
     @SerializedName("nombre")
     private String name;
+    private String locality;
 }
