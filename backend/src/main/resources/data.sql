@@ -1,6 +1,7 @@
 INSERT INTO provinces (PROVINCE_ID, PROVINCE_NAME) values
-(06, "Buenos Aires"), (10, "Catamarca") , ( 22, "Chaco" ), (26, "Chubut"),
-(02, "Ciudad Autonoma de Buenos Aires"), (14, "Cordoba"), (18, "Corrientes"),
+(06, "Buenos Aires"),
+ (10, "Catamarca") , ( 22, "Chaco" ), (26, "Chubut"),
+(02, "Ciudad Federal"), (14, "Cordoba"), (18, "Corrientes"),
  (30, "Entre Rios" ), (34, "Formosa"), (38, "Jujuy" ), (42, "La Pampa" ),
   (46, "La Rioja" ), (50, "Mendoza"), (54, "Misiones"), (58, "Neuquen"),
   (62, "Río Negro"), (66, "Salta"), (70, "San Juan"), (74, "San Luis"),

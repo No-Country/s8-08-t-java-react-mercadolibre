@@ -11,5 +11,5 @@ public class DataDto {
 
     private String province;
     private String locality;
-    private String postalcode;
+//    private String postalcode;
 }

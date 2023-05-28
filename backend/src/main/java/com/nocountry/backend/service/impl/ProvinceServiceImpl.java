@@ -42,8 +42,9 @@ public class ProvinceServiceImpl implements IProvinceService {
     public ProvinceDto validZipCode(String zipCode) {
         List<DataDto> data = apiLandingExecute.executeValidZipCode(zipCode).getData();
         DataDto dataDto = data.get(0);
-        System.out.println(dataDto.getProvince());
         ProvinceDto byName = this.findByName(dataDto.getProvince());
+        byName.setLocality(dataDto.getLocality().charAt(0)
+                + dataDto.getLocality().substring(1).toLowerCase());
         return byName;
     }
 
