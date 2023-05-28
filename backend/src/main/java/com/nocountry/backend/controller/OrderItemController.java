@@ -40,7 +40,7 @@ public class OrderItemController  {
     }
 
     @PostMapping("/")
-    public ResponseEntity<OrderItemDto> postOrderItem(@RequestBody OrderItem orderItem) {
+    public ResponseEntity<OrderItemDto> postOrderItem(@RequestBody OrderItem orderItem) throws ResourceNotFoundException {
         OrderItemDto createdOrderItem = orderItemService.post(orderItem);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrderItem);
     }
