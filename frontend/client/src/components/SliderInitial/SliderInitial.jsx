@@ -54,7 +54,8 @@ const SliderInitial = () => {
         pagination={{ clickable: true, bulletActiveClass: "bulletActive" }}
         effect="fade"
         modules={[Autoplay, Pagination, EffectFade]}
-        className="relative">
+        className="relative"
+      >
         {listOffers.map((offer, index) => (
           <SwiperSlide onMouseOver={handleMouseOver} key={`${index}-offer`} className={""}>
             <div className="w-full">
@@ -88,7 +89,8 @@ const SlideNextButton = () => {
   return (
     <button
       onClick={() => swiper.slideNext()}
-      className=" bg-white shadow-xl w-10 rounded-full h-10  flex items-center justify-center">
+      className=" bg-white shadow-xl w-10 rounded-full h-10  flex items-center justify-center"
+    >
       <TiChevronRight className=" text-[#4695fd] hover:text-[#4695fd] text-xl" />
     </button>
   );
@@ -100,7 +102,8 @@ const SlidePrevButton = () => {
   return (
     <button
       onClick={() => swiper.slidePrev()}
-      className=" bg-white shadow-xl w-10 rounded-full h-10 flex items-center justify-center">
+      className=" bg-white shadow-xl w-10 rounded-full h-10 flex items-center justify-center"
+    >
       <TiChevronLeft className=" text-[#4695fd] hover:text-[#4695fd] text-xl" />
     </button>
   );
