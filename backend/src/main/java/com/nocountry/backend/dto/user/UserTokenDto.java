@@ -1,16 +1,14 @@
 package com.nocountry.backend.dto.user;
 
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class UserTokenDto {
-    private Long id;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String numberPhone;
+    private UserDto user;
     private String token;
 }
