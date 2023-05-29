@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import MenuUser from "../MenuUser/MenuUser";
 import { BsChevronCompactDown } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { VscBell } from "react-icons/vsc";
@@ -19,15 +22,22 @@ const menu = [
 ];
 
 const NavbarMenues = () => {
-  const [isRegister, setIsRegister] = useState(true);
+  const [openMenuUser, setOpenMenuUser] = useState(false);
   const [openMenuCategory, setOpenMenuCategory] = useState(false);
+  const { user, token } = useSelector(store => store.auth);
   const menuUser = () => {
     let listMenu = [];
-    if (isRegister) {
+    if (token) {
       listMenu = [
         {
-          name: JSON.parse(localStorage.getItem("user"))?.name ?? "Usuario",
-          icon: () => <BiUserCircle size={25} className="opacity-60 cursor-pointer" />
+          name: user.firstName,
+          icon: () => (
+            <BiUserCircle
+              size={25}
+              className="opacity-60 cursor-pointer relative"
+              onClick={() => setOpenMenuUser(!openMenuUser)}
+            />
+          )
         },
         { name: "Mis compras", icon: () => null },
         {
@@ -39,10 +49,14 @@ const NavbarMenues = () => {
       ];
     } else {
       listMenu = [
-        { name: "Creá tu cuenta", icon: () => null },
-        { name: "Ingresá", icon: () => null },
-        { name: "Mis compras", icon: () => null },
-        { name: null, icon: () => <FiShoppingCart className="h-5 opacity-60 cursor-pointer" /> }
+        { name: "Creá tu cuenta", icon: () => null, url: "" },
+        { name: "Ingresá", icon: () => null, url: "/auth/login" },
+        { name: "Mis compras", icon: () => null, url: "" },
+        {
+          name: null,
+          icon: () => <FiShoppingCart className="h-5 opacity-60 cursor-pointer" />,
+          url: ""
+        }
       ];
     }
     return listMenu;
@@ -55,7 +69,7 @@ const NavbarMenues = () => {
           <FiMapPin size={28} className="opacity-60 cursor-pointer" />
           <div className="flex flex-col">
             <p className="opacity-60 hover:opacity-90 cursor-pointer text-[0.8rem]">
-              Enviar a {JSON.parse(localStorage.getItem("user"))?.name ?? ""}
+              Enviar a {user.firstName ?? null}
             </p>
 
             <p className="font-medium whitespace-nowrap">Capital Federal</p>
@@ -67,8 +81,7 @@ const NavbarMenues = () => {
               key={`${i}-menu`}
               className={`${item.icon() ? "flex items-center gap-1" : ""}`}
               onClick={item.name === "Categorías" ? () => setOpenMenuCategory(false) : null}
-              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}
-            >
+              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}>
               {item.name && (
                 <p className="opacity-60 hover:opacity-90 cursor-pointer">{item.name}</p>
               )}
@@ -77,9 +90,8 @@ const NavbarMenues = () => {
           ))}
           {openMenuCategory && (
             <div
-              className="absolute top-9 bg-black w-60 rounded-md text-white"
-              onMouseLeave={() => setOpenMenuCategory(false)}
-            >
+              className="absolute top-9 bg-black w-60 rounded-md text-white z-50"
+              onMouseLeave={() => setOpenMenuCategory(false)}>
               <div className="flex flex-col font-medium gap-1 mt-5 mb-5">
                 <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Vehiculos</p>
                 <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Inmuebles</p>
@@ -94,11 +106,19 @@ const NavbarMenues = () => {
         <ul className="flex flex-wrap justify-end items-center gap-4 font-light text-sm min-w-[12rem]">
           {menuUser().map((item, i) => (
             <li key={`${i}-menuUser`} className={`${item.icon() ? "flex items-center gap-1" : ""}`}>
-              {item?.icon() && i === 0 && item.icon()}
+              {item?.icon() && i === 0 && (
+                <div className="relative">
+                  {item.icon()} {openMenuUser && <MenuUser firstname={user.firstName} />}
+                </div>
+              )}
               {item.name && (
-                <p className="opacity-60 hover:opacity-90 cursor-pointer whitespace-nowrap">
-                  {item.name}
-                </p>
+                <Link to={item.url}>
+                  <p
+                    className="opacity-60 hover:opacity-90 cursor-pointer whitespace-nowrap"
+                    onMouseOver={i === 0 ? () => setOpenMenuUser(true) : null}>
+                    {item.name}
+                  </p>
+                </Link>
               )}
               {item?.icon() && i !== 0 && item.icon()}
             </li>
