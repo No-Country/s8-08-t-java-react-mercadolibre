@@ -33,15 +33,8 @@ const Login = () => {
         setIsLoading(true);
         postRequestLogin(values, "/auth/login")
           .then(res => {
-            const user = {
-              id: res.id,
-              name: res.firstName,
-              lastname: res.lastName,
-              email: res.email,
-              role: ""
-            };
-            dispatch(setLogin({ token: res.token, user }));
-            const authInStorage = { token: res.token, user: user };
+            dispatch(setLogin({ token: res.token, user: res.user }));
+            const authInStorage = { token: res.token, user: res.user };
             setLocalStorage("auth", authInStorage);
             setIsLoading(false);
           })

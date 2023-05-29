@@ -88,7 +88,7 @@ const MenuMobile = () => {
         <div className="flex p-4 items-center">
           <BiUserCircle size={50} className="opacity-60 cursor-pointer" />
           <div className="flex flex-col">
-            <span className="px-2">Hola {user.name}</span>
+            <span className="px-2">Hola {user.firstName}</span>
             <span className="font-medium text-base px-2 rounded-lg hover:bg-gray-100 cursor-pointer">
               Nivel 2 - Mercado Puntos {">"}
             </span>

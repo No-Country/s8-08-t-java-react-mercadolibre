@@ -30,7 +30,7 @@ const NavbarMenues = () => {
     if (token) {
       listMenu = [
         {
-          name: user.name,
+          name: user.firstName,
           icon: () => (
             <BiUserCircle
               size={25}
@@ -69,7 +69,7 @@ const NavbarMenues = () => {
           <FiMapPin size={28} className="opacity-60 cursor-pointer" />
           <div className="flex flex-col">
             <p className="opacity-60 hover:opacity-90 cursor-pointer text-[0.8rem]">
-              Enviar a {user.name ?? null}
+              Enviar a {user.firstName ?? null}
             </p>
 
             <p className="font-medium whitespace-nowrap">Capital Federal</p>
@@ -108,7 +108,7 @@ const NavbarMenues = () => {
             <li key={`${i}-menuUser`} className={`${item.icon() ? "flex items-center gap-1" : ""}`}>
               {item?.icon() && i === 0 && (
                 <div className="relative">
-                  {item.icon()} {openMenuUser && <MenuUser firsname={user.name} />}
+                  {item.icon()} {openMenuUser && <MenuUser firstname={user.firstName} />}
                 </div>
               )}
               {item.name && (
