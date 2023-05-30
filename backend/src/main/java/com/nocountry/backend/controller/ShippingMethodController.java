@@ -4,6 +4,8 @@ import com.nocountry.backend.dto.shippingMethod.ShippingMethodDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.model.entity.ShippingMethod;
 import com.nocountry.backend.service.IShippingMethodService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/shippingMethods")
-@CrossOrigin(origins="**")
+@RequiredArgsConstructor
+@Tag(name = "ShippingMethod", description = "Shipping Method  of Purchase Order")
 
 public class ShippingMethodController  {
 
@@ -31,7 +34,7 @@ public class ShippingMethodController  {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ShippingMethodDto> getById(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<ShippingMethodDto> getById(@PathVariable Long id) throws ResourceNotFoundException {
         ShippingMethodDto response = shippingMethodService.getById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -43,13 +46,13 @@ public class ShippingMethodController  {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ShippingMethodDto> patchShippingMethod(@PathVariable int id, @RequestBody ShippingMethod shippingMethod) throws ResourceNotFoundException {
+    public ResponseEntity<ShippingMethodDto> patchShippingMethod(@PathVariable Long id, @RequestBody ShippingMethod shippingMethod) throws ResourceNotFoundException {
         ShippingMethodDto updatedShippingMethod = shippingMethodService.patch(id, shippingMethod);
         return ResponseEntity.ok(updatedShippingMethod);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteShippingMethod(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<?> deleteShippingMethod(@PathVariable Long id) throws ResourceNotFoundException {
         shippingMethodService.delete(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body("ShippingMethod deleted");

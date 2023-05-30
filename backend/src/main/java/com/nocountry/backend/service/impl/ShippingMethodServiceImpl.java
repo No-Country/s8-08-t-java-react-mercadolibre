@@ -28,7 +28,7 @@ public class ShippingMethodServiceImpl implements IShippingMethodService {
 
 
     @Override
-    public ShippingMethodDto getById(int id) throws ResourceNotFoundException {
+    public ShippingMethodDto getById(Long id) throws ResourceNotFoundException {
         ShippingMethod shippingMethod = shippingMethodRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ShippingMethod with id " + id + " not found"));
         return shippingMethodMapper.toShippingMethodDto(shippingMethod);
@@ -45,7 +45,7 @@ public class ShippingMethodServiceImpl implements IShippingMethodService {
 
 
     @Override
-    public ShippingMethodDto patch(int id, ShippingMethod shippingMethod) throws ResourceNotFoundException {
+    public ShippingMethodDto patch(Long id, ShippingMethod shippingMethod) throws ResourceNotFoundException {
         ShippingMethod existingShippingMethod = shippingMethodRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ShippingMethod with id " + id + " not found"));
         if (shippingMethod.getName() != null) {
@@ -56,7 +56,7 @@ public class ShippingMethodServiceImpl implements IShippingMethodService {
     }
 
     @Override
-    public ShippingMethodDto delete(int id) throws ResourceNotFoundException {
+    public ShippingMethodDto delete(Long id) throws ResourceNotFoundException {
         ShippingMethod shippingMethodToDelete = shippingMethodRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ShippingMethod with id " + id + " not found"));
         shippingMethodRepository.delete(shippingMethodToDelete);

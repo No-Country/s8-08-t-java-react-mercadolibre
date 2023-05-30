@@ -4,6 +4,8 @@ import com.nocountry.backend.dto.orderStatus.OrderStatusDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.model.entity.OrderStatus;
 import com.nocountry.backend.service.IOrderStatusService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/orderStatuss")
-@CrossOrigin(origins="**")
+@RequestMapping("/api/v1/orderStatus")
+@RequiredArgsConstructor
+@Tag(name = "OrderStatus", description = "Status of Purchase Order")
 
 public class OrderStatusController  {
 
@@ -31,7 +34,7 @@ public class OrderStatusController  {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderStatusDto> getById(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<OrderStatusDto> getById(@PathVariable Long id) throws ResourceNotFoundException {
         OrderStatusDto response = orderStatusService.getById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -43,13 +46,13 @@ public class OrderStatusController  {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<OrderStatusDto> patchOrderStatus(@PathVariable int id, @RequestBody OrderStatus orderStatus) throws ResourceNotFoundException {
+    public ResponseEntity<OrderStatusDto> patchOrderStatus(@PathVariable Long id, @RequestBody OrderStatus orderStatus) throws ResourceNotFoundException {
         OrderStatusDto updatedOrderStatus = orderStatusService.patch(id, orderStatus);
         return ResponseEntity.ok(updatedOrderStatus);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteOrderStatus(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<?> deleteOrderStatus(@PathVariable Long id) throws ResourceNotFoundException {
         orderStatusService.delete(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body("OrderStatus deleted");

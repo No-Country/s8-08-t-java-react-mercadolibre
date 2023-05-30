@@ -1,3 +1,4 @@
+
 INSERT INTO provinces (PROVINCE_ID, PROVINCE_NAME) values
 (06, "Buenos Aires"),
  (10, "Catamarca") , ( 22, "Chaco" ), (26, "Chubut"),
@@ -86,7 +87,23 @@ INSERT INTO category (id, name) VALUES
 (31, 'Souvenirs, Cotillón y Fiestas'),
 (32, 'Otras categorías');
 
+INSERT INTO products (description, title, price, stock, category_id, user_id) VALUES
+('Dispositivo liberado para que elijas la compañía telefónica que prefieras.', 'Samsung Galaxy A04 128 GB negro 4 GB RAM', '69999', '10000', '11', '1'),
+('Pantalla AMOLED de 6.67.  Tiene 4 cámaras traseras de 108Mpx/8Mpx/5Mpx/2Mpx.  Cámara delantera de 16Mpx.  Procesador Snapdragon 732G Octa-Core de 2.3GHz con 6GB de RAM.  Batería de 5020mAh.  Memoria interna de 128GB.  A prueba de agua.  Con reconocimiento facial y sensor de huella dactilar.  Resistente al polvo y a las caídas.', 'Xiaomi Redmi Note 10 Pro (108 Mpx) Dual SIM 128 GB gris ónix 6 GB RAM', '157.779', '10000', '11', '1');
 
+
+ INSERT INTO images (image_url, product_id) VALUES
+ ('https://http2.mlstatic.com/D_NQ_NP_615787-MLA53225354281_012023-O.webp', '1'),
+('https://http2.mlstatic.com/D_NQ_NP_989252-MLA53225323332_012023-O.webp', '1'),
+ ('https://http2.mlstatic.com/D_NQ_NP_689330-MLA50263507908_062022-O.webp', '2'),
+ ('https://http2.mlstatic.com/D_NQ_NP_625466-MLA50263727206_062022-O.webp', '2');
+
+INSERT INTO order_status (status) VALUES
+('Pendiente'),
+('Enviado'),
+('Entregado');
+
+INSERT INTO address (`comment`, `contact`, `floor_apartment`, `locality`, `num_street_end`, `num_street_init`, `phone`, `province_fk`, `street`, `street_number`, `user_fk`, `zip_code`) VALUES ('Domicilio', '348256445', '1', 'Bs As', 'Av Mayo  ', '123', '01112233333', '06', 'Av Mayo', '123', '2', '1000');
 INSERT INTO `subcategory` (`id`, `name`, `category_id`) VALUES
 (1, 'Acc. para Motos y Cuatriciclos', 1),
 (2, 'Accesorios Náuticos', 1),
@@ -478,4 +495,13 @@ INSERT INTO `subcategory` (`id`, `name`, `category_id`) VALUES
 (389, 'Otros productos y categorías no especificadas anteriormente', 32);
 
 
-  
+INSERT INTO `shipping_methods` (`name`, `price`) VALUES
+('Correo Argentino', '1500'),
+('Retira en Local', '0');
+
+INSERT INTO `orders`
+ (id,`date`, `order_total`,
+ `order_status_fk`,
+ `shipping_address_fk`,
+ `shipping_method_fk`, `user_fk`)
+ VALUES (4, '26-5-23', '10000', '1', '1', '1', '2');

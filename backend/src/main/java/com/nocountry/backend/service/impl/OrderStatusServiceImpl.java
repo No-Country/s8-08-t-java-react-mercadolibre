@@ -28,7 +28,7 @@ public class OrderStatusServiceImpl implements IOrderStatusService {
 
 
     @Override
-    public OrderStatusDto getById(int id) throws ResourceNotFoundException {
+    public OrderStatusDto getById(Long id) throws ResourceNotFoundException {
         OrderStatus orderStatus = orderStatusRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderStatus with id " + id + " not found"));
         return orderStatusMapper.toOrderStatusDto(orderStatus);
@@ -45,18 +45,19 @@ public class OrderStatusServiceImpl implements IOrderStatusService {
 
 
     @Override
-    public OrderStatusDto patch(int id, OrderStatus orderStatus) throws ResourceNotFoundException {
+    public OrderStatusDto patch(Long id, OrderStatus orderStatus) throws ResourceNotFoundException {
         OrderStatus existingOrderStatus = orderStatusRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderStatus with id " + id + " not found"));
         if (orderStatus.getStatus() != null) {
             existingOrderStatus.setStatus(orderStatus.getStatus());
         }
+
         OrderStatus updatedOrderStatus = orderStatusRepository.save(existingOrderStatus);
         return orderStatusMapper.toOrderStatusDto(updatedOrderStatus);
     }
 
     @Override
-    public OrderStatusDto delete(int id) throws ResourceNotFoundException {
+    public OrderStatusDto delete(Long id) throws ResourceNotFoundException {
         OrderStatus orderStatusToDelete = orderStatusRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderStatus with id " + id + " not found"));
         orderStatusRepository.delete(orderStatusToDelete);

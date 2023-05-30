@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface IShippingMethodService {
     List<ShippingMethodDto> getAll();
-    ShippingMethodDto getById(int id) throws ResourceNotFoundException;
+    ShippingMethodDto getById(Long id) throws ResourceNotFoundException;
 
     ShippingMethodDto post(ShippingMethod shippingMethod);
 
-    ShippingMethodDto patch(int id,ShippingMethod shippingMethod) throws ResourceNotFoundException;
+    ShippingMethodDto patch(Long id,ShippingMethod shippingMethod) throws ResourceNotFoundException;
 
-    ShippingMethodDto delete(int id) throws ResourceNotFoundException;
+    ShippingMethodDto delete(Long id) throws ResourceNotFoundException;
 
 
 }
