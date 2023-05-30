@@ -3,7 +3,7 @@ import Hero from "../components/Hero/Hero";
 import Sales from "../components/Sales/Sales";
 import SliderIcon from "../components/sliderIcon/SliderIcon";
 import Interest from "../components/Interest/Interest";
-// import Discover from "../components/Discover/Discover";
+import Discover from "../components/Discover/Discover";
 import Collection from "../components/Collection/Collection";
 import SliderInitial from "../components/SliderInitial/SliderInitial";
 import PaymentsDataHome from "../components/PaymentsDataHome/PaymentsDataHome";
@@ -19,7 +19,7 @@ const Home = () => {
       </section>
       <section className="mx-auto w-[85%]">
         <Hero />
-        {/* <Discover /> */}
+        <Discover />
       </section>
       <section className="mx-auto w-[85%]">
         <Sales />
