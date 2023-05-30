@@ -1,7 +1,10 @@
-package com.nocountry.backend.service;
+package com.nocountry.backend.service.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.nocountry.backend.model.entity.Image;
+import com.nocountry.backend.repository.IImageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +19,9 @@ public class CloudinaryService {
 
     Cloudinary cloudinary;
 
+
+    @Autowired
+    private IImageRepository imageRepository;
     private Map<String, String> valuesMap = new HashMap<>();
 
     public CloudinaryService() {
@@ -25,8 +31,25 @@ public class CloudinaryService {
         cloudinary = new Cloudinary(valuesMap);
     }
 
-    public String upload(MultipartFile multipartFile) throws IOException {
-        Map uploadResult = cloudinary.uploader().upload(multipartFile.getBytes(), ObjectUtils.emptyMap());
+    public String upload(MultipartFile multipartFile) {
+        Map uploadResult = null;
+        try {
+            uploadResult = cloudinary.uploader().upload(multipartFile.getBytes(), ObjectUtils.emptyMap());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return uploadResult.get("secure_url").toString();
+    }
+
+    public String upload(MultipartFile multipartFile, String title) {
+        Map options = ObjectUtils.asMap(
+                "original_filename", title);
+        Map uploadResult = null;
+        try {
+            uploadResult = cloudinary.uploader().upload(multipartFile.getBytes(), options);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         return uploadResult.get("secure_url").toString();
     }
 

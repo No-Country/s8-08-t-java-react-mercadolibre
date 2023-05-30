@@ -1,6 +1,8 @@
 package com.nocountry.backend.mapper;
 
 import com.nocountry.backend.dto.product.ProductDTO;
+import com.nocountry.backend.dto.product.ProductListGetDto;
+
 import com.nocountry.backend.model.entity.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -14,6 +16,7 @@ public interface IProductMapper {
     ProductDTO toProductDto(Product product);
 
     Product toProduct(ProductDTO DTO);
+    List<ProductListGetDto> toProductListGetDto(List<Product> product);
 
     List<ProductDTO> toProductsDTO(List<Product> products);
 

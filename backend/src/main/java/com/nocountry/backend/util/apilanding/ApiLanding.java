@@ -12,8 +12,8 @@ import java.util.Map;
 @Headers("Accept: application/json")
 public interface ApiLanding {
 
-    @RequestLine("GET /postalcode")
-    ResponseDto zipCodeProvince(@QueryMap Map<String, Object> queryMap) throws MalformedJsonException;
+    @RequestLine("GET /cpa")
+    ResponseDto zipCodeProvince(@QueryMap Map<String, Object> queryMap);
 
 
 }

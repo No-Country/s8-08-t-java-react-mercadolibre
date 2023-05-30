@@ -10,5 +10,6 @@ import java.util.List;
 @Setter
 @ToString
 public class ResponseDto {
+    private int state;
     private List<DataDto> data;
 }

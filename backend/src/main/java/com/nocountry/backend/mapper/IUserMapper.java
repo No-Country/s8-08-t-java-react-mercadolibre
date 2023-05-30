@@ -14,6 +14,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface IUserMapper {
 
 
+    @Mapping(target = "role", source = "role")
     UserDto toUserDto(User user);
 
 
@@ -24,6 +25,7 @@ public interface IUserMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "addresses", ignore = true)
+    @Mapping(target = "products", ignore = true)
     User toUser(UserRegisterDto userRegisterDto);
 
 }
