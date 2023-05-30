@@ -1,14 +1,23 @@
-package com.nocountry.backend.controller.productController;
+package com.nocountry.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nocountry.backend.dto.product.*;
 import com.nocountry.backend.model.entity.*;
+import com.nocountry.backend.dto.category.CategoryDto;
+import com.nocountry.backend.dto.image.ImageDto;
+import com.nocountry.backend.dto.product.ProductDto;
+import com.nocountry.backend.dto.product.ProductListGetDto;
+import com.nocountry.backend.model.entity.Category;
+import com.nocountry.backend.model.entity.Image;
+import com.nocountry.backend.model.entity.Product;
+import com.nocountry.backend.model.entity.User;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
-import com.nocountry.backend.repository.product_repository.CategoryRepository;
-import com.nocountry.backend.repository.product_repository.ProductRepository;
 import com.nocountry.backend.repository.product_repository.SubcategoryRepository;
-import com.nocountry.backend.service.CloudinaryService;
+import com.nocountry.backend.repository.ICategoryRepository;
+import com.nocountry.backend.repository.IProductRepository;
+import com.nocountry.backend.service.impl.CloudinaryService;
+import com.nocountry.backend.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +34,9 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepository;
+    private IProductRepository productRepository;
     @Autowired
-    private CategoryRepository categoryRepository;
+    private ICategoryRepository categoryRepository;
     @Autowired
     private IUserRepositoryJpa userRepository;
 
@@ -37,8 +46,16 @@ public class ProductController {
     @Autowired
     private SubcategoryRepository subcategoryRepository;
 
+    @Autowired
+    private IProductService productService;
 
-    //todo Create all product ********************************
+
+    @GetMapping("")
+    private ResponseEntity<List<ProductListGetDto>> findAllProducts() {
+        return new ResponseEntity<>(this.productService.findAllProduct(), HttpStatus.OK);
+    }
+
+//todo Create all product ********************************
 
     @PostMapping("/product/img/{userId}")
     public ResponseEntity<?> createProduct(
@@ -53,9 +70,9 @@ public class ProductController {
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        ProductDTO productDTO;
+        ProductDto productDTO;
         try {
-            productDTO = objectMapper.readValue(productJson, ProductDTO.class);
+            productDTO = objectMapper.readValue(productJson, ProductDto.class);
         } catch (JsonProcessingException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid product JSON");
         }
@@ -70,7 +87,7 @@ public class ProductController {
         }
 
         Product product = Product.builder()
-                .name(productDTO.getName())
+                .title(productDTO.getName())
                 .price(productDTO.getPrice())
                 .stock(productDTO.getStock())
                 .description(productDTO.getDescription())
@@ -89,12 +106,8 @@ public class ProductController {
                 }
 
                 Image image = new Image();
-                try {
-                    String imageUrl = cloudinaryService.upload(file);
-                    image.setImageUrl(imageUrl);
-                } catch (IOException e) {
-                    continue;
-                }
+                String imageUrl = cloudinaryService.upload(file);
+                image.setImageUrl(imageUrl);
 
                 image.setProduct(product);
                 images.add(image);
@@ -105,12 +118,12 @@ public class ProductController {
 
         Product savedProduct = productRepository.save(product);
 
-        ProductDTO savedProductDTO = new ProductDTO();
-        savedProductDTO.setName(savedProduct.getName());
+        ProductDto savedProductDTO = new ProductDto();
+        savedProductDTO.setName(savedProduct.getTitle());
         savedProductDTO.setPrice(savedProduct.getPrice());
         savedProductDTO.setStock(savedProduct.getStock());
         savedProductDTO.setDescription(savedProduct.getDescription());
-        CategoryDTO categoryDTO = new CategoryDTO();
+        CategoryDto categoryDTO = new CategoryDto();
         categoryDTO.setId(savedProduct.getCategory().getId());
         categoryDTO.setName(savedProduct.getCategory().getName());
         savedProductDTO.setCategory(categoryDTO);
@@ -119,11 +132,11 @@ public class ProductController {
         subcategoryDTO.setName(savedProduct.getSubcategory().getName());
         subcategoryDTO.setProductCount(savedProduct.getSubcategory().getProductCount() + 1);
         savedProductDTO.setSubcategory(subcategoryDTO);
-        List<ImageDTO> imageDTOList = new ArrayList<>();
+        List<ImageDto> imageDTOList = new ArrayList<>();
         for (Image image : savedProduct.getImages()) {
-            ImageDTO imageDTO = new ImageDTO();
+            ImageDto imageDTO = new ImageDto();
             imageDTO.setId(image.getId());
-            imageDTO.setUrl(image.getImageUrl());
+            imageDTO.setImageUrl(image.getImageUrl());
 
             imageDTOList.add(imageDTO);
         }
@@ -144,15 +157,15 @@ public class ProductController {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
-            ProductDTO productDTO = new ProductDTO();
-            productDTO.setName(product.getName());
+            ProductDto productDTO = new ProductDto();
+            productDTO.setName(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
 
             Category category = product.getCategory();
             if (category != null) {
-                CategoryDTO categoryDTO = new CategoryDTO();
+                CategoryDto categoryDTO = new CategoryDto();
                 categoryDTO.setId(category.getId());
                 categoryDTO.setName(category.getName());
                 productDTO.setCategory(categoryDTO);
@@ -168,11 +181,11 @@ public class ProductController {
 
             List<Image> images = product.getImages();
             if (images != null && !images.isEmpty()) {
-                List<ImageDTO> imageDTOList = new ArrayList<>();
+                List<ImageDto> imageDTOList = new ArrayList<>();
                 for (Image image : images) {
-                    ImageDTO imageDTO = new ImageDTO();
+                    ImageDto imageDTO = new ImageDto();
                     imageDTO.setId(image.getId());
-                    imageDTO.setUrl(image.getImageUrl());
+                    imageDTO.setImageUrl(image.getImageUrl());
                     imageDTOList.add(imageDTO);
                 }
                 productDTO.setImages(imageDTOList);
@@ -187,11 +200,11 @@ public class ProductController {
     //todo Update product***********************************
 
     @PutMapping("/product/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody ProductDTO updatedProductDTO) {
+    public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody ProductDto updatedProductDTO) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
-            product.setName(updatedProductDTO.getName());
+            product.setTitle(updatedProductDTO.getName());
             product.setPrice(updatedProductDTO.getPrice());
             product.setStock(updatedProductDTO.getStock());
             product.setDescription(updatedProductDTO.getDescription());
@@ -208,9 +221,9 @@ public class ProductController {
             if (updatedProductDTO.getImages() != null) {
                 List<Image> updatedImages = new ArrayList<>();
 
-                for (ImageDTO imageDTO : updatedProductDTO.getImages()) {
+                for (ImageDto imageDTO : updatedProductDTO.getImages()) {
                     Image updatedImage = new Image();
-                    updatedImage.setImageUrl(imageDTO.getUrl());
+                    updatedImage.setImageUrl(imageDTO.getImageUrl());
                     updatedImage.setProduct(product);
                     updatedImages.add(updatedImage);
                 }
@@ -258,7 +271,7 @@ public class ProductController {
 
         for (Product product : products) {
             ProductsDTO productDTO = new ProductsDTO();
-            productDTO.setName(product.getName());
+            productDTO.setName(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());

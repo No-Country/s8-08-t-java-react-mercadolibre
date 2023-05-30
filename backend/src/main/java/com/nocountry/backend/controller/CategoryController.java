@@ -1,11 +1,11 @@
-package com.nocountry.backend.controller.productController;
+package com.nocountry.backend.controller;
 
-import com.nocountry.backend.dto.product.CategoryDTO;
+import com.nocountry.backend.dto.category.CategoryDto;
 import com.nocountry.backend.dto.product.CategoryForSubcategoryDTO;
 import com.nocountry.backend.dto.product.SubcategoryDTO;
 import com.nocountry.backend.model.entity.Category;
+import com.nocountry.backend.repository.ICategoryRepository;
 import com.nocountry.backend.model.entity.Subcategory;
-import com.nocountry.backend.repository.product_repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,21 +20,22 @@ import java.util.stream.Collectors;
 public class CategoryController {
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private ICategoryRepository categoryRepository;
+
 
     //todo All Categories***********************************************
 
     @GetMapping("/all")
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
+    public ResponseEntity<List<CategoryDto>> getAllCategories() {
         List<Category> categories = categoryRepository.findAll();
         if (categories.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
 
-        List<CategoryDTO> categoryDTOs = new ArrayList<>();
+        List<CategoryDto> categoryDTOs = new ArrayList<>();
 
         for (Category category : categories) {
-            CategoryDTO categoryDTO = new CategoryDTO();
+            CategoryDto categoryDTO = new CategoryDto();
             categoryDTO.setId(category.getId());
             categoryDTO.setName(category.getName());
 

@@ -1,4 +1,4 @@
-package com.nocountry.backend.dto.product;
+package com.nocountry.backend.dto.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageDTO {
+public class CategoryDto {
     private Integer id;
-    private String url;
+    private String name;
 }
+
