@@ -13,10 +13,7 @@ import com.nocountry.backend.model.entity.Image;
 import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.model.entity.User;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
-import com.nocountry.backend.repository.product_repository.CategoryRepository;
-import com.nocountry.backend.repository.product_repository.ProductRepository;
 import com.nocountry.backend.repository.product_repository.SubcategoryRepository;
-import com.nocountry.backend.service.CloudinaryService;
 import com.nocountry.backend.repository.ICategoryRepository;
 import com.nocountry.backend.repository.IProductRepository;
 import com.nocountry.backend.service.impl.CloudinaryService;
@@ -37,9 +34,9 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    private IProductRepository IProductRepository;
+    private IProductRepository productRepository;
     @Autowired
-    private ICategoryRepository ICategoryRepository;
+    private ICategoryRepository categoryRepository;
     @Autowired
     private IUserRepositoryJpa userRepository;
 
@@ -58,8 +55,7 @@ public class ProductController {
         return new ResponseEntity<>(this.productService.findAllProduct(), HttpStatus.OK);
     }
 
-
-    //todo Create all product ********************************
+//todo Create all product ********************************
 
     @PostMapping("/product/img/{userId}")
     public ResponseEntity<?> createProduct(
@@ -80,7 +76,7 @@ public class ProductController {
         } catch (JsonProcessingException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid product JSON");
         }
-        Category category = ICategoryRepository.findById(productDTO.getCategory().getId()).orElse(null);
+        Category category = categoryRepository.findById(productDTO.getCategory().getId()).orElse(null);
         if (category == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Category not found");
         }
@@ -110,20 +106,8 @@ public class ProductController {
                 }
 
                 Image image = new Image();
-                try {
-                    String imageUrl = cloudinaryService.upload(file);
-                    image.setImageUrl(imageUrl);
-                } catch (IOException e) {
-                    continue;
-                }
-//                try {
                 String imageUrl = cloudinaryService.upload(file);
                 image.setImageUrl(imageUrl);
-//                } catch (IOException e) {
-//                    // Manejar la excepción
-//                    // Por ejemplo, puedes devolver una respuesta de error o registrar el error
-//                    continue;
-//                }
 
                 image.setProduct(product);
                 images.add(image);
@@ -133,22 +117,12 @@ public class ProductController {
         }
 
         Product savedProduct = productRepository.save(product);
-        // Guardar el producto en la base de datos
-        Product savedProduct = IProductRepository.save(product);
 
-        ProductDTO savedProductDTO = new ProductDTO();
-        savedProductDTO.setName(savedProduct.getName());
+        ProductDto savedProductDTO = new ProductDto();
+        savedProductDTO.setName(savedProduct.getTitle());
         savedProductDTO.setPrice(savedProduct.getPrice());
         savedProductDTO.setStock(savedProduct.getStock());
         savedProductDTO.setDescription(savedProduct.getDescription());
-        CategoryDTO categoryDTO = new CategoryDTO();
-        // Crear la respuesta
-        ProductDto savedProductDto = new ProductDto();
-        savedProductDto.setName(savedProduct.getTitle());
-        savedProductDto.setPrice(savedProduct.getPrice());
-        savedProductDto.setStock(savedProduct.getStock());
-        savedProductDto.setDescription(savedProduct.getDescription());
-        // Crear el objeto CategoryDTO y asignar los valores
         CategoryDto categoryDTO = new CategoryDto();
         categoryDTO.setId(savedProduct.getCategory().getId());
         categoryDTO.setName(savedProduct.getCategory().getName());
@@ -158,21 +132,17 @@ public class ProductController {
         subcategoryDTO.setName(savedProduct.getSubcategory().getName());
         subcategoryDTO.setProductCount(savedProduct.getSubcategory().getProductCount() + 1);
         savedProductDTO.setSubcategory(subcategoryDTO);
-        List<ImageDTO> imageDTOList = new ArrayList<>();
-        savedProductDto.setCategory(categoryDTO);
-        List<ImageDto> imageDtoList = new ArrayList<>();
+        List<ImageDto> imageDTOList = new ArrayList<>();
         for (Image image : savedProduct.getImages()) {
             ImageDto imageDTO = new ImageDto();
             imageDTO.setId(image.getId());
             imageDTO.setImageUrl(image.getImageUrl());
 
-            imageDtoList.add(imageDTO);
+            imageDTOList.add(imageDTO);
         }
-        savedProductDto.setImages(imageDtoList);
+        savedProductDTO.setImages(imageDTOList);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProductDTO);
-        // Devolver la respuesta con el producto creado y su ID
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedProductDto);
     }
 
     private boolean isValidImageFile(MultipartFile file) {
@@ -185,8 +155,6 @@ public class ProductController {
     public ResponseEntity<?> getProduct(@PathVariable Integer id) {
 
         Optional<Product> optionalProduct = productRepository.findById(id);
-        // Buscar el producto por ID en la base de datos
-        Optional<Product> optionalProduct = IProductRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
             ProductDto productDTO = new ProductDto();
@@ -213,17 +181,14 @@ public class ProductController {
 
             List<Image> images = product.getImages();
             if (images != null && !images.isEmpty()) {
-                List<ImageDto> imageDtoList = new ArrayList<>();
+                List<ImageDto> imageDTOList = new ArrayList<>();
                 for (Image image : images) {
                     ImageDto imageDTO = new ImageDto();
                     imageDTO.setId(image.getId());
-                    imageDTO.setUrl(image.getImageUrl());
-                    imageDTOList.add(imageDTO);
                     imageDTO.setImageUrl(image.getImageUrl());
-                    // Asignar otros valores necesarios de ImageDTO según tus requerimientos
-                    imageDtoList.add(imageDTO);
+                    imageDTOList.add(imageDTO);
                 }
-                productDTO.setImages(imageDtoList);
+                productDTO.setImages(imageDTOList);
             }
 
             return ResponseEntity.ok(productDTO);
@@ -235,29 +200,17 @@ public class ProductController {
     //todo Update product***********************************
 
     @PutMapping("/product/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody ProductDTO updatedProductDTO) {
+    public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody ProductDto updatedProductDTO) {
         Optional<Product> optionalProduct = productRepository.findById(id);
-    public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody ProductDto updatedProductDto) {
-        // Buscar el producto por ID en la base de datos
-        Optional<Product> optionalProduct = IProductRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
-            product.setName(updatedProductDTO.getName());
+            product.setTitle(updatedProductDTO.getName());
             product.setPrice(updatedProductDTO.getPrice());
             product.setStock(updatedProductDTO.getStock());
             product.setDescription(updatedProductDTO.getDescription());
 
-            // Actualizar los campos del producto con los valores del objeto ProductDTO actualizado
-            product.setTitle(updatedProductDto.getName());
-            product.setPrice(updatedProductDto.getPrice());
-            product.setStock(updatedProductDto.getStock());
-            product.setDescription(updatedProductDto.getDescription());
-
             if (updatedProductDTO.getCategory() != null && !product.getCategory().getId().equals(updatedProductDTO.getCategory().getId())) {
                 Optional<Category> optionalCategory = categoryRepository.findById(updatedProductDTO.getCategory().getId());
-            // Actualizar la categoría del producto si es necesario
-            if (updatedProductDto.getCategory() != null && !product.getCategory().getId().equals(updatedProductDto.getCategory().getId())) {
-                Optional<Category> optionalCategory = ICategoryRepository.findById(updatedProductDto.getCategory().getId());
                 if (optionalCategory.isPresent()) {
                     product.setCategory(optionalCategory.get());
                 } else {
@@ -266,11 +219,9 @@ public class ProductController {
             }
 
             if (updatedProductDTO.getImages() != null) {
-            // Actualizar las imágenes del producto si se proporcionan
-            if (updatedProductDto.getImages() != null) {
                 List<Image> updatedImages = new ArrayList<>();
 
-                for (ImageDto imageDTO : updatedProductDto.getImages()) {
+                for (ImageDto imageDTO : updatedProductDTO.getImages()) {
                     Image updatedImage = new Image();
                     updatedImage.setImageUrl(imageDTO.getImageUrl());
                     updatedImage.setProduct(product);
@@ -281,8 +232,6 @@ public class ProductController {
             }
 
             Product savedProduct = productRepository.save(product);
-            // Guardar los cambios en la base de datos
-            Product savedProduct = IProductRepository.save(product);
 
             return ResponseEntity.ok(savedProduct);
         } else {
@@ -296,12 +245,8 @@ public class ProductController {
     public ResponseEntity<?> deleteProduct(@PathVariable Integer id) {
 
         Optional<Product> optionalProduct = productRepository.findById(id);
-        // Buscar el producto por ID en la base de datos
-        Optional<Product> optionalProduct = IProductRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
-            // Eliminar el producto de la base de datos
-            IProductRepository.delete(optionalProduct.get());
 
             productRepository.delete(product);
 
@@ -326,7 +271,7 @@ public class ProductController {
 
         for (Product product : products) {
             ProductsDTO productDTO = new ProductsDTO();
-            productDTO.setName(product.getName());
+            productDTO.setName(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());

@@ -20,7 +20,5 @@ public class ProductDto {
     private String description;
     private CategoryDto category;
     private List<ImageDto> images;
-    private CategoryDTO category;
     private SubcategoryDTO subcategory;
-    private List<ImageDTO> images;
 }
