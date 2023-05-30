@@ -2,15 +2,19 @@ import React from "react";
 import Hero from "../components/Hero/Hero";
 import Sales from "../components/Sales/Sales";
 import SliderIcon from "../components/sliderIcon/SliderIcon";
+import Interest from "../components/Interest/Interest";
+// import Discover from "../components/Discover/Discover";
 
 const Home = () => {
   return (
     <div className="bg-[#EDEDED] ">
       <section className="mx-auto w-[85%]">
         <Hero />
+        {/* <Discover /> */}
       </section>
       <section className="mx-auto w-[85%]">
         <Sales />
+        <Interest />
       </section>
       <section className="mx-auto w-[85%]">
         <p className=" text-[12px] px-12 py-4 ">

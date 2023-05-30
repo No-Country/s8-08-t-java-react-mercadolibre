@@ -1,3 +1,4 @@
+import Discover from "../Discover/Discover";
 import HeroBenefit from "./HeroBenefit/HeroBenefit";
 import HeroCategory from "./HeroCategory/HeroCategory";
 
@@ -7,6 +8,7 @@ const Hero = () => {
       <div className="bg-[#EDEDED]">
         <HeroBenefit />
         <HeroCategory />
+        <Discover />
       </div>
     </>
   );
