@@ -16,7 +16,7 @@ public interface IOrderItemService {
     OrderItemDto patch(int id,OrderItem orderItem) throws ResourceNotFoundException;
 
     OrderItemDto delete(int id) throws ResourceNotFoundException;
-    List<OrderItemDto>getItemsByOrder(int id);
+    /*List<OrderItemDto>getItemsByOrder(int id);
     List<OrderItemDto>getItemsByProduct(int id);
-
+*/
 }

@@ -1,25 +1,62 @@
 package com.nocountry.backend.mapper;
+
+import com.nocountry.backend.dto.order.OrderDetailPostDto;
+import com.nocountry.backend.dto.order.OrderListGetDto;
+import com.nocountry.backend.dto.order.OrderPostDto;
+import com.nocountry.backend.dto.order.OrderUpdatePostDto;
 import com.nocountry.backend.model.entity.Order;
-import com.nocountry.backend.dto.order.OrderDto;
-
-import org.mapstruct.Mapper;
-import org.mapstruct.NullValuePropertyMappingStrategy;
-import org.mapstruct.factory.Mappers;
-
+import org.mapstruct.*;
 
 import java.util.List;
 
 
-@Mapper(componentModel = "spring", uses = {IUserMapper.class, IOrderStatusMapper.class,IShippingMethodMapper.class}, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface IOrderMapper {
-    IOrderMapper INSTANCE = Mappers.getMapper(IOrderMapper.class);
-    OrderDto toOrderDto(Order order);
 
-    Order toOrder(OrderDto DTO);
+    @Mappings({
+            @Mapping(target = "orderStatusId", source = "orderStatusFk"),
+            @Mapping(target = "shippingAddressId", source = "shippingAddressFk"),
+            @Mapping(target = "shippingMethodId", source = "shippingMethodFk"),
+            @Mapping(target = "userId", source = "userFk")
+    }
+    )
+    OrderPostDto toOrderDto(Order order);
 
-    List<OrderDto> toOrderDTO(List<Order> orders);
+    OrderDetailPostDto toOrderDetailPostDto(Order order);
 
-    List<Order> toOrders(List<OrderDto> ordersDTO);
+
+    List<OrderListGetDto> toOrderListGetDtos(List<Order> orders);
+
+
+    OrderListGetDto toOrderListGetDto(Order order);
+
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "user", ignore = true),
+            @Mapping(target = "shippingAddress", ignore = true),
+            @Mapping(target = "shippingMethod", ignore = true),
+            @Mapping(target = "orderStatus", ignore = true),
+            @Mapping(target = "shippingAddressFk", source = "shippingAddressId"),
+            @Mapping(target = "shippingMethodFk", source = "shippingMethodId"),
+            @Mapping(target = "orderStatusFk", source = "orderStatusId"),
+            @Mapping(target = "userFk", ignore = true)
+    }
+    )
+    void updateOrder(OrderUpdatePostDto orderUpdatePostDto, @MappingTarget Order order);
+
+    @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(target = "id", ignore = true),
+            @Mapping(target = "user", ignore = true),
+            @Mapping(target = "shippingAddress", ignore = true),
+            @Mapping(target = "shippingMethod", ignore = true),
+            @Mapping(target = "orderStatus", ignore = true),
+            @Mapping(target = "shippingAddressFk", source = "shippingAddressId"),
+            @Mapping(target = "shippingMethodFk", source = "shippingMethodId"),
+            @Mapping(target = "orderStatusFk", source = "orderStatusId"),
+            @Mapping(target = "userFk", source = "userId")
+    }
+    )
+    Order toOrder(OrderPostDto orderPostDto);
 
 }
-

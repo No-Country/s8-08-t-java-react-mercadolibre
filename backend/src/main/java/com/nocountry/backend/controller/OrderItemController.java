@@ -40,6 +40,7 @@ public class OrderItemController  {
     }
 
     @PostMapping("/")
+
     public ResponseEntity<OrderItemDto> postOrderItem(@RequestBody OrderItem orderItem) throws ResourceNotFoundException {
         OrderItemDto createdOrderItem = orderItemService.post(orderItem);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrderItem);
@@ -61,23 +62,24 @@ public class OrderItemController  {
     @GetMapping("/order/{id}")
     public ResponseEntity<?> getItemsByOrder(@PathVariable int id) {
 
-        try {
+/*        try {
             List<OrderItemDto> response = orderItemService.getItemsByOrder(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+  */            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @GetMapping("/product/{id}")
     public ResponseEntity<?> getItemsByProduct(@PathVariable int id) {
-        try {
+       /* try {
             List<OrderItemDto> response = orderItemService.getItemsByProduct(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
+*/            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
 }

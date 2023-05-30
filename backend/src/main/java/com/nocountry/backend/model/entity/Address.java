@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -59,5 +61,6 @@ public class Address {
             updatable = false)
     private Province province;
 
-
-}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "shippingAddress")
+    List<Order> orders;
+ }

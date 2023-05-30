@@ -30,7 +30,7 @@ public class UserReviewServiceImpl implements IUserReviewService {
 
 
     @Override
-    public UserReviewDto getById(int id) throws ResourceNotFoundException {
+    public UserReviewDto getById(Long id) throws ResourceNotFoundException {
         UserReview userReview = userReviewRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserReview with id " + id + " not found"));
         return userReviewMapper.toUserReviewDto(userReview);
@@ -47,7 +47,7 @@ public class UserReviewServiceImpl implements IUserReviewService {
 
 
     @Override
-    public UserReviewDto patch(int id, UserReview userReview) throws ResourceNotFoundException {
+    public UserReviewDto patch(Long id, UserReview userReview) throws ResourceNotFoundException {
         UserReview existingUserReview = userReviewRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserReview with id " + id + " not found"));
         if (userReview.getComments() != null) {
@@ -60,7 +60,7 @@ public class UserReviewServiceImpl implements IUserReviewService {
     }
 
     @Override
-    public UserReviewDto delete(int id) throws ResourceNotFoundException {
+    public UserReviewDto delete(Long id) throws ResourceNotFoundException {
         UserReview userReviewToDelete = userReviewRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserReview with id " + id + " not found"));
         userReviewRepository.delete(userReviewToDelete);

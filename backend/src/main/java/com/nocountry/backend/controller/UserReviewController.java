@@ -34,7 +34,7 @@ public class UserReviewController  {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserReviewDto> getById(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<UserReviewDto> getById(@PathVariable Long id) throws ResourceNotFoundException {
         UserReviewDto response = userReviewService.getById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -46,13 +46,13 @@ public class UserReviewController  {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<UserReviewDto> patchUserReview(@PathVariable int id, @RequestBody UserReview userReview) throws ResourceNotFoundException {
+    public ResponseEntity<UserReviewDto> patchUserReview(@PathVariable Long id, @RequestBody UserReview userReview) throws ResourceNotFoundException {
         UserReviewDto updatedUserReview = userReviewService.patch(id, userReview);
         return ResponseEntity.ok(updatedUserReview);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUserReview(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<?> deleteUserReview(@PathVariable Long id) throws ResourceNotFoundException {
         userReviewService.delete(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body("UserReview deleted");

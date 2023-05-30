@@ -46,11 +46,11 @@ public class OrderItemServiceImpl implements IOrderItemService {
     public OrderItemDto post(OrderItem orderItem) throws ResourceNotFoundException {
         OrderItem savedOrderItem = orderItemRepository.save(orderItem);
         // descontar stock
-        Product existingProduct =productRepository.findById(savedOrderItem.getProduct().getId())
+      /*  Product existingProduct =productRepository.findById(savedOrderItem.getProduct().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
         existingProduct.setStock(existingProduct.getStock() - savedOrderItem.getQuantity());
         productRepository.save(existingProduct);
-
+*/
         return orderItemMapper.toOrderItemDto(savedOrderItem);
     }
 
@@ -59,13 +59,13 @@ public class OrderItemServiceImpl implements IOrderItemService {
     public OrderItemDto patch(int id, OrderItem orderItem) throws ResourceNotFoundException {
         OrderItem existingOrderItem = orderItemRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderItem with id " + id + " not found"));
-        if (orderItem.getOrder() != null) {
+        /*if (orderItem.getOrder() != null) {
             existingOrderItem.setOrder(orderItem.getOrder());
-        }
-        if (orderItem.getProduct() != null) {
+        }*/
+  /*      if (orderItem.getProduct() != null) {
             existingOrderItem.setProduct(orderItem.getProduct());
         }
-        existingOrderItem.setQuantity(orderItem.getQuantity());
+    */    existingOrderItem.setQuantity(orderItem.getQuantity());
         OrderItem updatedOrderItem = orderItemRepository.save(existingOrderItem);
 
         return orderItemMapper.toOrderItemDto(updatedOrderItem);
@@ -80,7 +80,7 @@ public class OrderItemServiceImpl implements IOrderItemService {
         return orderItemMapper.toOrderItemDto(orderItemToDelete);
     }
 
-    @Override
+   /* @Override
     public List<OrderItemDto> getItemsByProduct(int id) {
         return orderItemMapper.toOrderItemsDTO
                 (orderItemRepository.findByProduct_id(id));
@@ -92,5 +92,5 @@ public class OrderItemServiceImpl implements IOrderItemService {
          return orderItemMapper.toOrderItemsDTO
                 (orderItemRepository.findByOrder_id(id));
     }
-
+*/
 }

@@ -1,6 +1,5 @@
 package com.nocountry.backend.mapper;
 
-import com.nocountry.backend.dto.order.OrderDto;
 import com.nocountry.backend.dto.user.UserDto;
 import com.nocountry.backend.dto.user.UserRegisterDto;
 import com.nocountry.backend.dto.user.UserTokenDto;

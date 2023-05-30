@@ -14,7 +14,7 @@ public class UserReview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private int ratingValue;
     @Column(name = "COMMENTS", columnDefinition="TEXT", nullable = false)

@@ -34,7 +34,7 @@ public class ShippingMethodController  {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ShippingMethodDto> getById(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<ShippingMethodDto> getById(@PathVariable Long id) throws ResourceNotFoundException {
         ShippingMethodDto response = shippingMethodService.getById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -46,13 +46,13 @@ public class ShippingMethodController  {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ShippingMethodDto> patchShippingMethod(@PathVariable int id, @RequestBody ShippingMethod shippingMethod) throws ResourceNotFoundException {
+    public ResponseEntity<ShippingMethodDto> patchShippingMethod(@PathVariable Long id, @RequestBody ShippingMethod shippingMethod) throws ResourceNotFoundException {
         ShippingMethodDto updatedShippingMethod = shippingMethodService.patch(id, shippingMethod);
         return ResponseEntity.ok(updatedShippingMethod);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteShippingMethod(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<?> deleteShippingMethod(@PathVariable Long id) throws ResourceNotFoundException {
         shippingMethodService.delete(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body("ShippingMethod deleted");

@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface IOrderStatusService {
     List<OrderStatusDto> getAll();
-    OrderStatusDto getById(int id) throws ResourceNotFoundException;
+    OrderStatusDto getById(Long id) throws ResourceNotFoundException;
 
     OrderStatusDto post(OrderStatus orderStatus);
 
-    OrderStatusDto patch(int id,OrderStatus orderStatus) throws ResourceNotFoundException;
+    OrderStatusDto patch(Long id,OrderStatus orderStatus) throws ResourceNotFoundException;
 
-    OrderStatusDto delete(int id) throws ResourceNotFoundException;
+    OrderStatusDto delete(Long id) throws ResourceNotFoundException;
 
 
 }

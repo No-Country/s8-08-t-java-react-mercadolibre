@@ -49,9 +49,13 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Product> products;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    List<Order> orders;
+
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     List<Address> addresses;
+
 
 
     @Override

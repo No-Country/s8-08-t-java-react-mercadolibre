@@ -34,7 +34,7 @@ public class OrderStatusController  {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderStatusDto> getById(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<OrderStatusDto> getById(@PathVariable Long id) throws ResourceNotFoundException {
         OrderStatusDto response = orderStatusService.getById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -46,13 +46,13 @@ public class OrderStatusController  {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<OrderStatusDto> patchOrderStatus(@PathVariable int id, @RequestBody OrderStatus orderStatus) throws ResourceNotFoundException {
+    public ResponseEntity<OrderStatusDto> patchOrderStatus(@PathVariable Long id, @RequestBody OrderStatus orderStatus) throws ResourceNotFoundException {
         OrderStatusDto updatedOrderStatus = orderStatusService.patch(id, orderStatus);
         return ResponseEntity.ok(updatedOrderStatus);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteOrderStatus(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<?> deleteOrderStatus(@PathVariable Long id) throws ResourceNotFoundException {
         orderStatusService.delete(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body("OrderStatus deleted");

@@ -70,10 +70,9 @@ INSERT INTO `shipping_methods` (`name`, `price`) VALUES
 ('Correo Argentino', '1500'),
 ('Retira en Local', '0');
 
-INSERT INTO `orders` (id,`date`, `order_total`, `order_status_id`, `shipping_address_id`, `shipping_method_id`, `user_id`) VALUES (4, '26-5-23', '10000', '1', '1', '1', '2');
-
-INSERT INTO `order_items` (`quantity`, `order_id`, `product_id`) VALUES ('2', '4', '1');
-INSERT INTO `order_items` (`quantity`, `order_id`, `product_id`) VALUES ('2', '4', '2');
-
-INSERT INTO users_reviews (`comments`, `rating_value`, `order_items_id`)
- VALUES ('Excelente!', '5', '1');
+INSERT INTO `orders`
+ (id,`date`, `order_total`,
+ `order_status_fk`,
+ `shipping_address_fk`,
+ `shipping_method_fk`, `user_fk`)
+ VALUES (4, '26-5-23', '10000', '1', '1', '1', '2');
