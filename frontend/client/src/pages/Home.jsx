@@ -4,6 +4,7 @@ import Sales from "../components/Sales/Sales";
 import SliderIcon from "../components/sliderIcon/SliderIcon";
 import Collection from "../components/Collection/Collection";
 import SliderInitial from "../components/SliderInitial/SliderInitial";
+import ChatBot from "../components/ChatBot/ChatBot";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       <section className="flex mx-auto w-[85%] h-[340px] mt-4">
         <SliderIcon />
       </section>
+      <ChatBot />
     </div>
   );
 };
