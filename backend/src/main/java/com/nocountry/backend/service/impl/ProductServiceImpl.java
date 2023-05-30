@@ -1,58 +1,56 @@
 package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.dto.product.ProductDTO;
+import com.nocountry.backend.dto.product.ProductDto;
+import com.nocountry.backend.dto.product.ProductListGetDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.mapper.IProductMapper;
 import com.nocountry.backend.model.entity.Product;
-import com.nocountry.backend.repository.product_repository.ProductRepository;
+import com.nocountry.backend.repository.IProductRepository;
 import com.nocountry.backend.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class  ProductServiceImpl implements IProductService {
+public class ProductServiceImpl implements IProductService {
 
 
     @Autowired
-    private ProductRepository productRepository;
+    private IProductRepository productRepository;
 
     @Autowired
     private IProductMapper productMapper;
 
 
     @Override
-    public List<ProductDTO> getAll() {
+    public List<ProductDto> getAll() {
         return productMapper.toProductsDTO(productRepository.findAll());
     }
 
 
     @Override
-    public ProductDTO getById(int id) throws ResourceNotFoundException {
+    public ProductDto getById(int id) throws ResourceNotFoundException {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product with id " + id + " not found"));
         return productMapper.toProductDto(product);
     }
 
 
-
-
     @Override
-    public ProductDTO post(Product product) {
+    public ProductDto post(Product product) {
 
         Product savedProduct = productRepository.save(product);
         return productMapper.toProductDto(savedProduct);
     }
 
 
-
-
     @Override
-    public ProductDTO patch(int id, Product product) throws ResourceNotFoundException {
+    public ProductDto patch(int id, Product product) throws ResourceNotFoundException {
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product with id " + id + " not found"));
-        if (product.getName() != null) {
-            existingProduct.setName(product.getName());
+        if (product.getTitle() != null) {
+            existingProduct.setTitle(product.getTitle());
         }
         if (product.getDescription() != null) {
             existingProduct.setDescription(product.getDescription());
@@ -68,7 +66,7 @@ public class  ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ProductDTO delete(int id) throws ResourceNotFoundException {
+    public ProductDto delete(int id) throws ResourceNotFoundException {
         Product productToDelete = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product with id " + id + " not found"));
         productRepository.delete(productToDelete);
@@ -77,9 +75,19 @@ public class  ProductServiceImpl implements IProductService {
 
 
     @Override
-    public List<ProductDTO> getByUser (int id) {
+    public List<ProductDto> getByUser(int id) {
         return productMapper.toProductsDTO(productRepository.findByUser_id(id));
 
+    }
+
+    @Override
+    public List<ProductListGetDto> findAllProduct() {
+
+        return this.productMapper.toProductListGetDto(
+                this.productRepository.findAll().stream().peek(
+                        product -> product.setPriceQuotas(product.getPrice() / product.getNumberQuotas())
+                ).toList()
+        );
     }
 
 

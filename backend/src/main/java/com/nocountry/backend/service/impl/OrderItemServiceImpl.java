@@ -4,9 +4,8 @@ import com.nocountry.backend.dto.orderItem.OrderItemDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.mapper.IOrderItemMapper;
 import com.nocountry.backend.model.entity.OrderItem;
-import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.repository.IOrderItemRepository;
-import com.nocountry.backend.repository.product_repository.ProductRepository;
+import com.nocountry.backend.repository.IProductRepository;
 import com.nocountry.backend.service.IOrderItemService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class OrderItemServiceImpl implements IOrderItemService {
     private IOrderItemMapper orderItemMapper;
 
     @Autowired
-    private ProductRepository productRepository;
+    private IProductRepository productRepository;
 
 
     @Override
@@ -65,7 +64,8 @@ public class OrderItemServiceImpl implements IOrderItemService {
   /*      if (orderItem.getProduct() != null) {
             existingOrderItem.setProduct(orderItem.getProduct());
         }
-    */    existingOrderItem.setQuantity(orderItem.getQuantity());
+    */
+        existingOrderItem.setQuantity(orderItem.getQuantity());
         OrderItem updatedOrderItem = orderItemRepository.save(existingOrderItem);
 
         return orderItemMapper.toOrderItemDto(updatedOrderItem);

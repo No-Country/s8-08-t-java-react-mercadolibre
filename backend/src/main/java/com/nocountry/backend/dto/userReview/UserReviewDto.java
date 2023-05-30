@@ -1,7 +1,6 @@
 package com.nocountry.backend.dto.userReview;
 
 import com.nocountry.backend.dto.orderItem.OrderItemDto;
-import com.nocountry.backend.dto.product.ProductDTO;
 import lombok.*;
 
 @Getter

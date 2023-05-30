@@ -39,7 +39,7 @@ public class OrderItem {
     private Long productFk;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PRODUCT_FK", referencedColumnName = "ID",
+    @JoinColumn(name = "PRODUCT_FK", referencedColumnName = "product_id",
             insertable = false,
             updatable = false
     )

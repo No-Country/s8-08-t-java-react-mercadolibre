@@ -15,19 +15,16 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "products")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "product_id")
     private Integer id;
     private String title;
     private Double price;
     private Integer stock;
-
-    @Column(name = "DESCRIPTION", columnDefinition="TEXT", nullable = false)
-    @Lob
 
     private Integer numberQuotas;
 
@@ -53,9 +50,9 @@ public class Product {
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PRODUCT_ID")
+    @JoinColumn(name = "product_id")
     @Builder.Default
-    private Set<OrderItem> items=new HashSet<>();
+    private Set<OrderItem> items = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "SubCategory_id")

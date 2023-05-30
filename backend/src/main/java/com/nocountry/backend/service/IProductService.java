@@ -1,6 +1,6 @@
 package com.nocountry.backend.service;
 
-import com.nocountry.backend.dto.product.ProductDTO;
+import com.nocountry.backend.dto.product.ProductDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.dto.product.ProductListGetDto;
@@ -8,16 +8,17 @@ import com.nocountry.backend.dto.product.ProductListGetDto;
 import java.util.List;
 
 public interface IProductService {
-    List<ProductDTO> getAll();
-    ProductDTO getById(int id) throws ResourceNotFoundException;
+    List<ProductDto> getAll();
 
-    ProductDTO post(Product product);
+    ProductDto getById(int id) throws ResourceNotFoundException;
 
-    ProductDTO patch(int id,Product product) throws ResourceNotFoundException;
+    ProductDto post(Product product);
 
-    ProductDTO delete(int id) throws ResourceNotFoundException;
+    ProductDto patch(int id, Product product) throws ResourceNotFoundException;
 
-    List<ProductDTO> getByUser(int id);
+    ProductDto delete(int id) throws ResourceNotFoundException;
+
+    List<ProductDto> getByUser(int id);
 
 
     List<ProductListGetDto> findAllProduct();
