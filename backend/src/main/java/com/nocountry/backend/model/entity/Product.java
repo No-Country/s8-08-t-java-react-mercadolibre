@@ -4,34 +4,45 @@ package com.nocountry.backend.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
+@Table(name = "PRODUCTS")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PRODUCT_ID")
     private Integer id;
-    private String name;
-    private double price;
+    private String title;
+    private Double price;
     private Integer stock;
-    private String description;
 
-    @ManyToOne
+    private Integer numberQuotas;
+
+    @Transient
+    private Double priceQuotas;
+
+    private String description;
+    private String descriptionRelevant;
+    private String listColors;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Image> images;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -1,7 +1,7 @@
-package com.nocountry.backend.controller.productController;
+package com.nocountry.backend.controller;
 
 import com.nocountry.backend.model.entity.Category;
-import com.nocountry.backend.repository.product_repository.CategoryRepository;
+import com.nocountry.backend.repository.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +14,11 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private ICategoryRepository ICategoryRepository;
 
     @GetMapping("/category")
     public ResponseEntity<List<Category>> getAllCategories() {
-        List<Category> categories = categoryRepository.findAll();
+        List<Category> categories = ICategoryRepository.findAll();
         if (!categories.isEmpty()) {
             return ResponseEntity.ok(categories);
         } else {
@@ -28,7 +28,7 @@ public class CategoryController {
 
     @PostMapping("/category")
     public ResponseEntity<String> saveCategory(@RequestBody Category category) {
-        Category savedCategory = categoryRepository.save(category);
+        Category savedCategory = ICategoryRepository.save(category);
         if (savedCategory != null) {
             return ResponseEntity.ok("Categoría guardada correctamente");
         } else {

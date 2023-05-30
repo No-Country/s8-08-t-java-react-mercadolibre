@@ -1,5 +1,7 @@
 package com.nocountry.backend.dto.product;
 
+import com.nocountry.backend.dto.category.CategoryDto;
+import com.nocountry.backend.dto.image.ImageDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,11 +13,11 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTO {
+public class ProductDto {
     private String name;
     private double price;
     private Integer stock;
     private String description;
-    private CategoryDTO category;
-    private List<ImageDTO> images;
+    private CategoryDto category;
+    private List<ImageDto> images;
 }
