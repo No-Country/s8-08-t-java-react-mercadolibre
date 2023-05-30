@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import chatbot from "../../assets/img/chatbot.png";
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 import { AiFillCloseCircle } from "react-icons/ai";
+import chatbot from "../../assets/img/chatbot.png";
+import axios from 'axios';
+import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
 
 const systemMessage = {
@@ -41,16 +42,11 @@ const ChatBot = () => {
 
         setMessages(newMessages);
 
-        // Initial system message to determine ChatGPT functionality
-        // How it responds, how it talks, etc.
         setIsTyping(true);
         await processMessageToChatGPT(newMessages);
     };
 
-    async function processMessageToChatGPT(chatMessages) { // messages is an array of messages
-        // Format messages for chatGPT API
-        // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
-        // So we need to reformat
+    async function processMessageToChatGPT(chatMessages) { 
 
         let apiMessages = chatMessages.map((messageObject) => {
             let role = "";
@@ -62,35 +58,34 @@ const ChatBot = () => {
             return { role: role, content: messageObject.message }
         });
 
-
-        // Get the request body set up with the model we plan to use
-        // and the messages which we formatted above. We add a system message in the front to'
-        // determine how we want chatGPT to act. 
         const apiRequestBody = {
             "model": "gpt-3.5-turbo",
             "messages": [
-                systemMessage,  // The system message DEFINES the logic of our chatGPT
-                ...apiMessages, // The messages from our chat with ChatGPT
+                systemMessage,  
+                ...apiMessages,
             ]
         }
 
-        await fetch("https://api.openai.com/v1/chat/completions",
+        try {
+            const response = await axios.post("https://api.openai.com/v1/chat/completions", 
+            apiRequestBody,
             {
-                method: "POST",
                 headers: {
                     "Authorization": "Bearer " + import.meta.env.VITE_API_KEY,
                     "Content-Type": "application/json"
-                },
-                body: JSON.stringify(apiRequestBody)
-            }).then((data) => {
-                return data.json();
-            }).then((data) => {
-                setMessages([...chatMessages, {
-                    message: data.choices[0].message.content,
-                    sender: "ChatGPT"
-                }]);
-                setIsTyping(false);
-            });
+                }
+            })
+            const data = response.data
+
+            setMessages([...chatMessages, {
+                message: data.choices[0].message.content,
+                sender: "ChatGPT"
+            }]);
+
+            setIsTyping(false);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -112,13 +107,12 @@ const ChatBot = () => {
                                     typingIndicator={isTyping ? <TypingIndicator content="MELI está escribiendo" /> : null}
                                 >
                                     {messages.map((message, i) => {
-                                        console.log(message)
                                         return <Message key={i} model={message} />
                                     })}
                                 </MessageList>
                                 <MessageInput placeholder="Escribe tu mensaje" onSend={handleSend} attachButton={false}
                                     className='bg-white text-red'
-                                    />
+                                />
                             </ChatContainer>
                         </MainContainer>
                     </div>
