@@ -5,10 +5,8 @@ import LoginNavbar from "../components/Login/LoginNavbar";
 import LoginFooter from "../components/Login/LoginFooter";
 import ReportProblem from "../components/Login/ReportProblem";
 import account from "../assets/icons/account.png";
-import { postRequestLogin } from "../services/httpRequest";
 import { useDispatch } from "react-redux";
-import { setLogin } from "../store/state/authSlice";
-import { setLocalStorage } from "../utils/LocalStorageFunctions";
+import { loginUser } from "../store/state/authSlice";
 
 const Login = () => {
   const [isUser, setIsUser] = useState(false);
@@ -30,19 +28,7 @@ const Login = () => {
       setEmail(values.email);
       setIsUser(true);
       if (values.password) {
-        setIsLoading(true);
-        postRequestLogin(values, "/auth/login")
-          .then(res => {
-            dispatch(setLogin({ token: res.token, user: res.user }));
-            const authInStorage = { token: res.token, user: res.user };
-            setLocalStorage("auth", authInStorage);
-            setIsLoading(false);
-          })
-          .catch(err => {
-            alert("Credenciales Invalidas");
-            setIsLoading(false);
-            console.log(err);
-          });
+        userLogin();
       }
     }
   });
@@ -50,6 +36,15 @@ const Login = () => {
   useEffect(() => {
     setIsEmailValid(formik.errors.email ? true : false);
   }, [formik.errors.email]);
+
+  const userLogin = async () => {
+    setIsLoading(true);
+    const isLogin = await dispatch(loginUser(formik.values));
+    if (!isLogin.login) {
+      setIsLoading(false);
+    }
+    setIsLoading(false);
+  };
 
   const changeAcount = () => {
     setEmail("");
