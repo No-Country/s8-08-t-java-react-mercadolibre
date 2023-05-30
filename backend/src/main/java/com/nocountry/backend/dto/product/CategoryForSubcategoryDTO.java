@@ -6,17 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTO {
+public class CategoryForSubcategoryDTO {
+    private Integer id;
     private String name;
-    private double price;
-    private Integer stock;
-    private String description;
-    private CategoryDTO category;
-    private SubcategoryDTO subcategory;
-    private List<ImageDTO> images;
+    private List<SubcategoryDTO> subcategories;
 }
