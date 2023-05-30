@@ -11,15 +11,14 @@ import { Grid, Pagination } from "swiper";
 
 import { TiChevronRight } from "react-icons/ti";
 import { TiChevronLeft } from "react-icons/ti";
-import getCard from "../../../utils/card.json";
+import getCard from "../../utils/card.json";
 import PopularCategories from "../PopularCategorie/PopularCategories.jsx";
 
 const SliderIcon = () => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
+  const handleMouseOver = () => {
     setIsHovered(true);
-    console.log(isHovered);
   };
 
   const handleMouseLeave = () => {
@@ -67,7 +66,7 @@ const SliderIcon = () => {
       >
         {getCard.map((card, index) => (
           <SwiperSlide
-            onMouseOver={handleMouseEnter}
+            onMouseOver={handleMouseOver}
             key={`${index}-card`}
             className={style.swiperSlide}
           >

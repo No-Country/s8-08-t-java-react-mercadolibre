@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 
 const ProductDetailPayment = ({ coupon, notification }) => {
+  const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
@@ -28,7 +30,6 @@ const ProductDetailPayment = ({ coupon, notification }) => {
               <div>
                 <p className="mt-4 font-normal">Producto</p>
                 <p className="mt-4 font-normal">Envío</p>
-                {/* Render cupón de descuento */}
                 {coupon && (
                   <div className="absolute top-20 p-1">
                     <p className="text-base text-ligthblue">Ingresar código de cupón</p>
@@ -47,7 +48,6 @@ const ProductDetailPayment = ({ coupon, notification }) => {
             </div>
           </div>
 
-          {/* Render de notificaciones y avisos legales */}
           {notification && (
             <div className="flex flex-col items-center justify-center mt-10 gap-8">
               <div className="flex items-center gap-2">
@@ -68,8 +68,11 @@ const ProductDetailPayment = ({ coupon, notification }) => {
                   Conocé nuestros <span className="text-ligthblue">avisos legales</span>
                 </p>
               </div>
-              <div>
-                <button className="w-[316px] h-[48px] text-white rounded-md bg-ligthblue font-medium">
+              <div className="lg:pb-10">
+                <button
+                  onClick={() => navigate("/pay/purchases")}
+                  className="w-[316px] h-[48px] text-white rounded-md bg-ligthblue font-medium"
+                >
                   Confirmar Compra
                 </button>
               </div>
@@ -78,11 +81,21 @@ const ProductDetailPayment = ({ coupon, notification }) => {
         </aside>
       ) : (
         <div
-          className="flex justify-between items-center w-full font-normal text-lg p-5 bg-[#f7f7f7] shadow-inner shadow-black"
+          className="flex justify-between items-center w-full font-normal text-lg p-5 bg-[#f7f7f7]"
           style={{ boxShadow: "0px -6px 6px -2px rgba(0, 0, 0, 0.1)" }}
         >
           <p className="mt-4 text-[#666666]">Pagás</p>
           <p className="mt-4 text-[#333333]">$ 184.999</p>
+          {isMobile && notification && (
+            <div>
+              <button
+                onClick={() => navigate("/pay/purchases")}
+                className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue font-medium"
+              >
+                Confirmar Compra
+              </button>
+            </div>
+          )}
         </div>
       )}
     </>

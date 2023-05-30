@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { SlLocationPin } from "react-icons/sl";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
+import { useNavigate } from "react-router-dom";
 
 const DeliveryOptionPayment = () => {
+  const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("");
   const isMobile = useMediaQuery("(max-width: 640px)");
 
@@ -102,7 +104,10 @@ const DeliveryOptionPayment = () => {
         </div>
 
         <div className="flex justify-center sm:justify-end mt-7 lg:mb-12">
-          <button className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue">
+          <button
+            onClick={() => navigate("/pay/home-delivery")}
+            className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue"
+          >
             Continuar
           </button>
         </div>

@@ -1,12 +1,28 @@
+import { useEffect, useState } from "react";
+import Loader from "../../components/Payments/Loader";
 import NavbarPayment from "../../components/Payments/NavbarPayment";
 import PurchaseCard from "../../components/Payments/PurchaseCard";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Purchases = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulación de una tarea asíncrona
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
 
   return (
     <>
+      {isLoading ? (
+        <div className="flex justify-center items-center bg-white h-screen w-screen">
+          <Loader />
+        </div>
+      ) : null}
+
       {!isMobile ? (
         <>
           <NavbarPayment />
