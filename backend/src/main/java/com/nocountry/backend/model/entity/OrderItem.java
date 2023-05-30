@@ -22,27 +22,31 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ITEM_ID")
     private int id;
-    //@ManyToOne // (cascade = CascadeType.MERGE,fetch = FetchType.LAZY, optional = false)
-    //@JoinColumn(name = "PRODUCT_ID")//, nullable = false)
-    //@OnDelete(action = OnDeleteAction.NO_ACTION)
-    //@NonNull
-    //@Builder.Default
-    //private Product product;//=new Product();
-    //@ManyToOne //(cascade = CascadeType.MERGE,fetch = FetchType.LAZY, optional = false)
-  //  @JoinColumn(name = "ORDER_ID")//, nullable = false)
-    //@OnDelete(action = OnDeleteAction.NO_ACTION)
-    //@NonNull
-   // @Builder.Default
-//    private Order order ;//= new Order();
+
+    @Column(name = "ORDER_FK")
+    private Long orderFk;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDER_FK", referencedColumnName = "ID",
+            insertable = false,
+            updatable = false
+    )
+    private Order order;
+
+    @Column(name = "PRODUCT_FK")
+    private Long productFk;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRODUCT_FK", referencedColumnName = "ID",
+            insertable = false,
+            updatable = false
+    )
+    private Product product;
 
 
     @Column(name = "QUANTITY")
     private int quantity;
-    /*@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ORDER_ITEMS_ID")
-    @Builder.Default
-    private Set<UserReview> reviews = new HashSet<>();
-*/
+
 }

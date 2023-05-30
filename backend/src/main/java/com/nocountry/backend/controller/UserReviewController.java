@@ -19,7 +19,7 @@ import java.util.List;
 @Tag(name = "UserReview", description = "Review of a purchase item")
 
 public class UserReviewController  {
-
+/*
     @Autowired
     IUserReviewService userReviewService;
 
@@ -58,6 +58,6 @@ public class UserReviewController  {
                 .body("UserReview deleted");
     }
 
-
+*/
 }
 

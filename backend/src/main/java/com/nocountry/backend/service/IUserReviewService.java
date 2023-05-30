@@ -10,13 +10,13 @@ import java.util.List;
 
 public interface IUserReviewService {
     List<UserReviewDto> getAll();
-    UserReviewDto getById(int id) throws ResourceNotFoundException;
+    UserReviewDto getById(Long id) throws ResourceNotFoundException;
 
     UserReviewDto post(UserReview userReview);
 
-    UserReviewDto patch(int id,UserReview userReview) throws ResourceNotFoundException;
+    UserReviewDto patch(Long id,UserReview userReview) throws ResourceNotFoundException;
 
-    UserReviewDto delete(int id) throws ResourceNotFoundException;
+    UserReviewDto delete(Long id) throws ResourceNotFoundException;
 
 
 }
