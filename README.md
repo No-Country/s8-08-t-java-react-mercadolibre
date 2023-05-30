@@ -1,6 +1,6 @@
 <img align="center" src="https://res.cloudinary.com/dzm5lgpyv/image/upload/v1685399475/mercadolibre%20readme/Sin_t%C3%ADtulo_zky0wb.png">
 
-<h3>👉🏻 Clon de Mercado Libre realizado en equipo como proyecto para No Country.</h3>
+<h3>👉🏻 Clon de Mercado Libre realizado en equipo multidisciplinario como proyecto para No Country.</h3>
 
 <h3>👉🏻 <b>Deploy: <a href="https://mercadolibre-s8-08.netlify.app/">Mercado Libre</a></b></h3>
 
@@ -80,7 +80,7 @@
 
 ### 🎨 UX/UI:
 
-| <img src="/" width=50>| <img src="https://res.cloudinary.com/dzm5lgpyv/image/upload/v1685458596/mercadolibre%20readme/ux-ui_bjhf7v.jpg" width=50>|
+| <img src="https://res.cloudinary.com/dzm5lgpyv/image/upload/v1685479286/mercadolibre%20readme/Imagen_de_WhatsApp_2023-05-30_a_las_17.39.51_nvjodz.jpg" width=50>| <img src="https://res.cloudinary.com/dzm5lgpyv/image/upload/v1685458596/mercadolibre%20readme/ux-ui_bjhf7v.jpg" width=50>|
 |:-:|:-:|
 | **Eugenia Olmedo**| **Vanina Restelli**|
-|<a href="/"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/eugeniaolmedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="/"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/vaninarestelli/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+|<a href="https://www.behance.net/eugeniaolmedo"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/eugeniaolmedo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://www.behance.net/vaninarestelli"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a>  <a href="https://www.linkedin.com/in/vaninarestelli/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
