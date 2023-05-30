@@ -14,19 +14,20 @@ INSERT INTO provinces (PROVINCE_ID, PROVINCE_NAME) values
    ('admin@meli.com', 'admin','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'USER'),
     ('user@meli.com', 'user','test','23423','$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta', 'ADMIN');
 
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Pastry - Choclate Baked', 15035.34, 5);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Beef - Outside, Round', 10490.46, 7);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Soup - Campbells, Spinach Crm', 15778.25, 7);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Muffin - Banana Nut Individual', 14288.5, 4);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Oil - Peanut', 17465.7, 8);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Sausage - Liver', 18449.94, 9);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Beef - Top Sirloin - Aaa', 11593.67, 6);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Mix - Cocktail Ice Cream', 15786.11, 5);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Bar Special K', 11509.46, 10);
-insert into PRODUCTS (TITLE, PRICE, NUMBER_QUOTAS) values ('Nantucket - 518ml', 18004.41, 5);
+insert into products (TITLE, PRICE, NUMBER_QUOTAS) values
+('Pastry - Choclate Baked', 15035.34, 5),
+('Beef - Outside, Round', 10490.46, 7),
+('Soup - Campbells, Spinach Crm', 15778.25, 7),
+('Muffin - Banana Nut Individual', 14288.5, 4),
+('Oil - Peanut', 17465.7, 8),
+('Sausage - Liver', 18449.94, 9),
+('Beef - Top Sirloin - Aaa', 11593.67, 6),
+('Mix - Cocktail Ice Cream', 15786.11, 5),
+('Bar Special K', 11509.46, 10),
+('Nantucket - 518ml', 18004.41, 5);
 
 
-INSERT INTO IMAGES (PRODUCT_ID,IMAGE_URL) values
+INSERT INTO images (PRODUCT_ID,IMAGE_URL) values
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
 (2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
