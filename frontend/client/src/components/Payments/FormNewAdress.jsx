@@ -11,6 +11,7 @@ import useMediaQuery from "../../hooks/useMediaQuery.js";
 const FormNewAdress = () => {
   const [location, setLocation] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isRequestFailed, setIsRequestFailed] = useState(false);
   const isMobile = useMediaQuery("(max-width: 451px)");
   const navigate = useNavigate();
 
@@ -59,9 +60,12 @@ const FormNewAdress = () => {
 
       try {
         const response = locationRequest(event.target.value);
-        if (response) {
+        if (response.ok) {
           setIsLoading(false);
           setLocation(response);
+        } else {
+          setIsLoading(false);
+          setIsRequestFailed(true);
         }
       } catch (error) {
         setIsLoading(false);
