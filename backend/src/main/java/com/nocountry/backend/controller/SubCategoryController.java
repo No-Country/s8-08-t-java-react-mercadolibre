@@ -1,6 +1,6 @@
-package com.nocountry.backend.controller.productController;
+package com.nocountry.backend.controller;
 
-import com.nocountry.backend.dto.product.SubcategoryDTO;
+import com.nocountry.backend.dto.subcategory.SubcategoryDTO;
 import com.nocountry.backend.model.entity.Subcategory;
 import com.nocountry.backend.repository.product_repository.SubcategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

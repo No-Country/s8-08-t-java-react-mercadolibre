@@ -1,5 +1,6 @@
 package com.nocountry.backend.dto.product;
 
+import com.nocountry.backend.dto.brand.BrandDTO;
 import com.nocountry.backend.dto.category.CategoryDto;
 import com.nocountry.backend.dto.image.ImageDto;
 import com.nocountry.backend.dto.orderItem.OrderItemDto;
@@ -15,11 +16,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductsDTO {
+    private Integer id;
     private String name;
     private double price;
     private Integer stock;
     private String description;
+    private Integer discount;
+    private double priceDiscount;
+    private Integer quoteQuantity;
+    private double quotePrice;
     private CategoryDto category;
+    private BrandDTO brand;
     private List<ImageDto> images;
     private List<OrderItemDto> orders;
 }

@@ -1,5 +1,6 @@
-package com.nocountry.backend.dto.product;
+package com.nocountry.backend.dto.category;
 
+import com.nocountry.backend.dto.subcategory.SubcategoryDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

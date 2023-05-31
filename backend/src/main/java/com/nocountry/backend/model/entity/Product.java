@@ -25,7 +25,8 @@ public class Product {
     private String title;
     private Double price;
     private Integer stock;
-
+    private Integer discount;
+    private double priceDiscount;
     private Integer numberQuotas;
 
     @Transient
@@ -57,6 +58,10 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "SubCategory_id")
     private Subcategory subcategory;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 
 }
 
