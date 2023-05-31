@@ -1,6 +1,6 @@
 package com.nocountry.backend.dto.userReview;
 
-import com.nocountry.backend.dto.orderItem.OrderItemDto;
+import com.nocountry.backend.dto.orderItem.OrderItemListGetDto;
 import lombok.*;
 
 @Getter
@@ -14,5 +14,5 @@ public class  UserReviewDto {
     private int id;
     private int  ratingValue;
     private String comments;
-    private OrderItemDto item;
+    private OrderItemListGetDto item;
 }

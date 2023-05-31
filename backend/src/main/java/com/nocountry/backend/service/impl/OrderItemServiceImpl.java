@@ -1,9 +1,12 @@
 package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.dto.orderItem.OrderItemDto;
+import com.nocountry.backend.dto.orderItem.OrderItemListGetDto;
+import com.nocountry.backend.dto.orderItem.OrderItemPostDto;
+import com.nocountry.backend.dto.orderItem.OrderItemUpdatePostDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.mapper.IOrderItemMapper;
 import com.nocountry.backend.model.entity.OrderItem;
+import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.repository.IOrderItemRepository;
 import com.nocountry.backend.repository.IProductRepository;
 import com.nocountry.backend.service.IOrderItemService;
@@ -27,70 +30,67 @@ public class OrderItemServiceImpl implements IOrderItemService {
 
 
     @Override
-    public List<OrderItemDto> getAll() {
-        return orderItemMapper.toOrderItemsDTO(orderItemRepository.findAll());
+    public List<OrderItemListGetDto> getAll() {
+        return orderItemMapper.toOrderItemListGetDtos(orderItemRepository.findAll());
     }
 
 
     @Override
-    public OrderItemDto getById(int id) throws ResourceNotFoundException {
+    public OrderItemListGetDto getById(Long id) throws ResourceNotFoundException {
         OrderItem orderItem = orderItemRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderItem with id " + id + " not found"));
-        return orderItemMapper.toOrderItemDto(orderItem);
+        return orderItemMapper.toOrderItemListGetDto(orderItem);
     }
 
 
     @Override
     @Transactional
-    public OrderItemDto post(OrderItem orderItem) throws ResourceNotFoundException {
-        OrderItem savedOrderItem = orderItemRepository.save(orderItem);
+    public OrderItemPostDto post(OrderItemPostDto orderItemPostDto) throws ResourceNotFoundException {
+        OrderItem savedOrderItem =   this.orderItemRepository.save(this.orderItemMapper.toOrderItem(orderItemPostDto));
+
         // descontar stock
-      /*  Product existingProduct =productRepository.findById(savedOrderItem.getProduct().getId())
+        Product existingProduct =productRepository.findById(savedOrderItem.getProduct().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
         existingProduct.setStock(existingProduct.getStock() - savedOrderItem.getQuantity());
         productRepository.save(existingProduct);
-*/
+
+
         return orderItemMapper.toOrderItemDto(savedOrderItem);
     }
 
 
     @Override
-    public OrderItemDto patch(int id, OrderItem orderItem) throws ResourceNotFoundException {
-        OrderItem existingOrderItem = orderItemRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("OrderItem with id " + id + " not found"));
-        /*if (orderItem.getOrder() != null) {
-            existingOrderItem.setOrder(orderItem.getOrder());
-        }*/
-  /*      if (orderItem.getProduct() != null) {
-            existingOrderItem.setProduct(orderItem.getProduct());
-        }
-    */
-        existingOrderItem.setQuantity(orderItem.getQuantity());
-        OrderItem updatedOrderItem = orderItemRepository.save(existingOrderItem);
+    public OrderItemListGetDto patch(Long id, OrderItemUpdatePostDto orderItemUpdatePostDto) throws ResourceNotFoundException {
+        this.orderItemRepository.findById(id).ifPresent(
+                orderItem -> {
+                    this.orderItemMapper.updateOrderItem(orderItemUpdatePostDto, orderItem);
+                    this.orderItemRepository.save(orderItem);
+                }
+        );
+        return this.getById(id);
 
-        return orderItemMapper.toOrderItemDto(updatedOrderItem);
     }
 
 
     @Override
-    public OrderItemDto delete(int id) throws ResourceNotFoundException {
+    public void delete(Long id) throws ResourceNotFoundException {
         OrderItem orderItemToDelete = orderItemRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderItem with id " + id + " not found"));
         orderItemRepository.delete(orderItemToDelete);
-        return orderItemMapper.toOrderItemDto(orderItemToDelete);
+
     }
 
-   /* @Override
-    public List<OrderItemDto> getItemsByProduct(int id) {
-        return orderItemMapper.toOrderItemsDTO
+    @Override
+    public List<OrderItemListGetDto> getItemsByProduct(Long id) {
+        return orderItemMapper.toOrderItemListGetDtos
                 (orderItemRepository.findByProduct_id(id));
 
     }
 
     @Override
-    public List<OrderItemDto> getItemsByOrder(int id) {
-         return orderItemMapper.toOrderItemsDTO
+    public List<OrderItemListGetDto> getItemsByOrder(Long id) {
+         return orderItemMapper.toOrderItemListGetDtos
                 (orderItemRepository.findByOrder_id(id));
     }
-*/
+
 }

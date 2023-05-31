@@ -1,8 +1,9 @@
 package com.nocountry.backend.controller;
 
-import com.nocountry.backend.dto.orderItem.OrderItemDto;
+import com.nocountry.backend.dto.orderItem.OrderItemListGetDto;
+import com.nocountry.backend.dto.orderItem.OrderItemPostDto;
+import com.nocountry.backend.dto.orderItem.OrderItemUpdatePostDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
-import com.nocountry.backend.model.entity.OrderItem;
 import com.nocountry.backend.service.IOrderItemService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +25,9 @@ public class OrderItemController  {
     IOrderItemService orderItemService;
 
     @GetMapping()
-    public ResponseEntity<List<OrderItemDto>> getAll() {
+    public ResponseEntity<List<OrderItemListGetDto>> getAll() {
         try {
-            List<OrderItemDto> response = orderItemService.getAll();
+            List<OrderItemListGetDto> response = orderItemService.getAll();
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -34,52 +35,52 @@ public class OrderItemController  {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderItemDto> getById(@PathVariable int id) throws ResourceNotFoundException {
-        OrderItemDto response = orderItemService.getById(id);
+    public ResponseEntity<OrderItemListGetDto> getById(@PathVariable Long id) throws ResourceNotFoundException {
+        OrderItemListGetDto response = orderItemService.getById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/")
 
-    public ResponseEntity<OrderItemDto> postOrderItem(@RequestBody OrderItem orderItem) throws ResourceNotFoundException {
-        OrderItemDto createdOrderItem = orderItemService.post(orderItem);
+    public ResponseEntity<OrderItemPostDto> postOrderItem(@RequestBody OrderItemPostDto orderItem) throws ResourceNotFoundException {
+        OrderItemPostDto createdOrderItem = orderItemService.post(orderItem);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrderItem);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<OrderItemDto> patchOrderItem(@PathVariable int id, @RequestBody OrderItem orderItem) throws ResourceNotFoundException {
-        OrderItemDto updatedOrderItem = orderItemService.patch(id, orderItem);
+    public ResponseEntity<OrderItemListGetDto> patchOrderItem(@PathVariable Long id, @RequestBody OrderItemUpdatePostDto orderItemUpdatePostDto) throws ResourceNotFoundException {
+        OrderItemListGetDto updatedOrderItem = orderItemService.patch(id, orderItemUpdatePostDto);
         return ResponseEntity.ok(updatedOrderItem);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteOrderItem(@PathVariable int id) throws ResourceNotFoundException {
+    public ResponseEntity<?> deleteOrderItem(@PathVariable Long id) throws ResourceNotFoundException {
         orderItemService.delete(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body("OrderItem deleted");
+
+
     }
 
     @GetMapping("/order/{id}")
-    public ResponseEntity<?> getItemsByOrder(@PathVariable int id) {
+    public ResponseEntity<?> getItemsByOrder (@PathVariable Long id) {
 
-/*        try {
-            List<OrderItemDto> response = orderItemService.getItemsByOrder(id);
+       try {
+            List<OrderItemListGetDto> response = orderItemService.getItemsByOrder(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-  */            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @GetMapping("/product/{id}")
-    public ResponseEntity<?> getItemsByProduct(@PathVariable int id) {
-       /* try {
-            List<OrderItemDto> response = orderItemService.getItemsByProduct(id);
+    public ResponseEntity<?> getItemsByProduct(@PathVariable Long id) {
+        try {
+            List<OrderItemListGetDto> response = orderItemService.getItemsByProduct(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-*/            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
 }

@@ -1,22 +1,22 @@
 package com.nocountry.backend.service;
 
-import com.nocountry.backend.dto.orderItem.OrderItemDto;
+import com.nocountry.backend.dto.orderItem.OrderItemListGetDto;
+import com.nocountry.backend.dto.orderItem.OrderItemPostDto;
+import com.nocountry.backend.dto.orderItem.OrderItemUpdatePostDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
-import com.nocountry.backend.model.entity.OrderItem;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface IOrderItemService {
-    List<OrderItemDto> getAll();
-    OrderItemDto getById(int id) throws ResourceNotFoundException;
+    List<OrderItemListGetDto> getAll();
+    OrderItemListGetDto getById(Long id) throws ResourceNotFoundException;
 
-    OrderItemDto post(OrderItem orderItem) throws ResourceNotFoundException;
+    OrderItemPostDto post(OrderItemPostDto orderItem) throws ResourceNotFoundException;
 
-    OrderItemDto patch(int id,OrderItem orderItem) throws ResourceNotFoundException;
+    OrderItemListGetDto patch(Long id, OrderItemUpdatePostDto orderItemUpdatePostDto) throws ResourceNotFoundException;
 
-    OrderItemDto delete(int id) throws ResourceNotFoundException;
-    /*List<OrderItemDto>getItemsByOrder(int id);
-    List<OrderItemDto>getItemsByProduct(int id);
-*/
+    void delete(Long id) throws ResourceNotFoundException;
+    List<OrderItemListGetDto>getItemsByOrder(Long id);
+    List<OrderItemListGetDto>getItemsByProduct(Long id);
+
 }

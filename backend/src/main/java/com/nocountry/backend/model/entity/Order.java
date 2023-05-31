@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "ORDERS")
@@ -67,11 +68,7 @@ public class Order {
     )
     private OrderStatus orderStatus;
 
-/*
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ORDER_ID")
-    @Builder.Default
-    private Set<OrderItem> items = new HashSet<>();
-*/
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    List<OrderItem> items;
 
 }
