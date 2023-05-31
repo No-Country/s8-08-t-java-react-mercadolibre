@@ -54,6 +54,7 @@ const FormNewAdress = () => {
   });
 
   const getLocation = async (event) => {
+    console.log(event.target.value);
     if (event.target.value.length === 4) {
       setIsLoading(true);
 
