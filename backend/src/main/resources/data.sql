@@ -532,9 +532,6 @@ VALUES (4, '26-5-23', '10000', '1', '1', '1', '2');
 
 INSERT INTO `brand` (`id`, `name`)
 VALUES
-
-INSERT INTO `brand` (`id`, `name`)
-VALUES
 (1, 'Sony'),
 (2, 'Apple'),
 (3, 'Xiaomi'),
@@ -583,14 +580,14 @@ VALUES
 (46, 'Converse'),
 (47, 'Timberland'),
 (48, 'Dr. Martens'),
-(49, 'Levi' s '),
+(49, 'Levi'),
 (50, ' Wrangler '),
 (51, ' Diesel '),
 (52, ' GAP '),
 (53, ' Zara '),
 (54, ' H&M '),
 (55, ' Forever '),
-(56, ' Victoria 's Secret'),
+(56, ' Victoria '),
 (57, 'Calvin Klein'),
 (58, 'Ralph Lauren'),
 (59, 'Burberry'),
@@ -614,7 +611,7 @@ VALUES
 (77, 'Sephora'),
 (78, 'MAC Cosmetics'),
 (79, 'Maybelline'),
-(80, 'L' Oréal '),
+(80, 'LOréal '),
 (81, ' NYX '),
 (82, ' Revlon '),
 (83, ' Estée Lauder '),
@@ -629,7 +626,7 @@ VALUES
 (92, ' H&M '),
 (93, ' Converse '),
 (94, ' Tommy Hilfiger '),
-(95, ' Levi's'),
+(95, ' Levis'),
 (96, 'Calvin Klein'),
 (97, 'Adidas'),
 (98, 'Nike'),

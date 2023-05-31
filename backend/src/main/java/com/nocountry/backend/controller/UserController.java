@@ -55,7 +55,7 @@ public class UserController {
         // Iterar sobre los productos y crear los objetos ProductDTO
         for (Product product : products) {
             ProductDto productDTO = new ProductDto().builder()
-                    .name(product.getTitle())
+                    .title(product.getTitle())
                     .price(product.getPrice())
                     .stock(product.getStock())
                     .description(product.getDescription())

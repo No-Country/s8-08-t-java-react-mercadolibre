@@ -14,9 +14,8 @@ import com.nocountry.backend.model.entity.Category;
 import com.nocountry.backend.model.entity.Image;
 import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.model.entity.User;
-import com.nocountry.backend.repository.BrandRepository;
+import com.nocountry.backend.repository.IBrandRepository;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
-import com.nocountry.backend.repository.product_repository.SubcategoryRepository;
 import com.nocountry.backend.repository.ICategoryRepository;
 import com.nocountry.backend.repository.IProductRepository;
 import com.nocountry.backend.service.impl.CloudinaryService;
@@ -48,13 +47,13 @@ public class ProductController {
     private CloudinaryService cloudinaryService;
 
     @Autowired
-    private SubcategoryRepository subcategoryRepository;
+    private com.nocountry.backend.repository.product_repository.ISubcategoryRepository ISubcategoryRepository;
 
     @Autowired
     private IProductService productService;
 
     @Autowired
-    private BrandRepository brandRepository;
+    private IBrandRepository IBrandRepository;
 
 
     @GetMapping("")
@@ -88,17 +87,17 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Category not found");
         }
 
-        Subcategory subcategory = subcategoryRepository.findById(productDTO.getSubcategory().getId()).orElse(null);
+        Subcategory subcategory = ISubcategoryRepository.findById(productDTO.getSubcategory().getId()).orElse(null);
         if (subcategory == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("SubCategory not found");
         }
 
-        Brand brand = brandRepository.findByName(productDTO.getBrand().getName());
+        Brand brand = IBrandRepository.findByName(productDTO.getBrand().getName());
         if (brand == null) {
             brand = Brand.builder()
                     .name(productDTO.getBrand().getName())
                     .build();
-            brand = brandRepository.save(brand);
+            brand = IBrandRepository.save(brand);
         }
 
         Product product = Product.builder()
@@ -309,7 +308,7 @@ public class ProductController {
 
             Subcategory subcategory = product.getSubcategory();
             subcategory.setProductCount(subcategory.getProductCount() - 1);
-            subcategoryRepository.save(subcategory);
+            ISubcategoryRepository.save(subcategory);
             return ResponseEntity.ok("Product deleted successfully");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");
@@ -424,7 +423,7 @@ public class ProductController {
 
     @GetMapping("/name/{productName}")
     public ResponseEntity<?> getProductsByName(@PathVariable String productName) {
-        List<Product> products = productRepository.findByNameContainingIgnoreCase(productName);
+        List<Product> products = productRepository.findByTitleContainingIgnoreCase(productName);
         List<ProductDto> productDTOList = new ArrayList<>();
 
         for (Product product : products) {
@@ -476,7 +475,7 @@ public class ProductController {
 
     @GetMapping("/subcategory/{subcategoryId}")
     public ResponseEntity<List<ProductDto>> getProductsBySubcategory(@PathVariable Integer subcategoryId) {
-        Optional<Subcategory> optionalSubcategory = subcategoryRepository.findById(subcategoryId);
+        Optional<Subcategory> optionalSubcategory = ISubcategoryRepository.findById(subcategoryId);
         if (optionalSubcategory.isPresent()) {
             Subcategory subcategory = optionalSubcategory.get();
             List<Product> products = productRepository.findBySubcategory(subcategory);
@@ -530,7 +529,7 @@ public class ProductController {
 
     @GetMapping("/brand/{brandName}")
     public ResponseEntity<List<ProductDto>> getProductsByBrand(@PathVariable String brandName) {
-        Brand brand = brandRepository.findByName(brandName);
+        Brand brand = IBrandRepository.findByName(brandName);
         if (brand != null) {
             List<Product> products = productRepository.findByBrand(brand);
             List<ProductDto> productDTOList = new ArrayList<>();

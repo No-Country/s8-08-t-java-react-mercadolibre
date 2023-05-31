@@ -26,7 +26,7 @@ public class Product {
     private Double price;
     private Integer stock;
     private Integer discount;
-    private double priceDiscount;
+    private Double priceDiscount;
     private Integer numberQuotas;
 
     @Transient

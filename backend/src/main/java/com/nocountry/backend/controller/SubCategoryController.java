@@ -2,7 +2,6 @@ package com.nocountry.backend.controller;
 
 import com.nocountry.backend.dto.subcategory.SubcategoryDTO;
 import com.nocountry.backend.model.entity.Subcategory;
-import com.nocountry.backend.repository.product_repository.SubcategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +16,14 @@ import java.util.List;
 public class SubCategoryController {
 
     @Autowired
-    private SubcategoryRepository subcategoryRepository;
+    private com.nocountry.backend.repository.product_repository.ISubcategoryRepository ISubcategoryRepository;
 
     //todo get children category***********************************************
 
     @GetMapping
     public ResponseEntity<List<SubcategoryDTO>> getAllSubcategories() {
 
-        List<Subcategory> subcategories = subcategoryRepository.findAll();
+        List<Subcategory> subcategories = ISubcategoryRepository.findAll();
 
         if (subcategories.isEmpty()) {
             return ResponseEntity.noContent().build();
