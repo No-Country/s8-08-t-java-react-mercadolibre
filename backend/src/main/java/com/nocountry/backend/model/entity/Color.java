@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "COLORS")
+@Table(name = "colors")
 public class Color {
 
     @Id
@@ -23,5 +23,5 @@ public class Color {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "colors_has_products", joinColumns = @JoinColumn(name = "COLOR_ID"),
             inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID"))
-    private List<Product> colorJoined;
+    private List<Product> productJoined;
 }

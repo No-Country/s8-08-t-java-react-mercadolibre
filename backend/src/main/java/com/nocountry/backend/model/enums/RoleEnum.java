@@ -3,7 +3,7 @@ package com.nocountry.backend.model.enums;
 import lombok.Getter;
 
 @Getter
-public enum Role {
+public enum RoleEnum {
 
     USER, ADMIN, VENDOR;
 

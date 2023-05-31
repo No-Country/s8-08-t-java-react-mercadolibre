@@ -1,15 +1,28 @@
 package com.nocountry.backend.dto.product;
 
+import com.nocountry.backend.dto.color.ColorDto;
+import com.nocountry.backend.dto.description.DescriptionDto;
+import com.nocountry.backend.dto.image.ImageDto;
+import com.nocountry.backend.model.entity.Color;
 import com.nocountry.backend.model.entity.Image;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter
+@Setter
 public class ProductDetailGetDto {
 
     private Integer id;
-    private String name;
+    private String title;
     private Double price;
-    private Integer stock;
-    private String description;
-    private List<Image> images;
+    private Integer numberQuotas;
+    private Double priceQuotas;
+    private List<ImageDto> images;
+    private List<DescriptionDto> descriptionGeneric;
+    private List<DescriptionDto> descriptionRelevant;
+    private List<ColorDto> productJoined;
+
+
 }

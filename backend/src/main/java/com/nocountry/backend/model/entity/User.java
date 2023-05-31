@@ -1,6 +1,6 @@
 package com.nocountry.backend.model.entity;
 
-import com.nocountry.backend.model.enums.Role;
+import com.nocountry.backend.model.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -40,10 +40,10 @@ public class User implements UserDetails {
 
     @Column(length = 32, columnDefinition = "varchar(32) default 'USER'")
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleEnum role;
 
     public boolean isRoleTienda() {
-        return role == Role.VENDOR;
+        return role == RoleEnum.VENDOR;
     }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -55,7 +55,6 @@ public class User implements UserDetails {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     List<Address> addresses;
-
 
 
     @Override

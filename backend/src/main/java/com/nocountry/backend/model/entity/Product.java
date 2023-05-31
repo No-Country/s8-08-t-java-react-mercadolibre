@@ -4,7 +4,7 @@ package com.nocountry.backend.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,10 +34,9 @@ public class Product {
 
     private String description;
     private String descriptionRelevant;
-    private String listColors;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @OneToMany(fetch = FetchType.LAZY,
@@ -50,18 +49,26 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     @Builder.Default
     private Set<OrderItem> items = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "SubCategory_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     private Brand brand;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    List<Description> descriptions;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "colors_has_products", joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "color_id"))
+    private List<Color> productJoined;
 
 }
 

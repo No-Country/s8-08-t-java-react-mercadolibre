@@ -57,10 +57,16 @@ public class ProductController {
 
 
     @GetMapping("")
-    private ResponseEntity<List<ProductListGetDto>> findAllProducts() {
+    public ResponseEntity<List<ProductListGetDto>> findAllProducts() {
         return new ResponseEntity<>(this.productService.findAllProduct(), HttpStatus.OK);
     }
 
+
+    @GetMapping("/details/{productId}")
+    public ResponseEntity<ProductDetailGetDto> findByProduct(@PathVariable Integer productId) {
+        System.out.println("product " + productId);
+        return new ResponseEntity<>(this.productService.findProductById(productId), HttpStatus.OK);
+    }
 //todo Create all product ********************************
 
     @PostMapping("/img/{userId}")
@@ -210,7 +216,7 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
+            productDTO.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
             productDTO.setQuoteQuantity(product.getNumberQuotas());
             productDTO.setQuotePrice(product.getPriceQuotas());
             Category category = product.getCategory();
@@ -406,7 +412,6 @@ public class ProductController {
                 }
 
                 productDTO.setImages(imageDTOList);
-
 
 
                 productDTOList.add(productDTO);

@@ -1,5 +1,6 @@
 package com.nocountry.backend.service;
 
+import com.nocountry.backend.dto.product.ProductDetailGetDto;
 import com.nocountry.backend.dto.product.ProductDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.model.entity.Product;
@@ -22,5 +23,7 @@ public interface IProductService {
 
 
     List<ProductListGetDto> findAllProduct();
+
+    ProductDetailGetDto findProductById(Integer productId);
 
 }
