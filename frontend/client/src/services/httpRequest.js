@@ -1,37 +1,23 @@
 import axios from "axios";
+import { getLocalStorage } from "../utils/LocalStorageFunctions";
 
-const URL = "https://s8-08-t-java-react-mercadolibre-production.up.railway.app/api/v1";
-// @ts-ignore
-// const getToken = () => {
-//   const { token } = getLocalStorage("auth") || "";
-//   const Authorization = token && `Bearer ${token}`;
-//   return Authorization;
-// };
+const URL = import.meta.env.VITE_API_URL;
 
-// export const postRequest = async (dataSend, endpoint: string) => {
-//   try {
-//     const { data } = await axios.post(URL + endpoint, dataSend, {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//         Authorization: getToken(),
-//       },
-//     });
+const getToken = () => {
+  const { token } = getLocalStorage("auth") || "";
+  const Authorization = token && `Bearer ${token}`;
+  return Authorization;
+};
 
-//     return data;
-//   } catch (error) {
-//     if (axios.isAxiosError(error)) {
-//       throw new Error(error.message);
-//     } else {
-//       return "An unexpected error occurred";
-//     }
-//   }
-// };
-
-//! ENDPOINT PARA EL LOGIN
-export const postRequestLogin = async (dataSend, endpoint) => {
+export const postRequest = async (dataSend, endpoint) => {
   try {
-    const { data } = await axios.post(URL + endpoint, dataSend);
+    const { data } = await axios.post(URL + endpoint, dataSend, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: getToken()
+      }
+    });
 
     return data;
   } catch (error) {
@@ -48,8 +34,8 @@ export const getRequest = async endpoint => {
     const { data } = await axios.get(URL + endpoint, {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
-        // Authorization: getToken(),
+        Accept: "application/json",
+        Authorization: getToken()
       }
     });
 
