@@ -7,7 +7,7 @@ import {
   MessageInput,
   TypingIndicator
 } from "@chatscope/chat-ui-kit-react";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { IoMdClose } from "react-icons/io";
 import chatbot from "../../assets/img/chatbot.png";
 import axios from "axios";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
@@ -98,20 +98,25 @@ const ChatBot = () => {
   return (
     <div>
       {isPressed ? (
-        <div className="fixed h-[400px] w-[348px] right-5 bottom-10 z-40">
-          <div className="bg-[#fff] flex justify-end">
-            <div className="p-2">
-              <AiFillCloseCircle
-                className="text-[20px] text-[#e40101] cursor-pointer"
+        <div className="fixed h-[400px] w-[376px] right-5 bottom-16 z-40">
+          <div className="bg-[#fff] flex items-center h-[48px] rounded-tl-md rounded-tr-md">
+            <div className="pl-3 flex items-center gap-5">
+              <img src={chatbot} alt="Icono de chatbot" className="w-[32px] h-[32px]" />
+              <span className="text-base font-medium text-[#333333]">MELI</span>
+            </div>
+            <div className="pr-3 ml-auto">
+              <IoMdClose
+                className="text-[20px] text-[#4189E6] cursor-pointer"
                 onClick={hideChat}
               />
             </div>
           </div>
 
           <MainContainer>
-            <ChatContainer>
+            <ChatContainer className="rounded-bl-md rounded-br-md bg-black">
               <MessageList
                 scrollBehavior="smooth"
+                /* style={{ backgroundColor:  }} */
                 typingIndicator={
                   isTyping ? <TypingIndicator content="MELI está escribiendo" /> : null
                 }
