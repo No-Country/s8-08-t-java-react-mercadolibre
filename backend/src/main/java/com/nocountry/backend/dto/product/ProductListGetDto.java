@@ -18,6 +18,8 @@ public class ProductListGetDto {
     private Double price;
     private Integer numberQuotas;
     private Double priceQuotas;
+    private Integer discount;
+    private Double priceDiscount;
     private List<ImageDto> images;
 
 }

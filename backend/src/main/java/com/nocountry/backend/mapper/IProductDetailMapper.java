@@ -13,7 +13,9 @@ public interface IProductDetailMapper {
 
     @Mappings({
             @Mapping(target = "descriptionGeneric", ignore = true),
-            @Mapping(target = "descriptionRelevant", ignore = true)
+            @Mapping(target = "descriptionRelevant", ignore = true),
+            @Mapping(target = "colors", source = "productJoined")
+
     }
     )
     ProductDetailGetDto toProductDetailGetDto(Product product);

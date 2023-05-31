@@ -13,7 +13,5 @@ public class DescriptionDto {
 
 
     private String content;
-
-    private DescriptionEnum priority;
-
+    
 }

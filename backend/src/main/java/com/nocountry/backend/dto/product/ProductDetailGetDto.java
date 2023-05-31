@@ -19,10 +19,12 @@ public class ProductDetailGetDto {
     private Double price;
     private Integer numberQuotas;
     private Double priceQuotas;
+    private Integer discount;
+    private Double priceDiscount;
     private List<ImageDto> images;
     private List<DescriptionDto> descriptionGeneric;
     private List<DescriptionDto> descriptionRelevant;
-    private List<ColorDto> productJoined;
+    private List<ColorDto> colors;
 
 
 }
