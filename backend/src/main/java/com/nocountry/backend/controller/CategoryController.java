@@ -1,8 +1,8 @@
 package com.nocountry.backend.controller;
 
 import com.nocountry.backend.dto.category.CategoryDto;
-import com.nocountry.backend.dto.product.CategoryForSubcategoryDTO;
-import com.nocountry.backend.dto.product.SubcategoryDTO;
+import com.nocountry.backend.dto.category.CategoryForSubcategoryDTO;
+import com.nocountry.backend.dto.subcategory.SubcategoryDTO;
 import com.nocountry.backend.model.entity.Category;
 import com.nocountry.backend.repository.ICategoryRepository;
 import com.nocountry.backend.model.entity.Subcategory;

@@ -2,7 +2,9 @@ package com.nocountry.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nocountry.backend.dto.brand.BrandDTO;
 import com.nocountry.backend.dto.product.*;
+import com.nocountry.backend.dto.subcategory.SubcategoryDTO;
 import com.nocountry.backend.model.entity.*;
 import com.nocountry.backend.dto.category.CategoryDto;
 import com.nocountry.backend.dto.image.ImageDto;
@@ -12,6 +14,7 @@ import com.nocountry.backend.model.entity.Category;
 import com.nocountry.backend.model.entity.Image;
 import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.model.entity.User;
+import com.nocountry.backend.repository.BrandRepository;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
 import com.nocountry.backend.repository.product_repository.SubcategoryRepository;
 import com.nocountry.backend.repository.ICategoryRepository;
@@ -24,7 +27,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +40,7 @@ public class ProductController {
     private IProductRepository productRepository;
     @Autowired
     private ICategoryRepository categoryRepository;
+
     @Autowired
     private IUserRepositoryJpa userRepository;
 
@@ -49,6 +53,9 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
+    @Autowired
+    private BrandRepository brandRepository;
+
 
     @GetMapping("")
     private ResponseEntity<List<ProductListGetDto>> findAllProducts() {
@@ -57,7 +64,7 @@ public class ProductController {
 
 //todo Create all product ********************************
 
-    @PostMapping("/product/img/{userId}")
+    @PostMapping("/img/{userId}")
     public ResponseEntity<?> createProduct(
             @RequestParam("files") MultipartFile[] files,
             @RequestParam("product") String productJson,
@@ -86,15 +93,45 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("SubCategory not found");
         }
 
+        Brand brand = brandRepository.findByName(productDTO.getBrand().getName());
+        if (brand == null) {
+            brand = Brand.builder()
+                    .name(productDTO.getBrand().getName())
+                    .build();
+            brand = brandRepository.save(brand);
+        }
+
         Product product = Product.builder()
-                .title(productDTO.getName())
+                .title(productDTO.getTitle())
                 .price(productDTO.getPrice())
                 .stock(productDTO.getStock())
                 .description(productDTO.getDescription())
+                .discount(productDTO.getDiscount())
+                .numberQuotas(productDTO.getQuoteQuantity())
                 .category(category)
                 .subcategory(subcategory)
+                .brand(brand)
                 .user(user)
                 .build();
+
+        if (productDTO.getQuoteQuantity() != 0 && productDTO.getQuoteQuantity() != null) {
+            double quoteQuantity = productDTO.getQuoteQuantity();
+            double price = productDTO.getPrice();
+            Double priceQuote = (price / quoteQuantity);
+            DecimalFormat decimalFormat = new DecimalFormat("#.00"); // Formato de dos decimales
+            String formattedPriceDiscount = decimalFormat.format(priceQuote);
+            product.getPriceQuotas();
+        }
+
+        if (productDTO.getDiscount() != 0 && productDTO.getDiscount() != null) {
+            double discount = productDTO.getDiscount();
+            double price = productDTO.getPrice();
+            double priceDiscount = price - (price * (discount / 100));
+            DecimalFormat decimalFormat = new DecimalFormat("#.00"); // Formato de dos decimales
+            String formattedPriceDiscount = decimalFormat.format(priceDiscount);
+            product.setPriceDiscount(Double.parseDouble(formattedPriceDiscount));
+        }
+
 
         if (files != null && files.length > 0) {
             List<Image> images = new ArrayList<>();
@@ -119,10 +156,15 @@ public class ProductController {
         Product savedProduct = productRepository.save(product);
 
         ProductDto savedProductDTO = new ProductDto();
-        savedProductDTO.setName(savedProduct.getTitle());
+
+        savedProductDTO.setTitle(savedProduct.getTitle());
         savedProductDTO.setPrice(savedProduct.getPrice());
         savedProductDTO.setStock(savedProduct.getStock());
         savedProductDTO.setDescription(savedProduct.getDescription());
+        savedProductDTO.setDiscount(savedProduct.getDiscount());
+        savedProductDTO.setPriceDiscount(savedProduct.getPriceDiscount());
+        savedProductDTO.setQuoteQuantity(savedProduct.getNumberQuotas());
+        savedProductDTO.setQuotePrice(savedProduct.getPriceQuotas());
         CategoryDto categoryDTO = new CategoryDto();
         categoryDTO.setId(savedProduct.getCategory().getId());
         categoryDTO.setName(savedProduct.getCategory().getName());
@@ -131,6 +173,11 @@ public class ProductController {
         subcategoryDTO.setId(savedProduct.getSubcategory().getId());
         subcategoryDTO.setName(savedProduct.getSubcategory().getName());
         subcategoryDTO.setProductCount(savedProduct.getSubcategory().getProductCount() + 1);
+        savedProductDTO.setSubcategory(subcategoryDTO);
+        BrandDTO brandDTO = new BrandDTO();
+        brandDTO.setId(savedProduct.getBrand().getId());
+        brandDTO.setName(savedProduct.getBrand().getName());
+        savedProductDTO.setBrand(brandDTO);
         savedProductDTO.setSubcategory(subcategoryDTO);
         List<ImageDto> imageDTOList = new ArrayList<>();
         for (Image image : savedProduct.getImages()) {
@@ -151,18 +198,22 @@ public class ProductController {
 
     //todo Get all product***********************************
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getProduct(@PathVariable Integer id) {
 
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
             ProductDto productDTO = new ProductDto();
-            productDTO.setName(product.getTitle());
+            productDTO.setId(product.getId());
+            productDTO.setTitle(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
-
+            productDTO.setDiscount(product.getDiscount());
+            productDTO.setPriceDiscount(product.getPriceDiscount());
+            productDTO.setQuoteQuantity(product.getNumberQuotas());
+            productDTO.setQuotePrice(product.getPriceQuotas());
             Category category = product.getCategory();
             if (category != null) {
                 CategoryDto categoryDTO = new CategoryDto();
@@ -170,7 +221,6 @@ public class ProductController {
                 categoryDTO.setName(category.getName());
                 productDTO.setCategory(categoryDTO);
             }
-
             Subcategory subcategory = product.getSubcategory();
             if (subcategory != null) {
                 SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
@@ -178,7 +228,13 @@ public class ProductController {
                 subcategoryDTO.setName(subcategory.getName());
                 productDTO.setSubcategory(subcategoryDTO);
             }
-
+            Brand brand = product.getBrand();
+            if (brand != null) {
+                BrandDTO brandDTO = new BrandDTO();
+                brandDTO.setId(brand.getId());
+                brandDTO.setName(brand.getName());
+                productDTO.setBrand(brandDTO);
+            }
             List<Image> images = product.getImages();
             if (images != null && !images.isEmpty()) {
                 List<ImageDto> imageDTOList = new ArrayList<>();
@@ -199,16 +255,17 @@ public class ProductController {
 
     //todo Update product***********************************
 
-    @PutMapping("/product/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody ProductDto updatedProductDTO) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
-            product.setTitle(updatedProductDTO.getName());
+            product.setTitle(updatedProductDTO.getTitle());
             product.setPrice(updatedProductDTO.getPrice());
             product.setStock(updatedProductDTO.getStock());
             product.setDescription(updatedProductDTO.getDescription());
-
+            product.setDiscount(updatedProductDTO.getDiscount());
+            product.setNumberQuotas(updatedProductDTO.getQuoteQuantity());
             if (updatedProductDTO.getCategory() != null && !product.getCategory().getId().equals(updatedProductDTO.getCategory().getId())) {
                 Optional<Category> optionalCategory = categoryRepository.findById(updatedProductDTO.getCategory().getId());
                 if (optionalCategory.isPresent()) {
@@ -241,7 +298,7 @@ public class ProductController {
 
     //todo Delete product by id***********************************************
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Integer id) {
 
         Optional<Product> optionalProduct = productRepository.findById(id);
@@ -261,7 +318,7 @@ public class ProductController {
 
     //todo All product***********************************************
 
-    @GetMapping("/products")
+    @GetMapping("/brand")
     @ResponseBody
     public List<ProductsDTO> getAllProducts() {
 
@@ -271,13 +328,254 @@ public class ProductController {
 
         for (Product product : products) {
             ProductsDTO productDTO = new ProductsDTO();
+            productDTO.setId(product.getId());
             productDTO.setName(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
-
+            productDTO.setDiscount(product.getDiscount());
+            productDTO.setPriceDiscount(product.getPriceDiscount());
+            productDTO.setQuoteQuantity(product.getNumberQuotas());
+            productDTO.setQuotePrice(product.getPriceQuotas());
+            Brand brand = product.getBrand();
+            if (brand != null) {
+                BrandDTO brandDTO = new BrandDTO();
+                brandDTO.setId(brand.getId());
+                brandDTO.setName(brand.getName());
+                productDTO.setBrand(brandDTO);
+            }
+            List<Image> images = product.getImages();
+            if (images != null && !images.isEmpty()) {
+                List<ImageDto> imageDTOList = new ArrayList<>();
+                for (Image image : images) {
+                    ImageDto imageDTO = new ImageDto();
+                    imageDTO.setId(image.getId());
+                    imageDTO.setImageUrl(image.getImageUrl());
+                    imageDTOList.add(imageDTO);
+                }
+                productDTO.setImages(imageDTOList);
+            }
             productDTOList.add(productDTO);
         }
         return productDTOList;
+    }
+    //todo All products by category***********************************************
+
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<ProductDto>> getProductsByCategory(@PathVariable Integer categoryId) {
+        Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+        if (optionalCategory.isPresent()) {
+            Category category = optionalCategory.get();
+            List<Product> products = productRepository.findByCategory(category);
+
+            List<ProductDto> productDTOList = new ArrayList<>();
+
+            for (Product product : products) {
+                ProductDto productDTO = new ProductDto();
+                productDTO.setTitle(product.getTitle());
+                productDTO.setPrice(product.getPrice());
+                productDTO.setStock(product.getStock());
+                productDTO.setDescription(product.getDescription());
+                productDTO.setDiscount(product.getDiscount());
+                productDTO.setPriceDiscount(product.getPriceDiscount());
+                productDTO.setQuoteQuantity(product.getNumberQuotas());
+                productDTO.setQuotePrice(product.getPriceQuotas());
+                CategoryDto categoryDTO = new CategoryDto();
+                categoryDTO.setId(product.getCategory().getId());
+                categoryDTO.setName(product.getCategory().getName());
+                productDTO.setCategory(categoryDTO);
+                Subcategory subcategory = product.getSubcategory();
+                if (subcategory != null) {
+                    SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+                    subcategoryDTO.setId(subcategory.getId());
+                    subcategoryDTO.setName(subcategory.getName());
+                    productDTO.setSubcategory(subcategoryDTO);
+                }
+                Brand brand = product.getBrand();
+                if (brand != null) {
+                    BrandDTO brandDTO = new BrandDTO();
+                    brandDTO.setId(brand.getId());
+                    brandDTO.setName(brand.getName());
+                    productDTO.setBrand(brandDTO);
+                }
+                List<ImageDto> imageDTOList = new ArrayList<>();
+                for (Image image : product.getImages()) {
+                    ImageDto imageDTO = new ImageDto();
+                    imageDTO.setId(image.getId());
+                    imageDTO.setImageUrl(image.getImageUrl());
+                    imageDTOList.add(imageDTO);
+                }
+
+                productDTO.setImages(imageDTOList);
+
+
+
+                productDTOList.add(productDTO);
+            }
+
+            return ResponseEntity.ok(productDTOList);
+        } else {
+            List<ProductDto> emptyList = new ArrayList<>();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(emptyList);
+        }
+    }
+
+    //todo All products by name***********************************************
+
+    @GetMapping("/name/{productName}")
+    public ResponseEntity<?> getProductsByName(@PathVariable String productName) {
+        List<Product> products = productRepository.findByNameContainingIgnoreCase(productName);
+        List<ProductDto> productDTOList = new ArrayList<>();
+
+        for (Product product : products) {
+            ProductDto productDTO = new ProductDto();
+            productDTO.setId(product.getId());
+            productDTO.setTitle(product.getTitle());
+            productDTO.setPrice(product.getPrice());
+            productDTO.setStock(product.getStock());
+            productDTO.setDescription(product.getDescription());
+            productDTO.setDiscount(product.getDiscount());
+            productDTO.setPriceDiscount(product.getPriceDiscount());
+            productDTO.setQuoteQuantity(product.getNumberQuotas());
+            productDTO.setQuotePrice(product.getPriceQuotas());
+            CategoryDto categoryDTO = new CategoryDto();
+            categoryDTO.setId(product.getCategory().getId());
+            categoryDTO.setName(product.getCategory().getName());
+            productDTO.setCategory(categoryDTO);
+            SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+            subcategoryDTO.setId(product.getSubcategory().getId());
+            subcategoryDTO.setName(product.getSubcategory().getName());
+            productDTO.setSubcategory(subcategoryDTO);
+            BrandDTO brandDTO = new BrandDTO();
+            brandDTO.setName(product.getBrand().getName());
+            brandDTO.setId(product.getBrand().getId());
+            productDTO.setBrand(brandDTO);
+            List<ImageDto> imageDTOList = new ArrayList<>();
+
+            for (Image image : product.getImages()) {
+                ImageDto imageDTO = new ImageDto();
+                imageDTO.setId(image.getId());
+                imageDTO.setImageUrl(image.getImageUrl());
+                imageDTOList.add(imageDTO);
+            }
+
+            productDTO.setImages(imageDTOList);
+
+            productDTOList.add(productDTO);
+        }
+
+        if (productDTOList.isEmpty()) {
+            String message = "No se encontraron productos con el nombre: " + productName;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        } else {
+            return ResponseEntity.ok(productDTOList);
+        }
+    }
+
+    //todo All products by subcategory***********************************************
+
+    @GetMapping("/subcategory/{subcategoryId}")
+    public ResponseEntity<List<ProductDto>> getProductsBySubcategory(@PathVariable Integer subcategoryId) {
+        Optional<Subcategory> optionalSubcategory = subcategoryRepository.findById(subcategoryId);
+        if (optionalSubcategory.isPresent()) {
+            Subcategory subcategory = optionalSubcategory.get();
+            List<Product> products = productRepository.findBySubcategory(subcategory);
+            List<ProductDto> productDTOList = new ArrayList<>();
+
+            for (Product product : products) {
+                ProductDto productDTO = new ProductDto();
+                productDTO.setId(product.getId());
+                productDTO.setTitle(product.getTitle());
+                productDTO.setPrice(product.getPrice());
+                productDTO.setStock(product.getStock());
+                productDTO.setDescription(product.getDescription());
+                productDTO.setDiscount(product.getDiscount());
+                productDTO.setPriceDiscount(product.getPriceDiscount());
+                productDTO.setQuoteQuantity(product.getNumberQuotas());
+                productDTO.setQuotePrice(product.getPriceQuotas());
+                CategoryDto categoryDTO = new CategoryDto();
+                categoryDTO.setId(product.getCategory().getId());
+                categoryDTO.setName(product.getCategory().getName());
+                productDTO.setCategory(categoryDTO);
+                SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+                subcategoryDTO.setId(product.getSubcategory().getId());
+                subcategoryDTO.setName(product.getSubcategory().getName());
+                productDTO.setSubcategory(subcategoryDTO);
+                BrandDTO brandDTO = new BrandDTO();
+                brandDTO.setName(product.getBrand().getName());
+                brandDTO.setId(product.getBrand().getId());
+                productDTO.setBrand(brandDTO);
+                List<ImageDto> imageDTOList = new ArrayList<>();
+
+                for (Image image : product.getImages()) {
+                    ImageDto imageDTO = new ImageDto();
+                    imageDTO.setId(image.getId());
+                    imageDTO.setImageUrl(image.getImageUrl());
+                    imageDTOList.add(imageDTO);
+                }
+
+                productDTO.setImages(imageDTOList);
+
+                productDTOList.add(productDTO);
+            }
+
+            return ResponseEntity.ok(productDTOList);
+        } else {
+            List<ProductDto> emptyList = new ArrayList<>();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(emptyList);
+        }
+    }
+
+    //todo All products by Brand and name***********************************************
+
+    @GetMapping("/brand/{brandName}")
+    public ResponseEntity<List<ProductDto>> getProductsByBrand(@PathVariable String brandName) {
+        Brand brand = brandRepository.findByName(brandName);
+        if (brand != null) {
+            List<Product> products = productRepository.findByBrand(brand);
+            List<ProductDto> productDTOList = new ArrayList<>();
+
+            for (Product product : products) {
+                ProductDto productDTO = new ProductDto();
+                productDTO.setId(product.getId());
+                productDTO.setTitle(product.getTitle());
+                productDTO.setPrice(product.getPrice());
+                productDTO.setStock(product.getStock());
+                productDTO.setDescription(product.getDescription());
+                productDTO.setDiscount(product.getDiscount());
+                productDTO.setPriceDiscount(product.getPriceDiscount());
+                productDTO.setQuoteQuantity(product.getNumberQuotas());
+                productDTO.setQuotePrice(product.getPriceQuotas());
+                CategoryDto categoryDTO = new CategoryDto();
+                categoryDTO.setId(product.getCategory().getId());
+                categoryDTO.setName(product.getCategory().getName());
+                productDTO.setCategory(categoryDTO);
+                SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+                subcategoryDTO.setId(product.getSubcategory().getId());
+                subcategoryDTO.setName(product.getSubcategory().getName());
+                productDTO.setSubcategory(subcategoryDTO);
+                BrandDTO brandDTO = new BrandDTO();
+                brandDTO.setName(product.getBrand().getName());
+                brandDTO.setId(product.getBrand().getId());
+                productDTO.setBrand(brandDTO);
+                List<ImageDto> imageDTOList = new ArrayList<>();
+
+                for (Image image : product.getImages()) {
+                    ImageDto imageDTO = new ImageDto();
+                    imageDTO.setId(image.getId());
+                    imageDTO.setImageUrl(image.getImageUrl());
+                    imageDTOList.add(imageDTO);
+                }
+
+                productDTO.setImages(imageDTOList);
+
+                productDTOList.add(productDTO);
+            }
+
+            return ResponseEntity.ok(productDTOList);
+        } else {
+            List<ProductDto> emptyList = new ArrayList<>();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(emptyList);
+        }
     }
 }
