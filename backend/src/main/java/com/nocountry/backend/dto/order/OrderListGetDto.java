@@ -32,6 +32,6 @@ public class OrderListGetDto {
     private OrderStatusDto orderStatus;
 
     @JsonProperty("list_items")
-    private List<OrderItemListGetDto> listItems;
+    private List<OrderDetailPostDto> listItems;
 
 }

@@ -50,7 +50,7 @@ public class Product {
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_fk")
     @Builder.Default
     private Set<OrderItem> items = new HashSet<>();
 
