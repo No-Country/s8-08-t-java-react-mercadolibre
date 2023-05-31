@@ -53,14 +53,14 @@ const FormNewAdress = () => {
     }
   });
 
-  const getLocation = async (event) => {
+  const getLocation = async event => {
     console.log(event.target.value);
     if (event.target.value.length === 4) {
       setIsLoading(true);
 
       try {
-        const response = await getRequest(`/api/v1/provinces?zipcode=${formik.values.zip_code}`)
-        if(response) {
+        const response = await getRequest(`/api/v1/provinces?zipcode=${formik.values.zip_code}`);
+        if (response) {
           setIsLoading(false);
           setLocation(response);
         }
@@ -69,7 +69,7 @@ const FormNewAdress = () => {
         console.log(error);
       }
     }
-  }
+  };
 
   useEffect(() => {
     //Hacer focus al input que generó error al hacer submit
@@ -88,8 +88,9 @@ const FormNewAdress = () => {
             <div className="flex flex-col mb-2">
               <label
                 htmlFor="name"
-                className={`text-sm ml-2 ${formik.errors.name !== undefined ? "text-red" : "text-black"
-                  }`}
+                className={`text-sm ml-2 ${
+                  formik.errors.name !== undefined ? "text-red" : "text-black"
+                }`}
               >
                 Nombre y apellido
               </label>
@@ -98,10 +99,11 @@ const FormNewAdress = () => {
                 name="name"
                 id="name"
                 value={formik.values.name}
-                className={`w-full max-w-[412px] h-12 rounded-md border p-3 focus:outline-none focus:border-2 ${formik.errors.name !== undefined
-                  ? "border-red focus:border-red"
-                  : "border-[#bfbfbf] focus:border-ligthblue"
-                  }`}
+                className={`w-full max-w-[412px] h-12 rounded-md border p-3 focus:outline-none focus:border-2 ${
+                  formik.errors.name !== undefined
+                    ? "border-red focus:border-red"
+                    : "border-[#bfbfbf] focus:border-ligthblue"
+                }`}
                 onChange={formik.handleChange}
                 error={formik.errors.name}
               />
@@ -120,8 +122,9 @@ const FormNewAdress = () => {
             <div className="flex flex-col mb-8 relative">
               <label
                 htmlFor="zip_code"
-                className={`text-sm ml-2 ${formik.errors.zip_code !== undefined ? "text-red" : "text-black"
-                  }`}
+                className={`text-sm ml-2 ${
+                  formik.errors.zip_code !== undefined ? "text-red" : "text-black"
+                }`}
               >
                 Código Postal (Argentina)
               </label>
@@ -131,22 +134,40 @@ const FormNewAdress = () => {
                   name="zip_code"
                   id="zip_code"
                   value={formik.values.zip_code}
-                  className={`w-full max-w-[323px] h-12 rounded-md border p-3 [&::-webkit-inner-spin-button]:appearance-none focus:outline-none focus:border-2 ${formik.errors.zip_code !== undefined
-                    ? "border-red focus:border-red"
-                    : "border-[#bfbfbf] focus:border-ligthblue"
-                    }`}
-                  onChange={(event) => { formik.handleChange(event); getLocation(event); }}
+                  className={`w-full max-w-[323px] h-12 rounded-md border p-3 [&::-webkit-inner-spin-button]:appearance-none focus:outline-none focus:border-2 ${
+                    formik.errors.zip_code !== undefined
+                      ? "border-red focus:border-red"
+                      : "border-[#bfbfbf] focus:border-ligthblue"
+                  }`}
+                  onChange={event => {
+                    formik.handleChange(event);
+                    getLocation(event);
+                  }}
                   error={formik.errors.zip_code}
                 />
-                {
-                  isLoading &&
-                  <div role="status" className={`${isMobile ? "absolute right-10" : "relative right-0"}`}>
-                    <svg aria-hidden="true" className="w-5 h-5 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-                      <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                {isLoading && (
+                  <div
+                    role="status"
+                    className={`${isMobile ? "absolute right-10" : "relative right-0"}`}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="w-5 h-5 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                      viewBox="0 0 100 101"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                        fill="currentFill"
+                      />
                     </svg>
                   </div>
-                }
+                )}
               </div>
               {formik.errors.zip_code !== undefined && (
                 <div className="flex items-center absolute bottom-[-30px] left-1">
@@ -175,9 +196,7 @@ const FormNewAdress = () => {
                 />
               </div>
               <div className="flex flex-col mb-8 w-full max-w-[323px] relative">
-                <label
-                  htmlFor="city" className="text-sm ml-2"
-                >
+                <label htmlFor="city" className="text-sm ml-2">
                   Localidad o barrio
                 </label>
                 <input
@@ -197,8 +216,9 @@ const FormNewAdress = () => {
               <div className="flex flex-col sm:mb-8 w-full max-w-[323px] relative">
                 <label
                   htmlFor="street"
-                  className={`text-sm ml-2 ${formik.errors.street !== undefined ? "text-red" : "text-black"
-                    }`}
+                  className={`text-sm ml-2 ${
+                    formik.errors.street !== undefined ? "text-red" : "text-black"
+                  }`}
                 >
                   Calle/Avenida
                 </label>
@@ -206,10 +226,11 @@ const FormNewAdress = () => {
                   type="text"
                   name="street"
                   id="street"
-                  className={`h-12 rounded-md border p-3 focus:outline-none focus:border-2 ${formik.errors.street !== undefined
-                    ? "border-red focus:border-red"
-                    : "border-[#bfbfbf] focus:border-ligthblue"
-                    }`}
+                  className={`h-12 rounded-md border p-3 focus:outline-none focus:border-2 ${
+                    formik.errors.street !== undefined
+                      ? "border-red focus:border-red"
+                      : "border-[#bfbfbf] focus:border-ligthblue"
+                  }`}
                   onChange={formik.handleChange}
                 />
                 {formik.errors.street !== undefined && (
@@ -224,8 +245,9 @@ const FormNewAdress = () => {
               <div className="flex flex-col mb-8 w-full max-w-[323px] relative">
                 <label
                   htmlFor="number"
-                  className={`text-sm ml-2 ${formik.errors.number !== undefined ? "text-red" : "text-black"
-                    }`}
+                  className={`text-sm ml-2 ${
+                    formik.errors.number !== undefined ? "text-red" : "text-black"
+                  }`}
                 >
                   Número
                 </label>
@@ -235,10 +257,11 @@ const FormNewAdress = () => {
                     name="number"
                     id="number"
                     placeholder="SN"
-                    className={`h-12 rounded-md border p-3 [&::-webkit-inner-spin-button]:appearance-none focus:outline-none focus:border-2 w-full max-w-[323px] ${formik.errors.number !== undefined
-                      ? "border-red focus:border-red"
-                      : "border-[#bfbfbf] focus:border-ligthblue"
-                      } ${formik.values.no_number && "cursor-not-allowed"}`}
+                    className={`h-12 rounded-md border p-3 [&::-webkit-inner-spin-button]:appearance-none focus:outline-none focus:border-2 w-full max-w-[323px] ${
+                      formik.errors.number !== undefined
+                        ? "border-red focus:border-red"
+                        : "border-[#bfbfbf] focus:border-ligthblue"
+                    } ${formik.values.no_number && "cursor-not-allowed"}`}
                     onChange={formik.handleChange}
                     disabled={formik.values.no_number}
                   />
@@ -324,8 +347,9 @@ const FormNewAdress = () => {
                   <MdWork className="text-[#4A4A4A] text-base" />
                   <label
                     htmlFor="work"
-                    className={`text-base cursor-pointer ${formik.errors.place !== undefined ? "text-red" : "text-black"
-                      }`}
+                    className={`text-base cursor-pointer ${
+                      formik.errors.place !== undefined ? "text-red" : "text-black"
+                    }`}
                   >
                     Trabajo
                   </label>
@@ -342,8 +366,9 @@ const FormNewAdress = () => {
                   <IoMdHome className="text-[#4A4A4A] text-lg" />
                   <label
                     htmlFor="home"
-                    className={`text-base cursor-pointer ${formik.errors.place !== undefined ? "text-red" : "text-black"
-                      }`}
+                    className={`text-base cursor-pointer ${
+                      formik.errors.place !== undefined ? "text-red" : "text-black"
+                    }`}
                   >
                     Casa
                   </label>
@@ -362,8 +387,9 @@ const FormNewAdress = () => {
             <div className="flex flex-col mb-10 relative">
               <label
                 htmlFor="phone"
-                className={`text-sm ml-2 ${formik.errors.phone !== undefined ? "text-red" : "text-black"
-                  }`}
+                className={`text-sm ml-2 ${
+                  formik.errors.phone !== undefined ? "text-red" : "text-black"
+                }`}
               >
                 Teléfono de contacto
               </label>
@@ -372,10 +398,11 @@ const FormNewAdress = () => {
                 name="phone"
                 id="phone"
                 placeholder="Ej.: 1123456789"
-                className={`w-full max-w-[323px] h-12 rounded-md border p-3 font-base [&::-webkit-inner-spin-button]:appearance-none focus:outline-none focus:border-2 ${formik.errors.phone !== undefined
-                  ? "border-red focus:border-red"
-                  : "border-[#bfbfbf] focus:border-ligthblue"
-                  }`}
+                className={`w-full max-w-[323px] h-12 rounded-md border p-3 font-base [&::-webkit-inner-spin-button]:appearance-none focus:outline-none focus:border-2 ${
+                  formik.errors.phone !== undefined
+                    ? "border-red focus:border-red"
+                    : "border-[#bfbfbf] focus:border-ligthblue"
+                }`}
                 onChange={formik.handleChange}
               />
               {formik.errors.phone !== undefined && (

@@ -34,7 +34,7 @@ export const getRequest = async endpoint => {
     const { data } = await axios.get(URL + endpoint, {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        Accept: "application/json"
         //Authorization: getToken()
       }
     });
