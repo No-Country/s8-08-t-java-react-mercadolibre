@@ -5,7 +5,7 @@ import { RiErrorWarningFill } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { getRequest } from "../../services/httpRequest";
+import { locationRequest } from "../../utils/LocationRequest";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 
 const FormNewAdress = () => {
@@ -54,12 +54,11 @@ const FormNewAdress = () => {
   });
 
   const getLocation = async event => {
-    console.log(event.target.value);
     if (event.target.value.length === 4) {
       setIsLoading(true);
 
       try {
-        const response = await getRequest(`/api/v1/provinces?zipcode=${formik.values.zip_code}`);
+        const response = locationRequest(event.target.value);
         if (response) {
           setIsLoading(false);
           setLocation(response);
