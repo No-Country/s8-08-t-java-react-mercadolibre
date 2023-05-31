@@ -1,12 +1,11 @@
 package com.nocountry.backend.service.impl;
 
 import com.nocountry.backend.config.jwt.JwtService;
-import com.nocountry.backend.dto.token.TokenDto;
 import com.nocountry.backend.dto.user.UserDto;
 import com.nocountry.backend.dto.user.UserLoginDto;
 import com.nocountry.backend.dto.user.UserRegisterDto;
 import com.nocountry.backend.dto.user.UserTokenDto;
-import com.nocountry.backend.model.enums.Role;
+import com.nocountry.backend.model.enums.RoleEnum;
 import com.nocountry.backend.model.entity.User;
 import com.nocountry.backend.mapper.IUserMapper;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
@@ -33,7 +32,7 @@ public class AuthServiceImpl implements IAuthService {
     public void register(UserRegisterDto userRegisterDto) {
         User user = this.userMapper.toUser(userRegisterDto);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.VENDOR);
+        user.setRole(RoleEnum.VENDOR);
         this.userRepositoryJpa.save(user);
     }
 

@@ -3,7 +3,7 @@ package com.nocountry.backend.service.impl;
 import com.nocountry.backend.dto.user.UserDto;
 import com.nocountry.backend.mapper.IUserMapper;
 import com.nocountry.backend.model.entity.User;
-import com.nocountry.backend.model.enums.Role;
+import com.nocountry.backend.model.enums.RoleEnum;
 import com.nocountry.backend.repository.IUserRepositoryJpa;
 import com.nocountry.backend.service.IUserService;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +43,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public boolean isRoleTienda(Integer userId) {
         Optional<User> optionalUser = userRepositoryJpa.findById(userId);
-        return optionalUser.map(user -> user.getRole() == Role.VENDOR).orElse(false);
+        return optionalUser.map(user -> user.getRole() == RoleEnum.VENDOR).orElse(false);
     }
 }

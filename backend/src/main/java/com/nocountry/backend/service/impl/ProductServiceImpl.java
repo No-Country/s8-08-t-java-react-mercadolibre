@@ -1,11 +1,15 @@
 package com.nocountry.backend.service.impl;
 
+import com.nocountry.backend.dto.product.ProductDetailGetDto;
 import com.nocountry.backend.dto.product.ProductDto;
 import com.nocountry.backend.dto.product.ProductListGetDto;
 import com.nocountry.backend.exception.ResourceNotFoundException;
 import com.nocountry.backend.mapper.IProductMapper;
+import com.nocountry.backend.mapper.IProductDetailMapper;
 import com.nocountry.backend.model.entity.Product;
+import com.nocountry.backend.model.enums.DescriptionEnum;
 import com.nocountry.backend.repository.IProductRepository;
+import com.nocountry.backend.service.IDescriptionService;
 import com.nocountry.backend.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
 public class ProductServiceImpl implements IProductService {
 
 
@@ -22,6 +27,11 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductMapper productMapper;
 
+    @Autowired
+    private IProductDetailMapper productDetailMapper;
+
+    @Autowired
+    private IDescriptionService descriptionService;
 
     @Override
     public List<ProductDto> getAll() {
@@ -88,6 +98,27 @@ public class ProductServiceImpl implements IProductService {
                         product -> product.setPriceQuotas(product.getPrice() / product.getNumberQuotas())
                 ).toList()
         );
+    }
+
+    @Override
+    public ProductDetailGetDto findProductById(Integer productId) {
+
+        ProductDetailGetDto productById = this.productRepository.findById(productId)
+                .map(product -> {
+                            product.setPriceQuotas(product.getPrice() / product.getNumberQuotas());
+                            return this.productDetailMapper.toProductDetailGetDto(product);
+                        }
+
+                )
+                .orElseThrow(() -> new RuntimeException("Error product by id"));
+
+        productById.setDescriptionGeneric(
+                this.descriptionService.findAllByPriorityAndProductId(
+                        DescriptionEnum.GENERIC, productId));
+        productById.setDescriptionRelevant(this.descriptionService.findAllByPriorityAndProductId(
+                DescriptionEnum.RELEVANT, productId));
+
+        return productById;
     }
 
 

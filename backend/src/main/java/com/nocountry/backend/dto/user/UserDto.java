@@ -1,6 +1,5 @@
 package com.nocountry.backend.dto.user;
 
-import com.nocountry.backend.model.enums.Role;
 import lombok.Getter;
 import lombok.Setter;
 
