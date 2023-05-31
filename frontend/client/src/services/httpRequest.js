@@ -35,7 +35,7 @@ export const getRequest = async endpoint => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: getToken()
+        //Authorization: getToken()
       }
     });
 
