@@ -53,6 +53,9 @@ dependencies {
 
     implementation 'com.cloudinary:cloudinary-core:1.33.0'
     implementation 'com.cloudinary:cloudinary-http44:1.33.0'
+
+    implementation group: 'com.mercadopago', name: 'dx-java', version: '1.5.2'
+
 }
 
 tasks.named('test') {
