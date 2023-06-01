@@ -11,6 +11,7 @@
     "format": "prettier --write . --ignore-path .gitignore"
   },
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^1.10.1",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "formik": "^2.2.9",

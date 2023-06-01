@@ -1,32 +1,33 @@
-import React from "react";
-import ProductCard from "../Products/ProductCard/ProductCard";
-import FastSale from "./FastSale/FastSale";
+import { useEffect } from "react";
+import SliderProduct from "../Products/SliderProduct/SliderProduct";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../../store/state/productSlice";
 
-const listSales = new Array(5).fill(null);
-const listHotSale = new Array(5).fill(null);
 const Sales = () => {
+  const listProduct = useSelector(store => store.product.list);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
+
   return (
     <>
       <div className="">
-        <h3 className="text-base text-center  pb-4 pt-6">
+        <h3 className="text-base pb-4 pt-6">
           🔥 OFERTAS IMPERDIBLES 🔥{" "}
           <span className="text-ligthblue cursor-pointer"> ver mas...</span>
         </h3>
-        <div className="flex flex-wrap gap-5 justify-center min-h-[424px]">
-          {listSales?.map((produc, i) => {
-            return <ProductCard key={`${i}-sale`} />;
-          })}
+        <div className="min-h-[424px]">
+          <SliderProduct products={listProduct} />
         </div>
-        <h3 className="text-base pb-4 pt-6 text-center"> OFERTAS CON ENVÍOS RÁPIDOS </h3>{" "}
-        <FastSale />
-        <h3 className="text-base text-center mt-6 pb-4 pt-6">
-          LO MEJOR DE ESTE HOT SALE ¡NO TE QUEDES SIN EL TUYO!{" "}
-          <span className="text-ligthblue cursor-pointer "> ver mas...</span>
+
+        <h3 className="text-base mt-6 pb-4 pt-6 uppercase">
+          ultimos productos cargados!
+          <span className="text-ligthblue cursor-pointer lowercase"> ver mas...</span>
         </h3>
-        <div className="flex flex-wrap gap-5 justify-center  min-h-[424px]">
-          {listHotSale?.map((produc, i) => {
-            return <ProductCard key={`${i}-hotsale`} />;
-          })}
+        <div className="min-h-[424px]">
+          <SliderProduct products={listProduct} />
         </div>
       </div>
     </>
