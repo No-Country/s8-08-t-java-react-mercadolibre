@@ -64,7 +64,7 @@ const FormNewAdress = () => {
         if (response) {
           setIsLoading(false);
           setLocation(response);
-        } 
+        }
       } catch (error) {
         setIsLoading(false);
         setIsRequestFailed(true);
