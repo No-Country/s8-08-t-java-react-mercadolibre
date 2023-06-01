@@ -6,6 +6,7 @@ import Interest from "../components/Interest/Interest";
 import Discover from "../components/Discover/Discover";
 import Collection from "../components/Collection/Collection";
 import SliderInitial from "../components/SliderInitial/SliderInitial";
+import ChatBot from "../components/ChatBot/ChatBot";
 import PaymentsDataHome from "../components/PaymentsDataHome/PaymentsDataHome";
 
 const Home = () => {
@@ -29,6 +30,7 @@ const Home = () => {
       <section className="flex mx-auto max-w-[1200px]  h-[340px] mt-4">
         <SliderIcon />
       </section>
+      <ChatBot />
     </div>
   );
 };
