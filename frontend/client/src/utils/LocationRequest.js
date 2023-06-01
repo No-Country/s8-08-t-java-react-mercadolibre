@@ -2,9 +2,9 @@ import axios from "axios";
 
 const URL = import.meta.env.VITE_API_URL;
 
-export const locationRequest = async (endpoint, value) => {
+export const locationRequest = async (endpoint, zipCode) => {
   try {
-    const { data } = await axios.get(URL + endpoint + value, {
+    const { data } = await axios.get(URL + endpoint + zipCode, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
