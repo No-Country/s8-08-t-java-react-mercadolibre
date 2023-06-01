@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  },
+  {
+    "id": 2,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  },
+  {
+    "id": 3,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  },
+  {
+    "id": 4,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  },
+  {
+    "id": 5,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  },
+  {
+    "id": 6,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  },
+  {
+    "id": 7,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  },
+  {
+    "id": 8,
+    "title": "Zapatillas Response Super 3.0 Hp5933 adidas",
+    "image": "https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_1280.png",
+    "price": 3600,
+
+    "cuote": {
+      "quantity": 6,
+      "price": 600
+    }
+  }
+]
