@@ -5,12 +5,12 @@ import supplements from "../../assets/img/discoverSuplementos.png";
 const Discover = () => {
   return (
     <>
-      <div className="">
-        <h3 className="text-center lg:w-full w-[211px] h-[37px] font-light text-[26px] text-[#666666]">
+      <div className="w-full">
+        <h3 className=" lg:w-full w-[211px] h-[37px] font-light text-[26px] text-[#666666]">
           Descubrir
         </h3>
 
-        <div className="w-full mx-auto flex flex-col lg:flex-row lg:justify-center gap-3 mt-5">
+        <div className="w-full mx-auto flex flex-col lg:flex-row lg:justify-between gap-3 mt-5">
           <article className="flex justify-between w-full lg:w-[584px] h-[250px] bg-white hover:shadow-2xl">
             <div className="flex flex-col justify-center lg:justify-normal  w-[250px] lg:w-[328px]  h-[200px] ml-4 lg:ml-8 lg:mt-14">
               <h4 className="text-[#4B4B4B] text-xs font-semibold uppercase leading-3 tracking-[4px]">

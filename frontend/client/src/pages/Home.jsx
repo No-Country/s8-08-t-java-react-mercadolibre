@@ -6,6 +6,7 @@ import Interest from "../components/Interest/Interest";
 import Discover from "../components/Discover/Discover";
 import Collection from "../components/Collection/Collection";
 import SliderInitial from "../components/SliderInitial/SliderInitial";
+import ChatBot from "../components/ChatBot/ChatBot";
 import PaymentsDataHome from "../components/PaymentsDataHome/PaymentsDataHome";
 
 const Home = () => {
@@ -14,23 +15,22 @@ const Home = () => {
       <section className="mx-auto w-full">
         <SliderInitial />
       </section>
-      <section className="mx-auto w-[85%] mt-8">
+      <section className="mx-auto max-w-[1200px] mt-8">
         <PaymentsDataHome />
-      </section>
-      <section className="mx-auto w-[85%]">
+
         <Hero />
         <Discover />
-      </section>
-      <section className="mx-auto w-[85%]">
+
         <Sales />
         <Interest />
       </section>
-      <section className="mx-auto w-[90%]">
+      <section className="mx-auto max-w-[1200px] ">
         <Collection />
       </section>
-      <section className="flex mx-auto w-[85%] h-[340px] mt-4">
+      <section className="flex mx-auto max-w-[1200px]  h-[340px] mt-4">
         <SliderIcon />
       </section>
+      <ChatBot />
     </div>
   );
 };

@@ -2,91 +2,91 @@
   {
     "id": 1,
     "name": "Autos, Motos y otros",
-    "image": "/src/assets/icons/auto.svg"
+    "image": "./src/assets/icons/auto.svg"
   },
   {
     "id": 2,
     "name": "Celulares y Teléfonos",
-    "image": "/src/assets/icons/mobile-camera.svg"
+    "image": "./src/assets/icons/mobile-camera.svg"
   },
   {
     "id": 3,
     "name": "Computación",
-    "image": "/src/assets/icons/computacion.svg"
+    "image": "./src/assets/icons/computacion.svg"
   },
   {
     "id": 4,
     "name": "Electrónica, Audio y Video",
-    "image": "/src/assets/icons/audio_electronica.svg"
+    "image": "./src/assets/icons/audio_electronica.svg"
   },
   {
     "id": 5,
     "name": "Electrodomésticos y Aires Ac.",
-    "image": "/src/assets/icons/electrodomesticos_aires.svg"
+    "image": "./src/assets/icons/electrodomesticos_aires.svg"
   },
   {
     "id": 6,
     "name": "Ropa y Accesorios",
-    "image": "/src/assets/icons/ropa.svg"
+    "image": "./src/assets/icons/ropa.svg"
   },
   {
     "id": 7,
     "name": "Deportes y Fitness",
-    "image": "/src/assets/icons/deporte.svg"
+    "image": "./src/assets/icons/deporte.svg"
   },
   {
     "id": 8,
     "name": "Hogar, Muebles y Jardín",
-    "image": "/src/assets/icons/mueble.svg"
+    "image": "./src/assets/icons/mueble.svg"
   },
   {
     "id": 9,
     "name": "Inmuebles",
-    "image": "/src/assets/icons/inmueble_hogar.svg"
+    "image": "./src/assets/icons/inmueble_hogar.svg"
   },
   {
     "id": 10,
     "name": "Accesorios para Vehículos",
-    "image": "/src/assets/icons/accesorio_vehiculo.svg"
+    "image": "./src/assets/icons/accesorio_vehiculo.svg"
   },
   {
     "id": 11,
     "name": "Belleza y Cuidado Personal",
-    "image": "/src/assets/icons/articulo_belleza.svg"
+    "image": "./src/assets/icons/articulo_belleza.svg"
   },
   {
     "id": 12,
     "name": "Consolas y Videojuegos",
-    "image": "/src/assets/icons/videojuegos.svg"
+    "image": "./src/assets/icons/videojuegos.svg"
   },
   {
     "id": 13,
     "name": "Juegos y Juguetes",
-    "image": "/src/assets/icons/juguetes.svg"
+    "image": "./src/assets/icons/juguetes.svg"
   },
   {
     "id": 14,
     "name": "Alimentos y bebidas",
-    "image": "/src/assets/icons/alimentos.svg"
+    "image": "../src/assets/icons/alimentos.svg"
   },
   {
     "id": 15,
     "name": "Luciano, Argentina",
-    "image": "/src/assets/icons/bicycle.svg"
+    "image": "./src/assets/icons/bicycle.svg"
   },
   {
     "id": 16,
     "name": "Laura, Uruguay",
-    "image": "/src/assets/icons/bicycle.svg"
+    "image": "./src/assets/icons/bicycle.svg"
   },
   {
     "id": 17,
     "name": "María, Perú",
-    "image": "/src/assets/icons/bicycle.svg"
+    "image": "./src/assets/icons/bicycle.svg"
   },
   {
     "id": 18,
     "name": "Ernesto, Venezuela",
-    "image": "/src/assets/icons/bicycle.svg"
+    "image": "./src/assets/icons/bicycle.svg"
   }
 ]
