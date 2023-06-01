@@ -1,10 +1,25 @@
-import { getRequest } from "../services/httpRequest";
+import axios from "axios";
 
-export const locationRequest = async value => {
+const URL = import.meta.env.VITE_API_URL;
+
+export const locationRequest = async (endpoint, value) => {
   try {
-    const response = await getRequest(`/api/v1/provinces?zipcode=${value}`);
-    return response;
+    const { data } = await axios.get(URL + endpoint + value, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    });
+
+    return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error)) {
+      console.log("error message: ", error.message);
+
+      throw new Error(error.message);
+    } else {
+      console.log("unexpected error: ", error);
+      return "An unexpected error occurred";
+    }
   }
 };

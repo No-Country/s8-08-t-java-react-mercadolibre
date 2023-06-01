@@ -36,6 +36,7 @@ const FormNewAdress = () => {
       zip_code: Yup.string()
         .length(4, "Ingresá un código postal válido.")
         .required("Completá este dato."),
+      city: Yup.string().required("Completá este dato."),
       street: Yup.string().required("Completá este dato."),
       no_number: Yup.boolean(),
       number: Yup.string().when("no_number", {
@@ -59,18 +60,18 @@ const FormNewAdress = () => {
       setIsLoading(true);
 
       try {
-        const response = locationRequest(event.target.value);
-        if (response.ok) {
+        const response = await locationRequest("/api/v1/provinces?zipcode=", event.target.value);
+        if (response) {
           setIsLoading(false);
           setLocation(response);
-        } else {
-          setIsLoading(false);
-          setIsRequestFailed(true);
-        }
+        } 
       } catch (error) {
         setIsLoading(false);
-        console.log(error);
+        setIsRequestFailed(true);
       }
+    } else {
+      setIsRequestFailed(false);
+      setLocation({});
     }
   };
 
@@ -172,6 +173,14 @@ const FormNewAdress = () => {
                   </div>
                 )}
               </div>
+              {isRequestFailed && (
+                <div className="flex items-center absolute bottom-[-30px] left-1">
+                  <RiErrorWarningFill className="text-red" />
+                  <span className="text-xs text-[#0000008c] p-2 text-red">
+                    Error. Código postal inválido.
+                  </span>
+                </div>
+              )}
               {formik.errors.zip_code !== undefined && (
                 <div className="flex items-center absolute bottom-[-30px] left-1">
                   <RiErrorWarningFill className="text-red" />
@@ -208,10 +217,21 @@ const FormNewAdress = () => {
                   id="city"
                   value={location.locality || formik.values.city}
                   placeholder="Localidad"
-                  className="h-12 rounded-md border border-[#bfbfbf] p-3 border-dashed cursor-not-allowed"
-                  disabled
+                  className={`h-12 rounded-md border p-3 focus:outline-none focus:border-2 ${
+                    formik.errors.city !== undefined
+                      ? "border-red focus:border-red"
+                      : "border-[#bfbfbf] focus:border-ligthblue"
+                  }`}
                   onChange={formik.handleChange}
                 />
+                {formik.errors.city !== undefined && (
+                  <div className="flex items-center absolute bottom-[-30px] left-1">
+                    <RiErrorWarningFill className="text-red" />
+                    <span className="text-xs text-[#0000008c] p-2 text-red">
+                      {formik.errors.city}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 
