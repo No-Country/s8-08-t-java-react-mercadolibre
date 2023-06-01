@@ -38,7 +38,12 @@ const DeliveryOptionPayment = () => {
             </div>
 
             <div className="mr-12 ml-5 sm:ml-0">
-              <span className="text-ligthblue text-xs cursor-pointer">Editar o elegir otro</span>
+              <span
+                className="text-ligthblue text-xs cursor-pointer"
+                onClick={() => navigate("/pay/home-delivery")}
+              >
+                Editar o elegir otro
+              </span>
             </div>
           </div>
         </div>
@@ -105,7 +110,7 @@ const DeliveryOptionPayment = () => {
 
         <div className="flex justify-center sm:justify-end mt-7 lg:mb-12">
           <button
-            onClick={() => navigate("/pay/home-delivery")}
+            onClick={() => navigate("/pay/pay-method")}
             className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue"
           >
             Continuar

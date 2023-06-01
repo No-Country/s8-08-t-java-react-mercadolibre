@@ -88,7 +88,7 @@ const ChatBot = () => {
   return (
     <div>
       {isPressed ? (
-        <div className="fixed h-[400px] w-[376px] right-5 bottom-16 z-40">
+        <div className="fixed h-[400px] sm:w-[376px] w-[300px] right-5 bottom-16 z-40">
           <div className="bg-[#ffffff] flex items-center h-[48px] rounded-tl-md rounded-tr-md">
             <div className="pl-4 flex items-center gap-6">
               <img src={chatbot} alt="Icono de chatbot" className="w-[32px] h-[32px]" />
