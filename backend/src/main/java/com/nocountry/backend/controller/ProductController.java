@@ -18,6 +18,9 @@ import com.nocountry.backend.repository.IProductRepository;
 import com.nocountry.backend.service.impl.CloudinaryService;
 import com.nocountry.backend.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -324,6 +327,120 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(emptyList);
         }
     }
+
+    //todo /products/latest?limit=5 para establecer el limite
+    //todo Last products due to defects bring 10 if the parameter is passed send those who call
+
+    @GetMapping("/latest")
+    public ResponseEntity<List<ProductDto>> getLatestProducts(@RequestParam(required = false) Integer limit) {
+        if (limit == null) {
+            limit = 10;
+        }
+
+        Pageable pageable = PageRequest.of(0, limit, Sort.by("id").descending());
+        List<Product> latestProducts = productRepository.findByOrderByIdDesc(pageable);
+
+
+        List<ProductDto> latestProductDTOs = new ArrayList<>();
+        for (Product product : latestProducts) {
+            ProductDto productDTO = new ProductDto();
+            productDTO.setId(product.getId());
+            productDTO.setTitle(product.getTitle());
+            productDTO.setPrice(product.getPrice());
+            productDTO.setStock(product.getStock());
+            productDTO.setDescription(product.getDescription());
+            productDTO.setDiscount(product.getDiscount());
+            productDTO.setPriceDiscount(product.getPriceDiscount());
+            productDTO.setQuoteQuantity(product.getNumberQuotas());
+            productDTO.setQuotePrice(product.getPriceQuotas());
+            CategoryDto categoryDTO = new CategoryDto();
+            categoryDTO.setId(product.getCategory().getId());
+            categoryDTO.setName(product.getCategory().getName());
+            productDTO.setCategory(categoryDTO);
+            SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+            Subcategory subcategory = product.getSubcategory();
+            if (subcategory != null) {
+                subcategoryDTO.setId(product.getSubcategory().getId());
+                subcategoryDTO.setName(product.getSubcategory().getName());
+            }
+            productDTO.setSubcategory(subcategoryDTO);
+            BrandDTO brandDTO = new BrandDTO();
+            Brand brand = product.getBrand();
+            if (brand != null) {
+                brandDTO.setName(brand.getName());
+                brandDTO.setId(brand.getId());
+            }
+            productDTO.setBrand(brandDTO);
+            List<ImageDto> imageDTOList = new ArrayList<>();
+
+            for (Image image : product.getImages()) {
+                ImageDto imageDTO = new ImageDto();
+                imageDTO.setId(image.getId());
+                imageDTO.setImageUrl(image.getImageUrl());
+                imageDTOList.add(imageDTO);
+            }
+
+            productDTO.setImages(imageDTOList);
+
+            latestProductDTOs.add(productDTO);
+        }
+
+
+        return ResponseEntity.ok(latestProductDTOs);
+    }
+
+    //todo get products with discount
+
+    @GetMapping("/discounted")
+    public ResponseEntity<List<ProductDto>> getDiscountedProducts() {
+        List<Product> discountedProducts = productRepository.findByDiscountGreaterThan(0);
+
+        List<ProductDto> discountedProductDTOs = new ArrayList<>();
+        for (Product product : discountedProducts) {
+            ProductDto productDTO = new ProductDto();
+            productDTO.setId(product.getId());
+            productDTO.setTitle(product.getTitle());
+            productDTO.setPrice(product.getPrice());
+            productDTO.setStock(product.getStock());
+            productDTO.setDescription(product.getDescription());
+            productDTO.setDiscount(product.getDiscount());
+            productDTO.setPriceDiscount(product.getPriceDiscount());
+            productDTO.setQuoteQuantity(product.getNumberQuotas());
+            productDTO.setQuotePrice(product.getPriceQuotas());
+            CategoryDto categoryDTO = new CategoryDto();
+            categoryDTO.setId(product.getCategory().getId());
+            categoryDTO.setName(product.getCategory().getName());
+            productDTO.setCategory(categoryDTO);
+            SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+            Subcategory subcategory = product.getSubcategory();
+            if (subcategory != null) {
+                subcategoryDTO.setId(product.getSubcategory().getId());
+                subcategoryDTO.setName(product.getSubcategory().getName());
+            }
+            productDTO.setSubcategory(subcategoryDTO);
+            BrandDTO brandDTO = new BrandDTO();
+            Brand brand = product.getBrand();
+            if (brand != null) {
+                brandDTO.setName(brand.getName());
+                brandDTO.setId(brand.getId());
+            }
+            List<ImageDto> imageDTOList = new ArrayList<>();
+
+            for (Image image : product.getImages()) {
+                ImageDto imageDTO = new ImageDto();
+                imageDTO.setId(image.getId());
+                imageDTO.setImageUrl(image.getImageUrl());
+                imageDTOList.add(imageDTO);
+            }
+
+            productDTO.setImages(imageDTOList);
+
+            discountedProductDTOs.add(productDTO);
+        }
+
+        return ResponseEntity.ok(discountedProductDTOs);
+    }
+
 //todo Create all product ********************************
 
 //    @PostMapping("/img/{userId}")
