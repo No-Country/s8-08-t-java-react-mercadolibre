@@ -4,7 +4,9 @@ import com.nocountry.backend.model.entity.Brand;
 import com.nocountry.backend.model.entity.Category;
 import com.nocountry.backend.model.entity.Product;
 import com.nocountry.backend.model.entity.Subcategory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,4 +23,8 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findByBrand(Brand brand);
 
+    @Query("SELECT p FROM Product p ORDER BY p.id DESC")
+    List<Product> findByOrderByIdDesc(Pageable pageable);
+
+    List<Product> findByDiscountGreaterThan(int i);
 }
