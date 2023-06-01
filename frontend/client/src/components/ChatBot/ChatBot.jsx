@@ -21,7 +21,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
       message:
-        "Hola! Soy MELI, tu asistente para guiarte en este proyecto de Mercado Libre, preguntame lo que quieras",
+        "Hola! Soy MELI, tu asistente para guiarte en este proyecto de Mercado Libre, pregúntame lo que quieras",
       sentTime: "just now",
       sender: "ChatGPT"
     }
@@ -99,12 +99,12 @@ const ChatBot = () => {
     <div>
       {isPressed ? (
         <div className="fixed h-[400px] w-[376px] right-5 bottom-16 z-40">
-          <div className="bg-[#fff] flex items-center h-[48px] rounded-tl-md rounded-tr-md">
-            <div className="pl-3 flex items-center gap-5">
+          <div className="bg-[#ffffff] flex items-center h-[48px] rounded-tl-md rounded-tr-md">
+            <div className="pl-4 flex items-center gap-6">
               <img src={chatbot} alt="Icono de chatbot" className="w-[32px] h-[32px]" />
               <span className="text-base font-medium text-[#333333]">MELI</span>
             </div>
-            <div className="pr-3 ml-auto">
+            <div className="pr-4 ml-auto">
               <IoMdClose
                 className="text-[20px] text-[#4189E6] cursor-pointer"
                 onClick={hideChat}
@@ -116,9 +116,11 @@ const ChatBot = () => {
             <ChatContainer className="rounded-bl-md rounded-br-md bg-black">
               <MessageList
                 scrollBehavior="smooth"
-                /* style={{ backgroundColor:  }} */
+                style={{ backgroundColor: "#F5F5F5"}}
                 typingIndicator={
-                  isTyping ? <TypingIndicator content="MELI está escribiendo" /> : null
+                  isTyping ? 
+                  <TypingIndicator content="MELI está escribiendo" style={{ backgroundColor: "#F5F5F5"}}/> 
+                  : null
                 }
               >
                 {messages.map((message, i) => {
@@ -129,7 +131,7 @@ const ChatBot = () => {
                 placeholder="Escribe tu mensaje"
                 onSend={handleSend}
                 attachButton={false}
-                className="bg-white text-red"
+                style={{ backgroundColor: "#F5F5F5"}}
               />
             </ChatContainer>
           </MainContainer>
@@ -139,7 +141,7 @@ const ChatBot = () => {
           <img
             src={chatbot}
             alt="Robot amarillo"
-            className="w-[100px] h-[100px] cursor-pointer"
+            className="cursor-pointer"
             onClick={showChat}
           />
         </div>

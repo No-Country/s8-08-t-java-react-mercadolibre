@@ -27,6 +27,44 @@
   align-items: center;
 }
 
+/* ChatBot Styles */
+.cs-message {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.cs-message__content {
+  background-color: #BFBFBF80;
+  font-size: 16px;
+  color: #504A4A;
+  padding: 16px 16px;
+  border-radius: 12px;
+  border-top-left-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.cs-message--outgoing .cs-message__content {
+  background-color: rgba(65, 137, 230, 0.26);
+  font-size: 16px;
+  color: #504A4A;
+  border-radius: 12px;
+  border-top-right-radius: 4px;
+}
+
+.cs-message-input__content-editor-wrapper, 
+.cs-message-input__content-editor {
+  background-color: #4189E6;
+  color: #FFFFFF;
+}
+
+.cs-message-input__content-editor[data-placeholder]:empty:before {
+  color: #FFFFFF;
+}
+
+.cs-button--send {
+  color: #4189E6;
+}
+
 @media screen and (max-width: 600px) {
   .swiperSlide {
     height: 300px !important;
