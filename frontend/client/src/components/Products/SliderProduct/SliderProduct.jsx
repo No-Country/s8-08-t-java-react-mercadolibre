@@ -11,8 +11,9 @@ import { TiChevronLeft } from "react-icons/ti";
 
 import listProduct from "../../../utils/listProduct.json";
 import ProductCard from "../ProductCard/ProductCard";
-console.log("slider product", listProduct);
-const SliderProduct = () => {
+
+const SliderProduct = ({ products }) => {
+  console.log(products);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseOver = () => {
@@ -65,7 +66,7 @@ const SliderProduct = () => {
         modules={[Pagination]}
         className=""
       >
-        {listProduct.map((product, index) => (
+        {products.map((product, index) => (
           <SwiperSlide onMouseOver={handleMouseOver} key={`${index}-card`}>
             <div className=" w-full flex justify-between">
               <ProductCard product={product} />
