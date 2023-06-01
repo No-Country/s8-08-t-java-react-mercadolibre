@@ -9,8 +9,8 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import { IoMdClose } from "react-icons/io";
 import chatbot from "../../assets/img/chatbot.png";
-import axios from "axios";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import { chatGPTRequest } from "../../utils/ChatGPTRequest.js";
 
 const systemMessage = {
   role: "system",
@@ -69,17 +69,7 @@ const ChatBot = () => {
     };
 
     try {
-      const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
-        apiRequestBody,
-        {
-          headers: {
-            Authorization: "Bearer " + import.meta.env.VITE_API_KEY,
-            "Content-Type": "application/json"
-          }
-        }
-      );
-      const data = response.data;
+      const data = await chatGPTRequest(apiRequestBody);
 
       setMessages([
         ...chatMessages,
