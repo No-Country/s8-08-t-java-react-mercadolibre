@@ -81,7 +81,8 @@ const NavbarMenues = () => {
               key={`${i}-menu`}
               className={`${item.icon() ? "flex items-center gap-1" : ""}`}
               onClick={item.name === "Categorías" ? () => setOpenMenuCategory(false) : null}
-              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}>
+              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}
+            >
               {item.name && (
                 <p className="opacity-60 hover:opacity-90 cursor-pointer">{item.name}</p>
               )}
@@ -91,7 +92,8 @@ const NavbarMenues = () => {
           {openMenuCategory && (
             <div
               className="absolute top-9 bg-black w-60 rounded-md text-white z-50"
-              onMouseLeave={() => setOpenMenuCategory(false)}>
+              onMouseLeave={() => setOpenMenuCategory(false)}
+            >
               <div className="flex flex-col font-medium gap-1 mt-5 mb-5">
                 <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Vehiculos</p>
                 <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Inmuebles</p>
@@ -115,7 +117,8 @@ const NavbarMenues = () => {
                 <Link to={item.url}>
                   <p
                     className="opacity-60 hover:opacity-90 cursor-pointer whitespace-nowrap"
-                    onMouseOver={i === 0 ? () => setOpenMenuUser(true) : null}>
+                    onMouseOver={i === 0 ? () => setOpenMenuUser(true) : null}
+                  >
                     {item.name}
                   </p>
                 </Link>

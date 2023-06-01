@@ -34,9 +34,9 @@
 }
 
 .cs-message__content {
-  background-color: #BFBFBF80;
+  background-color: #bfbfbf80;
   font-size: 16px;
-  color: #504A4A;
+  color: #504a4a;
   padding: 16px 16px;
   border-radius: 12px;
   border-top-left-radius: 4px;
@@ -46,23 +46,23 @@
 .cs-message--outgoing .cs-message__content {
   background-color: rgba(65, 137, 230, 0.26);
   font-size: 16px;
-  color: #504A4A;
+  color: #504a4a;
   border-radius: 12px;
   border-top-right-radius: 4px;
 }
 
-.cs-message-input__content-editor-wrapper, 
+.cs-message-input__content-editor-wrapper,
 .cs-message-input__content-editor {
-  background-color: #4189E6;
-  color: #FFFFFF;
+  background-color: #4189e6;
+  color: #ffffff;
 }
 
 .cs-message-input__content-editor[data-placeholder]:empty:before {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .cs-button--send {
-  color: #4189E6;
+  color: #4189e6;
 }
 
 @media screen and (max-width: 600px) {

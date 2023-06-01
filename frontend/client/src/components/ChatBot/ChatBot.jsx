@@ -105,10 +105,7 @@ const ChatBot = () => {
               <span className="text-base font-medium text-[#333333]">MELI</span>
             </div>
             <div className="pr-4 ml-auto">
-              <IoMdClose
-                className="text-[20px] text-[#4189E6] cursor-pointer"
-                onClick={hideChat}
-              />
+              <IoMdClose className="text-[20px] text-[#4189E6] cursor-pointer" onClick={hideChat} />
             </div>
           </div>
 
@@ -116,11 +113,14 @@ const ChatBot = () => {
             <ChatContainer className="rounded-bl-md rounded-br-md bg-black">
               <MessageList
                 scrollBehavior="smooth"
-                style={{ backgroundColor: "#F5F5F5"}}
+                style={{ backgroundColor: "#F5F5F5" }}
                 typingIndicator={
-                  isTyping ? 
-                  <TypingIndicator content="MELI está escribiendo" style={{ backgroundColor: "#F5F5F5"}}/> 
-                  : null
+                  isTyping ? (
+                    <TypingIndicator
+                      content="MELI está escribiendo"
+                      style={{ backgroundColor: "#F5F5F5" }}
+                    />
+                  ) : null
                 }
               >
                 {messages.map((message, i) => {
@@ -131,19 +131,14 @@ const ChatBot = () => {
                 placeholder="Escribe tu mensaje"
                 onSend={handleSend}
                 attachButton={false}
-                style={{ backgroundColor: "#F5F5F5"}}
+                style={{ backgroundColor: "#F5F5F5" }}
               />
             </ChatContainer>
           </MainContainer>
         </div>
       ) : (
         <div className="fixed right-5 bottom-5 z-40">
-          <img
-            src={chatbot}
-            alt="Robot amarillo"
-            className="cursor-pointer"
-            onClick={showChat}
-          />
+          <img src={chatbot} alt="Robot amarillo" className="cursor-pointer" onClick={showChat} />
         </div>
       )}
     </div>
