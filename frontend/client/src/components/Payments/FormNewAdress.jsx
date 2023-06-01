@@ -217,21 +217,9 @@ const FormNewAdress = () => {
                   id="city"
                   value={location.locality || formik.values.city}
                   placeholder="Localidad"
-                  className={`h-12 rounded-md border p-3 focus:outline-none focus:border-2 ${
-                    formik.errors.city !== undefined
-                      ? "border-red focus:border-red"
-                      : "border-[#bfbfbf] focus:border-ligthblue"
-                  }`}
+                  className="h-12 rounded-md border p-3 focus:outline-none focus:border-2"
                   onChange={formik.handleChange}
                 />
-                {formik.errors.city !== undefined && (
-                  <div className="flex items-center absolute bottom-[-30px] left-1">
-                    <RiErrorWarningFill className="text-red" />
-                    <span className="text-xs text-[#0000008c] p-2 text-red">
-                      {formik.errors.city}
-                    </span>
-                  </div>
-                )}
               </div>
             </div>
 
