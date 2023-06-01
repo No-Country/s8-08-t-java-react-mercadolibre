@@ -61,7 +61,8 @@ const SliderProduct = ({ products }) => {
           }
         }}
         modules={[Pagination]}
-        className="">
+        className=""
+      >
         {products.map((product, index) => (
           <SwiperSlide onMouseOver={handleMouseOver} key={`${index}-card`}>
             <div className=" w-full flex justify-between">
@@ -74,12 +75,14 @@ const SliderProduct = ({ products }) => {
           <>
             <div
               className=" sm:flex items-center absolute top-[132px] bottom-0 right-0  cursor-pointer 
-  w-[50px] h-[50px] justify-center rounded-full z-[2]">
+  w-[50px] h-[50px] justify-center rounded-full z-[2]"
+            >
               <SlideNextButton />
             </div>
             <div
               className="hidden sm:flex items-center absolute top-[132px] bottom-0 left-0 cursor-pointer
-   w-[50px] h-[50px] justify-center rounded-full z-[8]">
+   w-[50px] h-[50px] justify-center rounded-full z-[8]"
+            >
               <SlidePrevButton />
             </div>
           </>
@@ -95,7 +98,8 @@ const SlideNextButton = () => {
   return (
     <button
       onClick={() => swiper.slideNext()}
-      className=" bg-white shadow-xl w-10 rounded-full h-10  flex items-center justify-center">
+      className=" bg-white shadow-xl w-10 rounded-full h-10  flex items-center justify-center"
+    >
       <TiChevronRight className=" text-[#4695fd] hover:text-[#4695fd] text-xl" />
     </button>
   );
@@ -107,7 +111,8 @@ const SlidePrevButton = () => {
   return (
     <button
       onClick={() => swiper.slidePrev()}
-      className=" bg-white shadow-xl w-10 rounded-full h-10 flex items-center justify-center">
+      className=" bg-white shadow-xl w-10 rounded-full h-10 flex items-center justify-center"
+    >
       <TiChevronLeft className=" text-[#4695fd] hover:text-[#4695fd] text-xl" />
     </button>
   );
