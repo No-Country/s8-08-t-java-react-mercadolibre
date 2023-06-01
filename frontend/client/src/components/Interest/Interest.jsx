@@ -5,11 +5,11 @@ import estufa from "../../assets/img/interestStufa.png";
 const Interest = () => {
   return (
     <>
-      <div className="">
-        <h3 className="text-center lg:w-full w-[211px] h-[37px] font-light text-[26px] text-[#666666] text-center ">
+      <div className="w-full">
+        <h3 className="lg:w-full w-[211px] h-[37px] font-light text-[26px] text-[#666666]">
           Te puede interesar
         </h3>
-        <div className="w-full mx-auto flex flex-col lg:flex-row lg:justify-center gap-3 mt-5">
+        <div className="w-full mx-auto flex flex-col lg:flex-row lg:justify-between gap-3 mt-5">
           <article className="flex justify-between w-full lg:w-[584px] h-[250px] bg-white hover:shadow-2xl">
             <div className="flex flex-col w-[328px] h-[32px] ml-8 mt-14">
               <h4 className="text-[#4B4B4B] text-xs font-semibold uppercase leading-3 tracking-[4px]">
