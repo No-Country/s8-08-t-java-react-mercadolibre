@@ -1,10 +1,22 @@
-import React from "react";
 import payment from "../../assets/img/logo-payment.png";
-const Loader = () => {
+import useMediaQuery from "../../hooks/useMediaQuery.js";
+
+const Loader = ({ size }) => {
+  const isMobile = useMediaQuery("(max-width: 441px)");
+
   return (
-    <div className="flex flex-col gap-3 justify-center items-center">
-      <div className="border-8 border-white border-t-sky-600 rounded-full w-16 h-16 animate-spin"></div>
-      <img src={payment} alt="" />
+    <div
+      role="status"
+      className={`flex flex-col gap-3 justify-center items-center ${
+        isMobile && size ? "absolute right-10" : "relative right-0"
+      }`}
+    >
+      <div
+        className={`border-t-sky-600 rounded-full animate-spin ${
+          size ? size : "w-16 h-16 border-8 border-white"
+        }`}
+      ></div>
+      {!size && <img src={payment} alt="Logo Mercado Libre" />}
     </div>
   );
 };
