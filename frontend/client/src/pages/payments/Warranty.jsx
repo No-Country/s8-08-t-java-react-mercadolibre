@@ -1,8 +1,19 @@
+import { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import NavbarPayment from "../../components/Payments/NavbarPayment";
 import FooterWarranty from "../../components/Payments/FooterWarranty";
-// garantia
+
 const Warranty = () => {
+  const [selectedWarranty, setSelectedWarranty] = useState(true);
+
+  const handleFirstOption = () => {
+    setSelectedWarranty(true);
+  };
+
+  const handleSecondOption = () => {
+    setSelectedWarranty(false);
+  };
+
   return (
     <div className="">
       <NavbarPayment title={"Añadir una protección"} />
@@ -11,7 +22,12 @@ const Warranty = () => {
           Añadir una protección
         </h2>
         <div className="flex flex-col mt-4  mb-4 gap-2 md:gap-4 items-center lg:flex-row lg:justify-center  lg:h-[600px]">
-          <article className=" border border-ligthblue flex flex-col text-[#504A4A] max-w-[360px]  bg-white rounded-lg md:w-[460px] lg:h-[300px]">
+          <article
+            className={`border flex flex-col text-[#504A4A] max-w-[360px]  bg-white rounded-lg md:w-[460px] lg:h-[300px] cursor-pointer ${
+              selectedWarranty && "border-ligthblue"
+            } hover:bg-[#F5F5F5]`}
+            onClick={handleFirstOption}
+          >
             <div className=" flex justify-end">
               <h4 className=" bg-ligthblue text-white w-fit px-5 rounded-bl-lg rounded-tr-lg">
                 Mejor costo y beneficio
@@ -50,7 +66,12 @@ const Warranty = () => {
             </div>
           </article>
 
-          <article className=" border flex flex-col text-[#504A4A] max-w-[360px]  bg-white rounded-lg md:w-[460px] lg:h-[300px]">
+          <article
+            className={`border flex flex-col text-[#504A4A] max-w-[360px]  bg-white rounded-lg md:w-[460px] lg:h-[300px] cursor-pointer ${
+              !selectedWarranty && "border-ligthblue"
+            } hover:bg-[#F5F5F5]`}
+            onClick={handleSecondOption}
+          >
             <div className="p-4">
               <h3 className=" text-[16px] font-[500] mb-3">Garantia extendida</h3>
 
