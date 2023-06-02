@@ -80,106 +80,6 @@ VALUES (1, 'Accesorios para Vehículos'),
 
 
 
-
-
-
-insert into products (discount,number_quotas, description, title, price, stock, category_id, user_id)
-values
-(10,8, 'Duis at velit eu est congue elementum.', 'Foil Cont Round', 11164.02, 20, 14, 3),
-(10,6, 'Praesent lectus.', 'Flavouring Vanilla Artificial', 15855.34, 12, 12, 3),
-(10,5, 'Aliquam non mauris.', 'Milk - Chocolate 250 Ml', 11095.97, 14, 1, 4),
-(10,5, 'In congue.', 'Heavy Duty Dust Pan', 10878.79, 15, 20, 2),
-(10,6, 'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 'Parsnip', 18035.0, 10, 18, 4),
-(10,5, 'Nullam porttitor lacus at turpis.', 'Pear - Asian', 13964.26, 18, 16, 3),
-(10,6, 'Nunc rhoncus dui vel sem.', 'Roe - White Fish', 17335.91, 11, 12, 4),
-(10,6, 'In hac habitasse platea dictumst.', 'Milk - 2% 250 Ml', 16270.51, 15, 6, 1),
-(10,8, 'Duis at velit eu est congue elementum.', 'Venison - Striploin', 19374.23, 10, 31, 1),
-(10,8, 'Aliquam non mauris.', 'Trout - Hot Smkd, Dbl Fillet', 16631.49, 13, 15, 4),
-(10,5,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.',
-'Samsung Galaxy A04 128 GB negro 4 GB RAM', 10000,5, 11, 1),
-(11,6,'Pantalla AMOLED de 6.67.  Tiene 4 cámaras traseras de 108Mpx/8Mpx/5Mpx/2Mpx.  Cámara delantera de 16Mpx.  Procesador Snapdragon 732G Octa-Core de 2.3GHz con 6GB de RAM.  Batería de 5020mAh.  Memoria interna de 128GB.  A prueba de agua.  Con reconocimiento facial y sensor de huella dactilar.  Resistente al polvo y a las caídas.',
-'Xiaomi Redmi Note 10 Pro (108 Mpx) Dual SIM 128 GB gris ónix 6 GB RAM', 10000,3, 11, 1);
-
-
-insert into colors_has_products(product_id,color_id)
-values
-(1,1),
-(1,2),
-(1,3),
-(2,2)
-;
-
-insert into descriptions (product_id,content, priority) values 
-(1,'Mauris sit amet eros.', 'RELEVANT'),
-(1,'Pellentesque at nulla.', 'RELEVANT'),
-(1,'Praesent blandit.', 'RELEVANT'),
-(2,'Proin risus.', 'RELEVANT'),
-(3,'Duis bibendum.', 'RELEVANT'),
-(5,'Aliquam non mauris.', 'RELEVANT'),
-(7,'In congue.', 'RELEVANT'),
-(7,'Cras in purus eu magna vulputate luctus.', 'RELEVANT'),
-(8,'In sagittis dui vel nisl.', 'RELEVANT'),
-(11,'Morbi quis tortor id nulla ultrices aliquet.', 'RELEVANT'),
-(12,'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.', 'GENERIC'),
-(5,'Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.', 'GENERIC'),
-(1,'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 'GENERIC'),
-(1,'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', 'GENERIC'),
-(1,'Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.', 'GENERIC'),
-(2,'Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.', 'GENERIC'),
-(4,'In congue. Etiam justo. Etiam pretium iaculis justo.', 'GENERIC'),
-(7,'Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.', 'GENERIC'),
-(9,'Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.', 'GENERIC'),
-(3,'Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.', 'GENERIC');
-
-
-
-INSERT INTO images (PRODUCT_ID, IMAGE_URL)
-values (1, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (1, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (2, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (2, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (3, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (3, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (4, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (4, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (5, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (5, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (6, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (6, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (7, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (7, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (8, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (8, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (9, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (9, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (10, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (10, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (11, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (11, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (12, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (12, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp')
-;
-
-
-
-
-
-
-INSERT INTO images (image_url, product_id)
-VALUES ('https://http2.mlstatic.com/D_NQ_NP_615787-MLA53225354281_012023-O.webp', '1'),
-       ('https://http2.mlstatic.com/D_NQ_NP_989252-MLA53225323332_012023-O.webp', '1'),
-       ('https://http2.mlstatic.com/D_NQ_NP_689330-MLA50263507908_062022-O.webp', '2'),
-       ('https://http2.mlstatic.com/D_NQ_NP_625466-MLA50263727206_062022-O.webp', '2');
-
-INSERT INTO order_status (status)
-VALUES ('Pendiente'),
-       ('Enviado'),
-       ('Entregado');
-
-INSERT INTO address (`comment`, `contact`, `floor_apartment`, `locality`, `num_street_end`, `num_street_init`, `phone`,
-                     `province_fk`, `street`, `street_number`, `user_fk`, `zip_code`)
-VALUES ('Domicilio', '348256445', '1', 'Bs As', 'Av Mayo  ', '123', '01112233333', '06', 'Av Mayo', '123', '2', '1000');
-
 INSERT INTO `subcategory` (`id`, `name`, `category_id`)
 VALUES (1, 'Acc. para Motos y Cuatriciclos', 1),
        (2, 'Accesorios Náuticos', 1),
@@ -571,6 +471,106 @@ VALUES (1, 'Acc. para Motos y Cuatriciclos', 1),
        (388, 'Varios (Miscelánea)', 32),
        (389, 'Otros productos y categorías no especificadas anteriormente', 32);
 
+
+
+
+
+insert into products (subcategory_id,discount,number_quotas, description, title, price, stock, category_id, user_id)
+values
+(2,10,8, 'Duis at velit eu est congue elementum.', 'Foil Cont Round', 11164.02, 20, 14, 3),
+(5,10,6, 'Praesent lectus.', 'Flavouring Vanilla Artificial', 15855.34, 12, 12, 3),
+(34,10,5, 'Aliquam non mauris.', 'Milk - Chocolate 250 Ml', 11095.97, 14, 1, 4),
+(56,10,5, 'In congue.', 'Heavy Duty Dust Pan', 10878.79, 15, 20, 2),
+(65,10,6, 'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 'Parsnip', 18035.0, 10, 18, 4),
+(43,10,5, 'Nullam porttitor lacus at turpis.', 'Pear - Asian', 13964.26, 18, 16, 3),
+(78,10,6, 'Nunc rhoncus dui vel sem.', 'Roe - White Fish', 17335.91, 11, 12, 4),
+(22,10,6, 'In hac habitasse platea dictumst.', 'Milk - 2% 250 Ml', 16270.51, 15, 6, 1),
+(14,10,8, 'Duis at velit eu est congue elementum.', 'Venison - Striploin', 19374.23, 10, 31, 1),
+(38,10,8, 'Aliquam non mauris.', 'Trout - Hot Smkd, Dbl Fillet', 16631.49, 13, 15, 4),
+(23,10,5,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.',
+'Samsung Galaxy A04 128 GB negro 4 GB RAM', 10000,5, 11, 1),
+(67,11,6,'Pantalla AMOLED de 6.67.  Tiene 4 cámaras traseras de 108Mpx/8Mpx/5Mpx/2Mpx.  Cámara delantera de 16Mpx.  Procesador Snapdragon 732G Octa-Core de 2.3GHz con 6GB de RAM.  Batería de 5020mAh.  Memoria interna de 128GB.  A prueba de agua.  Con reconocimiento facial y sensor de huella dactilar.  Resistente al polvo y a las caídas.',
+'Xiaomi Redmi Note 10 Pro (108 Mpx) Dual SIM 128 GB gris ónix 6 GB RAM', 10000,3, 11, 1);
+
+
+insert into colors_has_products(product_id,color_id)
+values
+(1,1),
+(1,2),
+(1,3),
+(2,2)
+;
+
+insert into descriptions (product_id,content, priority) values 
+(1,'Mauris sit amet eros.', 'RELEVANT'),
+(1,'Pellentesque at nulla.', 'RELEVANT'),
+(1,'Praesent blandit.', 'RELEVANT'),
+(2,'Proin risus.', 'RELEVANT'),
+(3,'Duis bibendum.', 'RELEVANT'),
+(5,'Aliquam non mauris.', 'RELEVANT'),
+(7,'In congue.', 'RELEVANT'),
+(7,'Cras in purus eu magna vulputate luctus.', 'RELEVANT'),
+(8,'In sagittis dui vel nisl.', 'RELEVANT'),
+(11,'Morbi quis tortor id nulla ultrices aliquet.', 'RELEVANT'),
+(12,'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.', 'GENERIC'),
+(5,'Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.', 'GENERIC'),
+(1,'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 'GENERIC'),
+(1,'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', 'GENERIC'),
+(1,'Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.', 'GENERIC'),
+(2,'Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.', 'GENERIC'),
+(4,'In congue. Etiam justo. Etiam pretium iaculis justo.', 'GENERIC'),
+(7,'Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.', 'GENERIC'),
+(9,'Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.', 'GENERIC'),
+(3,'Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.', 'GENERIC');
+
+
+
+INSERT INTO images (PRODUCT_ID, IMAGE_URL)
+values (1, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (1, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (2, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (2, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (3, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (3, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (4, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (4, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (5, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (5, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (6, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (6, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (7, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (7, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (8, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (8, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (9, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (9, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (10, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (10, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (11, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (11, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
+       (12, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
+       (12, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp')
+;
+
+
+
+
+
+
+INSERT INTO images (image_url, product_id)
+VALUES ('https://http2.mlstatic.com/D_NQ_NP_615787-MLA53225354281_012023-O.webp', '1'),
+       ('https://http2.mlstatic.com/D_NQ_NP_989252-MLA53225323332_012023-O.webp', '1'),
+       ('https://http2.mlstatic.com/D_NQ_NP_689330-MLA50263507908_062022-O.webp', '2'),
+       ('https://http2.mlstatic.com/D_NQ_NP_625466-MLA50263727206_062022-O.webp', '2');
+
+INSERT INTO order_status (status)
+VALUES ('Pendiente'),
+       ('Enviado'),
+       ('Entregado');
+
+INSERT INTO address (`comment`, `contact`, `floor_apartment`, `locality`, `num_street_end`, `num_street_init`, `phone`,
+                     `province_fk`, `street`, `street_number`, `user_fk`, `zip_code`)
+VALUES ('Domicilio', '348256445', '1', 'Bs As', 'Av Mayo  ', '123', '01112233333', '06', 'Av Mayo', '123', '2', '1000');
 
 INSERT INTO `shipping_methods` (`name`, `price`)
 VALUES ('Correo Argentino', '1500'),
