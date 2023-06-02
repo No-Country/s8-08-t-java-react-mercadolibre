@@ -11,7 +11,6 @@ const Navbar = () => {
   const [openMenuMobile, setOpenMenuMobile] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("USEEFECT");
     dispatch(getAllCategories());
   }, []);
 

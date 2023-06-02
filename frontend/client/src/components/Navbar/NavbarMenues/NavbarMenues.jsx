@@ -93,13 +93,24 @@ const NavbarMenues = () => {
           ))}
           {openMenuCategory && (
             <div
-              className="absolute top-9 bg-black w-60 rounded-md text-white z-50 h-[31rem]"
-              onMouseLeave={() => setOpenMenuCategory(false)}>
+              className="absolute top-9 bg-black w-60 rounded-md text-white z-50"
+              onMouseLeave={() => setOpenMenuCategory(false)}
+            >
               <div className="flex flex-col font-medium gap-1 mt-5 mb-5 ">
                 {listCategories.map(category => {
                   return (
-                    <p key={category.id} id={category.id} className="cursor-pointer p-2 hover:bg-ligthblue pl-7">{category.name}</p>)
+                    <p
+                      key={category.id}
+                      id={category.id}
+                      className="cursor-pointer p-2 hover:bg-ligthblue pl-7"
+                    >
+                      {category.name}
+                    </p>
+                  );
                 })}
+                <Link to={"/all-categories"}>
+                  <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Todas las Categorias</p>
+                </Link>
               </div>
             </div>
           )}

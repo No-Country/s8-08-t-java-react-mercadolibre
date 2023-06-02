@@ -19,9 +19,9 @@ export const { setCategoriesList } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;
 
-export const getAllCategories = () => async (dispatch) => {
+export const getAllCategories = () => async dispatch => {
   try {
-    const categories = await getRequest("/api/v1/categories/all");
+    const categories = await getRequest("/api/v1/categories/subcategory");
     dispatch(setCategoriesList(categories));
   } catch (error) {
     console.log(error);
