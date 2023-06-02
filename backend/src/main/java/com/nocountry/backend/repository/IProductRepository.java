@@ -7,6 +7,7 @@ import com.nocountry.backend.model.entity.Subcategory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,4 +28,17 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findByOrderByIdDesc(Pageable pageable);
 
     List<Product> findByDiscountGreaterThan(int i);
+
+    List<Product> findByTitle(String productName);
+
+    @Query("SELECT p FROM Product p WHERE LOWER(p.title) LIKE %:productName%")
+    List<Product> findBySimilarName(@Param("productName") String productName);
+
+    @Query("SELECT p FROM Product p ORDER BY p.id DESC")
+    List<Product> findTopNByOrderByIdDesc(Pageable pageable);
+
+    List<Product> findByCategoryName(String categoryName);
+
+    @Query("SELECT p FROM Product p WHERE p.category.name LIKE %:categoryName%")
+    List<Product> findBySimilarCategoryName(@Param("categoryName") String categoryName);
 }
