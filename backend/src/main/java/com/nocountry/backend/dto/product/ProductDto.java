@@ -23,8 +23,8 @@ public class ProductDto {
     private String description;
     private Integer discount;
     private double priceDiscount;
-    private Integer quoteQuantity;
-    private Double quotePrice;
+    private Integer numberQuotas;
+    private Double priceQuotas;
     private CategoryDto category;
     private SubcategoryDTO subcategory;
     private BrandDTO brand;
