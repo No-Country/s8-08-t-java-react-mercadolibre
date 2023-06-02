@@ -84,9 +84,23 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
-            productDTO.setQuoteQuantity(product.getNumberQuotas());
-            productDTO.setQuotePrice(product.getPriceQuotas());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
+            productDTO.setNumberQuotas(product.getNumberQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
+            CategoryDto categoryDTO = new CategoryDto();
+            categoryDTO.setId(product.getCategory().getId());
+            categoryDTO.setName(product.getCategory().getName());
+            productDTO.setCategory(categoryDTO);
             Brand brand = product.getBrand();
             if (brand != null) {
                 BrandDTO brandDTO = new BrandDTO();
@@ -127,9 +141,19 @@ public class ProductController {
                 productDTO.setStock(product.getStock());
                 productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
-                productDTO.setPriceDiscount(product.getPriceDiscount());
+                Double priceDiscount = product.getPriceDiscount();
+                if (priceDiscount != null) {
+                    productDTO.setPriceDiscount(priceDiscount.doubleValue());
+                } else {
+                    productDTO.setPriceDiscount(0); // or set a default value like 0.0
+                }
                 productDTO.setNumberQuotas(product.getNumberQuotas());
-                productDTO.setPriceQuotas(product.getPriceQuotas());
+                Double priceQuotas = product.getPriceQuotas();
+                if (priceQuotas != null) {
+                    productDTO.setPriceQuotas(product.getPriceQuotas());
+                }else {
+                    productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+                }
                 CategoryDto categoryDTO = new CategoryDto();
                 categoryDTO.setId(product.getCategory().getId());
                 categoryDTO.setName(product.getCategory().getName());
@@ -189,9 +213,19 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
             productDTO.setNumberQuotas(product.getNumberQuotas());
-            productDTO.setPriceQuotas(product.getPriceQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
             CategoryDto categoryDTO = new CategoryDto();
             Category category = product.getCategory();
             if (category != null) {
@@ -254,9 +288,19 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
             productDTO.setNumberQuotas(product.getNumberQuotas());
-            productDTO.setPriceQuotas(product.getPriceQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
             CategoryDto categoryDTO = new CategoryDto();
             Category category = product.getCategory();
             if (category != null) {
@@ -317,9 +361,19 @@ public class ProductController {
                 productDTO.setStock(product.getStock());
                 productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
-                productDTO.setPriceDiscount(product.getPriceDiscount());
+                Double priceDiscount = product.getPriceDiscount();
+                if (priceDiscount != null) {
+                    productDTO.setPriceDiscount(priceDiscount.doubleValue());
+                } else {
+                    productDTO.setPriceDiscount(0); // or set a default value like 0.0
+                }
                 productDTO.setNumberQuotas(product.getNumberQuotas());
-                productDTO.setPriceQuotas(product.getPriceQuotas());
+                Double priceQuotas = product.getPriceQuotas();
+                if (priceQuotas != null) {
+                    productDTO.setPriceQuotas(product.getPriceQuotas());
+                }else {
+                    productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+                }
                 CategoryDto categoryDTO = new CategoryDto();
                 Category category = product.getCategory();
                 if (category != null) {
@@ -378,9 +432,19 @@ public class ProductController {
                 productDTO.setStock(product.getStock());
                 productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
-                productDTO.setPriceDiscount(product.getPriceDiscount());
+                Double priceDiscount = product.getPriceDiscount();
+                if (priceDiscount != null) {
+                    productDTO.setPriceDiscount(priceDiscount.doubleValue());
+                } else {
+                    productDTO.setPriceDiscount(0); // or set a default value like 0.0
+                }
                 productDTO.setNumberQuotas(product.getNumberQuotas());
-                productDTO.setPriceQuotas(product.getPriceQuotas());
+                Double priceQuotas = product.getPriceQuotas();
+                if (priceQuotas != null) {
+                    productDTO.setPriceQuotas(product.getPriceQuotas());
+                }else {
+                    productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+                }
                 CategoryDto categoryDTO = new CategoryDto();
                 categoryDTO.setId(product.getCategory().getId());
                 categoryDTO.setName(product.getCategory().getName());
@@ -436,9 +500,19 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
             productDTO.setNumberQuotas(product.getNumberQuotas());
-            productDTO.setPriceQuotas(product.getPriceQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
             CategoryDto categoryDTO = new CategoryDto();
             categoryDTO.setId(product.getCategory().getId());
             categoryDTO.setName(product.getCategory().getName());
@@ -490,9 +564,19 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
             productDTO.setNumberQuotas(product.getNumberQuotas());
-            productDTO.setPriceQuotas(product.getPriceQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
             CategoryDto categoryDTO = new CategoryDto();
             categoryDTO.setId(product.getCategory().getId());
             categoryDTO.setName(product.getCategory().getName());
