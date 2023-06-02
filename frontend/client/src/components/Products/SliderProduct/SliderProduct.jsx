@@ -31,28 +31,28 @@ const SliderProduct = ({ products }) => {
             spaceBetween: 5
           },
           410: {
-            slidesPerView: 1.5,
+            slidesPerView: 2,
             spaceBetween: 5
           },
           700: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 10
           },
           900: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 6
           },
 
           1100: {
-            slidesPerView: 3.3,
+            slidesPerView: 5,
             spaceBetween: 6
           },
           1280: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 4
           },
           1400: {
-            slidesPerView: 4.5,
+            slidesPerView: 5,
             spaceBetween: 4
           },
           1650: {

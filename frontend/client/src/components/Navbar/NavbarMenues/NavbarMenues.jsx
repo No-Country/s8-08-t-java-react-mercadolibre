@@ -25,6 +25,8 @@ const NavbarMenues = () => {
   const [openMenuUser, setOpenMenuUser] = useState(false);
   const [openMenuCategory, setOpenMenuCategory] = useState(false);
   const { user, token } = useSelector(store => store.auth);
+  const { list: listCategories } = useSelector(store => store.categories);
+
   const menuUser = () => {
     let listMenu = [];
     if (token) {
@@ -94,13 +96,21 @@ const NavbarMenues = () => {
               className="absolute top-9 bg-black w-60 rounded-md text-white z-50"
               onMouseLeave={() => setOpenMenuCategory(false)}
             >
-              <div className="flex flex-col font-medium gap-1 mt-5 mb-5">
-                <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Vehiculos</p>
-                <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Inmuebles</p>
-                <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Supermercado</p>
-                <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Tecnología</p>
-                <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Electrodomésticos</p>
-                <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Herramientas</p>
+              <div className="flex flex-col font-medium gap-1 mt-5 mb-5 ">
+                {listCategories.map(category => {
+                  return (
+                    <p
+                      key={category.id}
+                      id={category.id}
+                      className="cursor-pointer p-2 hover:bg-ligthblue pl-7"
+                    >
+                      {category.name}
+                    </p>
+                  );
+                })}
+                <Link to={"/all-categories"}>
+                  <p className="cursor-pointer p-2 hover:bg-ligthblue pl-7">Todas las Categorias</p>
+                </Link>
               </div>
             </div>
           )}
