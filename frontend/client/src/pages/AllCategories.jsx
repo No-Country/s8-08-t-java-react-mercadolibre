@@ -6,8 +6,9 @@ const AllCategories = () => {
   const subCategoryRows = listSubCategories => {
     let categoriesPerRow = 5;
 
-    if (listSubCategories.length > 20) categoriesPerRow = 5;
-    if (listSubCategories.length < 10) categoriesPerRow = 2;
+    if (listSubCategories.length <= 15) categoriesPerRow = 3;
+    if (listSubCategories.length <= 10) categoriesPerRow = 2;
+    if (listSubCategories.length <= 5) categoriesPerRow = 1;
 
     const categoryRows = listSubCategories.reduce((rows, category, index) => {
       if (index % categoriesPerRow === 0) {
