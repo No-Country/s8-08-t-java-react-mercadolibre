@@ -30,6 +30,7 @@ export const postRequest = async (dataSend, endpoint) => {
 };
 
 export const getRequest = async endpoint => {
+  const token = getToken();
   try {
     const { data } = await axios.get(URL + endpoint, {
       headers: {
