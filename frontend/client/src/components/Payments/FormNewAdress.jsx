@@ -16,39 +16,41 @@ const FormNewAdress = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      zip_code: "",
-      state: "",
-      city: "",
+      contact: "",
+      locality: "",
       street: "",
       number: "",
-      no_number: false,
-      floor: "",
-      street1: "",
-      street2: "",
-      place: "",
+      status: false,
+      residential: "",
       phone: "",
-      indications: ""
+      comment: "",
+      user_id: 0,
+      zip_code: "",
+      province_id: 0,
+      floor_apartment: "",
+      num_street_init: "",
+      num_street_end: "",
+      state: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Completá este dato."),
+      contact: Yup.string().required("Completá este dato."),
       zip_code: Yup.string()
         .length(4, "Ingresá un código postal válido.")
         .required("Completá este dato."),
-      city: Yup.string().required("Completá este dato."),
+      locality: Yup.string().required("Completá este dato."),
       street: Yup.string().required("Completá este dato."),
-      no_number: Yup.boolean(),
-      number: Yup.string().when("no_number", {
+      status: Yup.boolean(),
+      number: Yup.string().when("status", {
         is: false,
         then: () =>
           Yup.string().required("Completá este dato.").max(5, "Ingresa un máximo de 5 caracteres")
       }),
-      place: Yup.string().required("Completá este dato."),
+      residential: Yup.string().required("Completá este dato."),
       phone: Yup.string()
         .required("Completá este dato.")
         .max(12, "Ingresa un máximo de 12 caracteres")
     }),
-    onSubmit: (values, { setErrors }) => {
+    onSubmit: (values,) => {
       console.log(values);
       navigate("/pay/pay-method");
     }
@@ -75,12 +77,16 @@ const FormNewAdress = () => {
   };
 
   useEffect(() => {
+    if (location.id !== undefined) {
+      formik.setFieldValue("province_id", location.id);
+    }
+    
     //Focus the input to fix the error when sending
     if (!formik.isSubmitting) return;
     if (Object.keys(formik.errors).length > 0) {
       document.getElementsByName(Object.keys(formik.errors)[0])[0].focus();
     }
-  }, [formik]);
+  }, [location]);
 
   return (
     <section className="mx-0 sm:mx-24 lg:ml-14 lg:mr-0 sm:mt-12 flex grow">
@@ -90,31 +96,31 @@ const FormNewAdress = () => {
           <div className="bg-white rounded-md p-10 sm:mt-7">
             <div className="flex flex-col mb-2">
               <label
-                htmlFor="name"
+                htmlFor="contact"
                 className={`text-sm ml-2 ${
-                  formik.errors.name !== undefined ? "text-red" : "text-black"
+                  formik.errors.contact !== undefined ? "text-red" : "text-black"
                 }`}
               >
                 Nombre y apellido
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
-                value={formik.values.name}
+                name="contact"
+                id="contact"
+                value={formik.values.contact}
                 className={`w-full max-w-[412px] h-12 rounded-md border p-3 focus:outline-none focus:border-2 ${
-                  formik.errors.name !== undefined
+                  formik.errors.contact !== undefined
                     ? "border-red focus:border-red"
                     : "border-[#bfbfbf] focus:border-ligthblue"
                 }`}
                 onChange={formik.handleChange}
-                error={formik.errors.name}
+                error={formik.errors.contact}
               />
-              {formik.errors.name !== undefined ? (
+              {formik.errors.contact !== undefined ? (
                 <div className="flex items-center ml-1">
                   <RiErrorWarningFill className="text-red" />
                   <span className="text-xs text-[#0000008c] p-2 text-red">
-                    {formik.errors.name}
+                    {formik.errors.contact}
                   </span>
                 </div>
               ) : (
@@ -185,14 +191,14 @@ const FormNewAdress = () => {
                 />
               </div>
               <div className="flex flex-col mb-8 w-full max-w-[323px] relative">
-                <label htmlFor="city" className="text-sm ml-2">
+                <label htmlFor="locality" className="text-sm ml-2">
                   Localidad o barrio
                 </label>
                 <input
                   type="text"
-                  name="city"
-                  id="city"
-                  value={location.locality || formik.values.city}
+                  name="locality"
+                  id="locality"
+                  value={location.locality || formik.values.locality}
                   placeholder="Localidad"
                   className="h-12 rounded-md border p-3 focus:outline-none focus:border-2"
                   onChange={formik.handleChange}
@@ -249,19 +255,19 @@ const FormNewAdress = () => {
                       formik.errors.number !== undefined
                         ? "border-red focus:border-red"
                         : "border-[#bfbfbf] focus:border-ligthblue"
-                    } ${formik.values.no_number && "cursor-not-allowed"}`}
+                    } ${formik.values.status && "cursor-not-allowed"}`}
                     onChange={formik.handleChange}
-                    disabled={formik.values.no_number}
+                    disabled={formik.values.status}
                   />
                   <div className="absolute right-4 top-4 flex items-center gap-1">
                     <input
                       type="checkbox"
-                      name="no_number"
-                      id="no_number"
-                      checked={formik.values.no_number}
+                      name="status"
+                      id="status"
+                      checked={formik.values.status}
                       onChange={formik.handleChange}
                     />
-                    <label htmlFor="no_number" className="text-xs text-ligthblue">
+                    <label htmlFor="status" className="text-xs text-ligthblue">
                       Sin número
                     </label>
                   </div>
@@ -278,13 +284,13 @@ const FormNewAdress = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="floor" className="text-sm ml-2">
+              <label htmlFor="floor_apartment" className="text-sm ml-2">
                 Piso/Departamento (opcional)
               </label>
               <input
                 type="text"
-                name="floor"
-                id="floor"
+                name="floor_apartment"
+                id="floor_apartment"
                 className="w-full max-w-[323px] h-12 rounded-md border border-[#bfbfbf] p-3 focus:border-ligthblue focus:outline-none focus:border-2"
                 onChange={formik.handleChange}
               />
@@ -294,25 +300,25 @@ const FormNewAdress = () => {
               <span className="text-sm ml-2">¿Entre qué calles está? (opcional)</span>
               <div className="flex mt-3 gap-5 flex-col sm:flex-row">
                 <div className="flex flex-col mb-2 w-full max-w-[323px]">
-                  <label htmlFor="street1" className="text-sm ml-2">
+                  <label htmlFor="num_street_init" className="text-sm ml-2">
                     Calle 1
                   </label>
                   <input
                     type="text"
-                    name="street1"
-                    id="street1"
+                    name="num_street_init"
+                    id="num_street_init"
                     className="h-12 rounded-md border border-[#bfbfbf] p-3 focus:border-ligthblue focus:outline-none focus:border-2"
                     onChange={formik.handleChange}
                   />
                 </div>
                 <div className="flex flex-col mb-2 w-full max-w-[323px]">
-                  <label htmlFor="street2" className="text-sm ml-2">
+                  <label htmlFor="num_street_end" className="text-sm ml-2">
                     Calle 2
                   </label>
                   <input
                     type="text"
-                    name="street2"
-                    id="street2"
+                    name="num_street_end"
+                    id="num_street_end"
                     className="h-12 rounded-md border border-[#bfbfbf] p-3 focus:border-ligthblue focus:outline-none focus:border-2"
                     onChange={formik.handleChange}
                   />
@@ -326,7 +332,7 @@ const FormNewAdress = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    name="place"
+                    name="residential"
                     id="work"
                     value="work"
                     className="cursor-pointer"
@@ -336,7 +342,7 @@ const FormNewAdress = () => {
                   <label
                     htmlFor="work"
                     className={`text-base cursor-pointer ${
-                      formik.errors.place !== undefined ? "text-red" : "text-black"
+                      formik.errors.residential !== undefined ? "text-red" : "text-black"
                     }`}
                   >
                     Trabajo
@@ -345,7 +351,7 @@ const FormNewAdress = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    name="place"
+                    name="residential"
                     id="home"
                     value="home"
                     className="cursor-pointer"
@@ -355,18 +361,18 @@ const FormNewAdress = () => {
                   <label
                     htmlFor="home"
                     className={`text-base cursor-pointer ${
-                      formik.errors.place !== undefined ? "text-red" : "text-black"
+                      formik.errors.residential !== undefined ? "text-red" : "text-black"
                     }`}
                   >
                     Casa
                   </label>
                 </div>
               </div>
-              {formik.errors.place !== undefined && (
+              {formik.errors.residential !== undefined && (
                 <div className="flex items-center ml-1">
                   <RiErrorWarningFill className="text-red" />
                   <span className="text-xs text-[#0000008c] p-2 text-red">
-                    {formik.errors.place}
+                    {formik.errors.residential}
                   </span>
                 </div>
               )}
@@ -404,12 +410,12 @@ const FormNewAdress = () => {
             </div>
 
             <div className="flex flex-col">
-              <label htmlFor="indications" className="text-sm font-medium mb-2">
+              <label htmlFor="comment" className="text-sm font-medium mb-2">
                 Indicaciones adicionales de esta dirección (opcional)
               </label>
               <textarea
-                name="indications"
-                id="indications"
+                name="comment"
+                id="comment"
                 cols="30"
                 rows="10"
                 maxLength="128"
@@ -418,7 +424,7 @@ const FormNewAdress = () => {
                 onChange={formik.handleChange}
               ></textarea>
               <span className="text-sm text-end p-1 text-[#0000008c]">
-                {formik.values.indications.length} / 128
+                {formik.values.comment.length} / 128
               </span>
             </div>
           </div>
