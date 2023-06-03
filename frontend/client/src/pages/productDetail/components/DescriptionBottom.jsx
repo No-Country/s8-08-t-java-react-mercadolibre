@@ -5,7 +5,7 @@ const DescriptionBottom = ({ description }) => {
       {description.map(elem => {
         return (
           <p key={description.indexOf(elem)} className="text-gray-500 py-3 text-xl">
-            {elem}
+            {elem.content}
           </p>
         );
       })}
