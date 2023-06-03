@@ -6,12 +6,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { locationRequest } from "../../utils/LocationRequest";
+import { useSelector } from "react-redux";
+import { postRequest } from "../../services/httpRequest";
 import Loader from "./Loader";
 
 const FormNewAdress = () => {
   const [location, setLocation] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isRequestFailed, setIsRequestFailed] = useState(false);
+  const { user, token } = useSelector(store => store.auth);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -24,13 +27,12 @@ const FormNewAdress = () => {
       residential: "",
       phone: "",
       comment: "",
-      user_id: 0,
+      user_id: user.id,
       zip_code: "",
       province_id: 0,
       floor_apartment: "",
       num_street_init: "",
-      num_street_end: "",
-      state: "",
+      num_street_end: ""
     },
     validationSchema: Yup.object({
       contact: Yup.string().required("Completá este dato."),
@@ -45,13 +47,24 @@ const FormNewAdress = () => {
         then: () =>
           Yup.string().required("Completá este dato.").max(5, "Ingresa un máximo de 5 caracteres")
       }),
-      residential: Yup.string().required("Completá este dato."),
+      residential: Yup.boolean().required("Completá este dato."),
       phone: Yup.string()
         .required("Completá este dato.")
         .max(12, "Ingresa un máximo de 12 caracteres")
     }),
-    onSubmit: (values,) => {
-      console.log(values);
+    onSubmit: values => {
+      const zipCodeAsString = values.zip_code.toString();
+      const numberAsString = values.number.toString();
+      const phoneAsString = values.phone.toString();
+      const residentialAsBool = JSON.parse(values.residential);
+      let updatedValues = {
+        ...values,
+        zip_code: zipCodeAsString,
+        number: numberAsString,
+        phone: phoneAsString,
+        residential: residentialAsBool
+      };
+      postRequest(updatedValues, "/api/v1/address");
       navigate("/pay/pay-method");
     }
   });
@@ -80,7 +93,7 @@ const FormNewAdress = () => {
     if (location.id !== undefined) {
       formik.setFieldValue("province_id", location.id);
     }
-    
+
     //Focus the input to fix the error when sending
     if (!formik.isSubmitting) return;
     if (Object.keys(formik.errors).length > 0) {
@@ -183,7 +196,7 @@ const FormNewAdress = () => {
                   type="text"
                   name="state"
                   id="state"
-                  value={location.name || formik.values.state}
+                  value={location.name || ""}
                   placeholder="Provincia"
                   className="h-12 rounded-md border border-[#bfbfbf] p-3 border-dashed cursor-not-allowed"
                   disabled
@@ -334,7 +347,7 @@ const FormNewAdress = () => {
                     type="radio"
                     name="residential"
                     id="work"
-                    value="work"
+                    value={false}
                     className="cursor-pointer"
                     onChange={formik.handleChange}
                   />
@@ -353,7 +366,7 @@ const FormNewAdress = () => {
                     type="radio"
                     name="residential"
                     id="home"
-                    value="home"
+                    value={true}
                     className="cursor-pointer"
                     onChange={formik.handleChange}
                   />
