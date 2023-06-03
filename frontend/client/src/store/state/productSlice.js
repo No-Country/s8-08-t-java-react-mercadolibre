@@ -28,8 +28,8 @@ export const productSlice = createSlice({
     setAllProducts: (state, action) => {
       state.list = action.payload;
     },
-    setProductDetail:(state,action) => {
-      state.detail = action.payload
+    setProductDetail: (state, action) => {
+      state.detail = action.payload;
     }
   }
 });
@@ -50,10 +50,10 @@ export const getAllProducts = () => async dispatch => {
   }
 };
 
-export const getProductDetail = (idProduct) => async dispatch => {
+export const getProductDetail = idProduct => async dispatch => {
   try {
     const product = await getRequest(`/api/v1/products/details/${idProduct}`);
-    if (product.title !=="") {
+    if (product.title !== "") {
       dispatch(setProductDetail(product));
     }
   } catch (error) {

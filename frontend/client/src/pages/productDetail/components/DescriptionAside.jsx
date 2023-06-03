@@ -1,14 +1,13 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
-const DescriptionAside = ({ name, characteristics, colors, price,priceDiscount, off }) => {
-
+const DescriptionAside = ({ name, characteristics, colors, price, priceDiscount, off }) => {
   const [colorHover, setColorHover] = useState("");
   const [colorSelected, setColorSelected] = useState("");
-  useEffect(()=>{
+  useEffect(() => {
     setColorHover(colors[0]?.name);
     setColorSelected(colorHover);
-  },[colors])
+  }, [colors]);
   const active = "border-ligthblue border-2";
   return (
     <div className="flex flex-col p-2">
@@ -21,8 +20,7 @@ const DescriptionAside = ({ name, characteristics, colors, price,priceDiscount, 
       <div className="my-2 p-1">
         <h2 className="font-bold text-2xl">{name}</h2>
       </div>
-      {priceDiscount!==""
-      ?
+      {priceDiscount !== "" ? (
         <div className="my-2 p-1">
           <p className="line-through text-gray-500">${price}</p>
           <div className="flex items-center ">
@@ -30,13 +28,13 @@ const DescriptionAside = ({ name, characteristics, colors, price,priceDiscount, 
             <p className="text-green mx-2 text-lg">{off}% OFF</p>
           </div>
         </div>
-      :
+      ) : (
         <div className="my-2 p-1">
           <div className="flex items-center ">
             <h3 className="text-4xl font-light">${price}</h3>
           </div>
         </div>
-      }
+      )}
 
       <div>
         <p className="text-ligthblue my-2">
@@ -46,7 +44,7 @@ const DescriptionAside = ({ name, characteristics, colors, price,priceDiscount, 
           <a href="">OFERTA DEL DIA</a>
         </p>
       </div>
-      {colors.length>0&&
+      {colors.length > 0 && (
         <div className="py-3">
           <p className="text-black text-lg">
             Color: <span>{colorHover}</span>
@@ -75,7 +73,7 @@ const DescriptionAside = ({ name, characteristics, colors, price,priceDiscount, 
             })}
           </div>
         </div>
-      }
+      )}
       <div className="my-2 p-1">
         <ul>
           {characteristics.map(descrip => {

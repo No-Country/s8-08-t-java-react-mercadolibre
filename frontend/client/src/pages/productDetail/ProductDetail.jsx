@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Carousel from "./components/Carousel";
 import DescriptionAside from "./components/DescriptionAside";
 import DescriptionBottom from "./components/DescriptionBottom";
@@ -12,15 +12,14 @@ import PaidSection from "./components/PaidSection";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetail } from "../../store/state/productSlice";
 
-
 const ProductDetail = () => {
   const { id } = useParams();
   const { detail: product } = useSelector(store => store.product);
-  const dispatch=useDispatch()
-  useEffect(()=>{
-    dispatch(getProductDetail(id))
-    window.scrollTo(0,0)
-  },[id])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductDetail(id));
+    window.scrollTo(0, 0);
+  }, [id]);
   return (
     <div>
       <div className="bg-grey flex flex-col justify-center content-center px-24 py-14 w-100">
@@ -48,10 +47,10 @@ const ProductDetail = () => {
                 <DescriptionAside
                   name={product.title}
                   characteristics={product.descriptionGeneric}
-                  colors={product.colors||[]}
+                  colors={product.colors || []}
                   price={product.price}
-                  priceDiscount={product.priceDiscount.toFixed(2)||""}
-                  off={product.discount||""}
+                  priceDiscount={product.priceDiscount.toFixed(2) || ""}
+                  off={product.discount || ""}
                 />
               </div>
             </div>
@@ -67,7 +66,7 @@ const ProductDetail = () => {
           <div className="bg-white w-4/12 flex flex-col pt-6 pr-6 gap-4">
             <BuySection />
             <StoreDetail />
-            <PaidSection />
+            <PaidSection quotes={product.numberQuotas} />
           </div>
         </div>
         <div className="flex gap-4 w-100 h-100 justify-evenly py-14">

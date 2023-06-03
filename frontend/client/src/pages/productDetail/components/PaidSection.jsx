@@ -11,7 +11,7 @@ import Maestro from "../../../assets/img/png-transparent-mastercard-maestro-cred
 import CabalDebito from "../../../assets/img/debcabal.png";
 import Rapipago from "../../../assets/img/Rapipago.png";
 import PagoFacil from "../../../assets/img/PagoFacil.png";
-function PaidSection({quotes}) {
+function PaidSection({ quotes }) {
   return (
     <div className="border-solid border w-[25rem] p-4 rounded-xl">
       <h2 className="text-[17px] pb-7">Medios de pago</h2>
