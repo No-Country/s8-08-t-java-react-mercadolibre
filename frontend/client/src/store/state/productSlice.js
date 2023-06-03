@@ -27,11 +27,14 @@ export const productSlice = createSlice({
   reducers: {
     setAllProducts: (state, action) => {
       state.list = action.payload;
+    },
+    setProductDetail:(state,action) => {
+      state.detail = action.payload
     }
   }
 });
 
-export const { setAllProducts } = productSlice.actions;
+export const { setAllProducts, setProductDetail } = productSlice.actions;
 
 export default productSlice.reducer;
 
@@ -40,6 +43,18 @@ export const getAllProducts = () => async dispatch => {
     const productList = await getRequest("/api/v1/products");
     if (productList.length > 0) {
       dispatch(setAllProducts(productList));
+    }
+  } catch (error) {
+    const msgError = error;
+    return { msg: msgError.toString() };
+  }
+};
+
+export const getProductDetail = (idProduct) => async dispatch => {
+  try {
+    const product = await getRequest(`/api/v1/products/details/${idProduct}`);
+    if (product.title !=="") {
+      dispatch(setProductDetail(product));
     }
   } catch (error) {
     const msgError = error;
