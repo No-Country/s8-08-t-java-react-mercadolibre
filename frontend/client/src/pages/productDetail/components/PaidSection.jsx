@@ -11,7 +11,7 @@ import Maestro from "../../../assets/img/png-transparent-mastercard-maestro-cred
 import CabalDebito from "../../../assets/img/debcabal.png";
 import Rapipago from "../../../assets/img/Rapipago.png";
 import PagoFacil from "../../../assets/img/PagoFacil.png";
-function PaidSection() {
+function PaidSection({quotes}) {
   return (
     <div className="border-solid border w-[25rem] p-4 rounded-xl">
       <h2 className="text-[17px] pb-7">Medios de pago</h2>
@@ -21,14 +21,14 @@ function PaidSection() {
         <p className="text-white text-center pl-5">
           ¡Pagá el mismo precio en{" "}
           <strong>
-            hasta 6 <br />
+            hasta {`${quotes}`} <br />
             cuotas!
           </strong>{" "}
         </p>
       </div>
       <div>
         <div>
-          <h2 className="text-[15px] pt-7"> Hasta 12 coutas fijas</h2>
+          <h2 className="text-[15px] pt-7"> Hasta 12 cuotas fijas</h2>
           <img src={MercadoCredito} alt="img-MC" width={"105px"} height={"25px"}></img>
         </div>
         <div>
