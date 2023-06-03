@@ -11,7 +11,7 @@ import PaymentsDataHome from "../components/PaymentsDataHome/PaymentsDataHome";
 
 const Home = () => {
   return (
-    <div className="bg-[#EDEDED] ">
+    <div className="bg-[#EDEDED] p-2 sm:p-0">
       <section className="mx-auto w-full">
         <SliderInitial />
       </section>
