@@ -128,7 +128,12 @@ const ChatBot = () => {
         </div>
       ) : (
         <div className="fixed right-5 bottom-5 z-40">
-          <img src={chatbot} alt="Robot amarillo" className="cursor-pointer" onClick={showChat} />
+          <img
+            src={chatbot}
+            alt="Robot amarillo"
+            className="cursor-pointer w-[70px]"
+            onClick={showChat}
+          />
         </div>
       )}
     </div>

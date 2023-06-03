@@ -63,11 +63,11 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="flex gap-4 w-100 h-100 justify-evenly py-14">
+          {/* <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard /> */}
         </div>
         <div className="flex justify-center w-100 my-14">
           <img src={banner} alt="banner" className="w-100" />
