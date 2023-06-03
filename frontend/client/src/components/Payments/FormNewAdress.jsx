@@ -14,7 +14,7 @@ const FormNewAdress = () => {
   const [location, setLocation] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isRequestFailed, setIsRequestFailed] = useState(false);
-  const { user, token } = useSelector(store => store.auth);
+  const { user } = useSelector(store => store.auth);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -62,15 +62,16 @@ const FormNewAdress = () => {
         zip_code: zipCodeAsString,
         number: numberAsString,
         phone: phoneAsString,
-        residential: residentialAsBool
+        residential: residentialAsBool,
       };
+      console.log(updatedValues);
       postRequest(updatedValues, "/api/v1/address");
       navigate("/pay/pay-method");
     }
   });
 
   const getLocation = async event => {
-    if (event.target.value.length === 4) {
+    if (event.target.value.length > 4) {
       setIsLoading(true);
 
       try {
@@ -92,14 +93,15 @@ const FormNewAdress = () => {
   useEffect(() => {
     if (location.id !== undefined) {
       formik.setFieldValue("province_id", location.id);
+      formik.setFieldValue("locality", location.locality);
     }
-
+    console.log(formik.errors)
     //Focus the input to fix the error when sending
     if (!formik.isSubmitting) return;
     if (Object.keys(formik.errors).length > 0) {
       document.getElementsByName(Object.keys(formik.errors)[0])[0].focus();
     }
-  }, [location]);
+  }, [formik.errors, formik.isSubmitting, location]);
 
   return (
     <section className="mx-0 sm:mx-24 lg:ml-14 lg:mr-0 sm:mt-12 flex grow">
@@ -167,7 +169,7 @@ const FormNewAdress = () => {
                   }}
                   error={formik.errors.zip_code}
                 />
-                {isLoading && <Loader size="w-5 h-5 border-2 border-grey" />}
+                {isLoading && <Loader styles="w-5 h-5 border-2 border-grey" />}
               </div>
               {isRequestFailed && (
                 <div className="flex items-center absolute bottom-[-30px] left-1">
@@ -213,7 +215,8 @@ const FormNewAdress = () => {
                   id="locality"
                   value={location.locality || formik.values.locality}
                   placeholder="Localidad"
-                  className="h-12 rounded-md border p-3 focus:outline-none focus:border-2"
+                  className="h-12 rounded-md border border-[#bfbfbf] p-3 border-dashed cursor-not-allowed"
+                  disabled
                   onChange={formik.handleChange}
                 />
               </div>
