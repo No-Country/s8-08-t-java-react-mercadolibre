@@ -11,7 +11,7 @@ import { Grid, Pagination } from "swiper";
 
 import { TiChevronRight } from "react-icons/ti";
 import { TiChevronLeft } from "react-icons/ti";
-import getCard from "../../utils/card.json";
+import { listIcons } from "../../utils/card";
 import PopularCategories from "../PopularCategorie/PopularCategories.jsx";
 
 const SliderIcon = () => {
@@ -64,7 +64,7 @@ const SliderIcon = () => {
         modules={[Grid, Pagination]}
         className="relative"
       >
-        {getCard.map((card, index) => (
+        {listIcons.map((card, index) => (
           <SwiperSlide
             onMouseOver={handleMouseOver}
             key={`${index}-card`}
