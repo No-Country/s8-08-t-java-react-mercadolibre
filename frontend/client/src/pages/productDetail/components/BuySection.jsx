@@ -4,7 +4,9 @@ import { AiFillThunderbolt } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { BiCheckShield } from "react-icons/bi";
 import { IoMdRibbon } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 function BuySection() {
+  const navigate = useNavigate()
   return (
     <div className="border-solid border w-[25rem] p-4 rounded-xl">
       <div className="flex">
@@ -39,7 +41,7 @@ function BuySection() {
         <span className="text-[15px] font-medium">1 Unidad</span>
         <p className="text-[13px] text-gray-400">Podés comprar solo 1 unidad </p>
         <div>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white text-[16px] font-medium w-full py-4 px-20 my-8 rounded">
+          <button onClick={()=> navigate('/pay/warranty')} className="bg-blue-500 hover:bg-blue-700 text-white text-[16px] font-medium w-full py-4 px-20 my-8 rounded">
             Comprar ahora
           </button>
         </div>
