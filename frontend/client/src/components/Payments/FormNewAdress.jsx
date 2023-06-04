@@ -26,7 +26,7 @@ const FormNewAdress = () => {
       locality: "",
       street: "",
       number: "",
-      status: false,
+      status: true,
       residential: "",
       phone: "",
       comment: "",
@@ -68,14 +68,16 @@ const FormNewAdress = () => {
         residential: residentialAsBool,
       };
       postUserAddress(updatedValues);
+      console.log(updatedValues.number);
       getUserAddress(updatedValues.user_id);
-      navigate("/pay/pay-method");
+      navigate("/pay/delivery-type");
     }
   });
 
   const postUserAddress = async (formValues) => {
     try {
       const response = await postRequest(formValues, "/api/v1/address");
+      console.log(response);
       return response;
     } catch (error) {
       console.log(error);

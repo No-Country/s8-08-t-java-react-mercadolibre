@@ -2,11 +2,13 @@ import { useState } from "react";
 import { SlLocationPin } from "react-icons/sl";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { useNavigate } from "react-router-dom";
+import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
 
 const DeliveryOptionPayment = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("");
   const isMobile = useMediaQuery("(max-width: 640px)");
+  const localStorageData = getLocalStorage("auth");
 
   const handleFirstChoice = () => {
     setSelectedOption("home delivery");
@@ -34,7 +36,13 @@ const DeliveryOptionPayment = () => {
                 className="text-[#3483FA] border rounded-full border-none bg-white p-[0.3rem] hidden sm:block"
                 fontSize={28}
               />
-              <span className="text-xs">Vicente López, Buenos Aires</span>
+              <span className="text-xs">
+                {
+                  localStorageData.user.address
+                  ? localStorageData.user.address.province.name
+                  : "Agregar domicilio"
+                }
+              </span>
             </div>
 
             <div className="mr-12 ml-5 sm:ml-0">
