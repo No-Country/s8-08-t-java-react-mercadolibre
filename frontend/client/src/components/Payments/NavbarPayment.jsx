@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/img/logo-payment.png";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { BsArrowLeft } from "react-icons/bs";
 
 const NavbarPayment = ({ title }) => {
   const isMobile = useMediaQuery("(max-width: 640px)");
+  const navigate = useNavigate();
 
   return (
     <>
@@ -17,7 +19,7 @@ const NavbarPayment = ({ title }) => {
           ) : (
             <div className="flex items-center justify-between w-full">
               <div>
-                <img src={logo} alt="Mercado Libre logo" />
+                <img src={logo} alt="Mercado Libre logo" className="cursor-pointer" onClick={()=>navigate("/")}/>
               </div>
               <div>
                 <span className="font-light">Ayuda</span>
