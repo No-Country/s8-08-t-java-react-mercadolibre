@@ -16,6 +16,7 @@ const FormNewAdress = () => {
   const [location, setLocation] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isRequestFailed, setIsRequestFailed] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const localStorageData = getLocalStorage("auth");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -44,7 +45,6 @@ const FormNewAdress = () => {
         .required("Completá este dato."),
       locality: Yup.string().required("Completá este dato."),
       street: Yup.string().required("Completá este dato."),
-      status: Yup.boolean(),
       number: Yup.string().when("status", {
         is: false,
         then: () =>
@@ -112,6 +112,10 @@ const FormNewAdress = () => {
       setLocation({});
     }
   };
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+  }
 
   useEffect(() => {
     if (location.id !== undefined) {
@@ -293,19 +297,19 @@ const FormNewAdress = () => {
                       formik.errors.number !== undefined
                         ? "border-red focus:border-red"
                         : "border-[#bfbfbf] focus:border-ligthblue"
-                    } ${formik.values.status && "cursor-not-allowed"}`}
+                    } ${isChecked && "cursor-not-allowed"}`}
                     onChange={formik.handleChange}
-                    disabled={formik.values.status}
+                    disabled={isChecked}
                   />
                   <div className="absolute right-4 top-4 flex items-center gap-1">
                     <input
                       type="checkbox"
-                      name="status"
-                      id="status"
-                      checked={formik.values.status}
-                      onChange={formik.handleChange}
+                      name="no_number"
+                      id="no_number"
+                      checked={isChecked}
+                      onChange={handleChange}
                     />
-                    <label htmlFor="status" className="text-xs text-ligthblue">
+                    <label htmlFor="no_number" className="text-xs text-ligthblue">
                       Sin número
                     </label>
                   </div>
