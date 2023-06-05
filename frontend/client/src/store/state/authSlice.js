@@ -64,8 +64,8 @@ export const userAddress = userId => async dispatch => {
       dispatch(setUserAddress(response));
       const localStorageData = getLocalStorage("auth");
 
-      const addressInStorage = {...localStorageData.user.address, ...response};
-      localStorageData.user.address = addressInStorage; 
+      const addressInStorage = { ...localStorageData.user.address, ...response };
+      localStorageData.user.address = addressInStorage;
 
       setLocalStorage("auth", localStorageData);
       return { address: true, msg: "Usuario logeado con éxito!" };

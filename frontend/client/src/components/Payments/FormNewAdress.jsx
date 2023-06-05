@@ -36,7 +36,7 @@ const FormNewAdress = () => {
       floor_apartment: "",
       num_street_init: "",
       num_street_end: "",
-      no_number: false,
+      no_number: false
     },
     validationSchema: Yup.object({
       contact: Yup.string().required("Completá este dato."),
@@ -67,7 +67,7 @@ const FormNewAdress = () => {
         zip_code: zipCodeAsString,
         number: numberAsString,
         phone: phoneAsString,
-        residential: residentialAsBool,
+        residential: residentialAsBool
       };
       delete updatedValues.no_number;
 
@@ -77,7 +77,7 @@ const FormNewAdress = () => {
     }
   });
 
-  const postUserAddress = async (formValues) => {
+  const postUserAddress = async formValues => {
     try {
       const response = await postRequest(formValues, "/api/v1/address");
       console.log(response);
@@ -85,16 +85,16 @@ const FormNewAdress = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const getUserAddress = async (userId) => {
+  const getUserAddress = async userId => {
     try {
       const response = await dispatch(userAddress(userId));
       return response;
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const getLocation = async event => {
     if (event.target.value.length === 4) {

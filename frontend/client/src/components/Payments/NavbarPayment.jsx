@@ -19,7 +19,12 @@ const NavbarPayment = ({ title }) => {
           ) : (
             <div className="flex items-center justify-between w-full">
               <div>
-                <img src={logo} alt="Mercado Libre logo" className="cursor-pointer" onClick={()=>navigate("/")}/>
+                <img
+                  src={logo}
+                  alt="Mercado Libre logo"
+                  className="cursor-pointer"
+                  onClick={() => navigate("/")}
+                />
               </div>
               <div>
                 <span className="font-light">Ayuda</span>

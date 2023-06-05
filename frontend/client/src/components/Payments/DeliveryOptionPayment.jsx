@@ -50,11 +50,9 @@ const DeliveryOptionPayment = () => {
                 fontSize={28}
               />
               <span className="text-xs">
-                {
-                  localStorageData.user.address
+                {localStorageData.user.address
                   ? localStorageData.user.address.province.name
-                  : "Agregar domicilio"
-                }
+                  : "Agregar domicilio"}
               </span>
             </div>
 
