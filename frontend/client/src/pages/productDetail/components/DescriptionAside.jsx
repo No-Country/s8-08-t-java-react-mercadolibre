@@ -1,8 +1,13 @@
 import { AiOutlineHeart } from "react-icons/ai";
-import { useState } from "react";
-const DescriptionAside = ({ name, characteristics, specification, price, off }) => {
-  const [color, setColor] = useState(specification.color[0]);
-  const [colorSelected, setColorSelected] = useState(color);
+import { useEffect, useState } from "react";
+
+const DescriptionAside = ({ name, characteristics, colors, price, priceDiscount, off }) => {
+  const [colorHover, setColorHover] = useState("");
+  const [colorSelected, setColorSelected] = useState("");
+  useEffect(() => {
+    setColorHover(colors[0]?.name);
+    setColorSelected(colorHover);
+  }, [colors]);
   const active = "border-ligthblue border-2";
   return (
     <div className="flex flex-col p-2">
@@ -15,13 +20,22 @@ const DescriptionAside = ({ name, characteristics, specification, price, off }) 
       <div className="my-2 p-1">
         <h2 className="font-bold text-2xl">{name}</h2>
       </div>
-      <div className="my-2 p-1">
-        <p className="line-through text-gray-500">${price}</p>
-        <div className="flex items-center ">
-          <h3 className="text-4xl font-light">${price - off}</h3>
-          <p className="text-green mx-2 text-lg">{off}% OFF</p>
+      {priceDiscount !== "" ? (
+        <div className="my-2 p-1">
+          <p className="line-through text-gray-500">${price}</p>
+          <div className="flex items-center ">
+            <h3 className="text-4xl font-light">${priceDiscount}</h3>
+            <p className="text-green mx-2 text-lg">{off}% OFF</p>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="my-2 p-1">
+          <div className="flex items-center ">
+            <h3 className="text-4xl font-light">${price}</h3>
+          </div>
+        </div>
+      )}
+
       <div>
         <p className="text-ligthblue my-2">
           <a href="">Ver los medios de pago</a>
@@ -30,43 +44,45 @@ const DescriptionAside = ({ name, characteristics, specification, price, off }) 
           <a href="">OFERTA DEL DIA</a>
         </p>
       </div>
-      <div className="py-3">
-        <p className="text-black text-lg">
-          Color: <span>{color}</span>
-        </p>
-        <div className="flex py-2 flex-wrap">
-          {specification.color.map(elem => {
-            return (
-              <button
-                key={specification.color.indexOf(elem)}
-                onClick={() => {
-                  setColorSelected(elem);
-                }}
-                onMouseEnter={() => {
-                  setColor(elem);
-                }}
-                onMouseOut={() => {
-                  setColor(colorSelected);
-                }}
-                className={`hover:border-ligthblue ${
-                  elem == colorSelected && active
-                } mx-2 my-1 py-2 px-3 rounded-lg border hover:border-ligthblue`}
-              >
-                {elem}
-              </button>
-            );
-          })}
+      {colors.length > 0 && (
+        <div className="py-3">
+          <p className="text-black text-lg">
+            Color: <span>{colorHover}</span>
+          </p>
+          <div className="flex py-2 flex-wrap">
+            {colors?.map(elem => {
+              return (
+                <button
+                  key={colors.indexOf(elem)}
+                  onClick={() => {
+                    setColorSelected(elem.name);
+                  }}
+                  onMouseEnter={() => {
+                    setColor(elem.name);
+                  }}
+                  onMouseOut={() => {
+                    setColor(colorSelected);
+                  }}
+                  className={`hover:border-ligthblue ${
+                    elem.name == colorSelected && active
+                  } mx-2 my-1 py-2 px-3 rounded-lg border hover:border-ligthblue`}
+                >
+                  {elem.name}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
       <div className="my-2 p-1">
         <ul>
-          {characteristics.map(elem => {
+          {characteristics.map(descrip => {
             return (
               <li
-                key={characteristics.indexOf(elem)}
+                key={characteristics.indexOf(descrip)}
                 className="list-disc py-1 text-gray-500 text-sm"
               >
-                {elem}
+                {descrip.content}
               </li>
             );
           })}
