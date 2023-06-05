@@ -36,7 +36,8 @@ const FormNewAdress = () => {
       province_id: 0,
       floor_apartment: "",
       num_street_init: "",
-      num_street_end: ""
+      num_street_end: "",
+      no_number: false,
     },
     validationSchema: Yup.object({
       contact: Yup.string().required("Completá este dato."),
@@ -45,7 +46,7 @@ const FormNewAdress = () => {
         .required("Completá este dato."),
       locality: Yup.string().required("Completá este dato."),
       street: Yup.string().required("Completá este dato."),
-      number: Yup.string().when(["isChecked"], {
+      number: Yup.string().when("no_number", {
         is: false,
         then: () =>
           Yup.string().required("Completá este dato.").max(5, "Ingresa un máximo de 5 caracteres")
