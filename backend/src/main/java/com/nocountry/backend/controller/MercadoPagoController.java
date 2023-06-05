@@ -5,32 +5,25 @@ import com.mercadopago.resources.Preference;
 import com.mercadopago.resources.datastructures.preference.BackUrls;
 import com.mercadopago.resources.datastructures.preference.Item;
 import com.nocountry.backend.dto.payment.MpPaymentDto;
-import com.nocountry.backend.util.paypal.URLLocation;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-//import javax.servlet.http.HttpServletRequest;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/mercadopago")
+@RequestMapping()
 public class MercadoPagoController {
 
-    @PostMapping("/pay")
+    @PostMapping("/api/v1/mercadopago/pay")
     public String createAndRecirect(HttpServletRequest req, @RequestBody MpPaymentDto mpPaymentDto) throws MPException {
 
-        String FailureUrl = URLLocation.getBaseUrl(req) + "/api/v1/mercadopago/failure";
-        String PendingUrl = URLLocation.getBaseUrl(req) + "/api/v1/mercadopago/pending";
-        String SuccessUrl = URLLocation.getBaseUrl(req) + "/api/v1/mercadopago/success";
+        String FEUrl = "https://mercadolibre-s8-08.netlify.app/";
 
         Preference preference = new Preference();
 
         preference.setBackUrls(
-                new BackUrls().setFailure(FailureUrl)
-                        .setPending(PendingUrl)
-                        .setSuccess(SuccessUrl)
+                new BackUrls().setFailure(FEUrl)
+                        .setPending(FEUrl)
+                        .setSuccess(FEUrl)
         );
 
         Item item = new Item();
@@ -46,21 +39,10 @@ public class MercadoPagoController {
         return "redirect:" + result.getSandboxInitPoint();
     }
 
-    @GetMapping("/success")
-    public ResponseEntity<?> success() throws MPException {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Success");
-    }
-
-    @GetMapping("/failure")
-    public ResponseEntity<?> failure() throws MPException {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Failure");
-    }
-
-    @GetMapping("/pending")
-    public ResponseEntity<?> pending() throws MPException {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Pending");
-    }
+//
+//    @GetMapping("/api/v1/mercadopago/failure")
+//    public ResponseEntity<?> failure() throws MPException {
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body("El pago ha sido rechazado o no finalizó correctamente");
+//    }
 }
