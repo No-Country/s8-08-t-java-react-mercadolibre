@@ -3,7 +3,6 @@ import { SlLocationPin } from "react-icons/sl";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { useNavigate } from "react-router-dom";
 import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
-import axios from "axios";
 import { postRequest } from "../../services/httpRequest.js";
 
 const DeliveryOptionPayment = () => {
