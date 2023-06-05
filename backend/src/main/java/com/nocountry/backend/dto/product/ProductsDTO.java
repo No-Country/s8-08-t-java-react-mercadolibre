@@ -23,8 +23,8 @@ public class ProductsDTO {
     private String description;
     private Integer discount;
     private double priceDiscount;
-    private Integer quoteQuantity;
-    private double quotePrice;
+    private Integer numberQuotas;
+    private Double priceQuotas;
     private CategoryDto category;
     private BrandDTO brand;
     private List<ImageDto> images;
