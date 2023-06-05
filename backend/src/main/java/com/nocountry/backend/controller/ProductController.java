@@ -45,7 +45,7 @@ public class ProductController {
     private CloudinaryService cloudinaryService;
 
     @Autowired
-    private com.nocountry.backend.repository.product_repository.ISubcategoryRepository ISubcategoryRepository;
+    private com.nocountry.backend.repository.product_repository.ISubcategoryRepository subcategoryRepository;
 
     @Autowired
     private IProductService productService;
@@ -84,9 +84,23 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
-            productDTO.setQuoteQuantity(product.getNumberQuotas());
-            productDTO.setQuotePrice(product.getPriceQuotas());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
+            productDTO.setNumberQuotas(product.getNumberQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
+            CategoryDto categoryDTO = new CategoryDto();
+            categoryDTO.setId(product.getCategory().getId());
+            categoryDTO.setName(product.getCategory().getName());
+            productDTO.setCategory(categoryDTO);
             Brand brand = product.getBrand();
             if (brand != null) {
                 BrandDTO brandDTO = new BrandDTO();
@@ -127,9 +141,19 @@ public class ProductController {
                 productDTO.setStock(product.getStock());
                 productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
-                productDTO.setPriceDiscount(product.getPriceDiscount());
-                productDTO.setQuoteQuantity(product.getNumberQuotas());
-                productDTO.setQuotePrice(product.getPriceQuotas());
+                Double priceDiscount = product.getPriceDiscount();
+                if (priceDiscount != null) {
+                    productDTO.setPriceDiscount(priceDiscount.doubleValue());
+                } else {
+                    productDTO.setPriceDiscount(0); // or set a default value like 0.0
+                }
+                productDTO.setNumberQuotas(product.getNumberQuotas());
+                Double priceQuotas = product.getPriceQuotas();
+                if (priceQuotas != null) {
+                    productDTO.setPriceQuotas(product.getPriceQuotas());
+                }else {
+                    productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+                }
                 CategoryDto categoryDTO = new CategoryDto();
                 categoryDTO.setId(product.getCategory().getId());
                 categoryDTO.setName(product.getCategory().getName());
@@ -173,7 +197,12 @@ public class ProductController {
 
     @GetMapping("/name/{productName}")
     public ResponseEntity<?> getProductsByName(@PathVariable String productName) {
-        List<Product> products = productRepository.findByTitleContainingIgnoreCase(productName);
+        List<Product> products = productRepository.findByTitle(productName);
+
+        if (products.isEmpty()) {
+            products = productRepository.findBySimilarName(productName);
+        }
+
         List<ProductDto> productDTOList = new ArrayList<>();
 
         for (Product product : products) {
@@ -184,21 +213,39 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
-            productDTO.setQuoteQuantity(product.getNumberQuotas());
-            productDTO.setQuotePrice(product.getPriceQuotas());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
+            productDTO.setNumberQuotas(product.getNumberQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
             CategoryDto categoryDTO = new CategoryDto();
-            categoryDTO.setId(product.getCategory().getId());
-            categoryDTO.setName(product.getCategory().getName());
+            Category category = product.getCategory();
+            if (category != null) {
+                categoryDTO.setId(product.getCategory().getId());
+                categoryDTO.setName(product.getCategory().getName());
+            }
             productDTO.setCategory(categoryDTO);
             SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
-            subcategoryDTO.setId(product.getSubcategory().getId());
-            subcategoryDTO.setName(product.getSubcategory().getName());
+            Subcategory subcategory = product.getSubcategory();
+            if (subcategory != null) {
+                subcategoryDTO.setId(product.getSubcategory().getId());
+                subcategoryDTO.setName(product.getSubcategory().getName());
+            }
             productDTO.setSubcategory(subcategoryDTO);
             BrandDTO brandDTO = new BrandDTO();
-            brandDTO.setName(product.getBrand().getName());
-            brandDTO.setId(product.getBrand().getId());
-            productDTO.setBrand(brandDTO);
+            Brand brand = product.getBrand();
+            if (brand != null) {
+                brandDTO.setName(brand.getName());
+                brandDTO.setId(brand.getId());
+            }
             List<ImageDto> imageDTOList = new ArrayList<>();
 
             for (Image image : product.getImages()) {
@@ -221,11 +268,86 @@ public class ProductController {
         }
     }
 
+    //todo All products by name the category***********************************************
+
+    @GetMapping("/category/name/{categoryName}")
+    public ResponseEntity<?> getProductsByCategoryName(@PathVariable String categoryName) {
+        List<Product> products = productRepository.findByCategoryName(categoryName);
+
+        if (products.isEmpty()) {
+            products = productRepository.findBySimilarCategoryName(categoryName);
+        }
+
+        List<ProductDto> productDTOList = new ArrayList<>();
+
+        for (Product product : products) {
+            ProductDto productDTO = new ProductDto();
+            productDTO.setId(product.getId());
+            productDTO.setTitle(product.getTitle());
+            productDTO.setPrice(product.getPrice());
+            productDTO.setStock(product.getStock());
+            productDTO.setDescription(product.getDescription());
+            productDTO.setDiscount(product.getDiscount());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
+            productDTO.setNumberQuotas(product.getNumberQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
+            CategoryDto categoryDTO = new CategoryDto();
+            Category category = product.getCategory();
+            if (category != null) {
+                categoryDTO.setId(product.getCategory().getId());
+                categoryDTO.setName(product.getCategory().getName());
+            }
+            productDTO.setCategory(categoryDTO);
+            SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+            Subcategory subcategory = product.getSubcategory();
+            if (subcategory != null) {
+                subcategoryDTO.setId(product.getSubcategory().getId());
+                subcategoryDTO.setName(product.getSubcategory().getName());
+            }
+            productDTO.setSubcategory(subcategoryDTO);
+            BrandDTO brandDTO = new BrandDTO();
+            Brand brand = product.getBrand();
+            if (brand != null) {
+                brandDTO.setName(brand.getName());
+                brandDTO.setId(brand.getId());
+            }
+            List<ImageDto> imageDTOList = new ArrayList<>();
+
+            for (Image image : product.getImages()) {
+                ImageDto imageDTO = new ImageDto();
+                imageDTO.setId(image.getId());
+                imageDTO.setImageUrl(image.getImageUrl());
+                imageDTOList.add(imageDTO);
+            }
+
+            productDTO.setImages(imageDTOList);
+
+            productDTOList.add(productDTO);
+        }
+
+        if (productDTOList.isEmpty()) {
+            String message = "No se encontraron productos en la categoría: " + categoryName;
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        } else {
+            return ResponseEntity.ok(productDTOList);
+        }
+    }
+
     //todo All products by subcategory***********************************************
 
     @GetMapping("/subcategory/{subcategoryId}")
     public ResponseEntity<List<ProductDto>> getProductsBySubcategory(@PathVariable Integer subcategoryId) {
-        Optional<Subcategory> optionalSubcategory = ISubcategoryRepository.findById(subcategoryId);
+        Optional<Subcategory> optionalSubcategory = subcategoryRepository.findById(subcategoryId);
         if (optionalSubcategory.isPresent()) {
             Subcategory subcategory = optionalSubcategory.get();
             List<Product> products = productRepository.findBySubcategory(subcategory);
@@ -239,21 +361,39 @@ public class ProductController {
                 productDTO.setStock(product.getStock());
                 productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
-                productDTO.setPriceDiscount(product.getPriceDiscount());
-                productDTO.setQuoteQuantity(product.getNumberQuotas());
-                productDTO.setQuotePrice(product.getPriceQuotas());
+                Double priceDiscount = product.getPriceDiscount();
+                if (priceDiscount != null) {
+                    productDTO.setPriceDiscount(priceDiscount.doubleValue());
+                } else {
+                    productDTO.setPriceDiscount(0); // or set a default value like 0.0
+                }
+                productDTO.setNumberQuotas(product.getNumberQuotas());
+                Double priceQuotas = product.getPriceQuotas();
+                if (priceQuotas != null) {
+                    productDTO.setPriceQuotas(product.getPriceQuotas());
+                }else {
+                    productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+                }
                 CategoryDto categoryDTO = new CategoryDto();
-                categoryDTO.setId(product.getCategory().getId());
-                categoryDTO.setName(product.getCategory().getName());
+                Category category = product.getCategory();
+                if (category != null) {
+                    categoryDTO.setId(product.getCategory().getId());
+                    categoryDTO.setName(product.getCategory().getName());
+                }
                 productDTO.setCategory(categoryDTO);
                 SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
-                subcategoryDTO.setId(product.getSubcategory().getId());
-                subcategoryDTO.setName(product.getSubcategory().getName());
+                Subcategory subcategories = product.getSubcategory();
+                if (subcategories != null) {
+                    subcategoryDTO.setId(product.getSubcategory().getId());
+                    subcategoryDTO.setName(product.getSubcategory().getName());
+                }
                 productDTO.setSubcategory(subcategoryDTO);
                 BrandDTO brandDTO = new BrandDTO();
-                brandDTO.setName(product.getBrand().getName());
-                brandDTO.setId(product.getBrand().getId());
-                productDTO.setBrand(brandDTO);
+                Brand brand = product.getBrand();
+                if (brand != null) {
+                    brandDTO.setName(brand.getName());
+                    brandDTO.setId(brand.getId());
+                }
                 List<ImageDto> imageDTOList = new ArrayList<>();
 
                 for (Image image : product.getImages()) {
@@ -292,9 +432,19 @@ public class ProductController {
                 productDTO.setStock(product.getStock());
                 productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
-                productDTO.setPriceDiscount(product.getPriceDiscount());
-                productDTO.setQuoteQuantity(product.getNumberQuotas());
-                productDTO.setQuotePrice(product.getPriceQuotas());
+                Double priceDiscount = product.getPriceDiscount();
+                if (priceDiscount != null) {
+                    productDTO.setPriceDiscount(priceDiscount.doubleValue());
+                } else {
+                    productDTO.setPriceDiscount(0); // or set a default value like 0.0
+                }
+                productDTO.setNumberQuotas(product.getNumberQuotas());
+                Double priceQuotas = product.getPriceQuotas();
+                if (priceQuotas != null) {
+                    productDTO.setPriceQuotas(product.getPriceQuotas());
+                }else {
+                    productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+                }
                 CategoryDto categoryDTO = new CategoryDto();
                 categoryDTO.setId(product.getCategory().getId());
                 categoryDTO.setName(product.getCategory().getName());
@@ -350,9 +500,19 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
-            productDTO.setQuoteQuantity(product.getNumberQuotas());
-            productDTO.setQuotePrice(product.getPriceQuotas());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
+            productDTO.setNumberQuotas(product.getNumberQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
             CategoryDto categoryDTO = new CategoryDto();
             categoryDTO.setId(product.getCategory().getId());
             categoryDTO.setName(product.getCategory().getName());
@@ -404,9 +564,19 @@ public class ProductController {
             productDTO.setStock(product.getStock());
             productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
-            productDTO.setPriceDiscount(product.getPriceDiscount());
-            productDTO.setQuoteQuantity(product.getNumberQuotas());
-            productDTO.setQuotePrice(product.getPriceQuotas());
+            Double priceDiscount = product.getPriceDiscount();
+            if (priceDiscount != null) {
+                productDTO.setPriceDiscount(priceDiscount.doubleValue());
+            } else {
+                productDTO.setPriceDiscount(0); // or set a default value like 0.0
+            }
+            productDTO.setNumberQuotas(product.getNumberQuotas());
+            Double priceQuotas = product.getPriceQuotas();
+            if (priceQuotas != null) {
+                productDTO.setPriceQuotas(product.getPriceQuotas());
+            }else {
+                productDTO.setPriceQuotas(0.0); // or set a default value like 0.0
+            }
             CategoryDto categoryDTO = new CategoryDto();
             categoryDTO.setId(product.getCategory().getId());
             categoryDTO.setName(product.getCategory().getName());
