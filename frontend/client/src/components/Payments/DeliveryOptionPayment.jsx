@@ -27,7 +27,6 @@ const DeliveryOptionPayment = () => {
       },
       "/api/v1/mercadopago/pay"
     );
-      console.log(res);
     window.location.href = `https:${res.split(":")[2]}`;
   };
 
@@ -55,7 +54,8 @@ const DeliveryOptionPayment = () => {
             <div className="mr-12 ml-5 sm:ml-0">
               <span
                 className="text-ligthblue text-xs cursor-pointer"
-                onClick={() => navigate("/pay/home-delivery")}>
+                onClick={() => navigate("/pay/home-delivery")}
+              >
                 Editar o elegir otro
               </span>
             </div>
@@ -70,7 +70,8 @@ const DeliveryOptionPayment = () => {
             className={`flex items-center justify-between w-full max-w-[825px] bg-[#FFFFFF] h-[60px] rounded mb-6 border-l-4 cursor-pointer ${
               selectedOption === "home delivery" ? "border-ligthblue" : "border-transparent"
             }`}
-            onClick={handleFirstChoice}>
+            onClick={handleFirstChoice}
+          >
             <div className="flex items-center gap-12 ml-5 sm:ml-12">
               <input
                 type="radio"
@@ -97,7 +98,8 @@ const DeliveryOptionPayment = () => {
             className={`flex items-center justify-between w-full max-w-[825px] bg-[#FFFFFF] h-[60px] rounded mb-6 border-l-4 cursor-pointer ${
               selectedOption === "mail delivery" ? "border-ligthblue" : "border-transparent"
             }`}
-            onClick={handleSecondChoice}>
+            onClick={handleSecondChoice}
+          >
             <div className="flex items-center gap-12 ml-5 sm:ml-12">
               <input
                 type="radio"
@@ -123,7 +125,8 @@ const DeliveryOptionPayment = () => {
         <div className="flex justify-center sm:justify-end mt-7 lg:mb-12">
           <button
             onClick={handleSubmit}
-            className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue">
+            className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue"
+          >
             Continuar
           </button>
         </div>
