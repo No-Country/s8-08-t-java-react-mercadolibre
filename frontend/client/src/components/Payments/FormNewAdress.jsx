@@ -16,7 +16,6 @@ const FormNewAdress = () => {
   const [location, setLocation] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isRequestFailed, setIsRequestFailed] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
   const localStorageData = getLocalStorage("auth");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -46,6 +45,7 @@ const FormNewAdress = () => {
         .required("Completá este dato."),
       locality: Yup.string().required("Completá este dato."),
       street: Yup.string().required("Completá este dato."),
+      no_number: Yup.boolean(),
       number: Yup.string().when("no_number", {
         is: false,
         then: () =>
@@ -61,6 +61,7 @@ const FormNewAdress = () => {
       const numberAsString = values.number.toString();
       const phoneAsString = values.phone.toString();
       const residentialAsBool = JSON.parse(values.residential);
+
       let updatedValues = {
         ...values,
         zip_code: zipCodeAsString,
@@ -68,8 +69,9 @@ const FormNewAdress = () => {
         phone: phoneAsString,
         residential: residentialAsBool,
       };
+      delete updatedValues.no_number;
+
       postUserAddress(updatedValues);
-      console.log(updatedValues.number);
       getUserAddress(updatedValues.user_id);
       navigate("/pay/delivery-type");
     }
@@ -113,10 +115,6 @@ const FormNewAdress = () => {
       setLocation({});
     }
   };
-
-  const handleChange = () => {
-    setIsChecked(!isChecked);
-  }
 
   useEffect(() => {
     if (location.id !== undefined) {
@@ -298,17 +296,17 @@ const FormNewAdress = () => {
                       formik.errors.number !== undefined
                         ? "border-red focus:border-red"
                         : "border-[#bfbfbf] focus:border-ligthblue"
-                    } ${isChecked && "cursor-not-allowed"}`}
+                    } ${formik.values.no_number && "cursor-not-allowed"}`}
                     onChange={formik.handleChange}
-                    disabled={isChecked}
+                    disabled={formik.values.no_number}
                   />
                   <div className="absolute right-4 top-4 flex items-center gap-1">
                     <input
                       type="checkbox"
                       name="no_number"
                       id="no_number"
-                      checked={isChecked}
-                      onChange={handleChange}
+                      checked={formik.values.no_number}
+                      onChange={formik.handleChange}
                     />
                     <label htmlFor="no_number" className="text-xs text-ligthblue">
                       Sin número
