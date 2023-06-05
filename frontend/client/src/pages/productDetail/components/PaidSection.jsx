@@ -13,21 +13,23 @@ import Rapipago from "../../../assets/img/Rapipago.png";
 import PagoFacil from "../../../assets/img/PagoFacil.png";
 function PaidSection({ quotes }) {
   return (
-    <div className="border-solid border w-[25rem] p-4 rounded-xl">
-      <h2 className="text-[17px] pb-7">Medios de pago</h2>
-      <div className="bg-[#39B54A] w-50 h-20 p-4 rounded-md flex ">
-        {" "}
-        <AiOutlineCreditCard size={25} color="#ffff" />
-        <p className="text-white text-center pl-5">
-          ¡Pagá el mismo precio en{" "}
-          <strong>
-            hasta {`${quotes}`} <br />
-            cuotas!
-          </strong>{" "}
-        </p>
+    <div className="border-solid border w-[25rem] p-6 rounded-xl">
+      <div className="flex flex-col items-center">
+        <h2 className="text-[17px] pb-4 w-full md:text-left">Medios de pago</h2>
+        <div className="bg-[#00A650] w-full h-20 p-4 rounded-md flex ">
+          {" "}
+          <AiOutlineCreditCard size={25} color="#ffff" />
+          <p className="text-white text-center pl-5">
+            ¡Pagá el mismo precio en{" "}
+            <strong>
+              hasta {`${quotes}`} <br />
+              cuotas!
+            </strong>{" "}
+          </p>
+        </div>
       </div>
-      <div>
-        <div>
+      <div className="flex flex-col items-center md:items-start">
+        <div className="flex flex-col">
           <h2 className="text-[15px] pt-7"> Hasta 12 cuotas fijas</h2>
           <img src={MercadoCredito} alt="img-MC" width={"105px"} height={"25px"}></img>
         </div>

@@ -22,7 +22,7 @@ const ProductDetail = () => {
   }, [id]);
   return (
     <div>
-      <div className="bg-grey flex flex-col justify-center content-center px-24 py-14 w-100">
+      <div className="bg-grey flex flex-col justify-center content-center px-2 sm:px-24 py-14 w-100">
         <div className="flex justify-between w-100 my-2">
           <div>
             <Link to="/">Volver</Link>
@@ -37,13 +37,13 @@ const ProductDetail = () => {
             <button className="text-ligthblue">Vender uno igual</button>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-col  md:flex-row ">
           <div className="bg-white flex flex-col w-100 py-14">
-            <div className="flex w-100 mx-16">
-              <div className="bg-white w-3/6">
+            <div className="flex flex-col md:flex-row w-100 mx-6 md:mx-16">
+              <div className="bg-white w-full md:w-3/6">
                 <Carousel images={product.images} />
               </div>
-              <div className="bg-white w-3/6">
+              <div className="bg-white w-full md:w-3/6">
                 <DescriptionAside
                   name={product.title}
                   characteristics={product.descriptionGeneric}
@@ -54,16 +54,16 @@ const ProductDetail = () => {
                 />
               </div>
             </div>
-            <hr className="flex mx-16 my-8" />
-            <div className="w-100 mx-16">
+            <hr className="flex mx-6 md:mx-16 my-8" />
+            <div className="w-100 mx-6 md:mx-16">
               <DescriptionBottom description={product.descriptionRelevant} />
             </div>
-            <hr className="flex mx-16 my-8" />
-            <div className="mx-16">
+            <hr className="flex mx-6 md:mx-16 my-8" />
+            <div className="mx-6 md:mx-16">
               <QuestionSection />
             </div>
           </div>
-          <div className="bg-white w-4/12 flex flex-col pt-6 pr-6 gap-4">
+          <div className="bg-white w-full md:max-w-[26rem]  flex flex-col items-center pt-3 pr-6 gap-4">
             <BuySection />
             <StoreDetail />
             <PaidSection quotes={product.numberQuotas} />
