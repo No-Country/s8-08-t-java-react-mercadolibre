@@ -45,7 +45,7 @@ const FormNewAdress = () => {
         .required("Completá este dato."),
       locality: Yup.string().required("Completá este dato."),
       street: Yup.string().required("Completá este dato."),
-      number: Yup.string().when("status", {
+      number: Yup.string().when(["isChecked"], {
         is: false,
         then: () =>
           Yup.string().required("Completá este dato.").max(5, "Ingresa un máximo de 5 caracteres")
