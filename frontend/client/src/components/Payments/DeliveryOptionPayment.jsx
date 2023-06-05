@@ -3,6 +3,8 @@ import { SlLocationPin } from "react-icons/sl";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { useNavigate } from "react-router-dom";
 import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
+import axios from "axios";
+import { postRequest } from "../../services/httpRequest.js";
 
 const DeliveryOptionPayment = () => {
   const navigate = useNavigate();
@@ -16,6 +18,18 @@ const DeliveryOptionPayment = () => {
 
   const handleSecondChoice = () => {
     setSelectedOption("mail delivery");
+  };
+
+  const handleSubmit = async () => {
+    const res = await postRequest(
+      {
+        title: "Samsung Galaxy A54 5g 256gb",
+        quantity: 1,
+        price: 184
+      },
+      "/api/v1/mercadopago/pay"
+    );
+    window.location.href = `https:${res.split(":")[2]}`;
   };
 
   return (
@@ -118,7 +132,7 @@ const DeliveryOptionPayment = () => {
 
         <div className="flex justify-center sm:justify-end mt-7 lg:mb-12">
           <button
-            onClick={() => navigate("/pay/pay-method")}
+            onClick={handleSubmit}
             className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue"
           >
             Continuar

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MenuUser from "../MenuUser/MenuUser";
+import ModalNotification from "../ModalNotification/ModalNotification";
 import { BsChevronCompactDown } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
-import { VscBell } from "react-icons/vsc";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUserCircle } from "react-icons/bi";
 
@@ -46,7 +46,7 @@ const NavbarMenues = () => {
           name: "Favoritos",
           icon: () => <BsChevronCompactDown className="h-5 opacity-60 cursor-pointer" />
         },
-        { name: null, icon: () => <VscBell className="h-5 opacity-60 cursor-pointer" /> },
+        { name: null, icon: () => <ModalNotification /> },
         { name: null, icon: () => <FiShoppingCart className="h-5 opacity-60 cursor-pointer" /> }
       ];
     } else {
