@@ -1,12 +1,13 @@
 package com.nocountry.backend.service.impl;
 
-import com.nocountry.backend.dto.address.AddressDetailPostDto;
-import com.nocountry.backend.dto.address.AddressListGetDto;
-import com.nocountry.backend.dto.address.AddressPostDto;
-import com.nocountry.backend.dto.address.AddressUpdatePostDto;
+import com.nocountry.backend.dto.address.*;
 import com.nocountry.backend.mapper.IAddressMapper;
+import com.nocountry.backend.model.entity.Address;
+import com.nocountry.backend.model.entity.Province;
 import com.nocountry.backend.repository.IAddressRepository;
+import com.nocountry.backend.repository.IProvinceRepository;
 import com.nocountry.backend.service.IAddressService;
+import com.nocountry.backend.service.IProvinceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class AddressServiceImpl implements IAddressService {
 
     private final IAddressRepository addressRepository;
 
+    private final IProvinceRepository provinceRepository;
+
 
     @Override
     public List<AddressListGetDto> findAllByUserId(Long userId) {
@@ -27,7 +30,7 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public AddressDetailPostDto findById(Integer addressId) {
+    public AddressDetailPostDto findById(Long addressId) {
         return this.addressRepository.findById(addressId).map(this.addressMapper::toAddressDetailPostDto)
                 .orElseThrow(() -> new RuntimeException("El id de la direccion no existe."));
     }
@@ -39,17 +42,22 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public AddressPostDto save(AddressPostDto addressPostDto) {
+    public AddressPostResponseDto save(AddressPostDto addressPostDto) {
         if (addressPostDto.getStatus() && !this.findAllByUserId(addressPostDto.getUserId()).isEmpty()) {
             this.changeStatusFalse(addressPostDto.getUserId());
         }
-        return this.addressMapper.toAddressDto(
-                this.addressRepository.save(this.addressMapper.toAddress(addressPostDto))
-        );
+        Address save = this.addressRepository.save(this.addressMapper.toAddress(addressPostDto));
+        Province province = this.provinceRepository.findById(save.getProvinceFk()).orElseThrow(() -> new RuntimeException(""));
+        save.setProvince(province);
+
+
+        return this.addressMapper.tAddressPostResponseDto(save);
+
+
     }
 
     @Override
-    public AddressDetailPostDto update(Integer addressId, AddressUpdatePostDto addressUpdatePostDto) {
+    public AddressDetailPostDto update(Long addressId, AddressUpdatePostDto addressUpdatePostDto) {
         this.addressRepository.findById(addressId).ifPresent(
                 address -> {
                     this.addressMapper.updateAddress(addressUpdatePostDto, address);
@@ -60,12 +68,12 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public void updateStatus(Long userId, Integer addressId) {
+    public void updateStatus(Long userId, Long addressId) {
         this.changeStatusFalse(userId);
         this.changeStatusTrue(addressId);
     }
 
-    private void changeStatusTrue(Integer addressId) {
+    private void changeStatusTrue(Long addressId) {
         this.addressRepository.findById(addressId).ifPresent(address -> {
             address.setStatus(true);
             this.addressRepository.save(address);
@@ -80,7 +88,7 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public void deleteById(Integer idAddress) {
+    public void deleteById(Long idAddress) {
         this.addressRepository.deleteById(idAddress);
     }
 }

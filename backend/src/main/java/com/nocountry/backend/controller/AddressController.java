@@ -1,10 +1,7 @@
 package com.nocountry.backend.controller;
 
 
-import com.nocountry.backend.dto.address.AddressDetailPostDto;
-import com.nocountry.backend.dto.address.AddressListGetDto;
-import com.nocountry.backend.dto.address.AddressPostDto;
-import com.nocountry.backend.dto.address.AddressUpdatePostDto;
+import com.nocountry.backend.dto.address.*;
 import com.nocountry.backend.service.IAddressService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,7 +29,7 @@ public class AddressController {
 
     @GetMapping("/{addressId}")
     @Operation(summary = "Direccion por ID.")
-    public ResponseEntity<AddressDetailPostDto> findById(@PathVariable Integer addressId) {
+    public ResponseEntity<AddressDetailPostDto> findById(@PathVariable Long addressId) {
         return new ResponseEntity<>(addressService.findById(addressId), HttpStatus.OK);
     }
 
@@ -44,20 +41,20 @@ public class AddressController {
 
     @GetMapping("/{addressId}/user/{userId}")
     @Operation(summary = "Cambiar direccion activa, se envia el ID del usuario y el ID de la nueva direccion.")
-    public ResponseEntity<AddressListGetDto> changeStatus(@PathVariable Long userId, @PathVariable Integer addressId) {
+    public ResponseEntity<AddressListGetDto> changeStatus(@PathVariable Long userId, @PathVariable Long addressId) {
         addressService.updateStatus(userId, addressId);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("")
     @Operation(summary = "Guardar direccion para un usuario.")
-    public ResponseEntity<AddressPostDto> save(@RequestBody AddressPostDto address) {
+    public ResponseEntity<AddressPostResponseDto> save(@RequestBody AddressPostDto address) {
         return new ResponseEntity<>(addressService.save(address), HttpStatus.CREATED);
     }
 
     @PostMapping("/{addressId}")
     @Operation(summary = "Editar direccion de un usuario.")
-    public ResponseEntity<AddressDetailPostDto> update(@PathVariable Integer addressId,
+    public ResponseEntity<AddressDetailPostDto> update(@PathVariable Long addressId,
                                                        @RequestBody AddressUpdatePostDto address) {
         return new ResponseEntity<>(addressService.update(addressId, address), HttpStatus.OK);
     }
@@ -65,7 +62,7 @@ public class AddressController {
 
     @DeleteMapping("/{addressId}")
     @Operation(summary = "Eliminar direccion de un usuario enviando su ID.")
-    public ResponseEntity<AddressDetailPostDto> deleteById(@PathVariable Integer addressId) {
+    public ResponseEntity<AddressDetailPostDto> deleteById(@PathVariable Long addressId) {
         addressService.deleteById(addressId);
         return ResponseEntity.noContent().build();
     }

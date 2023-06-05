@@ -1,10 +1,7 @@
 package com.nocountry.backend.mapper;
 
 
-import com.nocountry.backend.dto.address.AddressDetailPostDto;
-import com.nocountry.backend.dto.address.AddressListGetDto;
-import com.nocountry.backend.dto.address.AddressPostDto;
-import com.nocountry.backend.dto.address.AddressUpdatePostDto;
+import com.nocountry.backend.dto.address.*;
 import com.nocountry.backend.model.entity.Address;
 import org.mapstruct.*;
 
@@ -22,6 +19,14 @@ public interface IAddressMapper {
 
 
     AddressDetailPostDto toAddressDetailPostDto(Address address);
+
+
+    @Mappings({
+
+            @Mapping(target = "userId", source = "userFk")
+    }
+    )
+    AddressPostResponseDto tAddressPostResponseDto(Address address);
 
     List<AddressListGetDto> toAddressListGetDtos(List<Address> addresses);
 

@@ -25,6 +25,7 @@ public class Address {
     private String zipCode;
     private String locality;
     private String street;
+    private String number;
 
     @Column(name = "STREET_NUMBER")
     private String streetNumber;
@@ -63,4 +64,4 @@ public class Address {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "shippingAddress")
     List<Order> orders;
- }
+}

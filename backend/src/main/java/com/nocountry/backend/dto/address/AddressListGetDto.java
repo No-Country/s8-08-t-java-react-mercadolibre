@@ -1,5 +1,6 @@
 package com.nocountry.backend.dto.address;
 
+import com.nocountry.backend.dto.province.ProvinceAddressDto;
 import com.nocountry.backend.dto.province.ProvinceDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,8 @@ import lombok.Setter;
 @Setter
 public class AddressListGetDto {
     private String contact;
-    private ProvinceDto province;
+    private String locality;
+    private ProvinceAddressDto province;
     private String street;
     private String number;
 }
