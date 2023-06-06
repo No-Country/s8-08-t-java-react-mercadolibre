@@ -100,8 +100,8 @@ const Warranty = () => {
               </div>
               <div className="flex gap-3">
                 <div>
-                  <p className=" text-[18px] font-[500]">6x $ 3.044</p>{" "}
-                  <p className="text-[10px]">$ 18.264</p>
+                  <p className=" text-[18px] font-[500]">6x $ 3.612</p>{" "}
+                  <p className="text-[10px]">$ 21.677</p>
                 </div>
                 <div className="flex pt-2">
                   <p className=" text-green font-[500] text-[10px]">Sin interés</p>
