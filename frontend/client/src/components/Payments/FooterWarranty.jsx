@@ -5,8 +5,8 @@ const FooterWarranty = () => {
 
   const handleRedirection = () => {
     navigate("/pay/delivery-type");
-    window.scroll({ top: 0, behavior: 'smooth' });
-  }
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className=" bg-white flex flex-col text-center py-3 gap-2 md:flex-row justify-between items-center sm:h-[80px] px-5">
@@ -15,8 +15,10 @@ const FooterWarranty = () => {
         <span className=" text-ligthblue">términos y condiciones del seguro.</span>{" "}
       </p>
       <div className="flex gap-4 items-center">
-        <p className="text-[16px] text-ligthblue font-[400] cursor-pointer"
-          onClick={handleRedirection}>
+        <p
+          className="text-[16px] text-ligthblue font-[400] cursor-pointer"
+          onClick={handleRedirection}
+        >
           No, gracias
         </p>
         <button

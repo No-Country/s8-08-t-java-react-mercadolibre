@@ -10,14 +10,14 @@ const NavbarPayment = ({ title, url }) => {
   const navigate = useNavigate();
 
   const handleRedirection = (direction, id) => {
-    if(direction === "/pay/warranty") {
+    if (direction === "/pay/warranty") {
       navigate("/pay/warranty");
-      window.scroll({ top: 0, behavior: 'smooth' });
+      window.scroll({ top: 0, behavior: "smooth" });
     } else {
       navigate(`/product-detail/${id}`);
-      window.scroll({ top: 0, behavior: 'smooth' });
+      window.scroll({ top: 0, behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <>
