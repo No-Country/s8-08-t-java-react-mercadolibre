@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const DeliveryOptionPayment = () => {
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("home delivery");
   const userData = useSelector(store => store.auth.user);
   const isMobile = useMediaQuery("(max-width: 640px)");
 
