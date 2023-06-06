@@ -21,7 +21,7 @@ const Warranty = () => {
         <h2 className=" text-[18px] font-[500] text-[#504A4A] text-center my-5  hidden sm:block">
           Añadir una protección
         </h2>
-        <div className="flex flex-col mt-4  mb-4 gap-2 md:gap-4 items-center lg:flex-row lg:justify-center  lg:h-[600px]">
+        <div className="flex flex-col mt-4 mb-4 gap-2 md:gap-4 items-center lg:items-start lg:flex-row lg:justify-center lg:h-[600px]">
           <article
             className={`border flex flex-col text-[#504A4A] max-w-[360px]  bg-white rounded-lg md:w-[460px] lg:h-[300px] cursor-pointer ${
               selectedWarranty && "border-ligthblue"
