@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SlLocationPin } from "react-icons/sl";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
 import { postRequest } from "../../services/httpRequest.js";
+import { useSelector } from "react-redux";
 
 const DeliveryOptionPayment = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("");
-  const [localStorageData, setLocalStorageData] = useState(getLocalStorage("auth"));
+  const userData = useSelector(store => store.auth.user);
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   const handleFirstChoice = () => {
@@ -31,17 +31,6 @@ const DeliveryOptionPayment = () => {
     window.location.href = `https:${res.split(":")[2]}`;
   };
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setLocalStorageData(getLocalStorage("auth"));
-
-      window.addEventListener('storage', handleStorageChange);
-      return () => {
-        window.removeEventListener('storage', handleStorageChange);
-      };
-    };
-  }, []);
-
   return (
     <section className="bg-[#eeeeee] flex grow">
       <div className="mx-10 sm:mx-24 lg:ml-14 lg:mr-0 font-medium text-[#504A4A] w-full max-w-[825px]">
@@ -61,19 +50,19 @@ const DeliveryOptionPayment = () => {
                 fontSize={28}
               />
               <p className="leading-4">
-                {localStorageData.user.address
+                {userData && userData.address
                   ? (
                     <>
                       <span className="text-[15px] font-normal">
-                        {localStorageData.user.address.street}, {localStorageData.user.address.number}
+                        {userData.address.street}, {userData.address.number}
                       </span>
                       <br />
                       <span className="text-[13px] font-light text-[#737373]">
-                        C.P. {localStorageData.user.address.zip_code} - {localStorageData.user.address.province.name}, {localStorageData.user.address.locality}
+                        C.P. {userData.address.zip_code} - {userData.address.province.name}, {userData.address.locality}
                       </span>
                       <br />
                       <span className="text-[13px] font-light text-[#737373]">
-                        {localStorageData.user.address.contact} - {localStorageData.user.address.phone}
+                        {userData.address.contact} - {userData.address.phone}
                       </span>
                     </>
                   )
