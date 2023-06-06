@@ -48,7 +48,7 @@ const DeliveryOptionPayment = () => {
             <span>Domicilio</span>
           </div>
 
-          <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-center sm:justify-between gap-3 sm:gap-0 w-full max-w-[825px] bg-[#FAFAFA] h-[88px] rounded ${addressError && "border border-red"}`}>
+          <div className={`flex flex-col sm:flex-row items-start sm:items-center justify-center sm:justify-between gap-3 sm:gap-0 w-full max-w-[825px] bg-[#FAFAFA] h-[100px] sm:h-[88px] rounded ${addressError && "border border-red"}`}>
             <div className="flex items-center gap-10 ml-5 sm:ml-10">
               <SlLocationPin
                 className="text-[#3483FA] border rounded-full border-none bg-white p-[0.3rem] hidden sm:block"
