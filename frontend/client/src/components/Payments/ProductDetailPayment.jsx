@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
+import { useSelector } from "react-redux";
+import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
 
 const ProductDetailPayment = ({ coupon, notification }) => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 640px)");
+  const { cart } = useSelector(store => store.cart);
 
   return (
     <>
@@ -12,18 +15,16 @@ const ProductDetailPayment = ({ coupon, notification }) => {
           <div className={`divide-y divide-slate-200 ${!notification && "sticky top-0"}`}>
             <div className="flex justify-center items-center flex-col mt-12 w-[330px]">
               <img
-                src="https://www.cetrogar.com.ar/media/catalog/product/s/m/sm-a546_galaxy-a54-5g_awesome-graphite_front.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=&width=&canvas=:"
+                src={cart.images[0].imageUrl}
                 alt="Producto"
                 className="w-12 h-12 rounded-full"
               />
-              <p className="mt-3 mb-1 w-56 leading-5">
-                Samsung Galaxy A54 5g 256gb 8gb Ram Awesome Graphite
-              </p>
+              <p className="mt-3 mb-1 w-56 leading-5">{cart.title} </p>
               <span className="text-sm">Cantidad: 1</span>
             </div>
 
             <div
-              className={`flex justify-between items-center w-[330px] mt-8 gap-48 relative ${
+              className={`flex justify-between items-center w-[350px] mt-8 gap-48 relative ${
                 coupon && "pb-7"
               }`}
             >
@@ -37,14 +38,14 @@ const ProductDetailPayment = ({ coupon, notification }) => {
                 )}
               </div>
               <div>
-                <p className="mt-4 font-normal">$ 184.999</p>
+                <p className="mt-4 font-normal">$ {cart.price}</p>
                 <p className="mt-4 font-normal text-green text-right">Gratis</p>
               </div>
             </div>
 
-            <div className="flex justify-between items-center w-[330px] mt-4 gap-48 font-normal text-lg">
+            <div className="flex justify-between items-center w-[350px] mt-4 gap-48 font-normal text-lg">
               <p className="mt-4">Pagás</p>
-              <p className="mt-4 font-medium">$ 184.999</p>
+              <p className="mt-4 font-medium">$ {cart.price}</p>
             </div>
           </div>
 
@@ -85,7 +86,7 @@ const ProductDetailPayment = ({ coupon, notification }) => {
           style={{ boxShadow: "0px -6px 6px -2px rgba(0, 0, 0, 0.1)" }}
         >
           <p className="mt-4 text-[#666666]">Pagás</p>
-          <p className="mt-4 text-[#333333]">$ 184.999</p>
+          <p className="mt-4 text-[#333333]">$ {detail.price}</p>
           {isMobile && notification && (
             <div>
               <button

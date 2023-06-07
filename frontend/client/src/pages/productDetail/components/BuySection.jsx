@@ -5,8 +5,26 @@ import { GoLocation } from "react-icons/go";
 import { BiCheckShield } from "react-icons/bi";
 import { IoMdRibbon } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { setLocalStorage } from "../../../utils/LocalStorageFunctions";
+import { useDispatch } from "react-redux";
+import { setCart } from "../../../store/state/cartSlice";
 function BuySection() {
   const navigate = useNavigate();
+  const { detail } = useSelector(store => store.product);
+  const dispatch = useDispatch();
+  const handleShop = () => {
+    const { title, price, priceDiscount, images } = detail;
+    const productCart = {
+      title,
+      price: priceDiscount ? priceDiscount.toFixed(2) : price,
+      quantity: 1,
+      images
+    };
+    dispatch(setCart(productCart));
+    setLocalStorage("detail", productCart);
+    navigate("/pay/warranty");
+  };
   return (
     <div className="border-solid border w-[25rem] p-4 rounded-xl">
       <div className="flex">
@@ -42,7 +60,7 @@ function BuySection() {
         <p className="text-[13px] text-gray-400">Podés comprar solo 1 unidad </p>
         <div>
           <button
-            onClick={() => navigate("/pay/warranty")}
+            onClick={handleShop}
             className="bg-blue-500 hover:bg-blue-700 text-white text-[16px] font-medium w-full py-4 px-20 my-8 rounded"
           >
             Comprar ahora
