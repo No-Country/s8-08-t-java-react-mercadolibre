@@ -2,14 +2,15 @@ import { useState } from "react";
 import { SlLocationPin } from "react-icons/sl";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { useNavigate } from "react-router-dom";
-import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
 import { postRequest } from "../../services/httpRequest.js";
+import { useSelector } from "react-redux";
 
 const DeliveryOptionPayment = () => {
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("home delivery");
+  const [addressError, setAddressError] = useState(false);
+  const userData = useSelector(store => store.auth.user);
   const isMobile = useMediaQuery("(max-width: 640px)");
-  const localStorageData = getLocalStorage("auth");
 
   const handleFirstChoice = () => {
     setSelectedOption("home delivery");
@@ -20,15 +21,19 @@ const DeliveryOptionPayment = () => {
   };
 
   const handleSubmit = async () => {
-    const res = await postRequest(
-      {
-        title: "Samsung Galaxy A54 5g 256gb",
-        quantity: 1,
-        price: 184
-      },
-      "/api/v1/mercadopago/pay"
-    );
-    window.location.href = `https:${res.split(":")[2]}`;
+    if (userData.address) {
+      const res = await postRequest(
+        {
+          title: "Samsung Galaxy A54 5g 256gb",
+          quantity: 1,
+          price: 184
+        },
+        "/api/v1/mercadopago/pay"
+      );
+      window.location.href = `https:${res.split(":")[2]}`;
+    } else {
+      setAddressError(true);
+    }
   };
 
   return (
@@ -43,17 +48,36 @@ const DeliveryOptionPayment = () => {
             <span>Domicilio</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center sm:justify-between gap-3 sm:gap-0 w-full max-w-[825px] bg-[#FAFAFA] h-[88px] rounded mb-6">
+          <div
+            className={`flex flex-col sm:flex-row items-start sm:items-center justify-center sm:justify-between gap-3 sm:gap-0 w-full max-w-[825px] bg-[#FAFAFA] h-[100px] sm:h-[88px] rounded ${
+              addressError && "border border-red"
+            }`}
+          >
             <div className="flex items-center gap-10 ml-5 sm:ml-10">
               <SlLocationPin
                 className="text-[#3483FA] border rounded-full border-none bg-white p-[0.3rem] hidden sm:block"
                 fontSize={28}
               />
-              <span className="text-xs">
-                {localStorageData.user.address
-                  ? localStorageData.user.address.province.name
-                  : "Agregar domicilio"}
-              </span>
+              <p className="leading-4">
+                {userData && userData.address ? (
+                  <>
+                    <span className="text-[15px] font-normal">
+                      {userData.address.street}, {userData.address.number}
+                    </span>
+                    <br />
+                    <span className="text-[13px] font-light text-[#737373]">
+                      C.P. {userData.address.zip_code} - {userData.address.province.name},{" "}
+                      {userData.address.locality}
+                    </span>
+                    <br />
+                    <span className="text-[13px] font-light text-[#737373]">
+                      {userData.address.contact} - {userData.address.phone}
+                    </span>
+                  </>
+                ) : (
+                  "Agregar domicilio"
+                )}
+              </p>
             </div>
 
             <div className="mr-12 ml-5 sm:ml-0">
@@ -66,8 +90,9 @@ const DeliveryOptionPayment = () => {
             </div>
           </div>
         </div>
+        {addressError && <span className="text-red text-sm">Debes agregar un domicilio</span>}
         <div>
-          <div className="mb-6">
+          <div className="mb-6 mt-6">
             <span>Recibir compra</span>
           </div>
 
