@@ -21,7 +21,7 @@ const Warranty = () => {
         <h2 className=" text-[18px] font-[500] text-[#504A4A] text-center my-5  hidden sm:block">
           Añadir una protección
         </h2>
-        <div className="flex flex-col mt-4  mb-4 gap-2 md:gap-4 items-center lg:flex-row lg:justify-center  lg:h-[600px]">
+        <div className="flex flex-col mt-4 mb-4 gap-2 md:gap-4 items-center lg:items-start lg:flex-row lg:justify-center lg:h-[600px]">
           <article
             className={`border flex flex-col text-[#504A4A] max-w-[360px]  bg-white rounded-lg md:w-[460px] lg:h-[300px] cursor-pointer ${
               selectedWarranty && "border-ligthblue"
@@ -100,8 +100,8 @@ const Warranty = () => {
               </div>
               <div className="flex gap-3">
                 <div>
-                  <p className=" text-[18px] font-[500]">6x $ 3.044</p>{" "}
-                  <p className="text-[10px]">$ 18.264</p>
+                  <p className=" text-[18px] font-[500]">6x $ 3.612</p>{" "}
+                  <p className="text-[10px]">$ 21.677</p>
                 </div>
                 <div className="flex pt-2">
                   <p className=" text-green font-[500] text-[10px]">Sin interés</p>

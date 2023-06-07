@@ -72,7 +72,6 @@ const FormNewAdress = () => {
       delete updatedValues.no_number;
 
       postUserAddress(updatedValues);
-      getUserAddress(updatedValues.user_id);
       navigate("/pay/delivery-type");
     }
   });
@@ -80,17 +79,7 @@ const FormNewAdress = () => {
   const postUserAddress = async formValues => {
     try {
       const response = await postRequest(formValues, "/api/v1/address");
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getUserAddress = async userId => {
-    try {
-      const response = await dispatch(userAddress(userId));
-      return response;
+      dispatch(userAddress(response));
     } catch (error) {
       console.log(error);
     }
