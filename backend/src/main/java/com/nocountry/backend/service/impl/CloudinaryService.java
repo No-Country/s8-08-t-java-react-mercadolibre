@@ -11,8 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CloudinaryService {
@@ -41,17 +40,26 @@ public class CloudinaryService {
         return uploadResult.get("secure_url").toString();
     }
 
-    public String upload(MultipartFile multipartFile, String title) {
-        Map options = ObjectUtils.asMap(
-                "original_filename", title);
-        Map uploadResult = null;
-        try {
-            uploadResult = cloudinary.uploader().upload(multipartFile.getBytes(), options);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return uploadResult.get("secure_url").toString();
+
+    public List<String> uploads(MultipartFile[] multipartFile) {
+        List<String> url = new ArrayList<>();
+        Arrays.stream(multipartFile).forEach(multipartFile1 ->
+                url.add(this.upload(multipartFile1))
+        );
+        return url;
     }
+
+//    public String upload(MultipartFile multipartFile, String title) {
+//        Map options = ObjectUtils.asMap(
+//                "original_filename", title);
+//        Map uploadResult = null;
+//        try {
+//            uploadResult = cloudinary.uploader().upload(multipartFile.getBytes(), options);
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return uploadResult.get("secure_url").toString();
+//    }
 
     public void delete(String publicId) throws IOException {
         cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());

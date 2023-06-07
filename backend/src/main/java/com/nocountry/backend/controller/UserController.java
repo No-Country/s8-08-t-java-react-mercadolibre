@@ -58,7 +58,7 @@ public class UserController {
                     .title(product.getTitle())
                     .price(product.getPrice())
                     .stock(product.getStock())
-                    .description(product.getDescription())
+//                    .description(product.getDescription())
                     .category(CategoryDto.builder()
                             .id(product.getCategory().getId())
                             .name(product.getCategory().getName())

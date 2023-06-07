@@ -82,7 +82,7 @@ public class ProductController {
             productDTO.setName(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
-            productDTO.setDescription(product.getDescription());
+//            productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
             Double priceDiscount = product.getPriceDiscount();
             if (priceDiscount != null) {
@@ -142,7 +142,7 @@ public class ProductController {
                 productDTO.setTitle(product.getTitle());
                 productDTO.setPrice(product.getPrice());
                 productDTO.setStock(product.getStock());
-                productDTO.setDescription(product.getDescription());
+//                productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
                 Double priceDiscount = product.getPriceDiscount();
                 if (priceDiscount != null) {
@@ -216,7 +216,7 @@ public class ProductController {
             productDTO.setTitle(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
-            productDTO.setDescription(product.getDescription());
+//            productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
             Double priceDiscount = product.getPriceDiscount();
             if (priceDiscount != null) {
@@ -292,7 +292,7 @@ public class ProductController {
             productDTO.setTitle(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
-            productDTO.setDescription(product.getDescription());
+//            productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
             Double priceDiscount = product.getPriceDiscount();
             if (priceDiscount != null) {
@@ -367,7 +367,7 @@ public class ProductController {
                 productDTO.setTitle(product.getTitle());
                 productDTO.setPrice(product.getPrice());
                 productDTO.setStock(product.getStock());
-                productDTO.setDescription(product.getDescription());
+//                productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
                 Double priceDiscount = product.getPriceDiscount();
                 if (priceDiscount != null) {
@@ -440,7 +440,7 @@ public class ProductController {
                 productDTO.setTitle(product.getTitle());
                 productDTO.setPrice(product.getPrice());
                 productDTO.setStock(product.getStock());
-                productDTO.setDescription(product.getDescription());
+//                productDTO.setDescription(product.getDescription());
                 productDTO.setDiscount(product.getDiscount());
                 Double priceDiscount = product.getPriceDiscount();
                 if (priceDiscount != null) {
@@ -510,7 +510,7 @@ public class ProductController {
             productDTO.setTitle(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
-            productDTO.setDescription(product.getDescription());
+//            productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
 
 
@@ -571,7 +571,7 @@ public class ProductController {
             productDTO.setTitle(product.getTitle());
             productDTO.setPrice(product.getPrice());
             productDTO.setStock(product.getStock());
-            productDTO.setDescription(product.getDescription());
+//            productDTO.setDescription(product.getDescription());
             productDTO.setDiscount(product.getDiscount());
 
             if (product.getDiscount() != null) {

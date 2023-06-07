@@ -32,9 +32,6 @@ public class Product {
     @Transient
     private Double priceQuotas;
 
-    private String description;
-    private String descriptionRelevant;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;

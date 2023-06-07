@@ -62,9 +62,9 @@ public class ProductServiceImpl implements IProductService {
         if (product.getTitle() != null) {
             existingProduct.setTitle(product.getTitle());
         }
-        if (product.getDescription() != null) {
-            existingProduct.setDescription(product.getDescription());
-        }
+//        if (product.getDescription() != null) {
+//            existingProduct.setDescription(product.getDescription());
+//        }
         existingProduct.setPrice(product.getPrice());
         existingProduct.setImages(product.getImages());
         existingProduct.setUser(product.getUser());
