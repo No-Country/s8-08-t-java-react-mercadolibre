@@ -63,7 +63,7 @@ const SliderProduct = ({ products }) => {
         modules={[Pagination]}
         className=""
       >
-        {products.map((product, index) => (
+        {products?.map((product, index) => (
           <SwiperSlide onMouseOver={handleMouseOver} key={`${index}-card`}>
             <div className=" w-full flex justify-between">
               <ProductCard product={product} />

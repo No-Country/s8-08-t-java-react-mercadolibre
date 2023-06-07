@@ -27,7 +27,12 @@ const ProductDetail = () => {
           <div>
             <Link to="/">Volver</Link>
             <span className="mx-1">|</span>
-            <button className="text-ligthblue">{product.category?.name}</button>
+            <Link
+              to={`/product-list/category/${product?.category?.id}/${product?.category?.name}`}
+              className="text-ligthblue"
+            >
+              {product.category?.name}
+            </Link>
             <span className="mx-1 text-ligthblue">-</span>
             <button className="text-ligthblue">{product.subcategory?.name}</button>
           </div>

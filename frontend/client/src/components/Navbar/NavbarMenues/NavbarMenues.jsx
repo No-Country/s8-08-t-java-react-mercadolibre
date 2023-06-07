@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MenuUser from "../MenuUser/MenuUser";
 import ModalNotification from "../ModalNotification/ModalNotification";
@@ -26,6 +26,8 @@ const NavbarMenues = () => {
   const [openMenuCategory, setOpenMenuCategory] = useState(false);
   const { user, token } = useSelector(store => store.auth);
   const { list: listCategories } = useSelector(store => store.categories);
+
+  const navigate = useNavigate();
 
   const menuUser = () => {
     let listMenu = [];
@@ -103,6 +105,9 @@ const NavbarMenues = () => {
                       key={category.id}
                       id={category.id}
                       className="cursor-pointer p-2 hover:bg-ligthblue pl-7"
+                      onClick={() =>
+                        navigate(`product-list/category/${category.id}/${category.name}`)
+                      }
                     >
                       {category.name}
                     </p>

@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { useSelector } from "react-redux";
-import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
+import useMediaQuery from "../../hooks/useMediaQuery.js";
 
 const ProductDetailPayment = ({ coupon, notification }) => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 640px)");
-  const { cart } = useSelector(store => store.cart);
-
+  const { product } = useSelector(store => store.cart);
   return (
     <>
       {!isMobile ? (
@@ -15,12 +13,12 @@ const ProductDetailPayment = ({ coupon, notification }) => {
           <div className={`divide-y divide-slate-200 ${!notification && "sticky top-0"}`}>
             <div className="flex justify-center items-center flex-col mt-12 w-[330px]">
               <img
-                src={cart.images[0].imageUrl}
+                src={product?.images[0]?.imageUrl}
                 alt="Producto"
                 className="w-12 h-12 rounded-full"
               />
-              <p className="mt-3 mb-1 w-56 leading-5">{cart.title} </p>
-              <span className="text-sm">Cantidad: 1</span>
+              <p className="mt-3 mb-1 w-56 leading-5 text-center">{product?.title} </p>
+              <span className="text-sm">Cantidad: {product?.quantity}</span>
             </div>
 
             <div
@@ -38,14 +36,14 @@ const ProductDetailPayment = ({ coupon, notification }) => {
                 )}
               </div>
               <div>
-                <p className="mt-4 font-normal">$ {cart.price}</p>
+                <p className="mt-4 font-normal">$ {product?.price}</p>
                 <p className="mt-4 font-normal text-green text-right">Gratis</p>
               </div>
             </div>
 
             <div className="flex justify-between items-center w-[350px] mt-4 gap-48 font-normal text-lg">
               <p className="mt-4">Pagás</p>
-              <p className="mt-4 font-medium">$ {cart.price}</p>
+              <p className="mt-4 font-medium">$ {product?.price}</p>
             </div>
           </div>
 
@@ -86,7 +84,7 @@ const ProductDetailPayment = ({ coupon, notification }) => {
           style={{ boxShadow: "0px -6px 6px -2px rgba(0, 0, 0, 0.1)" }}
         >
           <p className="mt-4 text-[#666666]">Pagás</p>
-          <p className="mt-4 text-[#333333]">$ {detail.price}</p>
+          <p className="mt-4 text-[#333333]">$ {product?.price}</p>
           {isMobile && notification && (
             <div>
               <button
