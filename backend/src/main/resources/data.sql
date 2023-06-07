@@ -67,7 +67,12 @@ values
 (2,125,0,12,'Samsung Galaxy S23 Ultra 12gb 512gb Phantom Black',609999,11,11),
 (3,125,25,6,'Apple iPhone 13 Pro (512 GB) - Plata',1189999,11,11),
 (4,126,55,0,'Soporte Celular Extensible Cuello 360º Selfie Escritorio',3600,11,11),
-(5,126,0,6,'Anillo Iman Magsafe Universal Para iPhone Samsung',1897,11,11)
+(5,126,0,6,'Anillo Iman Magsafe Universal Para iPhone Samsung',1897,11,11),
+(10,156,26,12,'Sierra Caladora Black + Decker 4 Etapas 550w 220v + Maletín',30000,5,19),
+(6,160,0,12,'Set de 6 destornilladores total  tht250606',3750,5,19),
+(7,160,44,12,'Bomba presurizadora Femmto BP30L-9M 100W - 220V',28999,5,19),
+(8,156,0,12,'Soldadora Inverter 100 Amp Bronko Pampa 220 Volts',24018,5,19),
+(9,156,0,12,'Film Polietil Aislante Nylon Negro 200mic 100m2 Envio Gratis',10980,5,19)
 ;
 
 
@@ -100,7 +105,32 @@ SPICA y SKMEI Tiendas oficiales.', 'GENERIC'),
 (4,'Soporte de escritorio para teléfono móvil con Base redonda estable.
 Para videollamadas, reunión de Zoom, streamig, selfie, ver videos.', 'GENERIC'),
 (5,'Anillo adaptador universal: añade imán a tu funda para soporte de teléfono, MagSafe o billetera. Tambien disfruta de la carga inalámbrica si tu teléfono lo admite.', 'GENERIC'),
-(5,'Carga inalámbrica más rápida: con imanes de posicionamiento para alinearse al punto de carga ideal, aumentando la eficiencia de carga y reduciendo el calor.', 'GENERIC')
+(5,'Carga inalámbrica más rápida: con imanes de posicionamiento para alinearse al punto de carga ideal, aumentando la eficiencia de carga y reduciendo el calor.', 'GENERIC'),
+(10,'Capacidad máxima de perforación en aluminio: 10mm.', 'RELEVANT'),
+(10,'Obtendrás mayor versatilidad en los trabajos.', 'RELEVANT'),
+(10,'Con la sierra caladora Black+Decker podrás realizar cortes precisos, sobre todo en curvas cerradas. Fácil de manipular y de un material muy resistente, podrás realizar trabajos en varios materiales sin dificultades.', 'GENERIC'),
+(6,'Set 6 Destornilladores Ph Plano Industrial Total THT250606
+', 'GENERIC'),
+(6,'Somos “FERRETERIA ROSITA” tenemos productos de Electricidad, Gas, Agua, Herramientas, Máquinas y más!!!', 'GENERIC'),
+(6,'Material: Cromo Vanadio
+', 'GENERIC'),
+(7,'Presión máxima de 1bar.
+', 'RELEVANT'),
+(7,'Caudal máximo de agua de 30l/min.', 'RELEVANT'),
+(7,'Altura máxima de elevación de 9m.', 'RELEVANT'),
+(7,'La bomba Femmto permite aumentar la presión de agua de una red hidráulica. Este producto cuenta con una entrada o tubo que aspira el agua y, posteriormente, este líquido es impulsado por un motor hacia el tubo de salida. Esto hace que el agua salga con mucha más presión y rapidez. No dudes en revisar sus características, ya que esta podría ser una excelente opción.', 'GENERIC'),
+(7,'Gracias a su potencia de 100W, esta bomba te permitirá aumentar la presión del agua, ya sea caliente o fría, a un ritmo constante. Sin dudas, obtendrás el confort que necesitás para realizar tus tareas cotidianas.', 'GENERIC'),
+(8,'Tipo de soldadora: MMA.', 'RELEVANT'),
+(8,'Con tecnología inverter.', 'RELEVANT'),
+(8,'Intensidad de soldadura mínima de 20A.', 'RELEVANT'),
+(8,'a soldadora Inverter se considera una gran evolución para la industria de la soldadura, gracias a su avanzada tecnología.', 'GENERIC'),
+(8,'Capaz de soldar acero inoxidable, aleaciones de acero, acero semiduro, cobre y otros metales.', 'GENERIC'),
+(9,'ROLLO NYLON POLIETILENO NEGRO', 'GENERIC'),
+(9,'Nylon de polietileno negro. Flexible. Resistente. Duradero. Fácil de maniobrar.
+De usos múltiples. Construccion, invernaderos, etc', 'GENERIC'),
+(9,'Publicacion rollo negro 2 metros de ancho por 50 de largo. Espesor 200 micrones Total: 100m2
+', 'GENERIC')
+
 -- (5,2,'', 'RELEVANT'),
 -- (4,2,'', 'GENERIC')
 ;
@@ -138,9 +168,25 @@ values
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171871/xyactveh6dnbxbxbvqrr.webp'),
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171872/ocyk8ibal9eqn8q0ojq1.webp'),
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171873/xpjuawuwwcmhyg4p0ss5.webp'),
-(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171874/ijtsfdwyzd4cuu0fn99h.webp')
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171874/ijtsfdwyzd4cuu0fn99h.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172935/yglzpaeyzbmacpci2pgz.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172936/v5nnchqlh4ertgycf3ae.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172936/jmmhzgfwmfpi3kvpcnv8.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172937/yppuhfki1yydjosupsxb.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172938/x4mtm2q7tidjc3jrkcew.webp'),
+(6,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174256/bzqn77hkanphq6vqmnfg.webp'),
+(6,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174257/l9d43zietaibmcxl6ffq.webp'),
+(6,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174258/xpvuaobrhdgnkj0hi5pg.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174318/ilscxvz4thgnlga6ns09.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174319/qrjgjsnpwhothy86l0ae.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174320/wrco5xtnf3parxtqwlpd.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174320/gqzi8alqnyuzr2ureop0.webp'),
+(8,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174366/uyexasguledhg0ehqciz.webp'),
+(8,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174367/mm4belazckxxuuy5ahvb.webp'),
 
-
+(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176653/ttnjgdvsakyjifcgs350.webp'),
+(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176654/utku6ojorvvneyyrscga.webp'),
+(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176655/rxdrtmkcrjdjru3jnpfq.webp')
 ;
 
 INSERT INTO colors (COLOR_ID,name)
