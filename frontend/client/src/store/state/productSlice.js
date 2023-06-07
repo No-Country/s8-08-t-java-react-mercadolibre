@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 import { getRequest } from "../../services/httpRequest.js";
-import { getLocalStorage } from "../../utils/LocalStorageFunctions.js";
 
 export const initialProduct = {
   list: {

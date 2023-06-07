@@ -9,7 +9,6 @@ import imgProductsInterest from "../../assets/img/products_18_interest.svg";
 import imgProductsFull from "../../assets/img/products_full.svg";
 import { CiFileOff } from "react-icons/ci";
 
-
 const ProductsList = () => {
   const listProduct = useSelector(store => store.product.list).allProducts;
 

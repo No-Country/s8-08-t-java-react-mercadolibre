@@ -21,8 +21,8 @@ function BuySection() {
       quantity: 1,
       images
     };
+    setLocalStorage("cart", productCart);
     dispatch(setCart(productCart));
-    setLocalStorage("detail", productCart);
     navigate("/pay/warranty");
   };
   return (

@@ -13,7 +13,7 @@ const NavbarSearch = ({ openMenuMobile, setOpenMenuMobile }) => {
   const navigate = useNavigate();
 
   const handleSearch = event => {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 || event === 13) {
       if (input) {
         navigate(`/product-list/${input}`);
       }
@@ -45,7 +45,8 @@ const NavbarSearch = ({ openMenuMobile, setOpenMenuMobile }) => {
         />
         <BsSearch
           size={20}
-          className="w-12 absolute right-2 md:right-3 bottom-3 opacity-60 border-l pl-4 cursor-pointer"
+          className="w-12 absolute right-2 md:right-3 bottom-3 opacity-60 border-l pl-4 cursor-pointer z-30"
+          onClick={() => handleSearch(13)}
         />
       </div>
       <div className="hidden sm:flex">

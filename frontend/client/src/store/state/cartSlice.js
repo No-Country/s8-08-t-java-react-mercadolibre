@@ -2,21 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getLocalStorage } from "../../utils/LocalStorageFunctions";
 
 const initialState = {
-  cart: {
-    title: "",
-    price: 0,
-    quantity: 0,
-    images: []
-  }
+  title: "",
+  price: 0,
+  quantity: 0,
+  images: []
 };
 
 export const cartSlice = createSlice({
   name: "cart",
-  initialState: getLocalStorage("detail") ? getLocalStorage("detail") : initialState,
+  initialState: { product: getLocalStorage("cart") ? getLocalStorage("cart") : initialState },
   reducers: {
     setCart: (state, action) => {
-      const newCart = action.payload;
-      state.cart = newCart;
+      state.product = action.payload;
     }
   }
 });
