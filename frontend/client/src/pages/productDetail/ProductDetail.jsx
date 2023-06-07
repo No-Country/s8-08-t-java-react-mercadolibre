@@ -50,7 +50,7 @@ const ProductDetail = () => {
               <div className="bg-white w-full md:w-3/6">
                 <DescriptionAside
                   name={product.title}
-                  characteristics={product.descriptionGeneric}
+                  characteristics={product?.descriptionRelevant}
                   colors={product.colors || []}
                   price={product.price}
                   priceDiscount={product.priceDiscount.toFixed(2) || ""}
@@ -60,7 +60,7 @@ const ProductDetail = () => {
             </div>
             <hr className="flex mx-6 md:mx-16 my-6" />
             <div className="w-100 mx-6 md:mx-16">
-              <DescriptionBottom description={product.descriptionRelevant} />
+              <DescriptionBottom description={product?.descriptionGeneric} />
             </div>
             <hr className="flex mx-6 md:mx-16 my-6" />
             <div className="mx-6 md:mx-16">
