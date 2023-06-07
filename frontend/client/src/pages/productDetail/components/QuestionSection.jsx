@@ -46,17 +46,17 @@ const QuestionSection = () => {
     <div className="flex flex-col w-full gap-6">
       <h3 className="text-3xl">Preguntas y respuestas</h3>
       <h3 className="text-[18px] font-bold py-2">¿Qué querés saber?</h3>
-      <div className="flex flex-col flex-wrap gap-4 sm:w-full w- md:flex-row w-64 py-5">
-        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 mx-1 rounded-md">
+      <div className="flex flex-col flex-wrap gap-4 sm:w-full md:flex-row w-64 py-5">
+        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 rounded-md">
           Costo y tiempo de envío
         </button>
-        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 mx-1 rounded-md">
+        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 rounded-md">
           Devoluciones gratis
         </button>
-        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 mx-1 rounded-md">
+        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 rounded-md">
           Medios de pago y promociones
         </button>
-        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 mx-1 rounded-md">
+        <button className="bg-blue-100 text-ligthblue w-[20rem] text-[18px] p-2 rounded-md">
           Garantía
         </button>
       </div>

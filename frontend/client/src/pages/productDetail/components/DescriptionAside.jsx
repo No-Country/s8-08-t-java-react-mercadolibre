@@ -58,10 +58,10 @@ const DescriptionAside = ({ name, characteristics, colors, price, priceDiscount,
                     setColorSelected(elem.name);
                   }}
                   onMouseEnter={() => {
-                    setColor(elem.name);
+                    setColorHover(elem.name);
                   }}
                   onMouseOut={() => {
-                    setColor(colorSelected);
+                    setColorHover(colorSelected);
                   }}
                   className={`hover:border-ligthblue ${
                     elem.name == colorSelected && active

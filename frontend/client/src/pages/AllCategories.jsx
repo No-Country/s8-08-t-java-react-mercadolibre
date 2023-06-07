@@ -6,9 +6,9 @@ const AllCategories = () => {
   const subCategoryRows = listSubCategories => {
     let categoriesPerRow = 5;
 
-    if (listSubCategories.length <= 15) categoriesPerRow = 3;
-    if (listSubCategories.length <= 10) categoriesPerRow = 2;
-    if (listSubCategories.length <= 5) categoriesPerRow = 1;
+    if (listSubCategories?.length <= 15) categoriesPerRow = 3;
+    if (listSubCategories?.length <= 10) categoriesPerRow = 2;
+    if (listSubCategories?.length <= 5) categoriesPerRow = 1;
 
     const categoryRows = listSubCategories.reduce((rows, category, index) => {
       if (index % categoriesPerRow === 0) {
@@ -25,9 +25,9 @@ const AllCategories = () => {
       <div className="max-w-[1200px]">
         <h1 className="text-2xl text-[#4a4a4a] mb-6 mt-2">Categorías para comprar y vender</h1>
         <div className="bg-white rounded-md p-8 mt-4">
-          {listCategories.map(category => {
+          {listCategories?.map((category, index) => {
             return (
-              <div className="bg-white rounded-md p-4 mt-2">
+              <div key={`categ-${index}`} className="bg-white rounded-md p-4 mt-2">
                 <p
                   key={category.id}
                   className="flex font-medium cursor-pointer hover:text-blue-500"
@@ -35,7 +35,7 @@ const AllCategories = () => {
                   {category.name}
                 </p>
                 <div className="flex gap-4 w-full text-black mt-2">
-                  {subCategoryRows(category.subcategories).map((row, index) => (
+                  {subCategoryRows(category?.subcategories)?.map((row, index) => (
                     <div key={index} className="flex w-full">
                       <div className="flex flex-col">
                         {row.map((category, categoryIndex) => (
@@ -43,7 +43,7 @@ const AllCategories = () => {
                             key={categoryIndex}
                             className="flex mt-2 font-normal text-sm text-gray-400 cursor-pointer hover:text-blue-500"
                           >
-                            <p>{category.name}</p>
+                            <p>{category?.name}</p>
                           </div>
                         ))}
                       </div>
