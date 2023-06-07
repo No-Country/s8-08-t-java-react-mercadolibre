@@ -88,7 +88,7 @@ public class ProductController {
             if (priceDiscount != null) {
                 productDTO.setPriceDiscount(product.getPriceDiscount());
             } else {
-                product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
             }
             productDTO.setPriceDiscount(product.getPriceDiscount());
             productDTO.setNumberQuotas(product.getNumberQuotas());
@@ -148,7 +148,7 @@ public class ProductController {
                 if (priceDiscount != null) {
                     productDTO.setPriceDiscount(product.getPriceDiscount());
                 } else {
-                    product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                    product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
                 }
                 productDTO.setPriceDiscount(product.getPriceDiscount());
                 productDTO.setNumberQuotas(product.getNumberQuotas());
@@ -222,7 +222,7 @@ public class ProductController {
             if (priceDiscount != null) {
                 productDTO.setPriceDiscount(product.getPriceDiscount());
             } else {
-                product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
             }
             productDTO.setPriceDiscount(product.getPriceDiscount());
             productDTO.setNumberQuotas(product.getNumberQuotas());
@@ -298,7 +298,7 @@ public class ProductController {
             if (priceDiscount != null) {
                 productDTO.setPriceDiscount(product.getPriceDiscount());
             } else {
-                product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
             }
             productDTO.setPriceDiscount(product.getPriceDiscount());
             productDTO.setNumberQuotas(product.getNumberQuotas());
@@ -373,7 +373,7 @@ public class ProductController {
                 if (priceDiscount != null) {
                     productDTO.setPriceDiscount(product.getPriceDiscount());
                 } else {
-                    product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                    product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
                 }
                 productDTO.setPriceDiscount(product.getPriceDiscount());
                 productDTO.setNumberQuotas(product.getNumberQuotas());
@@ -446,7 +446,7 @@ public class ProductController {
                 if (priceDiscount != null) {
                     productDTO.setPriceDiscount(product.getPriceDiscount());
                 } else {
-                    product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                    product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
                 }
                 productDTO.setPriceDiscount(product.getPriceDiscount());
                 productDTO.setNumberQuotas(product.getNumberQuotas());
