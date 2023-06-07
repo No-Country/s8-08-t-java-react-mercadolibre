@@ -101,7 +101,7 @@ public class ProductServiceImpl implements IProductService {
                                 product ->
                                 {
                                     product.setPriceQuotas(product.getPrice() / product.getNumberQuotas());
-                                    product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                                    product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
                                 }
                         ).toList()
         );
@@ -113,7 +113,7 @@ public class ProductServiceImpl implements IProductService {
         ProductDetailGetDto productById = this.productRepository.findById(productId)
                 .map(product -> {
                             product.setPriceQuotas(product.getPrice() / product.getNumberQuotas());
-                            product.setPriceDiscount(product.getPrice() * product.getDiscount() / 100);
+                            product.setPriceDiscount(product.getPrice() - (product.getPrice() * product.getDiscount()) / 100);
                             return this.productDetailMapper.toProductDetailGetDto(product);
                         }
 
