@@ -66,7 +66,7 @@ values
 (1,125,10,6,'Xiaomi Redmi Note 10 Pro (108 Mpx) Dual SIM 256 GB gris ónix 8 GB RAM',269999,10,11),
 (2,125,0,12,'Samsung Galaxy S23 Ultra 12gb 512gb Phantom Black',609999,11,11),
 (3,125,25,6,'Apple iPhone 13 Pro (512 GB) - Plata',1189999,11,11),
-(4,126,55,0,'Soporte Celular Extensible Cuello 360º Selfie Escritorio',3600,11,11),
+(4,126,55,12,'Soporte Celular Extensible Cuello 360º Selfie Escritorio',3600,11,11),
 (5,126,0,6,'Anillo Iman Magsafe Universal Para iPhone Samsung',1897,11,11),
 (10,156,26,12,'Sierra Caladora Black + Decker 4 Etapas 550w 220v + Maletín',30000,5,19),
 (6,160,0,12,'Set de 6 destornilladores total  tht250606',3750,5,19),
