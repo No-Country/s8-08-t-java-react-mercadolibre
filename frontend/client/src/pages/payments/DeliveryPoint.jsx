@@ -20,7 +20,7 @@ const DeliveryPoint = () => {
         console.error("Error al obtener la geolocalización:", error);
       });
   }, []);
-  console.log(coord);
+
   return (
     <div>
       <NavbarPayment title={"Elegí un punto de retiro"} />

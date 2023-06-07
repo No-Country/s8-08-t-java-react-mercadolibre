@@ -26,7 +26,8 @@ const ProductDetailPayment = ({ coupon, notification }) => {
             <div
               className={`flex justify-between items-center w-[350px] mt-8 gap-48 relative ${
                 coupon && "pb-7"
-              }`}>
+              }`}
+            >
               <div>
                 <p className="mt-4 font-normal">Producto</p>
                 <p className="mt-4 font-normal">Envío</p>
@@ -71,7 +72,8 @@ const ProductDetailPayment = ({ coupon, notification }) => {
               <div className="lg:pb-10">
                 <button
                   onClick={() => navigate("/pay/purchases")}
-                  className="w-[316px] h-[48px] text-white rounded-md bg-ligthblue font-medium">
+                  className="w-[316px] h-[48px] text-white rounded-md bg-ligthblue font-medium"
+                >
                   Confirmar Compra
                 </button>
               </div>
@@ -81,14 +83,16 @@ const ProductDetailPayment = ({ coupon, notification }) => {
       ) : (
         <div
           className="flex justify-between items-center w-full font-normal text-lg p-5 bg-[#f7f7f7]"
-          style={{ boxShadow: "0px -6px 6px -2px rgba(0, 0, 0, 0.1)" }}>
+          style={{ boxShadow: "0px -6px 6px -2px rgba(0, 0, 0, 0.1)" }}
+        >
           <p className="mt-4 text-[#666666]">Pagás</p>
           <p className="mt-4 text-[#333333]">$ {detail.price}</p>
           {isMobile && notification && (
             <div>
               <button
                 onClick={() => navigate("/pay/purchases")}
-                className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue font-medium">
+                className="w-[188px] h-[48px] text-white rounded-md bg-ligthblue font-medium"
+              >
                 Confirmar Compra
               </button>
             </div>

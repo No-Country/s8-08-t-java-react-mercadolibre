@@ -14,9 +14,15 @@ function BuySection() {
   const { detail } = useSelector(store => store.product);
   const dispatch = useDispatch();
   const handleShop = () => {
-    const { title, price, images } = detail;
-    dispatch(setCart({ title, price, cant: 1, images }));
-    setLocalStorage("detail", {cart: { title, price, cant: 1, images }});
+    const { title, price, priceDiscount, images } = detail;
+    const productCart = {
+      title,
+      price: priceDiscount ? priceDiscount.toFixed(2) : price,
+      quantity: 1,
+      images
+    };
+    dispatch(setCart(productCart));
+    setLocalStorage("detail", productCart);
     navigate("/pay/warranty");
   };
   return (
@@ -55,7 +61,8 @@ function BuySection() {
         <div>
           <button
             onClick={handleShop}
-            className="bg-blue-500 hover:bg-blue-700 text-white text-[16px] font-medium w-full py-4 px-20 my-8 rounded">
+            className="bg-blue-500 hover:bg-blue-700 text-white text-[16px] font-medium w-full py-4 px-20 my-8 rounded"
+          >
             Comprar ahora
           </button>
         </div>

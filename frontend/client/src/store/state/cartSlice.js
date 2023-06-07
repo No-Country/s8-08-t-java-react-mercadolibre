@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getLocalStorage } from "../../utils/LocalStorageFunctions";
 
 const initialState = {
-cart: {
+  cart: {
     title: "",
     price: 0,
-    cant: 0,
+    quantity: 0,
     images: []
-}
+  }
 };
 
 export const cartSlice = createSlice({
@@ -24,13 +24,3 @@ export const cartSlice = createSlice({
 export const { setCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
-
-// export const postPayment = () => async (dispatch) => {
-
-//   try {
-    
-
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
