@@ -12,7 +12,6 @@ import articulo_belleza from "../assets/icons/articulo_belleza.svg";
 import videojuegos from "../assets/icons/videojuegos.svg";
 import juguetes from "../assets/icons/juguetes.svg";
 import alimentos from "../assets/icons/alimentos.svg";
-import bicycle from "../assets/icons/bicycle.svg";
 import salud from "../assets/icons/salud.svg";
 import cotillon from "../assets/icons/cotillon.svg";
 import musica from "../assets/icons/musica.svg";
@@ -20,92 +19,92 @@ import otras_cat from "../assets/icons/otras_categorias.svg";
 
 export const listIcons = [
   {
-    id: 1,
+    id: 7,
     name: "Autos, Motos y otros",
     image: cars
   },
   {
-    id: 2,
+    id: 11,
     name: "Celulares y Teléfonos",
     image: mobile
   },
   {
-    id: 3,
+    id: 12,
     name: "Computación",
     image: computacion
   },
   {
-    id: 4,
+    id: 17,
     name: "Electrónica, Audio y Video",
     image: audio_electronica
   },
   {
-    id: 5,
+    id: 16,
     name: "Electrodomésticos y Aires Ac.",
     image: electrodomesticos_aires
   },
   {
-    id: 6,
+    id: 28,
     name: "Ropa y Accesorios",
     image: ropa
   },
   {
-    id: 7,
+    id: 15,
     name: "Deportes y Fitness",
     image: deporte
   },
   {
-    id: 8,
+    id: 20,
     name: "Hogar, Muebles y Jardín",
     image: mueble
   },
   {
-    id: 9,
+    id: 22,
     name: "Inmuebles",
     image: inmueble_hogar
   },
   {
-    id: 10,
+    id: 1,
     name: "Accesorios para Vehículos",
     image: accesorio_vehiculo
   },
   {
-    id: 11,
+    id: 9,
     name: "Belleza y Cuidado Personal",
     image: articulo_belleza
   },
   {
-    id: 12,
+    id: 13,
     name: "Consolas y Videojuegos",
     image: videojuegos
   },
   {
-    id: 13,
+    id: 25,
     name: "Juegos y Juguetes",
     image: juguetes
   },
   {
-    id: 14,
+    id: 3,
     name: "Alimentos y bebidas",
     image: alimentos
   },
   {
-    id: 15,
-    name: "Salud",
+    id: 29,
+    name: "Salud y Equipamiento Médico",
     image: salud
   },
   {
-    id: 16,
-    name: "Cotillón",
+    id: 31,
+    name: "Souvenirs, Cotillón y Fiestas",
     image: cotillon
   },
   {
-    id: 17,
-    name: "Música",
+    id: 27,
+    name: "Música, Películas y Series",
     image: musica
   },
   {
-    id: 18,
+    id: 32,
     name: "Otras Categorías",
     image: otras_cat
   }

@@ -6,7 +6,6 @@ import QuestionSection from "./components/QuestionSection";
 import BuySection from "./components/BuySection";
 import StoreDetail from "./components/StoreDetail";
 import { Link, useParams } from "react-router-dom";
-import { Product } from "./components/Product";
 import banner from "../../assets/img/banner.svg";
 import PaidSection from "./components/PaidSection";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,8 +21,8 @@ const ProductDetail = () => {
   }, [id]);
   return (
     <div>
-      <div className="bg-grey flex flex-col justify-center content-center px-2 sm:px-24 py-14 w-100">
-        <div className="flex justify-between w-100 my-2">
+      <div className="bg-grey flex flex-col justify-center content-center px-0 sm:px-24 py-6 w-100">
+        <div className="flex justify-between w-100 mx-4 my-2">
           <div>
             <Link to="/">Volver</Link>
             <span className="mx-1">|</span>
@@ -59,16 +58,16 @@ const ProductDetail = () => {
                 />
               </div>
             </div>
-            <hr className="flex mx-6 md:mx-16 my-8" />
+            <hr className="flex mx-6 md:mx-16 my-6" />
             <div className="w-100 mx-6 md:mx-16">
               <DescriptionBottom description={product.descriptionRelevant} />
             </div>
-            <hr className="flex mx-6 md:mx-16 my-8" />
+            <hr className="flex mx-6 md:mx-16 my-6" />
             <div className="mx-6 md:mx-16">
               <QuestionSection />
             </div>
           </div>
-          <div className="bg-white w-full md:max-w-[26rem]  flex flex-col items-center pt-3 pr-6 gap-4">
+          <div className="bg-white w-full md:max-w-[26rem] flex flex-col items-center pt-3 p-2 gap-4">
             <BuySection />
             <StoreDetail />
             <PaidSection quotes={product.numberQuotas} />

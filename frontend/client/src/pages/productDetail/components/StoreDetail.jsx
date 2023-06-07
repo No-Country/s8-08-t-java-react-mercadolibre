@@ -5,7 +5,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import LogoTienda from "../../../assets/img/mercadolibrelogo_solo.svg";
 function StoreDetail() {
   return (
-    <div className="border-solid border w-[25rem] p-6 rounded-xl">
+    <div className="border-solid border sm:w-[25rem] p-6 rounded-xl">
       <h2 className="font-medium text-lg">Información de la tienda</h2>
       <div className="flex gap-3">
         <img src={LogoTienda} alt={"Logo"} className="w-12 h-12"></img>

@@ -26,7 +26,7 @@ function BuySection() {
     navigate("/pay/warranty");
   };
   return (
-    <div className="border-solid border w-[25rem] p-4 rounded-xl">
+    <div className="border-solid border sm:w-[25rem] p-4 rounded-xl">
       <div className="flex">
         <BsTruck className="text-green text-2xl mr-3" />
         <div className="">

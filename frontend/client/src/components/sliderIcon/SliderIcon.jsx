@@ -64,10 +64,10 @@ const SliderIcon = () => {
         modules={[Grid, Pagination]}
         className="relative"
       >
-        {listIcons.map((card, index) => (
+        {listIcons.map(card => (
           <SwiperSlide
             onMouseOver={handleMouseOver}
-            key={`${index}-card`}
+            key={`${card.id}-card`}
             className={style.swiperSlide}
           >
             <PopularCategories card={card} />

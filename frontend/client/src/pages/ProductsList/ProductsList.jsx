@@ -21,24 +21,25 @@ const ProductsList = () => {
     } else {
       dispatch(getProductsByCategory(idCategory));
     }
+    window.scrollTo(0, 0);
   }, [title, idCategory]);
 
   return (
     <div className="bg-[#EDEDED] pb-6">
       <section className="mx-auto w-full bg-[#2567c9] h-[120px] flex justify-center items-center">
-        <h1 className="text-white font-medium text-2xl uppercase">
+        <h1 className="text-white font-medium text-2xl uppercase px-4">
           {" "}
           Resultados de la {title ? "busqueda por" : "categoría"}: {title ? title : nameCategory}
         </h1>
       </section>
-      <section className="mx-auto max-w-[1200px] mt-8">
+      <section className="flex flex-col items-center sm:items-start mx-auto max-w-[1200px] mt-8">
         {listProduct.length > 0 ? (
-          <div>
-            <h3 className="text-base mt-6 pb-4 pt-6 uppercase">
+          <div className="flex flex-col items-center">
+            <h3 className="flex text-base mt-6 pb-4 pt-6 uppercase md:w-full md:text-left">
               estos son los productos encontrados!
             </h3>
 
-            <div className=" flex flex-wrap gap-2">
+            <div className=" flex flex-wrap gap-2 justify-center">
               {listProduct.map((product, index) => (
                 <div key={`${index}-card`} className="min-h-[434px]">
                   <ProductCard product={product} />
@@ -64,7 +65,7 @@ const ProductsList = () => {
           <Collection />
         </div>
 
-        <div className="my-[50px] flex gap-3 justify-between">
+        <div className="my-[50px] flex flex-col sm:flex-row gap-3 justify-between">
           <div>
             <img src={imgProductsInterest} alt="productos interesados" />
           </div>
