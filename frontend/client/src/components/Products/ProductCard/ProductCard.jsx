@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className={`w-[224px] hover:h-[424px] hover:shadow-xl hover:shadow-slate-400 h-[375px] border rounded-lg p-4 bg-white`}
+      className={`w-[224px] hover:h-[410px] hover:shadow-lg hover:shadow-slate-400 h-[375px] border rounded-lg p-4 bg-white mb-6`}
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -15,9 +15,11 @@ const ProductCard = ({ product }) => {
           <img className="w-full h-[225px]" src={product?.images[0].imageUrl} alt="zapato" />
         </header>
         <main>
-          <h3 className="bg-ligthblue text-white font-medium  flex justify-center rounded w-[100px] text-[12px]">
-            OFERTA DEL DIA
-          </h3>
+          {product?.priceDiscount && (
+            <span className="bg-ligthblue text-white font-medium rounded text-[12px] p-1">
+              OFERTA DEL DIA
+            </span>
+          )}
           {isHover && (
             <p className="text-[11px] line-through text-[#666]">
               ${product?.priceDiscount ? product?.price : ""}

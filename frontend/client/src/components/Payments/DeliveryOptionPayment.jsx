@@ -11,7 +11,7 @@ const DeliveryOptionPayment = () => {
   const [addressError, setAddressError] = useState(false);
   const userData = useSelector(store => store.auth.user);
   const isMobile = useMediaQuery("(max-width: 640px)");
-  const { cart } = useSelector(store => store.cart);
+  const { product } = useSelector(store => store.cart);
   const handleFirstChoice = () => {
     setSelectedOption("home delivery");
   };
@@ -22,7 +22,7 @@ const DeliveryOptionPayment = () => {
 
   const handleSubmit = async () => {
     if (userData.address) {
-      const res = await postRequest(cart, "/api/v1/mercadopago/pay");
+      const res = await postRequest(product, "/api/v1/mercadopago/pay");
       window.location.href = `https:${res.split(":")[2]}`;
     } else {
       setAddressError(true);

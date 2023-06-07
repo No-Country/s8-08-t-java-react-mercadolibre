@@ -22,7 +22,7 @@ function BuySection() {
       images
     };
     dispatch(setCart(productCart));
-    setLocalStorage("detail", productCart);
+    setLocalStorage("cart", productCart);
     navigate("/pay/warranty");
   };
   return (

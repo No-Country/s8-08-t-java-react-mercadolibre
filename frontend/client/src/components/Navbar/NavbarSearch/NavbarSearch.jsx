@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MercadoLibreLogo from "../../../assets/img/mercadolibrelogo.svg";
 import MercadoLibreLogo_solo from "../../../assets/img/mercadolibrelogo_solo.svg";
 import DisneyAd from "../../../assets/img/disney.svg";
@@ -9,6 +9,16 @@ import { FiShoppingCart } from "react-icons/fi";
 
 const NavbarSearch = ({ openMenuMobile, setOpenMenuMobile }) => {
   const [input, setInput] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSearch = event => {
+    if (event.keyCode === 13 || event === 13) {
+      if (input) {
+        navigate(`/product-list/${input}`);
+      }
+    }
+  };
 
   return (
     <div className="flex gap-3 justify-between items-center w-full sm:gap-9">
@@ -31,10 +41,12 @@ const NavbarSearch = ({ openMenuMobile, setOpenMenuMobile }) => {
           onChange={e => setInput(e.target.value)}
           className=" w-full sm:w-full sm:max-w-full shadow py-2 pl-4 pr-8 md:pr-10 rounded-sm outline-none placeholder:font-light placeholder:opacity-90"
           placeholder="Buscar productos, marcas y más..."
+          onKeyDown={handleSearch}
         />
         <BsSearch
           size={20}
-          className="w-12 absolute right-2 md:right-3 bottom-3 opacity-60 border-l pl-4 cursor-pointer"
+          className="w-12 absolute right-2 md:right-3 bottom-3 opacity-60 border-l pl-4 cursor-pointer z-30"
+          onClick={() => handleSearch(13)}
         />
       </div>
       <div className="hidden sm:flex">
