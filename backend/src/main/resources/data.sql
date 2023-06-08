@@ -478,7 +478,10 @@ values
 (6,160,0,12,'Set de 6 destornilladores total  tht250606',3750,5,19),
 (7,160,44,12,'Bomba presurizadora Femmto BP30L-9M 100W - 220V',28999,5,19),
 (8,156,0,12,'Soldadora Inverter 100 Amp Bronko Pampa 220 Volts',24018,5,19),
-(9,156,0,12,'Film Polietil Aislante Nylon Negro 200mic 100m2 Envio Gratis',10980,5,19)
+(9,156,0,12,'Film Polietil Aislante Nylon Negro 200mic 100m2 Envio Gratis',10980,5,19),
+(11,125,0,12,'Auriculares in-ear inalámbricos F9-5',3500,5,11),
+(12,125,5,12,'Auriculares inalámbricos Motorola Moto XT220 XT220',17980,5,11),
+(13,125,15,12,'Celular Samsung Galaxy A13 128gb + 4gb Ram Pls Lcd ',130000,5,11)
 ;
 
 
@@ -535,8 +538,27 @@ Para videollamadas, reunión de Zoom, streamig, selfie, ver videos.', 'GENERIC')
 (9,'Nylon de polietileno negro. Flexible. Resistente. Duradero. Fácil de maniobrar.
 De usos múltiples. Construccion, invernaderos, etc', 'GENERIC'),
 (9,'Publicacion rollo negro 2 metros de ancho por 50 de largo. Espesor 200 micrones Total: 100m2
-', 'GENERIC')
-
+', 'GENERIC'),
+(11,'Cuenta con tecnología True Wireless.', 'RELEVANT'),
+(11,'Alcance inalámbrico de 10 m.', 'RELEVANT'),
+(11,'La batería dura 5 h.', 'RELEVANT'),
+(11,'En la calle, en el colectivo o en la oficina, tené siempre a mano tus auriculares F9-5 y ¡escapate de la rutina por un rato! Vas a poder disfrutar de la música que más te gusta y de tus podcasts favoritos cuando quieras y donde quieras.', 'GENERIC'),
+(11,'Al ser in-ear, mejoran la calidad del audio y son de tamaño pequeño para poder insertarse en tu oreja. Son ideales para acompañarte a la hora de hacer ejercicio mientras te sumergís en el mejor sonido envolvente.', 'GENERIC'),
+(12,'Alcance inalámbrico de 10 m.
+', 'RELEVANT'),
+(12,'La batería dura 24 h.
+', 'RELEVANT'),
+(12,'En la calle, en el colectivo o en la oficina, tené siempre a mano tus auriculares Motorola y ¡escapate de la rutina por un rato! Vas a poder disfrutar de la música que más te gusta y de tus podcasts favoritos cuando quieras y donde quieras.', 'GENERIC'),
+(12,'El diseño over-ear brinda una comodidad insuperable gracias a sus suaves almohadillas. Al mismo tiempo, su sonido envolvente del más alto nivel se convierte en el protagonista de la escena.', 'GENERIC'),
+(12,'Sonido superior y sin límites.', 'RELEVANT'),
+(13,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.', 'RELEVANT'),
+(13,'Pantalla PLS de 6.6".', 'RELEVANT'),
+(13,'Tiene 4 cámaras traseras de 50Mpx/5Mpx/2Mpx/2Mpx.', 'RELEVANT'),
+(13,'Procesador Exynos 850 Octa-Core de 2GHz con 4GB de RAM.', 'RELEVANT'),
+(13,'Fotografía profesional en tu bolsillo
+Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.', 'GENERIC'),
+(13,'Con su lente macro tendrás un enfoque definido de los detalles más minúsculos y podrás usarlo para obtener nítidas vistas panorámicas.', 'GENERIC'),
+(13,'Su memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.', 'GENERIC')
 -- (5,2,'', 'RELEVANT'),
 -- (4,2,'', 'GENERIC')
 ;
@@ -550,8 +572,8 @@ values
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168569/sed4vncgvoghugbjguyq.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168570/uyku9uujm6iujqcv3blt.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168570/hk6dxyyzwscbusoubuqf.webp'),
-(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170149/keh8m5cwrqhjglybwosm.webp'),
 (2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170150/kv6g9jmauaeaqodph8lk.webp'),
+(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170149/keh8m5cwrqhjglybwosm.webp'),
 (2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170150/cwfk2jzskxyx75gnbyrs.webp'),
 (2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170152/texan39cygluqydbprrx.webp'),
 (2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170153/xwy5dg0ynwmke93ndmh3.webp'),
@@ -563,16 +585,15 @@ values
 (3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170715/gpkhwo2zmqgmffhwzm9c.webp'),
 (3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170716/syie2myw6knnazyfyez4.webp'),
 (3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170717/pf9udvjixbj99unpi89r.webp'),
-(4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171793/b8yvyyanipmkditjf1fx.webp'),
 (4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171794/o54rb2xanbq7rvagypd1.webp'),
+(4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171793/b8yvyyanipmkditjf1fx.webp'),
 (4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171795/dm0lodpiezdtcgotoan9.webp'),
 (4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171796/enelhyvgxjpkm3ftzid7.webp'),
 (4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171798/faluzupybfxrmzmwmedb.webp'),
-
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171872/ocyk8ibal9eqn8q0ojq1.webp'),
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171869/zavgvcf2ovtfqm9pckot.webp'),
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171870/hwpfpm7hllsfc6ciq0zs.webp'),
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171871/xyactveh6dnbxbxbvqrr.webp'),
-(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171872/ocyk8ibal9eqn8q0ojq1.webp'),
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171873/xpjuawuwwcmhyg4p0ss5.webp'),
 (5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171874/ijtsfdwyzd4cuu0fn99h.webp'),
 (10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172935/yglzpaeyzbmacpci2pgz.webp'),
@@ -592,7 +613,22 @@ values
 
 (9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176653/ttnjgdvsakyjifcgs350.webp'),
 (9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176654/utku6ojorvvneyyrscga.webp'),
-(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176655/rxdrtmkcrjdjru3jnpfq.webp')
+(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176655/rxdrtmkcrjdjru3jnpfq.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196541/pnl9gjqlnexwwoiib0he.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196542/pphbmguiptz5s6aaqh91.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196543/oh1cfx19fpuef2a4oqja.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196543/brmhrvgjxsryjnnzx5ws.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196544/kjfuk0d59kvqmleqihld.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196622/ba4zynelyfilsyspko0w.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196622/xfuuov4qoulkv3e5wbad.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196621/iq6nzggjihjii0qtdtky.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196623/bvwgskwgvzi09gr6oyc8.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196624/woe0ahcwdf1w6riqjftk.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196624/rxpl0yutj5shyjvjmqhi.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196713/gyctf0ob75v4coahbgfx.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196713/bgdjsa1cwast6atcmldm.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196714/j80cpxpelpfmqb92hvyw.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196715/bbe0wnrmgnfdajrly043.webp')
 ;
 
 INSERT INTO colors (COLOR_ID,name)
@@ -615,8 +651,12 @@ values
 (1,7),
 (2,8),
 (2,9),
-(2,10)
-
+(2,10),
+(3,5),
+(3,1),
+(11,1),
+(11,3),
+(13,10)
 ;
 
 
@@ -900,15 +940,15 @@ VALUES
 insert into products (product_id,subcategory_id,discount,number_quotas, title, price, stock, category_id)
 values
 (40,136,9,12,'Notebook Hp Victus 15.6 I7 12650h 16gb 512gb Ssd Rtx 3050ti Mica Silver',820.125,15,12),
-(41,137,0,12,'Monitor gamer LG 27MK400H led 27" negro 100V/240V',95.999,1,12),
-(42,137,9,12,'Teclado gamer Soul XK850 QWERTY Content Blue color negro con luz RGB',12.999,8,12),
-(43,137,25,12,'Disco duro externo Seagate Expansion STKM1000400 1TB negro',31.399,2,12),
-(44,137,10,12,'Impresora a color multifunción Canon Pixma G3110 con wifi negra 110V/220V',159.999,11,12),
-(45,150,0,12,'Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro',439.999,18,13),
-(46,150,15,12,'Nintendo Switch OLED 64GB Standard color rojo neón, azul neón y negro',313.999,25,13),
-(47,150,17,12,'Microsoft Xbox Series X 1TB Standard color negro',399.999,5,13),
-(48,151,0,12,'FIFA 23 Standard Edition Electronic Arts PS4 Físico',22.499,10,13),
-(49,150,0,12,'Nintendo Switch Lite 32GB Standard color turquesa',159.000,1,13)
+(41,137,0,12,'Monitor gamer LG 27MK400H led 27" negro 100V/240V',95999,1,12),
+(42,137,9,12,'Teclado gamer Soul XK850 QWERTY Content Blue color negro con luz RGB',12999,8,12),
+(43,137,25,12,'Disco duro externo Seagate Expansion STKM1000400 1TB negro',31399,2,12),
+(44,137,10,12,'Impresora a color multifunción Canon Pixma G3110 con wifi negra 110V/220V',159999,11,12),
+(45,150,0,12,'Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro',439999,18,13),
+(46,150,15,12,'Nintendo Switch OLED 64GB Standard color rojo neón, azul neón y negro',313999,25,13),
+(47,150,17,12,'Microsoft Xbox Series X 1TB Standard color negro',399999,5,13),
+(48,151,0,12,'FIFA 23 Standard Edition Electronic Arts PS4 Físico',22499,10,13),
+(49,150,0,12,'Nintendo Switch Lite 32GB Standard color turquesa',159000,1,13)
 ;
 
 
