@@ -75,8 +75,16 @@ const NavbarMenues = () => {
             <p className="opacity-60 hover:opacity-90 cursor-pointer text-[0.8rem]">
               Enviar a {user.firstName ?? null}
             </p>
-
-            <p className="font-medium whitespace-nowrap">Capital Federal</p>
+            {user.address ? (
+              <div>
+                <p className="font-medium text-base whitespace-nowrap">{user?.address?.locality}</p>
+                <p className=" font-normal text-sm whitespace-nowrap">
+                  {user.address.street} {user?.address?.number}
+                </p>
+              </div>
+            ) : (
+              <p className="font-medium whitespace-nowrap">Capital Federal</p>
+            )}
           </div>
         </div>
         <ul className="flex flex-wrap items-center gap-4 font-light text-sm relative min-w-[16rem]">
@@ -85,8 +93,7 @@ const NavbarMenues = () => {
               key={`${i}-menu`}
               className={`${item.icon() ? "flex items-center gap-1" : ""}`}
               onClick={item.name === "Categorías" ? () => setOpenMenuCategory(false) : null}
-              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}
-            >
+              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}>
               {item.name && (
                 <p className="opacity-60 hover:opacity-90 cursor-pointer">{item.name}</p>
               )}
@@ -96,8 +103,7 @@ const NavbarMenues = () => {
           {openMenuCategory && (
             <div
               className="absolute top-9 bg-black w-60 rounded-md text-white z-50"
-              onMouseLeave={() => setOpenMenuCategory(false)}
-            >
+              onMouseLeave={() => setOpenMenuCategory(false)}>
               <div className="flex flex-col font-medium gap-1 mt-5 mb-5 ">
                 {listCategories.map(category => {
                   return (
@@ -107,8 +113,7 @@ const NavbarMenues = () => {
                       className="cursor-pointer p-2 hover:bg-ligthblue pl-7"
                       onClick={() =>
                         navigate(`product-list/category/${category.id}/${category.name}`)
-                      }
-                    >
+                      }>
                       {category.name}
                     </p>
                   );
@@ -132,8 +137,7 @@ const NavbarMenues = () => {
                 <Link to={item.url}>
                   <p
                     className="opacity-60 hover:opacity-90 cursor-pointer whitespace-nowrap"
-                    onMouseOver={i === 0 ? () => setOpenMenuUser(true) : null}
-                  >
+                    onMouseOver={i === 0 ? () => setOpenMenuUser(true) : null}>
                     {item.name}
                   </p>
                 </Link>
