@@ -23,8 +23,14 @@ function BuySection() {
     };
     dispatch(setCart(productCart));
     setLocalStorage("cart", productCart);
-    navigate("/pay/warranty");
+    goToWarranty();
   };
+
+  const goToWarranty = () => {
+    navigate("/pay/warranty");
+    window.scroll({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <div className="border-solid border sm:w-[25rem] p-4 rounded-xl">
       <div className="flex">
