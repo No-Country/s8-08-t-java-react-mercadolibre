@@ -894,3 +894,153 @@ VALUES
 (249, 'Denon DJ'),
 (250, 'Samsung'),
 (251, 'Native Instruments');
+
+
+
+insert into products (product_id,subcategory_id,discount,number_quotas, title, price, stock, category_id)
+values
+(40,136,9,12,'Notebook Hp Victus 15.6 I7 12650h 16gb 512gb Ssd Rtx 3050ti Mica Silver',820.125,15,12),
+(41,137,0,12,'Monitor gamer LG 27MK400H led 27" negro 100V/240V',95.999,1,12),
+(42,137,9,12,'Teclado gamer Soul XK850 QWERTY Content Blue color negro con luz RGB',12.999,8,12),
+(43,137,25,12,'Disco duro externo Seagate Expansion STKM1000400 1TB negro',31.399,2,12),
+(44,137,10,12,'Impresora a color multifunción Canon Pixma G3110 con wifi negra 110V/220V',159.999,11,12),
+(45,150,0,12,'Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro',439.999,18,13),
+(46,150,15,12,'Nintendo Switch OLED 64GB Standard color rojo neón, azul neón y negro',313.999,25,13),
+(47,150,17,12,'Microsoft Xbox Series X 1TB Standard color negro',399.999,5,13),
+(48,151,0,12,'FIFA 23 Standard Edition Electronic Arts PS4 Físico',22.499,10,13),
+(49,150,0,12,'Nintendo Switch Lite 32GB Standard color turquesa',159.000,1,13)
+;
+
+
+
+
+
+insert into descriptions (product_id,content, priority) values
+(40,'Procesador Intel Core i7', 'RELEVANT'),
+(40,'Memoria RAM de 16GB.', 'RELEVANT'),
+(40,'Placa de video NVIDIA GeForce RTX 3050 Ti', 'RELEVANT'),
+(40,'La notebook HP Gaming Laptop Victus 15-FA0032DX es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.', 'GENERIC'),
+(40,'Pantalla con gran impacto visual
+Su pantalla de 15.6" y 1920x1080 px de resolución te brindará colores más vivos y definidos. Tus películas y series preferidas cobrarán vida, ya que ganarán calidad y definición en cada detalle.', 'GENERIC'),
+(41,'Pantalla led de 27".', 'RELEVANT'),
+(41,'Tiene una resolución de 1920px-1080px', 'RELEVANT'),
+(41,'Relación de aspecto de 16:9.', 'RELEVANT'),
+(41,'LG busca entender a los usuarios para ofrecerles óptimas soluciones y nuevas experiencias a través de la evolución tecnológica. Disfrutá de la perfecta combinación de diseño, calidad y rendimiento que la empresa te ofrece en este monitor.', 'GENERIC'),
+(41,'Un monitor a tu medida
+Con tu pantalla LED no solo ahorrás energía, ya que su consumo es bajo, sino que vas a ver colores nítidos y definidos en tus películas o series favoritas.', 'GENERIC'),
+(41,'Una experiencia visual de calidad
+Este monitor de 27" te va a resultar cómodo para estudiar, trabajar o ver una película en tus tiempos de ocio. Asimismo, su resolución de 1920 x 1080 te permite disfrutar de momentos únicos gracias a una imagen de alta fidelidad. Una de sus virtudes es que posee pantalla antirreflejo, de esta manera no verás reflejado lo que está detrás de vos y vas a evitar forzar tu vista para enfocar el contenido. Su tiempo de respuesta de 2 ms lo hace ideal para gamers y cinéfilos porque es capaz de mostrar imágenes en movimiento sin halos o bordes borrosos.', 'GENERIC'),
+(42,'Consola compatible: PS4.', 'RELEVANT'),
+(42,'Tipo de teclado: mecánico.', 'RELEVANT'),
+(42,'Medidas: 352.3mm de ancho, 124.3mm de alto y 35.8mm de profundidad.', 'RELEVANT'),
+(42,'Este teclado Soul de alto rendimiento permite que puedas disfrutar de horas ilimitadas de juegos. Está diseñado especialmente para que puedas expresar tanto tus habilidades como tu estilo. Podrás mejorar tu experiencia de gaming, ya seas un aficionado o todo un experto y hacer que tus jugadas alcancen otro nivel.', 'GENERIC'),
+(42,'Distinción a todo color
+Su retroiluminación le da un toque diferente a tu equipo y resalta su composición cuando es utilizado en espacios poco iluminados.', 'GENERIC'),
+(43,'Útil para guardar programas y documentos con su capacidad de 1 TB.', 'RELEVANT'),
+(43,'Interfaz de conexión: USB 3.0.', 'RELEVANT'),
+(43,'', 'RELEVANT'),
+(43,'Seagate, referente en el mercado de unidades de almacenamiento se encarga de brindar los mejores productos a sus clientes. Su control de calidad más su compromiso con una producción sustentable y responsable con el medio ambiente la vuelven una líder indiscutible. Sus dispositivos resaltan todas estas características que generan un óptimo rendimiento con el objetivo de darte una gran experiencia de uso.', 'GENERIC'),
+(43,'Más velocidad a tu alcance. Este producto transfiere datos a través de un puerto USB 3.0, lo que lo convierte en un dispositivo sumamente veloz. Es adaptable a tus necesidades a la hora de traspasar grandes cantidades de datos en poco tiempo.', 'GENERIC'),
+(44,'Imprime, escanea y hace copias.', 'RELEVANT'),
+(44,'Tecnología de impresión: inyección de tinta.', 'RELEVANT'),
+(44,'Capacidad máxima de 100 hojas.', 'RELEVANT'),
+(44,'Soporta papel tamaño A4, A5, B5, Carta, Oficio, Sobre N10, 4 x 6 ", 5 x 7 ", Personalizado (101.6 x 152.4 mm - 215.9 x 676 mm).', 'RELEVANT'),
+(44,'Siempre hay una impresora Canon que te ayuda a llevar el trabajo y la diversión al siguiente nivel. Son estéticamente elegantes, cómodas y tienen una velocidad de impresión que te va a sorprender.', 'GENERIC'),
+(44,'Eficiencia y calidad. Imprimí archivos, escaneá documentos y hacé todas las fotocopias que necesités con esta impresora multifunción Canon, siempre lista para facilitar tu rutina de trabajo o estudio.', 'GENERIC'),
+(44,'Perfecta para tu hogar o la oficina. Al ser a tinta te permitirá lograr impresiones de gran calidad con colores vivos y degradados suaves. Ocupa poco espacio y es fácil de manejar lo que la convierte en la opción ideal para cuestiones laborales, tareas escolares y requerimientos de la vida diaria.', 'GENERIC'),
+(44,'Conectividad móvil. Ahora podés imprimir fácilmente desde tu celular o tablet sin importar en donde te encuentres y sin la asistencia de una computadora. Disfrutá de sus soluciones de impresión móvil, utilizá la que más te guste y tené tus documentos en solo segundos.', 'GENERIC'),
+(45,'Incluye control.', 'RELEVANT'),
+(45,'Resolución de 3840px x 2160px.', 'RELEVANT'),
+(45,'Memoria RAM de 16GB.', 'RELEVANT'),
+(45,'Cuenta con: 1 dock, 1 cable de alimentación ca, 1 cable hdmi, 1 cable usb, 1 material impreso.', 'RELEVANT'),
+(45,'Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.', 'GENERIC'),
+(45,'PlayStation renovó las expectativas del mundo virtual con esta nueva consola y su gran rendimiento. Cuenta con una interfaz de usuario más rápida y fácil de navegar que en anteriores modelos. Además, podrás jugar durante horas desafiando a millones de contrincantes alrededor del mundo que esperan nuevos retos.', 'GENERIC'),
+(46,'Incluye 2 controles.', 'RELEVANT'),
+(46,'Resolución de 1920px x 1080px.', 'RELEVANT'),
+(46,'Memoria RAM de 4GB.', 'RELEVANT'),
+(46,'Tiene pantalla táctil.', 'RELEVANT'),
+(46,'Switch se convirtió en una de las consolas más versátiles del mercado gracias a su uso portátil y de sobremesa. Nintendo desarrolló este modelo con el objetivo de tener todas las comodidades de la tecnología de elite en un aparato portátil con el que podrás jugar y disfrutar de diverso contenido online.', 'GENERIC'),
+(46,'Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 64 GB. Al contar con un procesador de 8 núcleos y uno gráfico, brinda una experiencia dinámica, respuestas ágiles, y transiciones fluidas de imágenes en alta definición. Por otro lado, tiene puerto USB y salida HDMI, que permiten conectar accesorios y cargar la batería de tu control mientras jugás.', 'GENERIC'),
+(47,'Incluye control.', 'RELEVANT'),
+(47,'Resolución de 2560px x 1440px.', 'RELEVANT'),
+(47,'Memoria RAM de 16GB.', 'RELEVANT'),
+(47,'Cuenta con: 1 cable hdmi, 1 cable de alimentación ca.', 'RELEVANT'),
+(47,'La nueva generación de consolas está comandada por la Xbox Series que llegó al mercado para sorprender a todos. Su potencia y alto rendimiento te permitirá reducir las horas de descarga de juegos y contenido de manera considerable en comparación con otras consolas. Además, vas a poder jugar durante horas mientras te divertís con jugadores de todo el mundo.', 'GENERIC'),
+(47,'Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 1 TB.', 'GENERIC'),
+(47,'Al contar con un procesador de 8 núcleos y uno gráfico, brinda una experiencia dinámica, respuestas ágiles, y transiciones fluidas de imágenes en alta definición. Por otro lado, tiene puerto USB y salida HDMI, que permiten conectar accesorios y cargar la batería de tu control mientras jugás.', 'GENERIC'),
+(48,'Desarrollado por Electronic Arts.', 'RELEVANT'),
+(48,'Género: deportes y acción y simulación.', 'RELEVANT'),
+(48,'Se encuentra disponible para jugar online.', 'RELEVANT'),
+(48,'Es apto para múltiples jugadores.', 'RELEVANT'),
+(48,'FIFA es el videojuego de fútbol más vendido de la actualidad y con más de 25 años de desarrollo. Vas a poder jugar con tus equipos y futbolistas preferidos en diversos modos. ¡Preparate para convertirte en campeón de todas las copas y torneos!', 'GENERIC'),
+(48,'Interactuá con otros jugadores. Podrás disfrutar de una experiencia inigualable, ya que te permite jugar con tus amistades y compartir momentos inolvidables.', 'GENERIC'),
+(48,'Podrás compartir cada juego con personas de todo el mundo, ya que es posible conectarse de manera online.', 'GENERIC'),
+(49,'Es portátil, ideal para llevar a donde quieras y jugar con tus amistades y familia.', 'RELEVANT'),
+(49,'Memoria RAM de 4GB.', 'RELEVANT'),
+(49,'Tiene pantalla táctil.', 'RELEVANT'),
+(49,'Cuenta con: 1 adaptador de corriente.', 'RELEVANT'),
+(49,'Switch se convirtió en una de las consolas más versátiles del mercado gracias a su uso portátil y de sobremesa. Nintendo desarrolló este modelo con el objetivo de tener todas las comodidades de la tecnología de elite en un aparato portátil con el que podrás jugar y disfrutar de diverso contenido online.', 'GENERIC'),
+(49,'Los Joy-con cuentan con botones especiales para realizar print de pantalla. Además, posee una cámara infrarroja que puede leer la distancia respecto a los objetos e incluso detectar formas.', 'GENERIC'),
+(49,'Adaptada a tus necesidades. Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 32 GB.', 'GENERIC')
+-- (5,2,'', 'RELEVANT'),
+-- (4,2,'', 'GENERIC')
+;
+
+INSERT INTO images (PRODUCT_ID, IMAGE_URL)
+values
+(40,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155020/pc_cbdfgq.jpg'),
+(40,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155020/pc3_ptbisb.jpg'),
+(40,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155020/pc2_y8rprm.jpg'),
+(41,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155087/monitor2_qrcjxq.jpg'),
+(41,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155087/monitor_htlofe.jpg'),
+(41,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155087/monitor3_si90rw.jpg'),
+(42,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155148/tecado_bf6ldh.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd_ohfzcg.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd2_ex7ilp.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd3_zv5eky.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd4_z5bzpj.jpg'),
+(44,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155230/impresora_f4z1ou.jpg'),
+(44,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155230/impresora2_fhw1us.jpg'),
+(44,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155230/impresora3_bf9cqx.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155288/PS51_mcm3vf.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155289/PS5_gxir4x.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155288/PS52_gbtsh9.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155288/PS53_fngyav.jpg'),
+(46,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155350/SWITCH1_bbo0bb.jpg'),
+(46,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155350/SWITCH_q0wbpu.jpg'),
+(46,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155350/SWITCH2_ksuatq.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155389/XBOX1_kvcle6.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155388/XBOX_wszbjo.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155388/XBOX2_juhq4m.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155389/XBOX3_spj3ie.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155389/XBOX4_jxaln2.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA_yy9gas.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA2_kglxpk.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA1_k4sucv.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA3_vlhwua.jpg'),
+(49,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155448/NST_cuizfl.jpg'),
+(49,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155448/NST2_pjtpmm.jpg'),
+(49,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155448/NST1_yiekaq.jpg')
+
+
+
+;
+
+INSERT INTO colors (COLOR_ID,name)
+values
+(40,'Blanco/Negro'),
+(41,'neón/Azul'),
+(42,'Turquesa'),
+(43,'Gris'),
+(44,'Coral')
+;
+
+insert into colors_has_products(product_id,color_id)
+values
+(46,40),
+(46,41),
+(49,42),
+(49,43),
+(49,44)
+
+;
