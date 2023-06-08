@@ -72,9 +72,13 @@ const FormNewAdress = () => {
       delete updatedValues.no_number;
 
       postUserAddress(updatedValues);
-      navigate("/pay/delivery-type");
+      goToDeliveryType();
     }
   });
+
+  const goToDeliveryType = () => {
+    navigate("/pay/delivery-type");
+  };
 
   const postUserAddress = async formValues => {
     try {
@@ -121,8 +125,14 @@ const FormNewAdress = () => {
     <section className="mx-0 sm:mx-24 lg:ml-14 lg:mr-0 sm:mt-12 flex grow">
       <div className="w-full max-w-[752px] flex flex-col sm:justify-center">
         <h2 className="font-medium text-2xl hidden sm:block">Agregá un domicilio</h2>
+        <span
+          onClick={goToDeliveryType}
+          className="sm:mt-5 cursor-pointer font-medium hover:text-blue-500"
+        >
+          {"<"} Volver
+        </span>
         <form action="" onSubmit={formik.handleSubmit}>
-          <div className="bg-white rounded-md p-10 sm:mt-7">
+          <div className="bg-white rounded-md p-10 sm:mt-0">
             <div className="flex flex-col mb-2">
               <label
                 htmlFor="contact"

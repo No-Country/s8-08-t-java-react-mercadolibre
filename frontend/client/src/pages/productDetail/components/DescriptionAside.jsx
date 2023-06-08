@@ -1,7 +1,7 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
-const DescriptionAside = ({ name, characteristics, colors, price, priceDiscount, off }) => {
+const DescriptionAside = ({ name, characteristics, colors, price, priceDiscount, discount }) => {
   const [colorHover, setColorHover] = useState("");
   const [colorSelected, setColorSelected] = useState("");
   useEffect(() => {
@@ -20,12 +20,14 @@ const DescriptionAside = ({ name, characteristics, colors, price, priceDiscount,
       <div className="my-2 p-1">
         <h2 className="font-bold text-2xl">{name}</h2>
       </div>
-      {priceDiscount !== "" ? (
+      {discount !== 0 ? (
         <div className="my-2 p-1">
           <p className="line-through text-gray-500">${price}</p>
           <div className="flex items-center ">
             <h3 className="text-4xl font-light">${priceDiscount}</h3>
-            <p className="text-green mx-2 text-lg">{off}% OFF</p>
+            <p translate="no" className="text-green mx-2 text-lg">
+              {discount}% OFF
+            </p>
           </div>
         </div>
       ) : (
@@ -40,9 +42,11 @@ const DescriptionAside = ({ name, characteristics, colors, price, priceDiscount,
         <p className="text-ligthblue my-2">
           <a href="">Ver los medios de pago</a>
         </p>
-        <p className="bg-ligthblue text-white text-sm inline p-1 rounded">
-          <a href="">OFERTA DEL DIA</a>
-        </p>
+        {discount !== 0 && (
+          <p className="bg-ligthblue text-white text-sm inline p-1 rounded">
+            <a href="">OFERTA DEL DIA</a>
+          </p>
+        )}
       </div>
       {colors.length > 0 && (
         <div className="py-3">

@@ -27,6 +27,19 @@
   align-items: center;
 }
 
+.swiper-pagination-bullet {
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
+  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
+  display: inline-block;
+  border-radius: var(--swiper-pagination-bullet-border-radius, 50%);
+  background: var(--swiper-pagination-bullet-inactive-color, #00000079);
+  opacity: 1;
+}
+
+.bulletActive {
+  background: #fff;
+}
+
 /* ChatBot Styles */
 .cs-message {
   padding-left: 16px;

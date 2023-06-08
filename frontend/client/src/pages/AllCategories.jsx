@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const AllCategories = () => {
   const { list: listCategories } = useSelector(store => store.categories);
@@ -28,12 +29,11 @@ const AllCategories = () => {
           {listCategories?.map((category, index) => {
             return (
               <div key={`categ-${index}`} className="bg-white rounded-md p-4 mt-2">
-                <p
-                  key={category.id}
-                  className="flex font-medium cursor-pointer hover:text-blue-500"
-                >
-                  {category.name}
-                </p>
+                <Link to={`/product-list/category/${category?.id}/${category?.name}`}>
+                  <p className="flex font-medium cursor-pointer hover:text-blue-500">
+                    {category.name}
+                  </p>
+                </Link>
                 <div className="flex gap-4 w-full text-black mt-2">
                   {subCategoryRows(category?.subcategories)?.map((row, index) => (
                     <div key={index} className="flex w-full">

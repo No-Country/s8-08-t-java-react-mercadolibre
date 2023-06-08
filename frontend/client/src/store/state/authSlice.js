@@ -4,7 +4,7 @@ import {
   clearLocalStorage,
   setLocalStorage
 } from "../../utils/LocalStorageFunctions.js";
-import { postRequest } from "../../services/httpRequest.js";
+import { getRequest, postRequest } from "../../services/httpRequest.js";
 
 export const initialAuth = {
   token: "",
@@ -14,7 +14,7 @@ export const initialAuth = {
     lastname: "",
     email: "",
     role: "",
-    address: {}
+    address: null
   }
 };
 
@@ -48,6 +48,7 @@ export const loginUser = dataLogin => async dispatch => {
       dispatch(setLogin(auth));
       const authInStorage = { token: auth.token, user: auth.user };
       setLocalStorage("auth", authInStorage);
+      dispatch(getUserAddress(auth.user.id));
       return { login: true, msg: "Usuario logeado con éxito!" };
     }
     return { login: false };
@@ -73,5 +74,14 @@ export const userAddress = obj => async dispatch => {
   } catch (error) {
     const msgError = error;
     return { address: null, msg: msgError.toString() };
+  }
+};
+
+export const getUserAddress = idUser => async dispatch => {
+  try {
+    const response = await getRequest(`/api/v1/address/user/active/${idUser}`);
+    dispatch(userAddress(response));
+  } catch (error) {
+    console.log(error);
   }
 };

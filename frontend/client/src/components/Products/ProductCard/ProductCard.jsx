@@ -12,7 +12,11 @@ const ProductCard = ({ product }) => {
     >
       <Link to={`/product-detail/${product.id}`}>
         <header className="h-[225px] flex justify-center items-center">
-          <img className="w-full h-[225px]" src={product?.images[0].imageUrl} alt="zapato" />
+          <img
+            className="w-full h-[225px] object-contain"
+            src={product?.images[0].imageUrl}
+            alt="zapato"
+          />
         </header>
         <main>
           {product?.discount !== 0 && (
@@ -31,9 +35,11 @@ const ProductCard = ({ product }) => {
             <span className="text-[23px] text-[#333333]">
               ${product?.priceDiscount ? (product?.priceDiscount).toFixed(2) : product?.price}
             </span>
-            <span translate="no" className="text-[#00A650] font-medium text-[12px]">
-              {product?.discount}% OFF
-            </span>
+            {product?.discount !== 0 && (
+              <span translate="no" className="text-[#00A650] font-medium text-[12px]">
+                {product?.discount}% OFF
+              </span>
+            )}
           </div>
 
           <p className="text-[#00A650] text-[13px]">

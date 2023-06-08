@@ -54,7 +54,7 @@ const ProductDetail = () => {
                   colors={product.colors || []}
                   price={product.price}
                   priceDiscount={product.priceDiscount.toFixed(2) || ""}
-                  off={product.discount || ""}
+                  discount={product.discount}
                 />
               </div>
             </div>
