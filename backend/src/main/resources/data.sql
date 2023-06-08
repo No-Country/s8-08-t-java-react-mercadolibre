@@ -32,7 +32,11 @@ VALUES ('maria@meli.com', 'maria', 'teneros', '23423', '$2a$10$6BOKBHct.1.6NvCb2
        ('admin@meli.com', 'admin', 'admin', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
         'USER'),
        ('user@meli.com', 'user', 'user', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
-        'ADMIN');
+        'ADMIN'),
+        
+        ('dario@meli.com','Dario','Elguero','456456456','$2a$10$J2s07VFBf2I35J8T249Qz.63mu5hG34ThppYWlvNPAJu0Bg0w5YOS','ADMIN')
+        
+        ;
 
 
 
@@ -481,7 +485,14 @@ values
 (9,156,0,12,'Film Polietil Aislante Nylon Negro 200mic 100m2 Envio Gratis',10980,5,19),
 (11,125,0,12,'Auriculares in-ear inalámbricos F9-5',3500,5,11),
 (12,125,5,12,'Auriculares inalámbricos Motorola Moto XT220 XT220',17980,5,11),
-(13,125,15,12,'Celular Samsung Galaxy A13 128gb + 4gb Ram Pls Lcd ',130000,5,11)
+(13,125,15,12,'Celular Samsung Galaxy A13 128gb + 4gb Ram Pls Lcd ',130000,5,11),
+(14,125,2,12,'Samsung Galaxy S22 Ultra 12gb 256gb Burgundy',559000,5,11),
+(15,125,0,12,'Apple iPhone 14 Pro Max (128 GB)',783000,5,11),
+
+(16,156,0,12,'Taladro atornillador inalámbrico de 10mm Logus TIL-12V-BOX 12V + accesorios con maletín de transporte 220V',15000,5,19),
+(17,156,0,12,'Sierra circular eléctrica Bosch Professional GKS 150 184mm 1500W azul 220V',28000,5,19),
+(18,156,0,12,'Hidrolavadora eléctrica Logus HL-110 azul y negra de 1400W con 110bar de presión máxima 220V - 50Hz',24000,5,19),
+(19,156,0,12,'Máquina para pintar Sincrolamp Airless Pro 450 sistema Airless 900W 220V',155000,5,19)
 ;
 
 
@@ -558,16 +569,74 @@ De usos múltiples. Construccion, invernaderos, etc', 'GENERIC'),
 (13,'Fotografía profesional en tu bolsillo
 Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.', 'GENERIC'),
 (13,'Con su lente macro tendrás un enfoque definido de los detalles más minúsculos y podrás usarlo para obtener nítidas vistas panorámicas.', 'GENERIC'),
-(13,'Su memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.', 'GENERIC')
+(13,'Su memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.', 'GENERIC'),
+(14,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.', 'RELEVANT'),
+(14,'Compatible con redes 5G.', 'RELEVANT'),
+(14,'Pantalla Dynamic AMOLED 2X de 6.8".', 'RELEVANT'),
+(14,'Tiene 4 cámaras traseras de 108Mpx/10Mpx/10Mpx/12Mpx.', 'RELEVANT'),
+(14,'Procesador Snapdragon 8 Gen 1 Octa-Core de 3GHz con 12GB de RAM.', 'RELEVANT'),
+(14,'Memoria interna de 256GB.', 'RELEVANT'),
+(14,'A prueba de agua.', 'RELEVANT'),
+(14,'Conocé el Galaxy S22 Ultra, con el poder de Note. El marco pulido, delgado y audaz, rodea la forma extruida para lograr una simetría elegante. Y la cámara lineal, acentuada por anillos de lentes espejados, parece flotar en su lugar.', 'GENERIC'),
+(14,'El S Pen se adapta directamente en la S por primera vez. Expulsalo desde la parte inferior del smartphone para escribir, hacer un dibujo o controlar tu smartphone. La latencia mejorada en Samsung Notes hace que cada pincelada se sienta tan natural como la tinta en papel, y podés convertir esas ideas escritas apresuradamente en texto legible.', 'GENERIC'),
+(14,'Nuestra pantalla más brillante para el día más soleado. La pantalla Dynamic AMOLED 2X con Vision Booster es la peor pesadilla del resplandor, con 1750 nits en su punto máximo. Y la frecuencia de actualización adaptable de 120 Hz mantiene el desplazamiento suave, ajustándose a lo que aparece en la pantalla para una vista optimizada.', 'GENERIC'),
+(14,'Disfrutá todo el día y aprovechá al máximo tu noche. La IA mejorada toma 5000 mAh (normal) de potencia de un día al otro, adaptándose de manera inteligente a la forma en que usás tu smartphone.
+Carga ultra rápida: A toda velocidad. Obtené una carga ultra rápida que dura más que el día cuando se conecta al adaptador de corriente de 45 W.', 'GENERIC'),
+(15,'Pantalla Super Retina XDR de 6.7 pulgadas(2), siempre activa con tecnología ProMotion.', 'RELEVANT'),
+(15,'Dynamic Island, una forma nueva y mágica de interactuar con tu iPhone.', 'RELEVANT'),
+(15,'Cámara gran angular de 48MP para una resolución hasta 4 veces mayor.', 'RELEVANT'),
+(15,'Batería para todo el día y hasta 29 horas de reproducción de video.(3)', 'RELEVANT'),
+(15,'El iPhone 14 Pro Max te permite captar detalles increíbles gracias a su cámara gran angular de 48 MP. Además, trae la Dynamic Island y una pantalla siempre activa, para que puedas interactuar con tu iPhone de una forma completamente nueva. Y viene con Detección de Choques(1), una funcionalidad de seguridad que pide ayuda cuando no estás en condiciones de hacerlo.', 'GENERIC'),
+(15,'La funcionalidad Emergencia SOS usa conexión celular o llamadas por Wi-Fi.', 'GENERIC'),
+(15,'La pantalla tiene las esquinas redondeadas. Si se mide en forma de rectángulo, la pantalla tiene 6.69 pulgadas en diagonal. El área real de visualización es menor.', 'GENERIC'),
+(15,'Se requiere un plan de datos. 5G está disponible en algunos mercados y a través de operadores específicos. Las velocidades varían según las condiciones del lugar y el operador.', 'GENERIC'),
+(16,'Con función reversa.
+', 'RELEVANT'),
+(16,'Viene con maletín de transporte.
+', 'RELEVANT'),
+(16,'Cuenta con función destornillador.
+', 'RELEVANT'),
+(16,'Velocidad máxima de rotación: 700rpm.
+', 'RELEVANT'),
+(16,'Tiempo de carga de la batería: 5h.
+', 'RELEVANT'),
+(16,'Con el taladro eléctrico Logus TIL-12V-BOX podrás realizar múltiples tareas en diversas superficies de un modo práctico y sencillo.', 'GENERIC'),
+(16,'Su mandril de 10 mm te permitirá manipular fácilmente la herramienta de manera segura y precisa. Además, su velocidad variable ofrece una gran experiencia de uso, adaptada a tus necesidades y requerimentos.', 'GENERIC'),
+(16,'Su función destornilladora te posibilitará explotar al máximo tu producto. Podrás realizar aplicaciones de diferentes magnitudes con gran exactitud y calidad.', 'GENERIC'),
+(17,'Recomendada para cortar madera.
+', 'RELEVANT'),
+(17,'Tiene una potencia de 1500W.
+', 'RELEVANT'),
+(17,'El diámetro del disco es de 184mm.
+', 'RELEVANT'),
+(17,'Mide 347mm de largo, 232mm de ancho y 257mm de alto.
+', 'RELEVANT'),
+(17,'La sierra Bosch GKS 150 posee un diseño compacto que proporciona una alta potencia con poco peso. Es ergonómica y resistente, con una asa robusta que proporciona mayor estabilidad en el corte.', 'GENERIC'),
+(17,'Su disco de 184mm posibilita cortes definidos y prolijos, difíciles de alcanzar de manera manual.', 'GENERIC'),
+(18,'Con manguera incluida de 5m de largo.
+', 'RELEVANT'),
+(18,'Apta para trabajar con agua a una temperatura máxima de 40 °C y así dejar tus superficies relucientes.', 'RELEVANT'),
+(18,'Función de apagado automático incorporada al soltar el gatillo.', 'RELEVANT'),
+(18,'Con tu hidrolavadora podés dejar reluciente cualquier material o superficie. Su rocío de agua de alta presión es entre diez y cincuenta veces más potente que las mangueras de jardín, lo que hace más eficaz y fácil el proceso de limpieza.', 'GENERIC'),
+(18,'Gracias a su presión máxima de 110 bar, esta hidrolavadora te permite realizar un lavado fácil, rápido y con el menor esfuerzo posible.', 'GENERIC'),
+(18,'Regulá la forma de riego según tu necesidad. Para lograr un mayor impacto sobre la superficie, podés usar la función en línea recta. Si buscás lograr una mayor cobertura, es ideal utilizar el chorro en abanico.', 'GENERIC'),
+(19,'Frecuencia: 50Hz.
+', 'RELEVANT'),
+(19,'Largo de la manguera: 15m.', 'RELEVANT'),
+(19,'Accesorios incluidos: pistola, pico boquilla, soporte boquilla, manguera y manómetro.', 'RELEVANT'),
+(19,'Las imágenes pueden ser ilustrativas.
+', 'RELEVANT'),
+(19,'El sistema airless funciona por efecto de la presión del material, es decir que lo hace sin aire. Puede usarse para trabajos grandes de pintura y dispersión, ya que generalmente son máquinas profesionales.', 'GENERIC')
+
 -- (5,2,'', 'RELEVANT'),
--- (4,2,'', 'GENERIC')
+-- (4,2,'', 'GENERIC'),
 ;
 
 INSERT INTO images (PRODUCT_ID, IMAGE_URL)
 values 
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168562/xxbw2xehimpznt0uva9b.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168460/ywgibpxuo1kkgljjwrvg.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168560/lflg46jhavq5ds35k7jb.webp'),
-(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168562/xxbw2xehimpznt0uva9b.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168568/dj73imtgovwziikkh1sm.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168569/sed4vncgvoghugbjguyq.webp'),
 (1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168570/uyku9uujm6iujqcv3blt.webp'),
@@ -628,7 +697,30 @@ values
 (13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196713/gyctf0ob75v4coahbgfx.webp'),
 (13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196713/bgdjsa1cwast6atcmldm.webp'),
 (13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196714/j80cpxpelpfmqb92hvyw.webp'),
-(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196715/bbe0wnrmgnfdajrly043.webp')
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196715/bbe0wnrmgnfdajrly043.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197928/hnd5jyb2odmoiqbbp8zx.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197929/tn2ngg8rw7tepxixcrtp.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197930/unfkoiu29zjfjhiyhaqj.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197931/v8fu3qmjp7aymsjjhldd.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197931/ysxx8vym6dykzhlbqrm3.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198347/ysrdjmgvsmlnmlb58uqv.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198348/ppal971aom27v4iz4xdd.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198348/t1p4zenb2tlfltuj574n.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198349/i1zz74ngtsshdiorsk2o.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198350/wyyipbcjyefj5miu7xrt.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198350/hp4ktxywckzb4u1pmpqe.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198351/wur0bd2crpiafgijcgzg.webp'),
+(16,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205176/yjtfxde9ss0uu1tmunl2.webp'),
+(16,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205177/jcjy8gr20w3ev21ptkkg.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205257/q1szdwcq5fb5krlrvz1w.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205258/wfn8kbkjrwfb7vwt9ixw.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205258/lqh9yadq5zekucoe3egl.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205256/eqdk9ygdrvnskzbkpblh.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205259/ocnkzd6xjpzmqbckytvx.webp'),
+(18,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205305/bq1gb27zglqtnfnhuydl.webp'),
+(18,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205306/novuuxxknylndt0g8nsm.webp'),
+(18,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205307/kfnk9qhxrd5yy18wjdlr.webp'),
+(19,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205344/xlvs8yrq3rnexji6ptiu.webp')
 ;
 
 INSERT INTO colors (COLOR_ID,name)
@@ -642,7 +734,10 @@ values
 (7,'Blanco'),
 (8,'cream'),
 (9,'green'),
-(10,'phantom black')
+(10,'phantom black'),
+(11,'plata'),
+(12,'negro espacial'),
+(13,'oro')
 ;
 
 insert into colors_has_products(product_id,color_id)
@@ -656,7 +751,10 @@ values
 (3,1),
 (11,1),
 (11,3),
-(13,10)
+(15,11),
+(15,12),
+(15,13),
+(15,7)
 ;
 
 
