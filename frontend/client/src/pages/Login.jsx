@@ -24,7 +24,9 @@ const Login = () => {
       password: ""
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("El e-mail debe ser un formato valido.").required("Completá este dato.")
+      email: Yup.string()
+        .email("El e-mail debe ser un formato valido.")
+        .required("Completá este dato.")
     }),
     onSubmit: (values, { setErrors }) => {
       setEmail(values.email);
@@ -158,8 +160,10 @@ const Login = () => {
                         }`}
                         disabled={isEmailValid}
                       />
-                      <button className="w-full lg:w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium"
-                        onClick={()=> navigate("/auth/register")}>
+                      <button
+                        className="w-full lg:w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium"
+                        onClick={() => navigate("/auth/register")}
+                      >
                         Crear Cuenta
                       </button>
                     </div>

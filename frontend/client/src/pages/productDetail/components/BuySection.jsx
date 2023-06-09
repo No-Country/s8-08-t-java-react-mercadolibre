@@ -29,7 +29,7 @@ function BuySection() {
   const goToWarranty = () => {
     navigate("/pay/warranty");
     window.scroll({ top: 0, behavior: "smooth" });
-  }
+  };
 
   return (
     <div className="border-solid border sm:w-[25rem] p-4 rounded-xl">
