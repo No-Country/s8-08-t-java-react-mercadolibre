@@ -1,0 +1,24 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiperSlide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  height: calc((100% - 30px) / 2) !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .swiperSlide {
+    height: 300px !important;
+  }
+}
