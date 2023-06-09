@@ -7,12 +7,14 @@ import ReportProblem from "../components/Login/ReportProblem";
 import account from "../assets/icons/account.png";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../store/state/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isUser, setIsUser] = useState(false);
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -156,7 +158,8 @@ const Login = () => {
                         }`}
                         disabled={isEmailValid}
                       />
-                      <button className="w-full lg:w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium">
+                      <button className="w-full lg:w-[119px] h-[48px] text-ligthblue text-[15px] rounded-md bg-transparent font-medium"
+                        onClick={()=> navigate("/auth/register")}>
                         Crear Cuenta
                       </button>
                     </div>

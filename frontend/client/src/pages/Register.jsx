@@ -48,7 +48,7 @@ const Register = () => {
     };
 
     return (
-        <div className="bg-white sm:bg-[#eeeeee] h-[100vh]">
+        <div className="bg-white sm:bg-[#eeeeee] xl:h-[100vh]">
             <LoginNavbar />
 
             <section className="mx-0 sm:mx-24 lg:ml-14 lg:mr-0 sm:mt-12 flex justify-center">

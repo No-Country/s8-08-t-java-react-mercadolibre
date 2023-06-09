@@ -53,7 +53,7 @@ const NavbarMenues = () => {
       ];
     } else {
       listMenu = [
-        { name: "Creá tu cuenta", icon: () => null, url: "" },
+        { name: "Creá tu cuenta", icon: () => null, url: "/auth/register" },
         { name: "Ingresá", icon: () => null, url: "/auth/login" },
         { name: "Mis compras", icon: () => null, url: "" },
         {
