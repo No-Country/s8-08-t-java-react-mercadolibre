@@ -53,7 +53,7 @@ const NavbarMenues = () => {
       ];
     } else {
       listMenu = [
-        { name: "Creá tu cuenta", icon: () => null, url: "" },
+        { name: "Creá tu cuenta", icon: () => null, url: "/auth/register" },
         { name: "Ingresá", icon: () => null, url: "/auth/login" },
         { name: "Mis compras", icon: () => null, url: "" },
         {
@@ -93,7 +93,8 @@ const NavbarMenues = () => {
               key={`${i}-menu`}
               className={`${item.icon() ? "flex items-center gap-1" : ""}`}
               onClick={item.name === "Categorías" ? () => setOpenMenuCategory(false) : null}
-              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}>
+              onMouseOver={item.name === "Categorías" ? () => setOpenMenuCategory(true) : null}
+            >
               {item.name && (
                 <p className="opacity-60 hover:opacity-90 cursor-pointer">{item.name}</p>
               )}
@@ -103,7 +104,8 @@ const NavbarMenues = () => {
           {openMenuCategory && (
             <div
               className="absolute top-9 bg-black w-60 rounded-md text-white z-50"
-              onMouseLeave={() => setOpenMenuCategory(false)}>
+              onMouseLeave={() => setOpenMenuCategory(false)}
+            >
               <div className="flex flex-col font-medium gap-1 mt-5 mb-5 ">
                 {listCategories.map(category => {
                   return (
@@ -113,7 +115,8 @@ const NavbarMenues = () => {
                       className="cursor-pointer p-2 hover:bg-ligthblue pl-7"
                       onClick={() =>
                         navigate(`product-list/category/${category.id}/${category.name}`)
-                      }>
+                      }
+                    >
                       {category.name}
                     </p>
                   );
@@ -137,7 +140,8 @@ const NavbarMenues = () => {
                 <Link to={item.url}>
                   <p
                     className="opacity-60 hover:opacity-90 cursor-pointer whitespace-nowrap"
-                    onMouseOver={i === 0 ? () => setOpenMenuUser(true) : null}>
+                    onMouseOver={i === 0 ? () => setOpenMenuUser(true) : null}
+                  >
                     {item.name}
                   </p>
                 </Link>

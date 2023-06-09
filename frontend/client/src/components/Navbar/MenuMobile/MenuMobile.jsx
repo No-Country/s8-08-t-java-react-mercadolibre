@@ -62,7 +62,10 @@ const MenuMobile = () => {
       },
       {
         name: "Creá tu cuenta",
-        icon: <BsPersonAdd size={25} className="opacity-60 cursor-pointer" />
+        icon: <BsPersonAdd size={25} className="opacity-60 cursor-pointer" />,
+        action: () => {
+          navigate("/auth/register");
+        }
       },
       {
         name: "Ingresá",
