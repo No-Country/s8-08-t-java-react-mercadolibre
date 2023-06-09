@@ -2,17 +2,20 @@ package com.nocountry.backend.dto.address;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nocountry.backend.dto.province.ProvinceAddressDto;
-import com.nocountry.backend.dto.province.ProvinceDto;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AddressListGetDto {
+public class AddressPostResponseDto {
+
+    private Long id;
+    @JsonProperty("user_id")
+    private Long userId;
     private String contact;
     @JsonProperty("zip_code")
     private String zipCode;
-    private ProvinceDto province;
+    private ProvinceAddressDto province;
     private String locality;
     private String street;
     private String number;
@@ -26,4 +29,5 @@ public class AddressListGetDto {
     private Boolean residential;
     private String phone;
     private String comment;
+
 }

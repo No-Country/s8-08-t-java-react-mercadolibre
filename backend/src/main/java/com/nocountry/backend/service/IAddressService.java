@@ -1,9 +1,6 @@
 package com.nocountry.backend.service;
 
-import com.nocountry.backend.dto.address.AddressDetailPostDto;
-import com.nocountry.backend.dto.address.AddressListGetDto;
-import com.nocountry.backend.dto.address.AddressPostDto;
-import com.nocountry.backend.dto.address.AddressUpdatePostDto;
+import com.nocountry.backend.dto.address.*;
 
 import java.util.List;
 
@@ -11,18 +8,18 @@ public interface IAddressService {
 
     List<AddressListGetDto> findAllByUserId(Long userId);
 
-    AddressDetailPostDto findById(Integer addressId);
+    AddressDetailPostDto findById(Long addressId);
 
     AddressListGetDto findByUserIdAndStatusTrue(Long userId);
 
-    AddressPostDto save(AddressPostDto addressPostDto);
+    AddressPostResponseDto save(AddressPostDto addressPostDto);
 
 
-    AddressDetailPostDto update(Integer addressId, AddressUpdatePostDto addressUpdatePostDto);
+    AddressDetailPostDto update(Long addressId, AddressUpdatePostDto addressUpdatePostDto);
 
 
-    void updateStatus(Long userId, Integer addressId);
+    void updateStatus(Long userId, Long addressId);
 
-    void deleteById(Integer idAddress);
+    void deleteById(Long idAddress);
 
 }

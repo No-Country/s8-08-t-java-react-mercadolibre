@@ -25,23 +25,19 @@ values (06, "Buenos Aires"),
        (90, "Tucuman");
 
 INSERT INTO users (EMAIL, FIRST_NAME, LAST_NAME, NUMBER_PHONE, USER_PASSWORD, ROLE)
-VALUES ('maria@meli.com', 'maria', 'test', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
+VALUES ('maria@meli.com', 'maria', 'teneros', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
         'ADMIN'),
-       ('pedro@meli.com', 'pedro', 'test', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
+       ('pedro@meli.com', 'pedro', 'cabrera', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
         'USER'),
-       ('admin@meli.com', 'admin', 'test', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
+       ('admin@meli.com', 'admin', 'admin', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
         'USER'),
-       ('user@meli.com', 'user', 'test', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
-        'ADMIN');
+       ('user@meli.com', 'user', 'user', '23423', '$2a$10$6BOKBHct.1.6NvCb2UDBuOM.w1S7SC29ggEzhYO.LlffwfxD9kjta',
+        'ADMIN'),
+        
+        ('dario@meli.com','Dario','Elguero','456456456','$2a$10$J2s07VFBf2I35J8T249Qz.63mu5hG34ThppYWlvNPAJu0Bg0w5YOS','ADMIN')
+        
+        ;
 
-INSERT INTO colors (name)
-values
-('negro'),
-('azul'),
-('verde'),
-('amarillo'),
-('rojo')
-;
 
 
 INSERT INTO category (id, name)
@@ -79,106 +75,6 @@ VALUES (1, 'Accesorios para Vehículos'),
        (32, 'Otras categorías');
 
 
-
-
-
-
-insert into products (discount,number_quotas, description, title, price, stock, category_id, user_id)
-values
-(10,8, 'Duis at velit eu est congue elementum.', 'Foil Cont Round', 11164.02, 20, 14, 3),
-(10,6, 'Praesent lectus.', 'Flavouring Vanilla Artificial', 15855.34, 12, 12, 3),
-(10,5, 'Aliquam non mauris.', 'Milk - Chocolate 250 Ml', 11095.97, 14, 1, 4),
-(10,5, 'In congue.', 'Heavy Duty Dust Pan', 10878.79, 15, 20, 2),
-(10,6, 'Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 'Parsnip', 18035.0, 10, 18, 4),
-(10,5, 'Nullam porttitor lacus at turpis.', 'Pear - Asian', 13964.26, 18, 16, 3),
-(10,6, 'Nunc rhoncus dui vel sem.', 'Roe - White Fish', 17335.91, 11, 12, 4),
-(10,6, 'In hac habitasse platea dictumst.', 'Milk - 2% 250 Ml', 16270.51, 15, 6, 1),
-(10,8, 'Duis at velit eu est congue elementum.', 'Venison - Striploin', 19374.23, 10, 31, 1),
-(10,8, 'Aliquam non mauris.', 'Trout - Hot Smkd, Dbl Fillet', 16631.49, 13, 15, 4),
-(10,5,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.',
-'Samsung Galaxy A04 128 GB negro 4 GB RAM', 10000,5, 11, 1),
-(11,6,'Pantalla AMOLED de 6.67.  Tiene 4 cámaras traseras de 108Mpx/8Mpx/5Mpx/2Mpx.  Cámara delantera de 16Mpx.  Procesador Snapdragon 732G Octa-Core de 2.3GHz con 6GB de RAM.  Batería de 5020mAh.  Memoria interna de 128GB.  A prueba de agua.  Con reconocimiento facial y sensor de huella dactilar.  Resistente al polvo y a las caídas.',
-'Xiaomi Redmi Note 10 Pro (108 Mpx) Dual SIM 128 GB gris ónix 6 GB RAM', 10000,3, 11, 1);
-
-
-insert into colors_has_products(product_id,color_id)
-values
-(1,1),
-(1,2),
-(1,3),
-(2,2)
-;
-
-insert into descriptions (product_id,content, priority) values 
-(1,'Mauris sit amet eros.', 'RELEVANT'),
-(1,'Pellentesque at nulla.', 'RELEVANT'),
-(1,'Praesent blandit.', 'RELEVANT'),
-(2,'Proin risus.', 'RELEVANT'),
-(3,'Duis bibendum.', 'RELEVANT'),
-(5,'Aliquam non mauris.', 'RELEVANT'),
-(7,'In congue.', 'RELEVANT'),
-(7,'Cras in purus eu magna vulputate luctus.', 'RELEVANT'),
-(8,'In sagittis dui vel nisl.', 'RELEVANT'),
-(11,'Morbi quis tortor id nulla ultrices aliquet.', 'RELEVANT'),
-(12,'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.', 'GENERIC'),
-(5,'Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.', 'GENERIC'),
-(1,'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 'GENERIC'),
-(1,'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', 'GENERIC'),
-(1,'Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.', 'GENERIC'),
-(2,'Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.', 'GENERIC'),
-(4,'In congue. Etiam justo. Etiam pretium iaculis justo.', 'GENERIC'),
-(7,'Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.', 'GENERIC'),
-(9,'Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum.', 'GENERIC'),
-(3,'Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.', 'GENERIC');
-
-
-
-INSERT INTO images (PRODUCT_ID, IMAGE_URL)
-values (1, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (1, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (2, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (2, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (3, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (3, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (4, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (4, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (5, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (5, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (6, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (6, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (7, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (7, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (8, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (8, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (9, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (9, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (10, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (10, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (11, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (11, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp'),
-       (12, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455130/jlibtckmazah0vgea4dh.webp'),
-       (12, 'https://res.cloudinary.com/djto6y6vr/image/upload/v1685455961/bkizai16sxr2emcbxjlt.webp')
-;
-
-
-
-
-
-
-INSERT INTO images (image_url, product_id)
-VALUES ('https://http2.mlstatic.com/D_NQ_NP_615787-MLA53225354281_012023-O.webp', '1'),
-       ('https://http2.mlstatic.com/D_NQ_NP_989252-MLA53225323332_012023-O.webp', '1'),
-       ('https://http2.mlstatic.com/D_NQ_NP_689330-MLA50263507908_062022-O.webp', '2'),
-       ('https://http2.mlstatic.com/D_NQ_NP_625466-MLA50263727206_062022-O.webp', '2');
-
-INSERT INTO order_status (status)
-VALUES ('Pendiente'),
-       ('Enviado'),
-       ('Entregado');
-
-INSERT INTO address (`comment`, `contact`, `floor_apartment`, `locality`, `num_street_end`, `num_street_init`, `phone`,
-                     `province_fk`, `street`, `street_number`, `user_fk`, `zip_code`)
-VALUES ('Domicilio', '348256445', '1', 'Bs As', 'Av Mayo  ', '123', '01112233333', '06', 'Av Mayo', '123', '2', '1000');
 
 INSERT INTO `subcategory` (`id`, `name`, `category_id`)
 VALUES (1, 'Acc. para Motos y Cuatriciclos', 1),
@@ -572,6 +468,306 @@ VALUES (1, 'Acc. para Motos y Cuatriciclos', 1),
        (389, 'Otros productos y categorías no especificadas anteriormente', 32);
 
 
+
+
+
+insert into products (product_id,subcategory_id,discount,number_quotas, title, price, stock, category_id)
+values
+(1,125,10,6,'Xiaomi Redmi Note 10 Pro (108 Mpx) Dual SIM 256 GB gris ónix 8 GB RAM',269999,10,11),
+(2,125,0,12,'Samsung Galaxy S23 Ultra 12gb 512gb Phantom Black',609999,11,11),
+(3,125,25,6,'Apple iPhone 13 Pro (512 GB) - Plata',1189999,11,11),
+(4,126,55,12,'Soporte Celular Extensible Cuello 360º Selfie Escritorio',3600,11,11),
+(5,126,0,6,'Anillo Iman Magsafe Universal Para iPhone Samsung',1897,11,11),
+(10,156,26,12,'Sierra Caladora Black + Decker 4 Etapas 550w 220v + Maletín',30000,5,19),
+(6,160,0,12,'Set de 6 destornilladores total  tht250606',3750,5,19),
+(7,160,44,12,'Bomba presurizadora Femmto BP30L-9M 100W - 220V',28999,5,19),
+(8,156,0,12,'Soldadora Inverter 100 Amp Bronko Pampa 220 Volts',24018,5,19),
+(9,156,0,12,'Film Polietil Aislante Nylon Negro 200mic 100m2 Envio Gratis',10980,5,19),
+(11,125,0,12,'Auriculares in-ear inalámbricos F9-5',3500,5,11),
+(12,125,5,12,'Auriculares inalámbricos Motorola Moto XT220 XT220',17980,5,11),
+(13,125,15,12,'Celular Samsung Galaxy A13 128gb + 4gb Ram Pls Lcd ',130000,5,11),
+(14,125,2,12,'Samsung Galaxy S22 Ultra 12gb 256gb Burgundy',559000,5,11),
+(15,125,0,12,'Apple iPhone 14 Pro Max (128 GB)',783000,5,11),
+
+(16,156,0,12,'Taladro atornillador inalámbrico de 10mm Logus TIL-12V-BOX 12V + accesorios con maletín de transporte 220V',15000,5,19),
+(17,156,0,12,'Sierra circular eléctrica Bosch Professional GKS 150 184mm 1500W azul 220V',28000,5,19),
+(18,156,0,12,'Hidrolavadora eléctrica Logus HL-110 azul y negra de 1400W con 110bar de presión máxima 220V - 50Hz',24000,5,19),
+(19,156,0,12,'Máquina para pintar Sincrolamp Airless Pro 450 sistema Airless 900W 220V',155000,5,19)
+;
+
+
+
+
+
+insert into descriptions (product_id,content, priority) values 
+(1,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.', 'RELEVANT'),
+(1,'Pantalla AMOLED de 6.67".', 'RELEVANT'),
+(1,'Tiene 4 cámaras traseras de 108Mpx/8Mpx/5Mpx/2Mpx.', 'RELEVANT'),
+(1,'Cámara delantera de 16Mpx.', 'RELEVANT'),
+(1,'Batería de 5020mAh.', 'RELEVANT'),
+(1,'Fotografía profesional en tu bolsillo
+Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.', 'GENERIC'),
+(1,'Experiencia visual increíble
+Mirá tus series y películas favoritas con la mejor definición a través de su pantalla AMOLED de 6.67". Disfrutá de colores brillantes y detalles precisos en todos tus contenidos.', 'GENERIC'),
+(2,'Hacé que las noches sean más épicas con la cámara nocturna
+Es un kit de nivel profesional que cabe en una mano. La cámara posterior triple y la cámara de selfie ofrecen hardware y software de cámara innovadores para que puedas capturar fácilmente una galería llena de contenido digno de compartir.', 'GENERIC'),
+(2,'Mejorá tu vida nocturna #cámaranocturna
+Lo mejor sucede después de que anochece. Capturá la imagen con las épicas actualizaciones tecnológicas de nuestra cámara de nivel profesional. El sensor grande de píxeles amplía los píxeles para atraer la luz mientras que el cristal súper transparente reduce el resplandor de la lente, todo para que las fotos y los videos nocturnos salgan tan claros como el día.', 'GENERIC'),
+
+(3,'Pantalla Super Retina XDR de 6.1 pulgadas con ProMotion que brinda una respuesta más rápida y fluida.(1)', 'RELEVANT'),
+(3,'Modo Cine con baja profundidad de campo y cambios de enfoque automáticos en tus videos.', 'RELEVANT'),
+(3,'Hasta 22 horas de reproducción de video.(3)', 'RELEVANT'),
+(4,'
+Representantes e Importadores directos de
+SPICA y SKMEI Tiendas oficiales.', 'GENERIC'),
+(4,'Más de 10 años vendiendo en Mercado Libre.
+1 millón de compradores nos eligieron y recomendaron. 100% de calificaciones positivas. Elegidos por Mercado Libre como mejores vendedores de todo el sitio.', 'GENERIC'),
+(4,'Soporte de escritorio para teléfono móvil con Base redonda estable.
+Para videollamadas, reunión de Zoom, streamig, selfie, ver videos.', 'GENERIC'),
+(5,'Anillo adaptador universal: añade imán a tu funda para soporte de teléfono, MagSafe o billetera. Tambien disfruta de la carga inalámbrica si tu teléfono lo admite.', 'GENERIC'),
+(5,'Carga inalámbrica más rápida: con imanes de posicionamiento para alinearse al punto de carga ideal, aumentando la eficiencia de carga y reduciendo el calor.', 'GENERIC'),
+(10,'Capacidad máxima de perforación en aluminio: 10mm.', 'RELEVANT'),
+(10,'Obtendrás mayor versatilidad en los trabajos.', 'RELEVANT'),
+(10,'Con la sierra caladora Black+Decker podrás realizar cortes precisos, sobre todo en curvas cerradas. Fácil de manipular y de un material muy resistente, podrás realizar trabajos en varios materiales sin dificultades.', 'GENERIC'),
+(6,'Set 6 Destornilladores Ph Plano Industrial Total THT250606
+', 'GENERIC'),
+(6,'Somos “FERRETERIA ROSITA” tenemos productos de Electricidad, Gas, Agua, Herramientas, Máquinas y más!!!', 'GENERIC'),
+(6,'Material: Cromo Vanadio
+', 'GENERIC'),
+(7,'Presión máxima de 1bar.
+', 'RELEVANT'),
+(7,'Caudal máximo de agua de 30l/min.', 'RELEVANT'),
+(7,'Altura máxima de elevación de 9m.', 'RELEVANT'),
+(7,'La bomba Femmto permite aumentar la presión de agua de una red hidráulica. Este producto cuenta con una entrada o tubo que aspira el agua y, posteriormente, este líquido es impulsado por un motor hacia el tubo de salida. Esto hace que el agua salga con mucha más presión y rapidez. No dudes en revisar sus características, ya que esta podría ser una excelente opción.', 'GENERIC'),
+(7,'Gracias a su potencia de 100W, esta bomba te permitirá aumentar la presión del agua, ya sea caliente o fría, a un ritmo constante. Sin dudas, obtendrás el confort que necesitás para realizar tus tareas cotidianas.', 'GENERIC'),
+(8,'Tipo de soldadora: MMA.', 'RELEVANT'),
+(8,'Con tecnología inverter.', 'RELEVANT'),
+(8,'Intensidad de soldadura mínima de 20A.', 'RELEVANT'),
+(8,'a soldadora Inverter se considera una gran evolución para la industria de la soldadura, gracias a su avanzada tecnología.', 'GENERIC'),
+(8,'Capaz de soldar acero inoxidable, aleaciones de acero, acero semiduro, cobre y otros metales.', 'GENERIC'),
+(9,'ROLLO NYLON POLIETILENO NEGRO', 'GENERIC'),
+(9,'Nylon de polietileno negro. Flexible. Resistente. Duradero. Fácil de maniobrar.
+De usos múltiples. Construccion, invernaderos, etc', 'GENERIC'),
+(9,'Publicacion rollo negro 2 metros de ancho por 50 de largo. Espesor 200 micrones Total: 100m2
+', 'GENERIC'),
+(11,'Cuenta con tecnología True Wireless.', 'RELEVANT'),
+(11,'Alcance inalámbrico de 10 m.', 'RELEVANT'),
+(11,'La batería dura 5 h.', 'RELEVANT'),
+(11,'En la calle, en el colectivo o en la oficina, tené siempre a mano tus auriculares F9-5 y ¡escapate de la rutina por un rato! Vas a poder disfrutar de la música que más te gusta y de tus podcasts favoritos cuando quieras y donde quieras.', 'GENERIC'),
+(11,'Al ser in-ear, mejoran la calidad del audio y son de tamaño pequeño para poder insertarse en tu oreja. Son ideales para acompañarte a la hora de hacer ejercicio mientras te sumergís en el mejor sonido envolvente.', 'GENERIC'),
+(12,'Alcance inalámbrico de 10 m.
+', 'RELEVANT'),
+(12,'La batería dura 24 h.
+', 'RELEVANT'),
+(12,'En la calle, en el colectivo o en la oficina, tené siempre a mano tus auriculares Motorola y ¡escapate de la rutina por un rato! Vas a poder disfrutar de la música que más te gusta y de tus podcasts favoritos cuando quieras y donde quieras.', 'GENERIC'),
+(12,'El diseño over-ear brinda una comodidad insuperable gracias a sus suaves almohadillas. Al mismo tiempo, su sonido envolvente del más alto nivel se convierte en el protagonista de la escena.', 'GENERIC'),
+(12,'Sonido superior y sin límites.', 'RELEVANT'),
+(13,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.', 'RELEVANT'),
+(13,'Pantalla PLS de 6.6".', 'RELEVANT'),
+(13,'Tiene 4 cámaras traseras de 50Mpx/5Mpx/2Mpx/2Mpx.', 'RELEVANT'),
+(13,'Procesador Exynos 850 Octa-Core de 2GHz con 4GB de RAM.', 'RELEVANT'),
+(13,'Fotografía profesional en tu bolsillo
+Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.', 'GENERIC'),
+(13,'Con su lente macro tendrás un enfoque definido de los detalles más minúsculos y podrás usarlo para obtener nítidas vistas panorámicas.', 'GENERIC'),
+(13,'Su memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.', 'GENERIC'),
+(14,'Dispositivo liberado para que elijas la compañía telefónica que prefieras.', 'RELEVANT'),
+(14,'Compatible con redes 5G.', 'RELEVANT'),
+(14,'Pantalla Dynamic AMOLED 2X de 6.8".', 'RELEVANT'),
+(14,'Tiene 4 cámaras traseras de 108Mpx/10Mpx/10Mpx/12Mpx.', 'RELEVANT'),
+(14,'Procesador Snapdragon 8 Gen 1 Octa-Core de 3GHz con 12GB de RAM.', 'RELEVANT'),
+(14,'Memoria interna de 256GB.', 'RELEVANT'),
+(14,'A prueba de agua.', 'RELEVANT'),
+(14,'Conocé el Galaxy S22 Ultra, con el poder de Note. El marco pulido, delgado y audaz, rodea la forma extruida para lograr una simetría elegante. Y la cámara lineal, acentuada por anillos de lentes espejados, parece flotar en su lugar.', 'GENERIC'),
+(14,'El S Pen se adapta directamente en la S por primera vez. Expulsalo desde la parte inferior del smartphone para escribir, hacer un dibujo o controlar tu smartphone. La latencia mejorada en Samsung Notes hace que cada pincelada se sienta tan natural como la tinta en papel, y podés convertir esas ideas escritas apresuradamente en texto legible.', 'GENERIC'),
+(14,'Nuestra pantalla más brillante para el día más soleado. La pantalla Dynamic AMOLED 2X con Vision Booster es la peor pesadilla del resplandor, con 1750 nits en su punto máximo. Y la frecuencia de actualización adaptable de 120 Hz mantiene el desplazamiento suave, ajustándose a lo que aparece en la pantalla para una vista optimizada.', 'GENERIC'),
+(14,'Disfrutá todo el día y aprovechá al máximo tu noche. La IA mejorada toma 5000 mAh (normal) de potencia de un día al otro, adaptándose de manera inteligente a la forma en que usás tu smartphone.
+Carga ultra rápida: A toda velocidad. Obtené una carga ultra rápida que dura más que el día cuando se conecta al adaptador de corriente de 45 W.', 'GENERIC'),
+(15,'Pantalla Super Retina XDR de 6.7 pulgadas(2), siempre activa con tecnología ProMotion.', 'RELEVANT'),
+(15,'Dynamic Island, una forma nueva y mágica de interactuar con tu iPhone.', 'RELEVANT'),
+(15,'Cámara gran angular de 48MP para una resolución hasta 4 veces mayor.', 'RELEVANT'),
+(15,'Batería para todo el día y hasta 29 horas de reproducción de video.(3)', 'RELEVANT'),
+(15,'El iPhone 14 Pro Max te permite captar detalles increíbles gracias a su cámara gran angular de 48 MP. Además, trae la Dynamic Island y una pantalla siempre activa, para que puedas interactuar con tu iPhone de una forma completamente nueva. Y viene con Detección de Choques(1), una funcionalidad de seguridad que pide ayuda cuando no estás en condiciones de hacerlo.', 'GENERIC'),
+(15,'La funcionalidad Emergencia SOS usa conexión celular o llamadas por Wi-Fi.', 'GENERIC'),
+(15,'La pantalla tiene las esquinas redondeadas. Si se mide en forma de rectángulo, la pantalla tiene 6.69 pulgadas en diagonal. El área real de visualización es menor.', 'GENERIC'),
+(15,'Se requiere un plan de datos. 5G está disponible en algunos mercados y a través de operadores específicos. Las velocidades varían según las condiciones del lugar y el operador.', 'GENERIC'),
+(16,'Con función reversa.
+', 'RELEVANT'),
+(16,'Viene con maletín de transporte.
+', 'RELEVANT'),
+(16,'Cuenta con función destornillador.
+', 'RELEVANT'),
+(16,'Velocidad máxima de rotación: 700rpm.
+', 'RELEVANT'),
+(16,'Tiempo de carga de la batería: 5h.
+', 'RELEVANT'),
+(16,'Con el taladro eléctrico Logus TIL-12V-BOX podrás realizar múltiples tareas en diversas superficies de un modo práctico y sencillo.', 'GENERIC'),
+(16,'Su mandril de 10 mm te permitirá manipular fácilmente la herramienta de manera segura y precisa. Además, su velocidad variable ofrece una gran experiencia de uso, adaptada a tus necesidades y requerimentos.', 'GENERIC'),
+(16,'Su función destornilladora te posibilitará explotar al máximo tu producto. Podrás realizar aplicaciones de diferentes magnitudes con gran exactitud y calidad.', 'GENERIC'),
+(17,'Recomendada para cortar madera.
+', 'RELEVANT'),
+(17,'Tiene una potencia de 1500W.
+', 'RELEVANT'),
+(17,'El diámetro del disco es de 184mm.
+', 'RELEVANT'),
+(17,'Mide 347mm de largo, 232mm de ancho y 257mm de alto.
+', 'RELEVANT'),
+(17,'La sierra Bosch GKS 150 posee un diseño compacto que proporciona una alta potencia con poco peso. Es ergonómica y resistente, con una asa robusta que proporciona mayor estabilidad en el corte.', 'GENERIC'),
+(17,'Su disco de 184mm posibilita cortes definidos y prolijos, difíciles de alcanzar de manera manual.', 'GENERIC'),
+(18,'Con manguera incluida de 5m de largo.
+', 'RELEVANT'),
+(18,'Apta para trabajar con agua a una temperatura máxima de 40 °C y así dejar tus superficies relucientes.', 'RELEVANT'),
+(18,'Función de apagado automático incorporada al soltar el gatillo.', 'RELEVANT'),
+(18,'Con tu hidrolavadora podés dejar reluciente cualquier material o superficie. Su rocío de agua de alta presión es entre diez y cincuenta veces más potente que las mangueras de jardín, lo que hace más eficaz y fácil el proceso de limpieza.', 'GENERIC'),
+(18,'Gracias a su presión máxima de 110 bar, esta hidrolavadora te permite realizar un lavado fácil, rápido y con el menor esfuerzo posible.', 'GENERIC'),
+(18,'Regulá la forma de riego según tu necesidad. Para lograr un mayor impacto sobre la superficie, podés usar la función en línea recta. Si buscás lograr una mayor cobertura, es ideal utilizar el chorro en abanico.', 'GENERIC'),
+(19,'Frecuencia: 50Hz.
+', 'RELEVANT'),
+(19,'Largo de la manguera: 15m.', 'RELEVANT'),
+(19,'Accesorios incluidos: pistola, pico boquilla, soporte boquilla, manguera y manómetro.', 'RELEVANT'),
+(19,'Las imágenes pueden ser ilustrativas.
+', 'RELEVANT'),
+(19,'El sistema airless funciona por efecto de la presión del material, es decir que lo hace sin aire. Puede usarse para trabajos grandes de pintura y dispersión, ya que generalmente son máquinas profesionales.', 'GENERIC')
+
+-- (5,2,'', 'RELEVANT'),
+-- (4,2,'', 'GENERIC'),
+;
+
+INSERT INTO images (PRODUCT_ID, IMAGE_URL)
+values 
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168562/xxbw2xehimpznt0uva9b.webp'),
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168460/ywgibpxuo1kkgljjwrvg.webp'),
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168560/lflg46jhavq5ds35k7jb.webp'),
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168568/dj73imtgovwziikkh1sm.webp'),
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168569/sed4vncgvoghugbjguyq.webp'),
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168570/uyku9uujm6iujqcv3blt.webp'),
+(1,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686168570/hk6dxyyzwscbusoubuqf.webp'),
+(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170150/kv6g9jmauaeaqodph8lk.webp'),
+(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170149/keh8m5cwrqhjglybwosm.webp'),
+(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170150/cwfk2jzskxyx75gnbyrs.webp'),
+(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170152/texan39cygluqydbprrx.webp'),
+(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170153/xwy5dg0ynwmke93ndmh3.webp'),
+(2,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170154/wann2rsaqwieybce8g08.webp'),
+(3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170712/ku9r7mthwjgouuvdo16j.webp'),
+(3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170713/ggbltmyagidywcp5wgyw.webp'),
+(3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170714/luu3m0oec5lk2rnrygmm.webp'),
+(3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170715/tbn3rr8fo409ptiv3z5b.webp'),
+(3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170715/gpkhwo2zmqgmffhwzm9c.webp'),
+(3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170716/syie2myw6knnazyfyez4.webp'),
+(3,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686170717/pf9udvjixbj99unpi89r.webp'),
+(4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171794/o54rb2xanbq7rvagypd1.webp'),
+(4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171793/b8yvyyanipmkditjf1fx.webp'),
+(4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171795/dm0lodpiezdtcgotoan9.webp'),
+(4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171796/enelhyvgxjpkm3ftzid7.webp'),
+(4,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171798/faluzupybfxrmzmwmedb.webp'),
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171872/ocyk8ibal9eqn8q0ojq1.webp'),
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171869/zavgvcf2ovtfqm9pckot.webp'),
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171870/hwpfpm7hllsfc6ciq0zs.webp'),
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171871/xyactveh6dnbxbxbvqrr.webp'),
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171873/xpjuawuwwcmhyg4p0ss5.webp'),
+(5,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686171874/ijtsfdwyzd4cuu0fn99h.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172936/v5nnchqlh4ertgycf3ae.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172935/yglzpaeyzbmacpci2pgz.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172936/jmmhzgfwmfpi3kvpcnv8.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172937/yppuhfki1yydjosupsxb.webp'),
+(10,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686172938/x4mtm2q7tidjc3jrkcew.webp'),
+(6,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174256/bzqn77hkanphq6vqmnfg.webp'),
+(6,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174257/l9d43zietaibmcxl6ffq.webp'),
+(6,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174258/xpvuaobrhdgnkj0hi5pg.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174318/ilscxvz4thgnlga6ns09.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174319/qrjgjsnpwhothy86l0ae.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174320/wrco5xtnf3parxtqwlpd.webp'),
+(7,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174320/gqzi8alqnyuzr2ureop0.webp'),
+(8,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174366/uyexasguledhg0ehqciz.webp'),
+(8,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686174367/mm4belazckxxuuy5ahvb.webp'),
+
+(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176653/ttnjgdvsakyjifcgs350.webp'),
+(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176654/utku6ojorvvneyyrscga.webp'),
+(9,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686176655/rxdrtmkcrjdjru3jnpfq.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196541/pnl9gjqlnexwwoiib0he.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196542/pphbmguiptz5s6aaqh91.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196543/oh1cfx19fpuef2a4oqja.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196543/brmhrvgjxsryjnnzx5ws.webp'),
+(11,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196544/kjfuk0d59kvqmleqihld.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196622/ba4zynelyfilsyspko0w.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196622/xfuuov4qoulkv3e5wbad.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196621/iq6nzggjihjii0qtdtky.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196623/bvwgskwgvzi09gr6oyc8.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196624/woe0ahcwdf1w6riqjftk.webp'),
+(12,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196624/rxpl0yutj5shyjvjmqhi.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196713/gyctf0ob75v4coahbgfx.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196713/bgdjsa1cwast6atcmldm.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196714/j80cpxpelpfmqb92hvyw.webp'),
+(13,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686196715/bbe0wnrmgnfdajrly043.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197928/hnd5jyb2odmoiqbbp8zx.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197929/tn2ngg8rw7tepxixcrtp.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197930/unfkoiu29zjfjhiyhaqj.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197931/v8fu3qmjp7aymsjjhldd.webp'),
+(14,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686197931/ysxx8vym6dykzhlbqrm3.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198347/ysrdjmgvsmlnmlb58uqv.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198348/ppal971aom27v4iz4xdd.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198348/t1p4zenb2tlfltuj574n.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198349/i1zz74ngtsshdiorsk2o.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198350/wyyipbcjyefj5miu7xrt.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198350/hp4ktxywckzb4u1pmpqe.webp'),
+(15,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686198351/wur0bd2crpiafgijcgzg.webp'),
+(16,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205176/yjtfxde9ss0uu1tmunl2.webp'),
+(16,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205177/jcjy8gr20w3ev21ptkkg.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205257/q1szdwcq5fb5krlrvz1w.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205258/wfn8kbkjrwfb7vwt9ixw.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205258/lqh9yadq5zekucoe3egl.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205256/eqdk9ygdrvnskzbkpblh.webp'),
+(17,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205259/ocnkzd6xjpzmqbckytvx.webp'),
+(18,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205305/bq1gb27zglqtnfnhuydl.webp'),
+(18,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205306/novuuxxknylndt0g8nsm.webp'),
+(18,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205307/kfnk9qhxrd5yy18wjdlr.webp'),
+(19,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686205344/xlvs8yrq3rnexji6ptiu.webp')
+;
+
+INSERT INTO colors (COLOR_ID,name)
+values
+(1,'negro'),
+(2,'azul'),
+(3,'verde'),
+(4,'amarillo'),
+(5,'rojo'),
+(6,'Gris Carbon'),
+(7,'Blanco'),
+(8,'cream'),
+(9,'green'),
+(10,'phantom black'),
+(11,'plata'),
+(12,'negro espacial'),
+(13,'oro')
+;
+
+insert into colors_has_products(product_id,color_id)
+values
+(1,6),
+(1,7),
+(2,8),
+(2,9),
+(2,10),
+(3,5),
+(3,1),
+(11,1),
+(11,3),
+(15,11),
+(15,12),
+(15,13),
+(15,7)
+;
+
+
+
+INSERT INTO order_status (status)
+VALUES ('Pendiente'),
+       ('Enviado'),
+       ('Entregado');
+
+INSERT INTO address (`comment`, `contact`, `floor_apartment`, `locality`, `num_street_end`, `num_street_init`, `phone`,
+                     `province_fk`, `street`, `street_number`, `user_fk`, `zip_code`)
+VALUES ('Domicilio', '348256445', '1', 'Bs As', 'Av Mayo  ', '123', '01112233333', '06', 'Av Mayo', '123', '2', '1000');
+
 INSERT INTO `shipping_methods` (`name`, `price`)
 VALUES ('Correo Argentino', '1500'),
        ('Retira en Local', '0');
@@ -836,3 +1032,153 @@ VALUES
 (249, 'Denon DJ'),
 (250, 'Samsung'),
 (251, 'Native Instruments');
+
+
+
+insert into products (product_id,subcategory_id,discount,number_quotas, title, price, stock, category_id)
+values
+(40,136,9,12,'Notebook Hp Victus 15.6 I7 12650h 16gb 512gb Ssd Rtx 3050ti Mica Silver',820.125,15,12),
+(41,137,0,12,'Monitor gamer LG 27MK400H led 27" negro 100V/240V',95999,1,12),
+(42,137,9,12,'Teclado gamer Soul XK850 QWERTY Content Blue color negro con luz RGB',12999,8,12),
+(43,137,25,12,'Disco duro externo Seagate Expansion STKM1000400 1TB negro',31399,2,12),
+(44,137,10,12,'Impresora a color multifunción Canon Pixma G3110 con wifi negra 110V/220V',159999,11,12),
+(45,150,0,12,'Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro',439999,18,13),
+(46,150,15,12,'Nintendo Switch OLED 64GB Standard color rojo neón, azul neón y negro',313999,25,13),
+(47,150,17,12,'Microsoft Xbox Series X 1TB Standard color negro',399999,5,13),
+(48,151,0,12,'FIFA 23 Standard Edition Electronic Arts PS4 Físico',22499,10,13),
+(49,150,0,12,'Nintendo Switch Lite 32GB Standard color turquesa',159000,1,13)
+;
+
+
+
+
+
+insert into descriptions (product_id,content, priority) values
+(40,'Procesador Intel Core i7', 'RELEVANT'),
+(40,'Memoria RAM de 16GB.', 'RELEVANT'),
+(40,'Placa de video NVIDIA GeForce RTX 3050 Ti', 'RELEVANT'),
+(40,'La notebook HP Gaming Laptop Victus 15-FA0032DX es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.', 'GENERIC'),
+(40,'Pantalla con gran impacto visual
+Su pantalla de 15.6" y 1920x1080 px de resolución te brindará colores más vivos y definidos. Tus películas y series preferidas cobrarán vida, ya que ganarán calidad y definición en cada detalle.', 'GENERIC'),
+(41,'Pantalla led de 27".', 'RELEVANT'),
+(41,'Tiene una resolución de 1920px-1080px', 'RELEVANT'),
+(41,'Relación de aspecto de 16:9.', 'RELEVANT'),
+(41,'LG busca entender a los usuarios para ofrecerles óptimas soluciones y nuevas experiencias a través de la evolución tecnológica. Disfrutá de la perfecta combinación de diseño, calidad y rendimiento que la empresa te ofrece en este monitor.', 'GENERIC'),
+(41,'Un monitor a tu medida
+Con tu pantalla LED no solo ahorrás energía, ya que su consumo es bajo, sino que vas a ver colores nítidos y definidos en tus películas o series favoritas.', 'GENERIC'),
+(41,'Una experiencia visual de calidad
+Este monitor de 27" te va a resultar cómodo para estudiar, trabajar o ver una película en tus tiempos de ocio. Asimismo, su resolución de 1920 x 1080 te permite disfrutar de momentos únicos gracias a una imagen de alta fidelidad. Una de sus virtudes es que posee pantalla antirreflejo, de esta manera no verás reflejado lo que está detrás de vos y vas a evitar forzar tu vista para enfocar el contenido. Su tiempo de respuesta de 2 ms lo hace ideal para gamers y cinéfilos porque es capaz de mostrar imágenes en movimiento sin halos o bordes borrosos.', 'GENERIC'),
+(42,'Consola compatible: PS4.', 'RELEVANT'),
+(42,'Tipo de teclado: mecánico.', 'RELEVANT'),
+(42,'Medidas: 352.3mm de ancho, 124.3mm de alto y 35.8mm de profundidad.', 'RELEVANT'),
+(42,'Este teclado Soul de alto rendimiento permite que puedas disfrutar de horas ilimitadas de juegos. Está diseñado especialmente para que puedas expresar tanto tus habilidades como tu estilo. Podrás mejorar tu experiencia de gaming, ya seas un aficionado o todo un experto y hacer que tus jugadas alcancen otro nivel.', 'GENERIC'),
+(42,'Distinción a todo color
+Su retroiluminación le da un toque diferente a tu equipo y resalta su composición cuando es utilizado en espacios poco iluminados.', 'GENERIC'),
+(43,'Útil para guardar programas y documentos con su capacidad de 1 TB.', 'RELEVANT'),
+(43,'Interfaz de conexión: USB 3.0.', 'RELEVANT'),
+(43,'', 'RELEVANT'),
+(43,'Seagate, referente en el mercado de unidades de almacenamiento se encarga de brindar los mejores productos a sus clientes. Su control de calidad más su compromiso con una producción sustentable y responsable con el medio ambiente la vuelven una líder indiscutible. Sus dispositivos resaltan todas estas características que generan un óptimo rendimiento con el objetivo de darte una gran experiencia de uso.', 'GENERIC'),
+(43,'Más velocidad a tu alcance. Este producto transfiere datos a través de un puerto USB 3.0, lo que lo convierte en un dispositivo sumamente veloz. Es adaptable a tus necesidades a la hora de traspasar grandes cantidades de datos en poco tiempo.', 'GENERIC'),
+(44,'Imprime, escanea y hace copias.', 'RELEVANT'),
+(44,'Tecnología de impresión: inyección de tinta.', 'RELEVANT'),
+(44,'Capacidad máxima de 100 hojas.', 'RELEVANT'),
+(44,'Soporta papel tamaño A4, A5, B5, Carta, Oficio, Sobre N10, 4 x 6 ", 5 x 7 ", Personalizado (101.6 x 152.4 mm - 215.9 x 676 mm).', 'RELEVANT'),
+(44,'Siempre hay una impresora Canon que te ayuda a llevar el trabajo y la diversión al siguiente nivel. Son estéticamente elegantes, cómodas y tienen una velocidad de impresión que te va a sorprender.', 'GENERIC'),
+(44,'Eficiencia y calidad. Imprimí archivos, escaneá documentos y hacé todas las fotocopias que necesités con esta impresora multifunción Canon, siempre lista para facilitar tu rutina de trabajo o estudio.', 'GENERIC'),
+(44,'Perfecta para tu hogar o la oficina. Al ser a tinta te permitirá lograr impresiones de gran calidad con colores vivos y degradados suaves. Ocupa poco espacio y es fácil de manejar lo que la convierte en la opción ideal para cuestiones laborales, tareas escolares y requerimientos de la vida diaria.', 'GENERIC'),
+(44,'Conectividad móvil. Ahora podés imprimir fácilmente desde tu celular o tablet sin importar en donde te encuentres y sin la asistencia de una computadora. Disfrutá de sus soluciones de impresión móvil, utilizá la que más te guste y tené tus documentos en solo segundos.', 'GENERIC'),
+(45,'Incluye control.', 'RELEVANT'),
+(45,'Resolución de 3840px x 2160px.', 'RELEVANT'),
+(45,'Memoria RAM de 16GB.', 'RELEVANT'),
+(45,'Cuenta con: 1 dock, 1 cable de alimentación ca, 1 cable hdmi, 1 cable usb, 1 material impreso.', 'RELEVANT'),
+(45,'Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.', 'GENERIC'),
+(45,'PlayStation renovó las expectativas del mundo virtual con esta nueva consola y su gran rendimiento. Cuenta con una interfaz de usuario más rápida y fácil de navegar que en anteriores modelos. Además, podrás jugar durante horas desafiando a millones de contrincantes alrededor del mundo que esperan nuevos retos.', 'GENERIC'),
+(46,'Incluye 2 controles.', 'RELEVANT'),
+(46,'Resolución de 1920px x 1080px.', 'RELEVANT'),
+(46,'Memoria RAM de 4GB.', 'RELEVANT'),
+(46,'Tiene pantalla táctil.', 'RELEVANT'),
+(46,'Switch se convirtió en una de las consolas más versátiles del mercado gracias a su uso portátil y de sobremesa. Nintendo desarrolló este modelo con el objetivo de tener todas las comodidades de la tecnología de elite en un aparato portátil con el que podrás jugar y disfrutar de diverso contenido online.', 'GENERIC'),
+(46,'Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 64 GB. Al contar con un procesador de 8 núcleos y uno gráfico, brinda una experiencia dinámica, respuestas ágiles, y transiciones fluidas de imágenes en alta definición. Por otro lado, tiene puerto USB y salida HDMI, que permiten conectar accesorios y cargar la batería de tu control mientras jugás.', 'GENERIC'),
+(47,'Incluye control.', 'RELEVANT'),
+(47,'Resolución de 2560px x 1440px.', 'RELEVANT'),
+(47,'Memoria RAM de 16GB.', 'RELEVANT'),
+(47,'Cuenta con: 1 cable hdmi, 1 cable de alimentación ca.', 'RELEVANT'),
+(47,'La nueva generación de consolas está comandada por la Xbox Series que llegó al mercado para sorprender a todos. Su potencia y alto rendimiento te permitirá reducir las horas de descarga de juegos y contenido de manera considerable en comparación con otras consolas. Además, vas a poder jugar durante horas mientras te divertís con jugadores de todo el mundo.', 'GENERIC'),
+(47,'Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 1 TB.', 'GENERIC'),
+(47,'Al contar con un procesador de 8 núcleos y uno gráfico, brinda una experiencia dinámica, respuestas ágiles, y transiciones fluidas de imágenes en alta definición. Por otro lado, tiene puerto USB y salida HDMI, que permiten conectar accesorios y cargar la batería de tu control mientras jugás.', 'GENERIC'),
+(48,'Desarrollado por Electronic Arts.', 'RELEVANT'),
+(48,'Género: deportes y acción y simulación.', 'RELEVANT'),
+(48,'Se encuentra disponible para jugar online.', 'RELEVANT'),
+(48,'Es apto para múltiples jugadores.', 'RELEVANT'),
+(48,'FIFA es el videojuego de fútbol más vendido de la actualidad y con más de 25 años de desarrollo. Vas a poder jugar con tus equipos y futbolistas preferidos en diversos modos. ¡Preparate para convertirte en campeón de todas las copas y torneos!', 'GENERIC'),
+(48,'Interactuá con otros jugadores. Podrás disfrutar de una experiencia inigualable, ya que te permite jugar con tus amistades y compartir momentos inolvidables.', 'GENERIC'),
+(48,'Podrás compartir cada juego con personas de todo el mundo, ya que es posible conectarse de manera online.', 'GENERIC'),
+(49,'Es portátil, ideal para llevar a donde quieras y jugar con tus amistades y familia.', 'RELEVANT'),
+(49,'Memoria RAM de 4GB.', 'RELEVANT'),
+(49,'Tiene pantalla táctil.', 'RELEVANT'),
+(49,'Cuenta con: 1 adaptador de corriente.', 'RELEVANT'),
+(49,'Switch se convirtió en una de las consolas más versátiles del mercado gracias a su uso portátil y de sobremesa. Nintendo desarrolló este modelo con el objetivo de tener todas las comodidades de la tecnología de elite en un aparato portátil con el que podrás jugar y disfrutar de diverso contenido online.', 'GENERIC'),
+(49,'Los Joy-con cuentan con botones especiales para realizar print de pantalla. Además, posee una cámara infrarroja que puede leer la distancia respecto a los objetos e incluso detectar formas.', 'GENERIC'),
+(49,'Adaptada a tus necesidades. Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 32 GB.', 'GENERIC')
+-- (5,2,'', 'RELEVANT'),
+-- (4,2,'', 'GENERIC')
+;
+
+INSERT INTO images (PRODUCT_ID, IMAGE_URL)
+values
+(40,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155020/pc_cbdfgq.jpg'),
+(40,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155020/pc3_ptbisb.jpg'),
+(40,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155020/pc2_y8rprm.jpg'),
+(41,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155087/monitor2_qrcjxq.jpg'),
+(41,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155087/monitor_htlofe.jpg'),
+(41,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155087/monitor3_si90rw.jpg'),
+(42,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155148/tecado_bf6ldh.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd_ohfzcg.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd2_ex7ilp.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd3_zv5eky.jpg'),
+(43,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155179/dd4_z5bzpj.jpg'),
+(44,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155230/impresora_f4z1ou.jpg'),
+(44,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155230/impresora2_fhw1us.jpg'),
+(44,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155230/impresora3_bf9cqx.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155288/PS51_mcm3vf.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155289/PS5_gxir4x.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155288/PS52_gbtsh9.jpg'),
+(45,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155288/PS53_fngyav.jpg'),
+(46,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155350/SWITCH1_bbo0bb.jpg'),
+(46,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155350/SWITCH_q0wbpu.jpg'),
+(46,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155350/SWITCH2_ksuatq.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155389/XBOX1_kvcle6.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155388/XBOX_wszbjo.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155388/XBOX2_juhq4m.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155389/XBOX3_spj3ie.jpg'),
+(47,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155389/XBOX4_jxaln2.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA_yy9gas.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA2_kglxpk.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA1_k4sucv.jpg'),
+(48,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686178158/FIFA3_vlhwua.jpg'),
+(49,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155448/NST_cuizfl.jpg'),
+(49,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155448/NST2_pjtpmm.jpg'),
+(49,'https://res.cloudinary.com/djto6y6vr/image/upload/v1686155448/NST1_yiekaq.jpg')
+
+
+
+;
+
+INSERT INTO colors (COLOR_ID,name)
+values
+(40,'Blanco/Negro'),
+(41,'neón/Azul'),
+(42,'Turquesa'),
+(43,'Gris'),
+(44,'Coral')
+;
+
+insert into colors_has_products(product_id,color_id)
+values
+(46,40),
+(46,41),
+(49,42),
+(49,43),
+(49,44)
+
+;

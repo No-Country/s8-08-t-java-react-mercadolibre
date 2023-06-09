@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
-public interface IProvinceRepository extends JpaRepository<Province, String> {
+public interface IProvinceRepository extends JpaRepository<Province, Integer> {
 
     @Query(value = "select " +
             "provinces.province_id," +
