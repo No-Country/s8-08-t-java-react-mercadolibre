@@ -2,6 +2,8 @@ import LoginNavbar from "../components/Login/LoginNavbar";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { postRequest } from "../services/httpRequest";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
 
@@ -26,10 +28,19 @@ const Register = () => {
             conditions: Yup.boolean().oneOf([true], "Debés aceptar los Términos y Condiciones").required(),
         }),
         onSubmit: values => {
-            console.log(values);
+            delete values.conditions;
+            postRegister(values);
         }
     });
 
+    const postRegister = async formValues => {
+        try {
+            const response = await postRequest(formValues, "/api/v1/auth/register");
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className="bg-white sm:bg-[#eeeeee]">
@@ -39,7 +50,7 @@ const Register = () => {
                 <div className="w-full max-w-[752px] flex flex-col sm:justify-center">
                     <h2 className="font-medium text-2xl hidden sm:block mb-4">Completá tus datos</h2>
                     <form action="" onSubmit={formik.handleSubmit}>
-                        <div className="bg-white rounded-md p-10 sm:mt-0">
+                        <div className="bg-white rounded-md p-10 sm:mt-0 pb-14">
                             <div className="flex justify-start gap-5 mb-2">
                                 <div className="flex flex-col w-[294px]">
                                     <label
@@ -172,7 +183,7 @@ const Register = () => {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col mt-5">
+                            <div className="flex flex-col mt-5 relative">
                                 <div className="flex items-center gap-3">
                                     <input
                                         type="checkbox"
@@ -187,7 +198,7 @@ const Register = () => {
                                 </div>
 
                                 {formik.errors.conditions !== undefined && (
-                                    <div className="flex items-center ml-1">
+                                    <div className="flex items-center absolute bottom-[-30px] left-1">
                                         <RiErrorWarningFill className="text-red" />
                                         <span className="text-xs text-[#0000008c] p-2 text-red">
                                             {formik.errors.conditions}
