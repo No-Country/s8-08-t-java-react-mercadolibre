@@ -1,3 +1,4 @@
+import { useState } from "react";
 import LoginNavbar from "../components/Login/LoginNavbar";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { useFormik } from "formik";
@@ -6,6 +7,9 @@ import { postRequest } from "../services/httpRequest";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+    const [registerError, setRegisterError] = useState(false);
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -30,28 +34,29 @@ const Register = () => {
         onSubmit: values => {
             delete values.conditions;
             postRegister(values);
+            navigate("/auth/login");
         }
     });
 
     const postRegister = async formValues => {
         try {
             const response = await postRequest(formValues, "/api/v1/auth/register");
-            console.log(response);
+            return response;
         } catch (error) {
-            console.log(error);
+            response.code !== 201 && setRegisterError(true);
         }
     };
 
     return (
-        <div className="bg-white sm:bg-[#eeeeee]">
+        <div className="bg-white sm:bg-[#eeeeee] h-[100vh]">
             <LoginNavbar />
 
             <section className="mx-0 sm:mx-24 lg:ml-14 lg:mr-0 sm:mt-12 flex justify-center">
                 <div className="w-full max-w-[752px] flex flex-col sm:justify-center">
-                    <h2 className="font-medium text-2xl hidden sm:block mb-4">Completá tus datos</h2>
+                    <h2 className="font-medium text-2xl mt-5 sm:mt-0 sm:mb-4 text-center sm:text-left">Completá tus datos</h2>
                     <form action="" onSubmit={formik.handleSubmit}>
                         <div className="bg-white rounded-md p-10 sm:mt-0 pb-14">
-                            <div className="flex justify-start gap-5 mb-2">
+                            <div className="flex flex-col sm:flex-row justify-start items-center gap-5 mb-2">
                                 <div className="flex flex-col w-[294px]">
                                     <label
                                         htmlFor="firstName"
@@ -117,7 +122,7 @@ const Register = () => {
                                 </div>
                             </div>
 
-                            <div className="flex justify-start gap-5 mt-10">
+                            <div className="flex flex-col sm:flex-row justify-start items-center gap-5 mb-2">
                                 <div className="flex flex-col w-[294px]">
                                     <label
                                         htmlFor="email"
@@ -146,7 +151,7 @@ const Register = () => {
                                             </span>
                                         </div>
                                     ) : (
-                                        <span className="text-xs text-[#0000008c] p-2">Asegurate de tener acceso a este e-mail.</span>
+                                        <span className="text-xs text-[#0000008c] p-2">Asegurate que sea válido.</span>
                                     )}
                                 </div>
 
@@ -183,7 +188,7 @@ const Register = () => {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col mt-5 relative">
+                            <div className="flex flex-col mt-8 sm:mt-5 relative">
                                 <div className="flex items-center gap-3">
                                     <input
                                         type="checkbox"
@@ -208,7 +213,13 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-center sm:justify-end mt-6 lg:mb-20">
+                        <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-end mt-6 mb-10 lg:mb-20 gap-5">
+                            {
+                                registerError &&
+                                <p className="font-medium text-xs sm:text-sm justify-center mx-5">
+                                    Hubo un error al procesar el envío. Revisá los datos ingresados o intenta más tarde.
+                                </p>
+                            }
                             <input
                                 type="submit"
                                 value="Continuar"
