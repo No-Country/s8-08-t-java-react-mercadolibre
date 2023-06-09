@@ -24,7 +24,7 @@ const Login = () => {
       password: ""
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("El Email ser un formato valido").required("Es requerido")
+      email: Yup.string().email("El e-mail debe ser un formato valido.").required("Completá este dato.")
     }),
     onSubmit: (values, { setErrors }) => {
       setEmail(values.email);
