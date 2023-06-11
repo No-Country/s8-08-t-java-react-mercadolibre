@@ -30,7 +30,7 @@ const SliderProduct = ({ products }) => {
             slidesPerView: 1,
             spaceBetween: 5
           },
-          410: {
+          480: {
             slidesPerView: 2,
             spaceBetween: 5
           },
@@ -65,7 +65,7 @@ const SliderProduct = ({ products }) => {
       >
         {products?.map((product, index) => (
           <SwiperSlide onMouseOver={handleMouseOver} key={`${index}-card`}>
-            <div className=" w-full flex justify-between">
+            <div className=" w-full justify-center flex sm:justify-between">
               <ProductCard product={product} />
             </div>
           </SwiperSlide>

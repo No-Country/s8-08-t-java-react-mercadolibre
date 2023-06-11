@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className={`w-[224px] hover:h-[410px] hover:shadow-lg hover:shadow-slate-400 h-[375px] border rounded-lg p-4 bg-white mb-6`}
+      className={`w-full sm:w-[224px] hover:h-[410px] hover:shadow-lg hover:shadow-slate-400 h-[375px] border rounded-lg p-4 bg-white mb-6`}
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
