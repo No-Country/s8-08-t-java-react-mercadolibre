@@ -31,10 +31,9 @@ const HeroCategory = () => {
   return (
     <div>
       <h2 className=" text-center text-base font-medium pt-6 tracking-[1.6px]">
-        {" "}
-        EXPLORÁ POR CATEGORÍA{" "}
+        EXPLORÁ POR CATEGORÍA
       </h2>
-      <div className=" flex flex-col sm:flex-row items-center justify-center gap-9 my-10 gro pb-6">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-9 sm:gap-4 my-10 lg:gap-9 pb-6">
         {categories?.map(category => {
           return (
             <Link
@@ -42,7 +41,7 @@ const HeroCategory = () => {
               to={`product-list/category/${category.id}/${category.name}`}
             >
               <article
-                className={`${style.article} w-[284px] sm:w-[284px] shadow-lg shadow-slate-600 rounded-lg`}
+                className={`${style.article} w-[284px] sm:w-[175px] lg:w-[284px] shadow-lg shadow-slate-600 rounded-lg`}
               >
                 <img className="w-full" src={category.image} alt={category.name} />
               </article>
